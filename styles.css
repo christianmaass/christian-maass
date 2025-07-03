@@ -3,9 +3,8 @@
  * Ziel: Hero-Banner bündig mit Header/Footer-Inhalt, restlicher Content begrenzt
  */
 
-/* --- Globale Resets und Basis-Styles --- */
+/* --- Reset und Basis --- */
 html, body {
-  height: 100%;
   margin: 0;
   padding: 0;
   background-color: #ebe8eb;
@@ -14,35 +13,23 @@ html, body {
   font-weight: 300;
 }
 
-/* --- Header-Bereich --- */
+/* --- Header --- */
 .header-container {
   max-width: 1200px;
   margin: 0 auto;
   display: flex;
   align-items: center;
   padding: 20px 2rem;
-  position: relative;
   background-color: #ebe8eb;
   box-sizing: border-box;
 }
 
-.logo {
-  flex: 0 0 auto;
-}
-
 .logo img {
   max-height: 100px;
-  height: auto;
-  display: block;
-}
-
-.spacer {
-  flex: 0 0 auto;
-  width: 100px;
 }
 
 .nav {
-  flex: 1 1 auto;
+  flex: 1;
   display: flex;
   justify-content: center;
   gap: 2rem;
@@ -52,26 +39,15 @@ html, body {
   text-decoration: none;
   color: #333;
   font-weight: 300;
-  transition: color 0.2s, border-bottom 0.2s;
-  border-bottom: none;
-}
-
-.nav a.active {
-  font-weight: 700;
+  transition: color 0.2s;
 }
 
 .nav a:hover {
   border-bottom: 2px solid #6e5c4f;
-  text-decoration: none;
 }
 
 .burger {
   display: none;
-  background: none;
-  border: none;
-  font-size: 2rem;
-  cursor: pointer;
-  color: #6e5c4f;
 }
 
 @media (max-width: 768px) {
@@ -81,27 +57,24 @@ html, body {
     right: 2rem;
     top: 50%;
     transform: translateY(-50%);
-  }
-
-  .spacer {
-    display: none;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    cursor: pointer;
+    color: #6e5c4f;
   }
 
   .nav {
-    max-height: 0;
-    overflow: hidden;
-    opacity: 0;
     flex-direction: column;
     align-items: flex-end;
-    gap: 1rem;
     background-color: #ebe8eb;
     position: absolute;
     top: 70px;
     left: 0;
     right: 0;
-    padding: 0 1rem;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    z-index: 1000;
+    overflow: hidden;
+    max-height: 0;
+    opacity: 0;
     transition: max-height 0.4s ease, opacity 0.4s ease;
   }
 
@@ -112,31 +85,27 @@ html, body {
   }
 }
 
-/* --- Main-Tag --- */
+/* --- Main --- */
 main {
   padding: 0;
-  /* ACHTUNG: kein text-align: center mehr hier! */
 }
 
-/* --- Hero Banner Styles --- */
+/* --- Hero Banner --- */
 .hero-banner {
-  position: relative;                  /* Bezug für das absolute Bild */
+  position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  width: 100%;
   background-image: linear-gradient(to left, #e4e0e4, #ebe8eb);
   background-color: #e4e0e4;
   padding: 3rem 2rem;
-  box-sizing: border-box;
-  min-height: 400px;                   /* Feste Mindesthöhe für den Hero-Bereich */
-  overflow: hidden;                    /* Verhindert, dass das Bild überläuft */
-  display: block;                      /* Kein Flex/Grid – normales Fließlayout */
+  min-height: 400px;
+  overflow: hidden;
 }
 
 .hero-content {
   max-width: 700px;
-  z-index: 2;
   position: relative;
+  z-index: 2;
   text-align: left;
 }
 
@@ -168,13 +137,12 @@ main {
 }
 
 .hero-image {
-  position: absolute;                  /* Fest verankert am Rand */
+  position: absolute;
   bottom: 0;
   right: 2rem;
   max-width: 330px;
   width: 100%;
   z-index: 1;
-  box-sizing: border-box;
 }
 
 .hero-image img {
@@ -186,7 +154,6 @@ main {
   background-color: transparent;
 }
 
-/* --- Mobile Anpassung --- */
 @media (max-width: 900px) {
   .hero-banner {
     padding: 2rem 0.5rem;
@@ -196,7 +163,6 @@ main {
   .hero-content {
     text-align: center;
     max-width: 100%;
-    margin: 0 auto;
   }
 
   .cta-btn {
@@ -204,7 +170,7 @@ main {
   }
 
   .hero-image {
-    position: static;                 /* Kein Absolut-Layout auf Mobile */
+    position: static;
     max-width: 300px;
     width: 100%;
     margin: 2rem auto 0 auto;
@@ -215,27 +181,50 @@ main {
   }
 }
 
-
-
-/* --- Hauptinhaltsbereich --- */
-.content-area {
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  box-sizing: border-box;
-}
-
+/* --- Content-Wrapper und Boxen --- */
 .content-wrapper {
   max-width: 1200px;
   margin: 0 auto;
-  padding-left: 0;    /* Kein linker Abstand */
-  padding-right: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  padding: 2rem;
   box-sizing: border-box;
 }
 
-/* --- Footer-Bereich --- */
+.content-box-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.content-box {
+  background: linear-gradient(to bottom, #ebe8eb 0%, #e4e0e4 100%);
+  border-radius: 0.5rem;
+  padding: 2rem 1.5rem;
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.content-box img {
+  width: 100%;
+  max-width: 180px;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .content-box-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .content-box {
+    width: 100%;
+  }
+}
+
+/* --- Footer --- */
 footer {
   background-color: #f5f5f5;
   padding: 2rem 1rem;
@@ -290,18 +279,6 @@ footer {
   color: #333;
 }
 
-.footer-book-cover {
-  max-width: 150px;
-  height: auto;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
-}
-
-.footer-book-cover:hover {
-  transform: scale(1.03);
-}
-
 .footer-copy {
   text-align: center;
   margin-top: 2rem;
@@ -311,59 +288,18 @@ footer {
   padding-top: 1rem;
 }
 
+/* In styles.css */
+.footer-book-cover {
+  max-width: 120px;   /* Passe die Breite nach Wunsch an */
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
     gap: 1.5rem;
-  }
-}
-
-/* --- Content Boxen  --- */
-
-.content-wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding-left: 2rem;
-  padding-right: 2rem;
-  padding-top: 2rem;
-  padding-bottom: 2rem;
-  box-sizing: border-box;
-}
-
-.content-box-row {
-  display: flex;
-  gap: 2rem;
-  justify-content: space-between;
-}
-
-.content-box {
-  background: linear-gradient(to bottom, #e4e0e4 0%, #ebe8eb 100%);
-  border-radius: 0.5rem;
-  padding: 2rem 1.5rem;
-  flex: 1 1 0;
-  max-width: none;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.content-box img {
-  width: 100%;
-  max-width: 180px;
-  height: auto;
-  border-radius: 0.5rem;
-  margin-bottom: 1rem;
-}
-
-@media (max-width: 900px) {
-  .content-box-row {
-    flex-direction: column;
-    gap: 1.5rem;
-    align-items: center;
-  }
-  .content-box {
-    width: 100%;
-    max-width: 100%;
   }
 }
