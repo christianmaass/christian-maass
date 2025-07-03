@@ -337,7 +337,7 @@ footer {
 }
 
 .content-box {
-  background: linear-gradient(to bottom, #ebe8eb 0%, #e4e0e4 100%);
+  background: linear-gradient(to bottom, #e4e0e4 0%, #ebe8eb 100%);
   border-radius: 0.5rem;
   padding: 2rem 1.5rem;
   flex: 1 1 0;
