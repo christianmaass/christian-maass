@@ -1,0 +1,369 @@
+/*
+ * Komplette CSS-Datei für das Astro-Projekt
+ * Ziel: Hero-Banner bündig mit Header/Footer-Inhalt, restlicher Content begrenzt
+ */
+
+/* --- Globale Resets und Basis-Styles --- */
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: #ebe8eb;
+  color: #333;
+  font-family: 'Montserrat', Arial, sans-serif;
+  font-weight: 300;
+}
+
+/* --- Header-Bereich --- */
+.header-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  padding: 20px 2rem;
+  position: relative;
+  background-color: #ebe8eb;
+  box-sizing: border-box;
+}
+
+.logo {
+  flex: 0 0 auto;
+}
+
+.logo img {
+  max-height: 100px;
+  height: auto;
+  display: block;
+}
+
+.spacer {
+  flex: 0 0 auto;
+  width: 100px;
+}
+
+.nav {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 300;
+  transition: color 0.2s, border-bottom 0.2s;
+  border-bottom: none;
+}
+
+.nav a.active {
+  font-weight: 700;
+}
+
+.nav a:hover {
+  border-bottom: 2px solid #6e5c4f;
+  text-decoration: none;
+}
+
+.burger {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #6e5c4f;
+}
+
+@media (max-width: 768px) {
+  .burger {
+    display: block;
+    position: absolute;
+    right: 2rem;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .spacer {
+    display: none;
+  }
+
+  .nav {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 1rem;
+    background-color: #ebe8eb;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    right: 0;
+    padding: 0 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    z-index: 1000;
+    transition: max-height 0.4s ease, opacity 0.4s ease;
+  }
+
+  .nav.open {
+    max-height: 500px;
+    opacity: 1;
+    padding: 1rem;
+  }
+}
+
+/* --- Main-Tag --- */
+main {
+  padding: 0;
+  /* ACHTUNG: kein text-align: center mehr hier! */
+}
+
+/* --- Hero Banner Styles --- */
+.hero-banner {
+  position: relative;                  /* Bezug für das absolute Bild */
+  max-width: 1200px;
+  margin: 0 auto;
+  width: 100%;
+  background-image: linear-gradient(to left, #e4e0e4, #ebe8eb);
+  background-color: #e4e0e4;
+  padding: 3rem 2rem;
+  box-sizing: border-box;
+  min-height: 400px;                   /* Feste Mindesthöhe für den Hero-Bereich */
+  overflow: hidden;                    /* Verhindert, dass das Bild überläuft */
+  display: block;                      /* Kein Flex/Grid – normales Fließlayout */
+}
+
+.hero-content {
+  max-width: 700px;
+  z-index: 2;
+  position: relative;
+  text-align: left;
+}
+
+.hero-content h1 {
+  margin: 0 0 1rem 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+}
+
+.hero-content p {
+  margin: 0 0 1.5rem 0;
+  font-size: 1.1rem;
+}
+
+.cta-btn {
+  background: #55473e;
+  color: #fff;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: background 0.2s;
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.cta-btn:hover {
+  background: #6e5c4f;
+}
+
+.hero-image {
+  position: absolute;                  /* Fest verankert am Rand */
+  bottom: 0;
+  right: 2rem;
+  max-width: 330px;
+  width: 100%;
+  z-index: 1;
+  box-sizing: border-box;
+}
+
+.hero-image img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border-radius: 0;
+  box-shadow: none;
+  background-color: transparent;
+}
+
+/* --- Mobile Anpassung --- */
+@media (max-width: 900px) {
+  .hero-banner {
+    padding: 2rem 0.5rem;
+    min-height: auto;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .cta-btn {
+    margin: 1rem auto 0 auto;
+  }
+
+  .hero-image {
+    position: static;                 /* Kein Absolut-Layout auf Mobile */
+    max-width: 300px;
+    width: 100%;
+    margin: 2rem auto 0 auto;
+  }
+
+  .hero-image img {
+    max-width: 300px;
+  }
+}
+
+
+
+/* --- Hauptinhaltsbereich --- */
+.content-area {
+  max-width: 800px;
+  margin: 2rem auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 0;    /* Kein linker Abstand */
+  padding-right: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+/* --- Footer-Bereich --- */
+footer {
+  background-color: #f5f5f5;
+  padding: 2rem 1rem;
+  font-size: 0.95rem;
+}
+
+.footer-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.footer-block {
+  flex: 1 1 250px;
+  min-width: 200px;
+}
+
+.footer-block h3 {
+  margin-top: 0;
+  color: #6e5c4f;
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.footer-block ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-block ul li {
+  margin-bottom: 0.5rem;
+}
+
+.footer-block a {
+  text-decoration: none;
+  color: #333;
+  transition: color 0.2s;
+}
+
+.footer-block a:hover {
+  color: #6e5c4f;
+}
+
+.footer-block address {
+  font-style: normal;
+  line-height: 1.6;
+  color: #333;
+}
+
+.footer-book-cover {
+  max-width: 150px;
+  height: auto;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  transition: transform 0.2s;
+}
+
+.footer-book-cover:hover {
+  transform: scale(1.03);
+}
+
+.footer-copy {
+  text-align: center;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+  color: #666;
+  border-top: 1px solid #ddd;
+  padding-top: 1rem;
+}
+
+@media (max-width: 768px) {
+  .footer-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+}
+
+/* --- Content Boxen  --- */
+
+.content-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+
+.content-box-row {
+  display: flex;
+  gap: 2rem;
+  justify-content: space-between;
+}
+
+.content-box {
+  background: linear-gradient(to bottom, #ebe8eb 0%, #e4e0e4 100%);
+  border-radius: 0.5rem;
+  padding: 2rem 1.5rem;
+  flex: 1 1 0;
+  max-width: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.content-box img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 900px) {
+  .content-box-row {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .content-box {
+    width: 100%;
+    max-width: 100%;
+  }
+}

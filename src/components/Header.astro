@@ -1,0 +1,38 @@
+---
+const { pathname } = Astro.url; // Füge dies hinzu, um den aktuellen Pfad zu bekommen
+---
+
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <a href="/"><img src="/logo-maass.png" alt="Christian Maaß Logo" /></a>
+    </div>
+
+    <nav id="main-nav" class="nav">
+      <a href="/" class={pathname === '/' ? 'active' : ''}>Home</a>
+      <a href="/christian-maass" class={pathname === '/christian-maass' ? 'active' : ''}>Christian Maaß</a>
+      <a href="/buecher" class={pathname === '/buecher' ? 'active' : ''}>Bücher</a>
+      <a href="/fachartikel" class={pathname === '/fachartikel' ? 'active' : ''}>Fachartikel</a>
+      <a href="/kontakt" class={pathname === '/kontakt' ? 'active' : ''}>Kontakt</a>
+    </nav>
+
+    <div class="spacer"></div>
+
+    <button class="burger" id="burger" aria-label="Menü öffnen">
+      ☰
+    </button>
+  </div>
+</header>
+
+<script is:inline>
+  // Dieses Skript gehört zum Header, da es dessen Funktionalität steuert
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.getElementById('burger');
+    const nav = document.getElementById('main-nav');
+    if (burger && nav) { // Sicherstellen, dass die Elemente existieren
+      burger.addEventListener('click', () => {
+        nav.classList.toggle('open');
+      });
+    }
+  });
+</script>
