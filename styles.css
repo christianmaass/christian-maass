@@ -1,6 +1,5 @@
 /*
  * Komplette CSS-Datei für das Astro-Projekt
- * Ziel: Hero-Banner bündig mit Header/Footer-Inhalt, restlicher Content begrenzt
  */
 
 /* --- Reset und Basis --- */
@@ -97,7 +96,8 @@ main {
   margin: 0 auto;
   background-image: linear-gradient(to left, #e4e0e4, #ebe8eb);
   background-color: #e4e0e4;
-  padding: 3rem 2rem;
+  padding: 1rem 4rem;      
+  min-height: 250px;       /* vorher: 400px */
   min-height: 400px;
   overflow: hidden;
 }
@@ -107,6 +107,7 @@ main {
   position: relative;
   z-index: 2;
   text-align: left;
+  padding-top: 7rem; /* Schiebt den Block weiter nach unten */
 }
 
 .hero-content h1 {
@@ -140,7 +141,7 @@ main {
   position: absolute;
   bottom: 0;
   right: 2rem;
-  max-width: 330px;
+  max-width: 350px;
   width: 100%;
   z-index: 1;
 }
