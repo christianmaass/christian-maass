@@ -2,28 +2,26 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 
-const { title = "Standardtitel", description = "Standardbeschreibung" } = Astro.props;
+const { title = "Christian Maaß – Autorenseite", description = "Persönliche Webseite von Christian Maaß" } = Astro.props;
 ---
 
 <!DOCTYPE html>
 <html lang="de">
-<head>
+  <head>
     <meta charset="UTF-8" />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="/styles.css" />
+    <link rel="stylesheet" href={Astro.resolve('/styles.css')} />
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
-</head>
-<body>
-
+  </head>
+  <body>
     <Header />
 
-    <main> {/* KEINE max-width hier! */}
-        <slot /> {/* HIER wird der gesamte Inhalt von index.astro eingefügt, inkl. Hero-Banner */}
+    <main>
+      <slot />  <!-- ALLES was jede Seite übergibt, wird hier gerendert -->
     </main>
 
     <Footer />
-
-</body>
+  </body>
 </html>
