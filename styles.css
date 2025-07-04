@@ -19,7 +19,6 @@ html, body {
   display: flex;
   align-items: center;
   padding: 20px 0.5rem;
-  position: relative;
   background-color: #ebe8eb;
   box-sizing: border-box;
 }
@@ -46,8 +45,13 @@ html, body {
   transition: color 0.2s;
 }
 
+.nav a.active {
+  font-weight: 700;
+}
+
 .nav a:hover {
-  border-bottom: 2px solid #6e5c4f;
+  color: #000;
+  border-bottom: none;
 }
 
 .burger {
@@ -191,8 +195,8 @@ main {
   max-width: 1200px;
   margin: 0 auto;
   padding-top: 1rem;
-  padding-left: 0.5rem;
-  padding-bottom: 1rem;
+  padding-left: 0rem;
+  padding-bottom: 2rem;
   box-sizing: border-box;
 }
 
