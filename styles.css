@@ -58,6 +58,26 @@ html, body {
   display: none;
 }
 
+.social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-left: auto;
+  align-items: center;
+}
+
+.social-icons a img {
+  width: 28px;
+  height: 28px;
+  display: block;
+  filter: grayscale(1);
+  transition: filter 0.2s, transform 0.2s;
+}
+
+.social-icons a:hover img {
+  filter: grayscale(0);
+  transform: scale(1.1);
+}
+
 @media (max-width: 768px) {
   .burger {
     display: block;
@@ -116,6 +136,10 @@ main {
   z-index: 2;
   text-align: left;
   padding-top: 3rem; /* Schiebt den Block weiter nach unten */
+}
+/* Button im Hero-Banner leicht einrücken */
+.hero-content .cta-btn {
+  margin-left: 1.65rem; /* Wert nach Wunsch anpassen */
 }
 
 .hero-content h1 {
