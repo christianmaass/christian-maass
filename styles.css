@@ -21,6 +21,8 @@ html, body {
   padding: 20px 0.5rem;
   background-color: #ebe8eb;
   box-sizing: border-box;
+  position: relative;
+  z-index: 100;
 }
 
 .logo {
@@ -79,6 +81,10 @@ html, body {
 }
 
 @media (max-width: 768px) {
+  .social-icons {
+    display: none;
+  }
+
   .burger {
     display: block;
     position: absolute;
@@ -97,19 +103,20 @@ html, body {
     align-items: flex-end;
     background-color: #ebe8eb;
     position: absolute;
-    top: 70px;
+    top: 100%;
     left: 0;
     right: 0;
     overflow: hidden;
     max-height: 0;
     opacity: 0;
     transition: max-height 0.4s ease, opacity 0.4s ease;
+    z-index: 50; 
   }
 
   .nav.open {
     max-height: 500px;
     opacity: 1;
-    padding: 1rem;
+    padding: 1rem 2.5rem 3rem 1rem; /* oben, rechts, unten, links */
   }
 }
 
@@ -260,6 +267,10 @@ main {
   .content-box {
     width: 100%;
   }
+    .content-wrapper {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 /* --- Footer --- */
@@ -338,6 +349,8 @@ footer {
 @media (max-width: 768px) {
   .footer-container {
     flex-direction: column;
-    gap: 1.5rem;
+    gap: 0rem;
+    text-align: center;
+    align-items: center;
   }
 }
