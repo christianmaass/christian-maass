@@ -18,9 +18,14 @@ html, body {
   margin: 0 auto;
   display: flex;
   align-items: center;
-  padding: 20px 2rem;
+  padding: 20px 0.5rem;
+  position: relative;
   background-color: #ebe8eb;
   box-sizing: border-box;
+}
+
+.logo {
+  margin-right: 2.5rem; /* Abstand zwischen Logo und Navigation */
 }
 
 .logo img {
@@ -30,7 +35,7 @@ html, body {
 .nav {
   flex: 1;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 2rem;
 }
 
@@ -96,9 +101,8 @@ main {
   margin: 0 auto;
   background-image: linear-gradient(to left, #e4e0e4, #ebe8eb);
   background-color: #e4e0e4;
-  padding: 1rem 4rem;      
-  min-height: 250px;       /* vorher: 400px */
-  min-height: 400px;
+  padding: 0.5rem 0.5rem;      
+  min-height: 330px;       /* vorher: 400px */
   overflow: hidden;
 }
 
@@ -107,7 +111,7 @@ main {
   position: relative;
   z-index: 2;
   text-align: left;
-  padding-top: 7rem; /* Schiebt den Block weiter nach unten */
+  padding-top: 3rem; /* Schiebt den Block weiter nach unten */
 }
 
 .hero-content h1 {
@@ -141,7 +145,7 @@ main {
   position: absolute;
   bottom: 0;
   right: 2rem;
-  max-width: 350px;
+  max-width: 320px;
   width: 100%;
   z-index: 1;
 }
@@ -203,10 +207,13 @@ main {
   flex: 1 1 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
 }
-
+/* Button immer nach unten schieben */
+.content-box .cta-btn {
+  margin-top: auto;
+}
 .content-box img {
   width: 100%;
   max-width: 180px;
