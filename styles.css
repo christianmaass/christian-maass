@@ -6,7 +6,7 @@
 html, body {
   margin: 0;
   padding: 0;
-  background-color: #ebe8eb;
+  background-color: #FAFAFA;
   color: #333;
   font-family: 'Montserrat', Arial, sans-serif;
   font-weight: 300;
@@ -19,7 +19,7 @@ html, body {
   display: flex;
   align-items: center;
   padding: 20px 0.5rem;
-  background-color: #ebe8eb;
+  background-color: #FAFAFA;
   box-sizing: border-box;
   position: relative;
   z-index: 100;
@@ -42,17 +42,18 @@ html, body {
 
 .nav a {
   text-decoration: none;
-  color: #333;
+  color: #012030;
   font-weight: 300;
   transition: color 0.2s;
 }
 
 .nav a.active {
+  color: #012030; 
   font-weight: 700;
 }
 
 .nav a:hover {
-  color: #000;
+  color: #5C7585;
   border-bottom: none;
 }
 
@@ -80,9 +81,12 @@ html, body {
   transform: scale(1.1);
 }
 
+.close-btn { display: none; }
+
 @media (max-width: 768px) {
   .social-icons {
     display: none;
+    pointer-events: none;
   }
 
   .burger {
@@ -91,11 +95,12 @@ html, body {
     right: 2rem;
     top: 50%;
     transform: translateY(-50%);
+    z-index: 200;
     background: none;
     border: none;
     font-size: 2rem;
-    cursor: pointer;
     color: #6e5c4f;
+    cursor: pointer;
   }
 
   .nav {
@@ -109,14 +114,46 @@ html, body {
     overflow: hidden;
     max-height: 0;
     opacity: 0;
-    transition: max-height 0.4s ease, opacity 0.4s ease;
-    z-index: 50; 
+    pointer-events: none;
+    transition: opacity 0.3s, max-height 0.4s;
+    z-index: 50;
+    padding: 0;
+    display: flex;
+    gap: 1.2rem;
   }
 
   .nav.open {
     max-height: 500px;
     opacity: 1;
-    padding: 1rem 2.5rem 3rem 1rem; /* oben, rechts, unten, links */
+    pointer-events: auto;
+    padding: 2.5rem 2rem 2rem 1rem;
+  }
+
+  .nav a {
+    width: 100%;
+    text-align: right;
+    font-size: 1.2rem;
+    padding: 0.5rem 0;
+  }
+
+  .close-btn {
+    display: block;
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    background: none;
+    border: none;
+    font-size: 2rem;
+    color: #6e5c4f;
+    cursor: pointer;
+    z-index: 100;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    gap: 0rem;
+    text-align: center;
+    align-items: center;
   }
 }
 
@@ -130,11 +167,20 @@ main {
   position: relative;
   max-width: 1200px;
   margin: 0 auto;
-  background-image: linear-gradient(to left, #e4e0e4, #ebe8eb);
-  background-color: #e4e0e4;
-  padding: 0.5rem 0.5rem;      
+  background-image: linear-gradient(to left, #E9ECEF, #FAFAFA);
+  background-color: #FAFAFA;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   min-height: 330px;       /* vorher: 400px */
   overflow: hidden;
+}
+
+.hero-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+  box-sizing: border-box;
 }
 
 .hero-content {
@@ -161,26 +207,27 @@ main {
 }
 
 .cta-btn {
-  background: #55473e;
+  background: #5C7585;
   color: #fff;
   padding: 0.75rem 1.5rem;
-  border-radius: 0.5rem;
+  border-radius: 1rem;
+  font-size: 1rem; 
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 500;
   transition: background 0.2s;
   display: inline-block;
   margin-top: 1rem;
 }
 
 .cta-btn:hover {
-  background: #6e5c4f;
+  filter: brightness(1.1);
 }
 
 .hero-image {
   position: absolute;
   bottom: 0;
   right: 2rem;
-  max-width: 320px;
+  max-width: 500px;
   width: 100%;
   z-index: 1;
 }
@@ -203,6 +250,8 @@ main {
   .hero-content {
     text-align: center;
     max-width: 100%;
+    padding-top: 0rem; /* Weniger Abstand nach oben im mobilen Layout */
+
   }
 
   .cta-btn {
@@ -238,7 +287,7 @@ main {
 }
 
 .content-box {
-  background: linear-gradient(to bottom, #ebe8eb 0%, #e4e0e4 100%);
+  background: linear-gradient(to top, #E9ECEF 0%, #FAFAFA 100%);
   border-radius: 0.5rem;
   padding: 2rem 1.5rem;
   flex: 1 1 0;
@@ -275,7 +324,7 @@ main {
 
 /* --- Footer --- */
 footer {
-  background-color: #f5f5f5;
+  background-color: #FAFAFA;
   padding: 2rem 1rem;
   font-size: 0.95rem;
 }
@@ -297,7 +346,7 @@ footer {
 
 .footer-block h3 {
   margin-top: 0;
-  color: #6e5c4f;
+  color: #012030;
   font-size: 1rem;
   margin-bottom: 0.5rem;
 }
@@ -339,11 +388,14 @@ footer {
 
 /* In styles.css */
 .footer-book-cover {
-  max-width: 120px;   /* Passe die Breite nach Wunsch an */
+  max-width: 200px;   /* Passe die Breite nach Wunsch an */
   height: auto;
   border-radius: 4px;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   transition: transform 0.2s;
+  display: left;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 @media (max-width: 768px) {
