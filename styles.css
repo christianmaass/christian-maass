@@ -85,8 +85,11 @@ html, body {
 
 @media (max-width: 768px) {
   .social-icons {
-    display: none;
-    pointer-events: none;
+    display: flex;
+    pointer-events: auto;
+    justify-content: flex-end;
+    margin-top: 1.5rem;
+    margin-left: 0;
   }
 
   .burger {
@@ -99,14 +102,14 @@ html, body {
     background: none;
     border: none;
     font-size: 2rem;
-    color: #6e5c4f;
+    color: #012030;
     cursor: pointer;
   }
 
   .nav {
     flex-direction: column;
     align-items: flex-end;
-    background-color: #ebe8eb;
+    background-color: #E9ECEF;
     position: absolute;
     top: 100%;
     left: 0;
@@ -120,6 +123,9 @@ html, body {
     padding: 0;
     display: flex;
     gap: 1.2rem;
+    height: 100vh;
+    min-height: 100vh;
+    bottom: 0;
   }
 
   .nav.open {
@@ -334,7 +340,7 @@ footer {
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
-  gap: 2rem;
+  gap: 0rem;
   justify-content: space-between;
   box-sizing: border-box;
 }
@@ -342,6 +348,7 @@ footer {
 .footer-block {
   flex: 1 1 250px;
   min-width: 200px;
+  margin-bottom: 1rem;
 }
 
 .footer-block h3 {
@@ -349,6 +356,7 @@ footer {
   color: #012030;
   font-size: 1rem;
   margin-bottom: 0.5rem;
+  margin-bottom: 0.3rem;
 }
 
 .footer-block ul {
@@ -404,5 +412,61 @@ footer {
     gap: 0rem;
     text-align: center;
     align-items: center;
+  }
+  .footer-block {
+    margin-bottom: 0.5rem;
+  }
+}
+/* --- Bücher Grid --- */
+.books-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.book-card {
+  background: linear-gradient(to top, #E9ECEF 0%, #FAFAFA 100%);
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.book-card img {
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1.2rem;
+  box-shadow: none;
+  background: transparent;
+}
+
+.book-card h2 {
+  font-size: 1.25rem;
+  margin: 0 0 0.5rem 0;
+  color: #012030;
+  text-align: center;
+}
+
+.book-card p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0 0 1.2rem 0;
+  text-align: center;
+}
+
+
+/* --- Responsive: 1-Spalte auf Mobile --- */
+@media (max-width: 900px) {
+  .books-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  .book-card {
+    padding: 1.5rem 1rem;
   }
 }
