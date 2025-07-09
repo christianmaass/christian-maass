@@ -473,3 +473,80 @@ footer {
     padding: 1.5rem 1rem;
   }
 }
+
+/* --- Fachartikelbox --- */
+
+.fachartikel-box {
+  display: flex;
+  align-items: flex-start;
+  background: linear-gradient(to left, #E9ECEF 0%, #FAFAFA 100%);
+  padding: 2rem;
+  gap: 2rem;
+  margin: 2rem 0;
+}
+
+.fachartikel-img {
+  width: 180px;
+  height: auto;
+  object-fit: cover;
+  background: #fff;
+}
+
+.fachartikel-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.fachartikel-content h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  color: #012030;
+}
+
+.articles-list {
+  margin: 1rem 0;
+  padding-left: 1.2rem;
+}
+
+.articles-list li {
+  margin-bottom: 0.5rem;
+}
+
+
+.fachartikel-content a {
+  color: #333;         /* Rotton anpassen */
+  text-decoration: underline;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+
+@media (max-width: 900px) {
+  .fachartikel-box {
+    flex-direction: column;
+    align-items: center;
+    padding: 1.2rem;
+    gap: 1.2rem;
+    text-align: center;
+  }
+  .fachartikel-img {
+    margin-bottom: 1rem;
+  }
+  .fachartikel-content {
+    align-items: center;
+  }
+}
+
+.lehre-img {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  width: 300px !important;      /* Größe nach Wunsch */
+  max-width: 100% !important;
+  height: auto !important;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  margin-bottom: 1.2rem;
+}
