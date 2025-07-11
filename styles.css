@@ -578,3 +578,13 @@ footer {
     justify-content: center; /* vertikal mittig */
 
 }
+/* --- Profilfoto auf Christian Maaß --- */
+
+.profil-img {
+  width: 400px;
+  max-width: 100%; 
+  height: auto; 
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
