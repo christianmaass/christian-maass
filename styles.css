@@ -87,7 +87,7 @@ html, body {
 
 @media (max-width: 768px) {
   .social-icons {
-    display: flex;
+    display: flex; 
     pointer-events: auto;
     justify-content: flex-end;
     margin-top: 1.5rem;
@@ -418,8 +418,12 @@ footer {
     text-align: center;
     align-items: center;
   }
-  .footer-block {
-    margin-bottom: 0.5rem;
+  .footer-block .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
   }
 }
 /* --- Bücher Grid --- */
@@ -531,13 +535,17 @@ footer {
     align-items: center;
     padding: 1.2rem;
     gap: 1.2rem;
-    text-align: center;
+    text-align: left;
   }
   .fachartikel-img {
     margin-bottom: 1rem;
   }
   .fachartikel-content {
-    align-items: center;
+    align-items: flex-start;
+    text-align: left;
+  }
+    .articles-list {
+    text-align: left;
   }
 }
 
