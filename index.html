@@ -4,48 +4,43 @@
   "@graph": [
     {
       "@type": "Person",
-      "@id": "https://christianmaass.com/#person", // Eine eindeutige ID für die Person
+      "@id": "https://christianmaass.com/#person",
       "name": "Christian Maaß",
-      "alternateName": "Dr. Christian Maaß", // Die alternative Suchvariante
-      "honorificPrefix": "Dr.", // Dein akademischer Titel
+      "alternateName": "Dr. Christian Maaß",
+      "honorificPrefix": "Dr.",
       "url": "https://christianmaass.com/",
-      "image": "https://christianmaass.com/christian-maass.png", // Wichtig: Pfad zu einem hochwertigen Profilbild von dir
+      "image": "https://christianmaass.com/christian-maass.png",
       "sameAs": [
-        "https://www.linkedin.com/in/christianmaass/", //  LinkedIn-Profil
-        "https://www.amazon.de/stores/author/B0045949JA", // Amazon Autorenseiten
+        "https://www.linkedin.com/in/christianmaass/",
+        "https://www.amazon.de/stores/author/B0045949JA",
         "https://www.instagram.com/christianmaass/",
         "https://x.com/ChristianMaass"
-        // Füge hier weitere relevante Social-Media-Profile hinzu, wo du aktiv bist
       ],
-      "jobTitle": "Geschäftsführer, Autor, Berater & Beirat", // Deine primären Rollen
+      "jobTitle": "Geschäftsführer, Autor, Berater & Beirat",
    
-   // --- Hier kommen die detaillierten Angaben zu deinen Arbeitsverhältnissen und Mitgliedschaften ---
-
-  "worksFor": [ // "worksFor" kann ein Array sein, wenn du für mehrere Organisationen tätig bist
+  "worksFor": [
     {
       "@type": "Organization",
       "name": "Thomann",
-      "url": "https://www.thomann.de/" // URL von Thomann
+      "url": "https://www.thomann.de/"
     },
     {
       "@type": "Organization",
-      "name": "Christian Maaß Advisory", // Oder wie auch immer du deine eigene Berater-Tätigkeit bezeichnest
-      "url": "https://christianmaass.com/", // Deine eigene Webseite als Referenz
-      "@id": "https://christianmaass.com/#organization" // Referenz auf dein eigenes Organization-Schema
+      "name": "Christian Maaß Advisory",
+      "url": "https://christianmaass.com/",
+      "@id": "https://christianmaass.com/#organization"
     }
-    // Wenn du für weitere Firmen als Geschäftsführer, Angestellter etc. tätig bist, hier hinzufügen
   ],
-  "memberOf": [ // Für Mitgliedschaften in Gremien, Vorständen, Verbänden
+  "memberOf": [
     {
       "@type": "Organization",
       "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.",
-      "url": "https://www.bevh.org/", // URL des BEVH
-      "member": { "@id": "https://christianmaass.com/#person" }, // Zeigt an, dass DU das Mitglied bist
-      "roleName": "Vorstand" // Spezifische Rolle im Verband
+      "url": "https://www.bevh.org/",
+      "member": { "@id": "https://christianmaass.com/#person" },
+      "roleName": "Vorstand"
     }
-    // Wenn du Beirat in anderen Unternehmen bist, diese auch hier listen
   ],
-      "knowsAbout": [ // Optional: Wichtige Themen/Keywords deiner Expertise
+      "knowsAbout": [
         "Strategie",
         "E-Commerce",
         "Produktmanagement",
@@ -58,25 +53,24 @@
         "Handel",
         "Prozessoptimierung"
       ],
-      "description": "Christian Maaß ist Geschäftsführer, Beirat und mehrfacher Buchautor,spezialisiert auf die Themen Strategie, Produktentiwcklung, Projektmanagment und Marketing mit 20 Jahren Erfahrung in der Medienwirtschaft sowie im Handel (B2C & B2B)." // Kurze, prägnante Beschreibung
-    }, // <--- Dieses Komma ist entscheidend für die Trennung der Objekte im Array
+      "description": "Christian Maaß ist Geschäftsführer, Beirat und mehrfacher Buchautor,spezialisiert auf die Themen Strategie, Produktentiwcklung, Projektmanagment und Marketing mit 20 Jahren Erfahrung in der Medienwirtschaft sowie im Handel (B2C & B2B)."
+    },
     {
       "@type": "Organization",
-      "@id": "https://christianmaass.com/#organization", // Eine eindeutige ID für die Organisation
-      "name": "Christian Maaß", 
+      "@id": "https://christianmaass.com/#organization",
+      "name": "Christian Maaß",
       "url": "https://christianmaass.com/",
-      "logo": "https://christianmaass.com/logo-maass.png", // Wichtig: Pfad zu deinem Logo oder einem repräsentativen Bild (z.B. dein Profilbild)
+      "logo": "https://christianmaass.com/logo-maass.png",
       "sameAs": [
-        "https://www.linkedin.com/company/christian-maass/" // Falls du eine Firmen-LinkedIn-Seite hast
-        // Füge hier weitere relevante Social-Media-Profile DEINER ORGANISATION hinzu, falls zutreffend
+        "https://www.linkedin.com/company/christian-maass/"
       ],
       "contactPoint": {
         "@type": "ContactPoint",
-        "telephone": "+49-1735143253", 
-        "contactType": "CustomerService", 
-        "email": "christian@christianmaass.com" 
+        "telephone": "+49-1735143253",
+        "contactType": "CustomerService",
+        "email": "christian@christianmaass.com"
       },
-      "potentialAction": { // Optional: Direkte Kontaktmöglichkeit
+      "potentialAction": {
         "@type": "CommunicateAction",
         "target": "mailto:christian@christianmaass.com",
         "actionPlatform": [
