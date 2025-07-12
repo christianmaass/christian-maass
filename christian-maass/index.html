@@ -1,4 +1,183 @@
-<!DOCTYPE html><html lang="de"> <head><meta charset="UTF-8"><title>Standard-Titel</title><meta name="description" content="Standard-Beschreibung"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/styles.css"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet"></head> <body> <header> <div class="header-container"> <div class="logo"> <a href="/" class="logo"> <img src="/logo-maass.png" alt="Christian Maaß Logo"> </a> </div> <nav id="main-nav" class="nav"> <a href="/" class>Home</a> <a href="/christian-maass" class>Christian Maaß</a> <a href="/buecher" class>Bücher</a> <a href="/fachartikel" class>Fachartikel</a> <a href="/lehre" class>Lehre</a> <a href="/beirat" class>Beiratstätigkeit</a> <a href="/kontakt" class>Kontakt</a> </nav> <button class="burger" id="burger" aria-label="Menü öffnen/Schließen"> <span id="burger-icon">☰</span> </button> </div> </header> <script>
+<!DOCTYPE html><html lang="de"> <head><meta charset="UTF-8"><title>Standard-Titel</title><meta name="description" content="Standard-Beschreibung"><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/styles.css"><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet"> <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://christianmaass.com/#person", // Wichtig: Dieselbe ID wie auf der Startseite
+  "name": "Christian Maaß",
+  "alternateName": "Dr. Christian Maaß",
+  "honorificPrefix": "Dr.",
+  "url": "https://christianmaass.com/christian-maass/", // KORREKTE URL deiner Über mich Seite
+  "image": "https://christianmaass.com/christian-maass-ueber-mich.png", // Pfad zu deinem Bild auf DIESER Seite
+  "sameAs": [
+    "https://www.linkedin.com/in/christianmaass/",
+    "https://www.amazon.de/stores/author/B0045949JA",
+    "https://www.instagram.com/christianmaass/",
+    "https://x.com/ChristianMaass",
+    // HIER WEITERE RELEVANTE SOCIAL-MEDIA-PROFILE UND OFFIZIELLE PRÄSENZEN HINZUFÜGEN
+  ],
+  "jobTitle": "Geschäftsführer, Autor, Berater & Beirat",
+  "description": "Christian Maaß ist ein erfahrener Geschäftsführer, anerkannter Buchautor und vielseitiger Berater und Beirat. Mit über 20 Jahren Erfahrung in der Medienwirtschaft und im Handel (B2C & B2B) bringt er Expertise in Strategieentwicklung, Produktmanagement, Projektleitung und Marketing ein. Sein Fokus liegt auf digitaler Transformation und der Begleitung von Unternehmen durch komplexe Change-Prozesse.",
+  
+  "worksFor": [ // AUFLISTUNG ALLER ARBEITGEBER (Aktuelle zuerst, dann Vergangene)
+    {
+      "@type": "Organization",
+      "name": "Thomann",
+      "url": "https://www.thomann.de/",
+      "startDate": "YYYY-MM-DD", // Startdatum aktuelle Tätigkeit
+      "jobTitle": "DEINE ROLLE BEI THOMANN", // Beispiel: "Geschäftsführer", "Leiter Digital"
+      "description": "DEINE HAUPTAUFGABEN ODER VERANTWORTLICHKEITEN BEI THOMANN" // Beispiel: "Verantwortlich für die digitale Transformation und E-Commerce-Strategie."
+      // "endDate": "YYYY-MM-DD" // NICHT ANGEBEN, DA AKTUELLE TÄTIGKEIT
+    },
+    {
+      "@type": "Organization",
+      "name": "Christian Maaß Advisory", // Oder der Name deiner eigenen Beratungsmarke
+      "url": "https://christianmaass.com/",
+      "@id": "https://christianmaass.com/#organization",
+      "startDate": "YYYY-MM-DD", // Startdatum der eigenen Beratertätigkeit
+      "jobTitle": "Berater & Beirat",
+      "description": "Beratung von Unternehmen in den Bereichen digitale Strategie, E-Commerce und agile Transformation sowie Wahrnehmung von Beiratsmandaten."
+    },
+    // BEGINN DER VORHERIGEN ARBEITGEBER IN DER GEWÜNSCHTEN REIHENFOLGE
+    {
+      "@type": "Organization",
+      "name": "Cimpress / Vistaprint",
+      "url": "https://www.cimpress.com/",
+      "startDate": "YYYY-MM-DD",
+      "endDate": "YYYY-MM-DD",
+      "jobTitle": "DEINE ROLLE BEI CIMPRESS/VISTAPRINT",
+      "description": "DEINE HAUPTAUFGABEN ODER VERANTWORTLICHKEITEN BEI CIMPRESS/VISTAPRINT"
+    },
+    {
+      "@type": "Organization",
+      "name": "Flyeralarm",
+      "url": "https://www.flyeralarm.com/",
+      "startDate": "YYYY-MM-DD",
+      "endDate": "YYYY-MM-DD",
+      "jobTitle": "DEINE ROLLE BEI FLYERALARM",
+      "description": "DEINE HAUPTAUFGABEN ODER VERANTWORTLICHKEITEN BEI FLYERALARM"
+    },
+    {
+      "@type": "Organization",
+      "name": "Bertelsmann",
+      "url": "https://www.bertelsmann.de/",
+      "startDate": "YYYY-MM-DD",
+      "endDate": "YYYY-MM-DD",
+      "jobTitle": "DEINE ROLLE BEI BERTELSMANN",
+      "description": "DEINE HAUPTAUFGABEN ODER VERANTWORTLICHKEITEN BEI BERTELSMANN"
+    },
+    {
+      "@type": "Organization",
+      "name": "OTTO",
+      "url": "https://www.otto.de/",
+      "startDate": "YYYY-MM-DD",
+      "endDate": "YYYY-MM-DD",
+      "jobTitle": "DEINE ROLLE BEI OTTO",
+      "description": "DEINE HAUPTAUFGABEN ODER VERANTWORTLICHKEITEN BEI OTTO"
+    },
+    {
+      "@type": "Organization",
+      "name": "AutoScout24",
+      "url": "https://www.autoscout24.de/",
+      "startDate": "YYYY-MM-DD",
+      "endDate": "YYYY-MM-DD",
+      "jobTitle": "DEINE ROLLE BEI AUTOSCOUT24",
+      "description": "DEINE HAUPTAUFGABEN ODER VERANTWORTLICHKEITEN BEI AUTOSCOUT24"
+    },
+    {
+      "@type": "Organization",
+      "name": "Lycos Europe",
+      "url": "https://de.lycos.com/",
+      "startDate": "YYYY-MM-DD",
+      "endDate": "YYYY-MM-DD",
+      "jobTitle": "DEINE ROLLE BEI LYCOS EUROPE",
+      "description": "DEINE HAUPTAUFGABEN ODER VERANTWORTLICHKEITEN BEI LYCOS EUROPE"
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.",
+      "url": "https://www.bevh.org/",
+      "member": { "@id": "https://christianmaass.com/#person" },
+      "roleName": "Vorstand",
+      "startDate": "YYYY-MM-DD" // Startdatum der Vorstandstätigkeit
+    }
+    // HIER WEITERE BEIRATSMANDATE ODER WICHTIGE MITGLIEDSCHAFTEN HINZUFÜGEN
+  ],
+  "alumniOf": [ // Deine Ausbildungsstätten
+    {
+      "@type": "EducationalOrganization",
+      "name": "University of Oxford",
+      "url": "https://www.ox.ac.uk/"
+      // "startDate": "YYYY-MM-DD", "endDate": "YYYY-MM-DD", "degree": "DEIN_ABSCHLUSS" // Optional
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "INSEAD",
+      "url": "https://www.insead.edu/"
+      // "startDate": "YYYY-MM-DD", "endDate": "YYYY-MM-DD", "degree": "DEIN_ABSCHLUSS" // Optional
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "Universität Paderborn",
+      "url": "https://www.uni-paderborn.de/"
+      // "startDate": "YYYY-MM-DD", "endDate": "YYYY-MM-DD", "degree": "DEIN_ABSCHLUSS" // Optional
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "FernUniversität in Hagen",
+      "url": "https://www.fernuni-hagen.de/"
+      // "startDate": "YYYY-MM-DD", "endDate": "YYYY-MM-DD", "degree": "DEIN_ABSCHLUSS" // Optional
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "DePaul University",
+      "url": "https://www.depaul.edu/"
+      // "startDate": "YYYY-MM-DD", "endDate": "YYYY-MM-DD", "degree": "DEIN_ABSCHLUSS" // Optional
+    },
+    {
+      "@type": "EducationalOrganization",
+      "name": "Universität zu Köln / Ineko Institut",
+      "url": "https://www.uni-koeln.de/uni-koeln/fakultaeten/wiso-fakultaet/dekanat/organisation/ineko/index_ger.html" // Oder die spezifischere URL des Ineko Instituts, wenn bekannt
+      // "startDate": "YYYY-MM-DD", "endDate": "YYYY-MM-DD", "degree": "DEIN_ABSCHLUSS" // Optional
+    }
+  ],
+  "hasOccupation": { // Deine Berufserfahrung detaillierter (generelle Beschreibung)
+    "@type": "Occupation",
+    "name": "Beratung & Strategieentwicklung",
+    "description": "Langjährige Erfahrung in der Entwicklung und Umsetzung digitaler Geschäftsstrategien, Produktmanagement und Leitung komplexer Projekte in verschiedenen Branchen.",
+    "responsibilities": [
+      "Definition und Steuerung digitaler Roadmaps",
+      "Optimierung von Geschäftsprozessen im E-Commerce",
+      "Führung von interdisziplinären Teams",
+      "Begleitung von Transformationsprojekten und Change Management"
+    ],
+    "experienceRequirements": "20 Jahre Erfahrung in der Medienwirtschaft und im Handel (B2C & B2B)"
+  },
+  "award": [ // OPTIONAL: Auszeichnungen, Preise, besondere Ehrungen
+    // Beispiel: "Name der Auszeichnung 2020", "Name des Preises 2022"
+  ],
+  "knowsAbout": [
+    "Strategie",
+    "E-Commerce",
+    "Produktmanagement",
+    "Unternehmensberatung",
+    "Beiratsmandate",
+    "Projektmanagement",
+    "Leadership",
+    "Marketing",
+    "Medienwirtschaft",
+    "Handel",
+    "Prozessoptimierung",
+    "Digitale Transformation",
+    "Change Management"
+  ],
+  "mainEntityOfPage": { // Link zur eigenen Webseite als "Hauptentität" dieser Seite
+    "@type": "WebPage",
+    "@id": "https://christianmaass.com/christian-maass/"
+  }
+}
+</script> </head> <body> <header> <div class="header-container"> <div class="logo"> <a href="/" class="logo"> <img src="/logo-maass.png" alt="Christian Maaß Logo"> </a> </div> <nav id="main-nav" class="nav"> <a href="/" class>Home</a> <a href="/christian-maass" class>Christian Maaß</a> <a href="/buecher" class>Bücher</a> <a href="/fachartikel" class>Fachartikel</a> <a href="/lehre" class>Lehre</a> <a href="/beirat" class>Beiratstätigkeit</a> <a href="/kontakt" class>Kontakt</a> </nav> <button class="burger" id="burger" aria-label="Menü öffnen/Schließen"> <span id="burger-icon">☰</span> </button> </div> </header> <script>
   document.addEventListener('DOMContentLoaded', () => {
     const burger = document.getElementById('burger');
     const nav = document.getElementById('main-nav');
@@ -13,10 +192,10 @@
       }
     });
   });
-</script> <!-- base als Prop übergeben --> <main>  <section class="content-wrapper"> <h1>Christian Maaß</h1> <p>
+</script> <!-- base als Prop übergeben --> <main>   <section class="content-wrapper"> <h1>Christian Maaß</h1> <p>
 Ich arbeite an der Schnittstelle von Produkt, Marketing und Technologie. Mein Ziel: strategische Weitsicht mit operativer Umsetzbarkeit verbinden und als Dolmetscher zwischen Disziplinen tragfähige Lösungen ermöglichen.
-</p> <div class="fachartikel-box"> <img src="/dr-christian-maass.png" alt="Dr. Christian Maaß Profilfoto" class="profil-img"> <div class="fachartikel-content"> <ul class="articles-list"> <h2>Über mich </h2> <li>Ich bin Unternehmener, Berater und Autor mit über 20 Jahren Erfahrung im Digital Business in der Medienwirtschaft und im Handel (B2C & B2B). </li> <li>Ich kenne die Dynamiken börsennotierter Konzerne ebenso wie die Entscheidungswege familiengeführter Unternehmen. </li> <li>Arbeit in mehreren Ländern hat meinen Blick für kulturelle Unterschiede geschärft.</li> <li>Ich arbeite an der Schnittstelle von Produkt, Marketing und Technologie und verstehe/spreche die Sprachen dieser Domänen.
-</li><li>In meiner Freizeit schreibe ich regelmäßig Bücher über die hier genannten Themen, da es mir Spaß macht und man gleichzeitig sein eigenes Wissen substanziell vertieft.
+</p> <div class="fachartikel-box"> <img src="/dr-christian-maass.png" alt="Dr. Christian Maaß Profilfoto" class="profil-img"> <div class="fachartikel-content"> <ul class="articles-list"> <h2>Über mich </h2> <li>Ich bin Unternehmer, Berater und Autor mit über 20 Jahren Erfahrung im Digital Business in der Medienwirtschaft und im Handel (B2C & B2B). </li> <li>Ich kenne die Dynamiken börsennotierter Konzerne ebenso wie die Entscheidungswege familiengeführter Unternehmen. </li> <li>Arbeit in mehreren Ländern hat meinen Blick für kulturelle Unterschiede geschärft.</li> <li>Ich arbeite an der Schnittstelle von Produkt, Marketing und Technologie und verstehe/spreche die Sprachen dieser Domänen.
+</li><li>In meiner Freizeit schreibe ich regelmäßig Bücher und Fachartikel über die hier genannten Themen, da es mir Spaß macht und man gleichzeitig sein eigenes Wissen substanziell vertieft.
 </li><li> Mein Ziel: komplexe Themen verständlich machen und gemeinsam Lösungen entwickeln, die wirken.</li>  </ul></div> </div></section> <!-- Der Platzhalter für alle Seiteninhalte --> </main> <footer> <div class="footer-container"> <div class="footer-block"> <h3>Navigation</h3> <ul> <li><a href="/">Home</a></li> <li><a href="/christian-maass">Christian Maaß</a></li> <li><a href="/buecher">Bücher</a></li> <li><a href="/fachartikel">Fachartikel</a></li> <li><a href="/lehre">Lehre</a></li> <li><a href="/beirat">Beirat</a></li> <li><a href="/kontakt">Kontakt</a></li> </ul> </div> <div class="footer-block"> <h3>Kontakt</h3> <address>
 Dr. Christian Maaß<br>
 Am Leinritt 7<br>
