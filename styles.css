@@ -567,12 +567,10 @@ footer {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 300px !important;      /* Größe nach Wunsch */
+  width: 350px !important;
   max-width: 100% !important;
   height: auto !important;
-  border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-  margin-bottom: 1.2rem;
+  margin-bottom: 0rem;
 }
 
 .kontakt-card {
@@ -588,13 +586,24 @@ footer {
     justify-content: center; /* vertikal mittig */
 
 }
+
 /* --- Profilfoto auf Christian Maaß --- */
 
 .profil-img {
   width: 400px;
-  max-width: 100%; 
+  max-width: 100%;
   height: auto; 
   display: block;
   margin-left: auto;
   margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  .profil-img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+  }
 }
