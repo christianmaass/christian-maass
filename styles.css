@@ -12,6 +12,24 @@ html, body {
   font-weight: 300;
 }
 
+/* --- Skip Link (Barrierefreiheit) --- */
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: #012030;
+  color: #fff;
+  padding: 8px 16px;
+  text-decoration: none;
+  z-index: 1000;
+  font-weight: 400;
+}
+
+.skip-link:focus {
+  top: 0;
+  position: fixed;
+}
+
 /* --- Header --- */
 .header-container {
   max-width: 1200px;
@@ -582,8 +600,8 @@ footer {
 }
 .kontakt-text {
   text-align: center;
-    justify-content: center; /* vertikal mittig */
-
+  justify-content: center; /* vertikal mittig */
+  font-style: normal; /* address Tag standardmäßig italic, hier normal */
 }
 
 /* --- Profilfoto auf Christian Maaß --- */

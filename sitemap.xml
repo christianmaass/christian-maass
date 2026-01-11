@@ -22,8 +22,15 @@
     <loc>https://christianmaass.com/beirat</loc>
   </url>
   <url>
-    <loc>  https://christianmaass.com/executive-presence/</loc>
-    </url>
-
-  <!-- Weitere Seiten nach Bedarf ergänzen -->
+    <loc>https://christianmaass.com/executive-presence</loc>
+  </url>
+  <url>
+    <loc>https://christianmaass.com/impressum</loc>
+  </url>
+  <url>
+    <loc>https://christianmaass.com/datenschutz</loc>
+  </url>
+  <url>
+    <loc>https://christianmaass.com/barrierefreiheit</loc>
+  </url>
 </urlset>
