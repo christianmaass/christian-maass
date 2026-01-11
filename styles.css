@@ -23,11 +23,16 @@ html, body {
   text-decoration: none;
   z-index: 1000;
   font-weight: 400;
+  clip: rect(0, 0, 0, 0);
+  overflow: hidden;
 }
 
-.skip-link:focus {
+.skip-link:focus,
+.skip-link:focus-visible {
   top: 0;
   position: fixed;
+  clip: auto;
+  overflow: visible;
 }
 
 /* --- Header --- */
