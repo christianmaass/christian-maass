@@ -584,13 +584,16 @@ footer {
 .book-image {
   flex-shrink: 0;
   width: 200px;
+  max-width: 200px;
 }
 
-.book-image img {
-  width: 100%;
+.book-detail-box .book-image img {
+  width: 100% !important;
+  max-width: 200px !important;
   height: auto;
   border-radius: 0.5rem;
   box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+  display: block;
 }
 
 .book-content {
