@@ -319,6 +319,27 @@ main {
   box-sizing: border-box;
 }
 
+.content-wrapper section {
+  margin-bottom: 2.5rem;
+}
+
+.content-wrapper section:last-child {
+  margin-bottom: 0;
+}
+
+.content-wrapper h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #012030;
+}
+
+.content-wrapper p {
+  margin: 0 0 1rem 0;
+  line-height: 1.6;
+}
+
 .content-box-row {
   display: flex;
   gap: 3rem;
@@ -659,4 +680,60 @@ footer {
     display: block;
     margin: 0 auto;
   }
+}
+
+/* --- Christian Maaß bio page --- */
+.bio {
+  max-width: 70ch;
+  margin: 0 auto;
+  padding: 2.5rem 1.25rem;
+}
+
+/* Desktop: Ausgerichtet mit Navigation-Start */
+@media (min-width: 901px) {
+  .bio {
+    padding-left: 0.5rem; /* Ausgerichtet mit Navigation-Start (Logo + Abstand + Nav) */
+  }
+}
+
+/* Mobile: Ausgerichtet mit Logo */
+@media (max-width: 900px) {
+  .bio {
+    padding-left: 1.5rem; /* Logo margin-left (1rem) + 0.5rem spacing */
+  }
+}
+
+.bio-header {
+  margin-bottom: 2rem;
+}
+
+.bio h1 {
+  margin: 0 0 0.75rem 0;
+}
+
+.bio .lead {
+  font-size: 1.125rem;
+  line-height: 1.6;
+  margin: 0;
+  opacity: 0.9;
+}
+
+.bio h2 {
+  margin: 2.25rem 0 0.75rem 0;
+  letter-spacing: -0.01em;
+}
+
+.bio p {
+  margin: 0 0 1rem 0;
+  line-height: 1.7;
+}
+
+.bio section {
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.bio section:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
 }
