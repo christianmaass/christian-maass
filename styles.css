@@ -909,6 +909,7 @@ footer {
   align-self: flex-start;
   display: block;
   width: auto;
+  padding-left: 1.5rem;
 }
 
 @media (max-width: 900px) {
@@ -1053,7 +1054,7 @@ footer {
 
 /* --- Christian Maaß bio page --- */
 .bio {
-  max-width: 85ch;
+  max-width: 70ch;
   margin: 0;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
@@ -1123,7 +1124,7 @@ footer {
 
 /* --- Bio: typography only (no horizontal layout responsibility) --- */
 .bio {
-  max-width: 85ch;
+  max-width: 70ch;
   margin: 0;
   padding-top: 2.5rem;
   padding-bottom: 2.5rem;
