@@ -40,21 +40,22 @@ export function getTranslations(locale: Locale = defaultLocale): Translations {
  * @returns Die alternative URL
  */
 export function getAlternateUrl(pathname: string, targetLocale: Locale): string {
-  const currentLocale = getLocaleFromPath(pathname);
-  
   // Entferne führenden und abschließenden Slash
   let cleanPath = pathname.replace(/^\/|\/$/g, '');
-  
+
   // Entferne aktuelles Sprach-Präfix falls vorhanden
   if (cleanPath === 'en' || cleanPath.startsWith('en/')) {
     cleanPath = cleanPath.replace(/^en\/?/, '');
   }
-  
-  // Für rechtliche Seiten (immer DE): keine Sprach-Präfixe
-  const legalPages = ['impressum', 'datenschutz', 'barrierefreiheit'];
-  const isLegalPage = legalPages.some(page => cleanPath === page || cleanPath.endsWith(`/${page}`));
-  
-  if (isLegalPage) {
+
+  // Nur in DE verfügbare Seiten (rechtliche Seiten + Blog):
+  // EN-Switch fällt auf die DE-Variante zurück, nicht in 404 routen.
+  const deOnlyPages = ['impressum', 'datenschutz', 'barrierefreiheit', 'blog'];
+  const isDeOnly = deOnlyPages.some(
+    (page) => cleanPath === page || cleanPath.startsWith(`${page}/`),
+  );
+
+  if (isDeOnly) {
     return `/${cleanPath}`;
   }
   
