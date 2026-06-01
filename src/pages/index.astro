@@ -1,11 +1,10 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getTranslations, getBasePath } from '../i18n/utils';
+import { getTranslations } from '../i18n/utils';
 import { detectAndRedirect } from '../utils/localeDetection';
 
 const locale = 'de';
 const t = getTranslations(locale);
-const base = getBasePath(locale);
 const assetPath = '';
 const siteUrl = "https://christianmaass.com";
 const currentUrl = siteUrl;

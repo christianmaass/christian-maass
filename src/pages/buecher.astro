@@ -1,11 +1,10 @@
 ---
 // filepath: /Users/christianmaass/christian-maass/src/pages/buecher.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getTranslations, getBasePath } from '../i18n/utils';
+import { getTranslations } from '../i18n/utils';
 
 const locale = 'de';
 const t = getTranslations(locale);
-const base = getBasePath(locale);
 const assetPath = ''; // Assets werden immer vom Root geladen
 const siteUrl = "https://christianmaass.com";
 const currentUrl = `${siteUrl}/buecher`;

@@ -1,5 +1,7 @@
 import { translations, type Locale, type Translations } from './translations';
 
+export type { Locale, Translations } from './translations';
+
 export const locales: Locale[] = ['de', 'en'];
 export const defaultLocale: Locale = 'de';
 

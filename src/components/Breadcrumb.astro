@@ -1,7 +1,13 @@
 ---
 import { getTranslations, getBasePath, type Locale } from '../i18n/utils';
 
-const { currentLocale = "de" as Locale, pathname: pathnameProp, siteUrl = "https://christianmaass.com" } = Astro.props;
+interface Props {
+  currentLocale?: Locale;
+  pathname?: string;
+  siteUrl?: string;
+}
+
+const { currentLocale = 'de', pathname: pathnameProp, siteUrl = 'https://christianmaass.com' } = Astro.props as Props;
 const pathname = pathnameProp || Astro.url.pathname;
 const t = getTranslations(currentLocale);
 const base = getBasePath(currentLocale);
