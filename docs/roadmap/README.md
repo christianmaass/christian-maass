@@ -32,7 +32,7 @@ Positioniert wird Christian Maaß als Board-Level-Executive, Aufsichtsrat, Autor
 | 02 | [Typography](./epic-02-typography.md) | ✅ Done | S | Satoshi integrieren, editorial Type-Scale |
 | 03 | [Navigation](./epic-03-navigation.md) | ✅ Done | M | Header neu: Name · Nav · Kontakt-Pill |
 | 04 | [Hero](./epic-04-hero.md) | ✅ Done | M | Zweispaltige Hero mit Portrait-Fade |
-| 05 | [Site-wide Dark](./epic-05-global-dark.md) | ⏳ Pending | L | Footer, Karten, CTAs, alle Seiten |
+| 05 | [Site-wide Dark](./epic-05-global-dark.md) | ✅ Done | L | Footer, Karten, CTAs, alle Seiten |
 | 06 | [QA](./epic-06-qa.md) | ⏳ Pending | M | A11y · Performance · EN-Parität · Cross-Browser |
 
 ## Reihenfolge & Abhängigkeiten
