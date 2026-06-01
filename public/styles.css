@@ -164,8 +164,8 @@ body h3 {
   position: absolute;
   top: -40px;
   left: 0;
-  background: #012030;
-  color: #fff;
+  background: var(--color-accent);
+  color: var(--color-on-accent);
   padding: 8px 16px;
   text-decoration: none;
   z-index: 1000;
@@ -381,7 +381,7 @@ body h3 {
     background: none;
     border: none;
     font-size: 2rem;
-    color: #6e5c4f;
+    color: var(--color-text-muted);
     cursor: pointer;
     z-index: 100;
   }
@@ -443,16 +443,22 @@ main {
 }
 
 .cta-btn {
-  background: #5C7585;
-  color: #fff !important;
-  padding: 0.75rem 1.5rem;
-  border-radius: 1rem;
-  font-size: 1rem; 
+  background: var(--color-accent);
+  color: var(--color-on-accent) !important;
+  padding: 0.65rem 1.5rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
   text-decoration: none !important;
-  font-weight: 500;
-  transition: background 0.2s;
+  font-weight: var(--weight-medium);
+  transition: background 0.2s ease, transform 0.2s ease;
   display: inline-block;
   margin-top: 1rem;
+}
+
+.cta-btn:hover {
+  background: #3d647f;
+  transform: translateY(-1px);
 }
 
 .cta-btn:hover {
@@ -624,7 +630,7 @@ main {
   margin-bottom: 1rem;
   font-size: 1.5rem;
   font-weight: 700;
-  color: #012030;
+  color: var(--color-text-strong);
 }
 
 .content-wrapper p {
@@ -636,7 +642,7 @@ main {
   font-size: 1.1rem;
   line-height: 1.7;
   margin-bottom: 2rem;
-  color: #333;
+  color: var(--color-text);
 }
 
 .books-section h1 {
@@ -673,7 +679,7 @@ main {
 .content-box h3 {
   margin-bottom: 1rem;
   padding-bottom: 1rem;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--color-border-strong);
   width: 100%;
 }
 
@@ -729,10 +735,12 @@ main {
 
 /* --- Footer --- */
 footer {
-  background-color: var(--color-bg);
-  padding-top: 2rem;
-  padding-bottom: 2rem;
+  background-color: var(--color-bg-elevated);
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--space-5);
+  padding-bottom: var(--space-4);
   font-size: 0.95rem;
+  color: var(--color-text);
 }
 
 .footer-container {
@@ -753,10 +761,12 @@ footer {
 
 .footer-block h3 {
   margin-top: 0;
-  color: #012030;
-  font-size: 1rem;
-  margin-bottom: 0.5rem;
-  margin-bottom: 0.3rem;
+  font-family: var(--font-family-display);
+  font-weight: var(--weight-medium);
+  color: var(--color-text-strong);
+  font-size: 0.95rem;
+  letter-spacing: 0.01em;
+  margin-bottom: var(--space-2);
 }
 
 .footer-block ul {
@@ -771,38 +781,41 @@ footer {
 
 .footer-block a {
   text-decoration: none;
-  color: #333;
-  transition: color 0.2s;
+  color: var(--color-text-muted);
+  transition: color 0.2s ease;
 }
 
 .footer-block a:hover {
-  color: #6e5c4f;
+  color: var(--color-text-strong);
 }
 
 .footer-block address {
   font-style: normal;
   line-height: 1.6;
-  color: #333;
+  color: var(--color-text-muted);
 }
 
 .footer-copy {
   text-align: center;
-  margin-top: 2rem;
-  font-size: 0.9rem;
-  color: #666;
-  border-top: 1px solid #ddd;
-  padding-top: 1rem;
+  margin-top: var(--space-4);
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  border-top: 1px solid var(--color-border-subtle);
+  padding-top: var(--space-3);
 }
 
 .footer-book-cover {
   max-width: 200px;
   height: auto;
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  transition: transform 0.2s;
+  border-radius: var(--radius-sm);
+  transition: transform 0.2s ease;
   display: block;
   margin-left: 0;
   margin-right: auto;
+}
+
+.footer-book-cover:hover {
+  transform: translateY(-2px);
 }
 
 @media (max-width: 768px) {
@@ -849,13 +862,13 @@ footer {
 .book-card h2 {
   font-size: 1.25rem;
   margin: 0 0 0.5rem 0;
-  color: #012030;
+  color: var(--color-text-strong);
   text-align: center;
 }
 
 .book-card p {
   font-size: 1rem;
-  color: #333;
+  color: var(--color-text);
   margin: 0 0 1.2rem 0;
   text-align: center;
 }
@@ -900,7 +913,6 @@ footer {
   max-width: 200px !important;
   height: auto;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
   display: block;
 }
 
@@ -913,13 +925,13 @@ footer {
 .book-content h2 {
   margin: 0 0 0.75rem 0;
   font-size: 1.5rem;
-  color: #012030;
+  color: var(--color-text-strong);
   line-height: 1.3;
 }
 
 .book-meta {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--color-text-muted);
   margin: 0 0 1.5rem 0;
   padding-bottom: 0.75rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -928,7 +940,7 @@ footer {
 .book-content p:not(.book-meta) {
   margin: 0 0 1rem 0;
   line-height: 1.7;
-  color: #333;
+  color: var(--color-text);
 }
 
 .book-content p:not(.book-meta):last-of-type {
@@ -994,7 +1006,7 @@ footer {
 }
 
 .article-box h3 a {
-  color: #012030;
+  color: var(--color-text-strong);
   text-decoration: none;
   transition: color 0.2s;
   padding-left: 0;
@@ -1002,12 +1014,12 @@ footer {
 }
 
 .article-box h3 a:hover {
-  color: #5C7585;
+  color: var(--color-text-muted);
 }
 
 .article-meta {
   font-size: 0.9rem;
-  color: #666;
+  color: var(--color-text-muted);
   margin: 0 0 1rem 0;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -1069,7 +1081,7 @@ footer {
 .fachartikel-content h2 {
   margin-top: 0;
   margin-bottom: 1rem;
-  color: #012030;
+  color: var(--color-text-strong);
 }
 
 .articles-list {
@@ -1083,7 +1095,7 @@ footer {
 
 
 .fachartikel-content a {
-  color: #333;         /* Rotton anpassen */
+  color: var(--color-text);         /* Rotton anpassen */
   text-decoration: underline;
   font-weight: 500;
   transition: color 0.2s;
@@ -1118,7 +1130,6 @@ footer {
   max-width: 100% !important;
   height: auto !important;
   border-radius: 0.5rem;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.07);
   margin-bottom: 1.2rem;
 }
 
@@ -1186,7 +1197,7 @@ footer {
   font-size: 2.5rem;
   font-weight: 700;
   line-height: 1.2;
-  color: #012030;
+  color: var(--color-text-strong);
 }
 
 .bio .lead {
@@ -1194,7 +1205,7 @@ footer {
   line-height: 1.6;
   margin: 0 0 2rem 0;
   opacity: 0.9;
-  color: #333;
+  color: var(--color-text);
 }
 
 .bio h2 {
@@ -1202,7 +1213,7 @@ footer {
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.01em;
-  color: #012030;
+  color: var(--color-text-strong);
   padding-bottom: 0.75rem;
   border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 }
@@ -1214,7 +1225,7 @@ footer {
 .bio p {
   margin: 0 0 1.25rem 0;
   line-height: 1.8;
-  color: #333;
+  color: var(--color-text);
 }
 
 .bio section {
