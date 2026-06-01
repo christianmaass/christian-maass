@@ -1,0 +1,17 @@
+dist/
+node_modules/
+.astro/
+.vscode/
+package-lock.json
+public/fonts/
+public/og/
+public/js/
+*.woff
+*.woff2
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.ico
+*.webp
+*.avif

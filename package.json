@@ -7,12 +7,20 @@
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro",
+    "check": "astro check",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
     "deploy": "gh-pages -d dist"
   },
   "dependencies": {
-    "astro": "^5.10.1"
+    "astro": "^5.16.8"
   },
   "devDependencies": {
-    "gh-pages": "^6.3.0"
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/sitemap": "^3.7.3",
+    "gh-pages": "^6.3.0",
+    "prettier": "^3.8.3",
+    "prettier-plugin-astro": "^0.14.1",
+    "typescript": "^5.9.3"
   }
 }
