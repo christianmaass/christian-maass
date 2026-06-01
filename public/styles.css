@@ -27,6 +27,22 @@
   src: url('/fonts/montserrat-700.woff2') format('woff2');
 }
 
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/satoshi-500.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/satoshi-700.woff2') format('woff2');
+}
+
 /* --- Design Tokens / CSS Variables --- */
 :root {
   /* Layout */
@@ -48,6 +64,7 @@
 
   /* Typo-Skala */
   --font-family-base: 'Montserrat', Arial, sans-serif;
+  --font-family-display: 'Satoshi', 'Inter', system-ui, sans-serif;
   --font-size-xs: 0.85rem;
   --font-size-sm: 0.95rem;
   --font-size-base: 1rem;
@@ -56,12 +73,16 @@
   --font-size-xl: 1.5rem;
   --font-size-2xl: 1.75rem;
   --font-size-3xl: 2.5rem;   /* Page-H1 (alle Seiten gleich) */
+  --font-size-hero: clamp(2.75rem, 6vw, 5.5rem);
   --line-height-tight: 1.2;
+  --line-height-hero: 1.05;
   --line-height-base: 1.6;
   --line-height-lead: 1.65;
   --letter-spacing-eyebrow: 0.06em;
+  --letter-spacing-hero: -0.02em;
   --weight-light: 300;
   --weight-regular: 400;
+  --weight-medium: 500;
   --weight-bold: 700;
 
   /* Color-Tokens — Dark Editorial */
@@ -94,22 +115,27 @@ html, body {
 
 /* Globale Typo-Hierarchie (Page-Titel & Sektions-Headings) */
 body h1 {
+  font-family: var(--font-family-display);
   font-size: var(--font-size-3xl);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-medium);
   line-height: var(--line-height-tight);
+  letter-spacing: -0.01em;
   color: var(--color-text-strong);
   margin: 0 0 var(--space-3) 0;
 }
 body h2 {
+  font-family: var(--font-family-display);
   font-size: var(--font-size-2xl);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-medium);
   line-height: var(--line-height-tight);
+  letter-spacing: -0.01em;
   color: var(--color-text-strong);
   margin: 0 0 var(--space-2) 0;
 }
 body h3 {
+  font-family: var(--font-family-display);
   font-size: var(--font-size-xl);
-  font-weight: var(--weight-bold);
+  font-weight: var(--weight-medium);
   line-height: var(--line-height-tight);
   color: var(--color-text-strong);
   margin: 0 0 var(--space-2) 0;
