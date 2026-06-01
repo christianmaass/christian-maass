@@ -1,65 +1,43 @@
 ---
 import LanguageSwitcher from './LanguageSwitcher.astro';
-import { getTranslations, getAlternateUrl, type Locale } from '../i18n/utils';
+import { getTranslations, type Locale } from '../i18n/utils';
 
 const { base = "", currentLocale = "de" as Locale, pathname: pathnameProp } = Astro.props;
 const pathname = pathnameProp || Astro.url.pathname;
 const t = getTranslations(currentLocale);
+
+const isActive = (path: string) =>
+  pathname === path || pathname === `${path}/` ? 'active' : '';
+const isActivePrefix = (path: string) =>
+  pathname === path || pathname.startsWith(`${path}/`) ? 'active' : '';
 ---
 
-<header>
+<header class="site-header">
   <div class="header-container">
-    <a href={`${base}/`} class="wordmark" aria-label="Christian Maaß – Startseite">Christian Maaß</a>
+    <a href={`${base}/`} class="brand" aria-label="Christian Maaß – Startseite">Christian Maaß</a>
 
-    <nav id="main-nav" class="nav">
-      <a href={`${base}/blog`} class={pathname === `${base}/blog` || pathname.startsWith(`${base}/blog/`) ? 'active' : ''}>{t.nav.blog}</a>
-      <a href={`${base}/fachartikel`} class={pathname === `${base}/fachartikel` ? 'active' : ''}>{t.nav.perspectives}</a>
-      <a href={`${base}/buecher`} class={pathname === `${base}/buecher` ? 'active' : ''}>{t.nav.books}</a>
-      <a href={`${base}/beirat`} class={pathname === `${base}/beirat` ? 'active' : ''}>{t.nav.boardAdvisory}</a>
-      <a href={`${base}/christian-maass`} class={pathname === `${base}/christian-maass` ? 'active' : ''}>{t.nav.about}</a>
-      <a href={`${base}/kontakt`} class={pathname === `${base}/kontakt` ? 'active' : ''}>{t.nav.contact}</a>
-      <div class="nav-language-switcher">
-        <LanguageSwitcher currentLocale={currentLocale} pathname={pathname} />
-      </div>
+    <nav id="main-nav" class="nav" aria-label="Hauptnavigation">
+      <a href={`${base}/blog`} class={isActivePrefix(`${base}/blog`)}>{t.nav.blog}</a>
+      <a href={`${base}/fachartikel`} class={isActive(`${base}/fachartikel`)}>{t.nav.perspectives}</a>
+      <a href={`${base}/buecher`} class={isActive(`${base}/buecher`)}>{t.nav.books}</a>
+      <a href={`${base}/beirat`} class={isActive(`${base}/beirat`)}>{t.nav.boardAdvisory}</a>
+      <a href={`${base}/christian-maass`} class={isActive(`${base}/christian-maass`)}>{t.nav.about}</a>
+      <LanguageSwitcher currentLocale={currentLocale} pathname={pathname} />
     </nav>
 
     <div class="header-right">
-      <LanguageSwitcher currentLocale={currentLocale} pathname={pathname} />
-      <button class="burger" id="burger" aria-label={t.ui.menuToggle}>
-        <span id="burger-icon">☰</span>
+      <a href={`${base}/kontakt`} class={`contact-pill ${isActive(`${base}/kontakt`)}`}>{t.nav.contact}</a>
+      <button
+        class="burger"
+        id="burger"
+        aria-label={t.ui.menuToggle}
+        aria-expanded="false"
+        aria-controls="main-nav"
+      >
+        <span id="burger-icon" aria-hidden="true">☰</span>
       </button>
     </div>
   </div>
 </header>
 
 <script is:inline src="/js/burger-menu.js"></script>
-
-<style>
-  .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  a.wordmark {
-    display: inline-block;
-    margin-left: var(--logo-margin-left);
-    margin-right: 3rem;
-    padding: 0;
-    font-family: var(--font-family-base);
-    font-size: 1.1rem;
-    font-weight: var(--weight-bold);
-    letter-spacing: 0.01em;
-    color: var(--color-text-strong);
-    text-decoration: none;
-    white-space: nowrap;
-  }
-  a.wordmark:hover {
-    color: var(--color-text-muted);
-    text-decoration: none;
-  }
-  .header-right {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-  }
-</style>
