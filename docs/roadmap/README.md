@@ -29,7 +29,7 @@ Positioniert wird Christian Maaß als Board-Level-Executive, Aufsichtsrat, Autor
 |---|---|---|---|---|
 | 00 | [Foundation](./epic-00-foundation.md) | ✅ Done | XS | `.nvmrc`, `astro check`, Prettier — designneutral |
 | 01 | [Design Tokens](./epic-01-design-tokens.md) | ✅ Done | S | Neue Farb-/Border-/Shadow-Tokens in `public/styles.css` |
-| 02 | [Typography](./epic-02-typography.md) | ⏳ Pending | S | Satoshi integrieren, editorial Type-Scale |
+| 02 | [Typography](./epic-02-typography.md) | ✅ Done | S | Satoshi integrieren, editorial Type-Scale |
 | 03 | [Navigation](./epic-03-navigation.md) | ⏳ Pending | M | Header neu: Name · Nav · Kontakt-Pill |
 | 04 | [Hero](./epic-04-hero.md) | ⏳ Pending | M | Zweispaltige Hero mit Portrait-Fade |
 | 05 | [Site-wide Dark](./epic-05-global-dark.md) | ⏳ Pending | L | Footer, Karten, CTAs, alle Seiten |
