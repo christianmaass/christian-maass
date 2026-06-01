@@ -122,15 +122,24 @@ const ogImage = `${siteUrl}/christian-maass.png`;
 </Fragment>
 
 <BaseLayout title={t.pages.index.title} description={t.pages.index.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
-  <section class="hero-banner">
-    <div class="hero-inner">
-     <div class="hero-content">
-       <h1>{t.pages.index.heroTitle}</h1>
-       <p>{t.pages.index.heroSubtitle}</p>
-     </div>
-     <div class="hero-image">
-        <img src={`${assetPath}/lehre-dr-christian-maass.png`} alt="Christian Maaß on stage: digital scaling in e-commerce, growth chart 2000–2023" loading="eager" fetchpriority="high" />
-     </div>
+  <section class="hero">
+    <div class="hero-grid">
+      <div class="hero-content">
+        <h1 class="hero-headline">
+          {t.pages.index.hero.headlineLeading}<span class="hero-accent">{t.pages.index.hero.headlineAccent}</span>{t.pages.index.hero.headlineTrailing}
+        </h1>
+        <p class="hero-lead">{t.pages.index.hero.lead}</p>
+        <p class="hero-credentials">{t.pages.index.hero.credentials}</p>
+      </div>
+      <div class="hero-portrait-wrap">
+        <img
+          src={`${assetPath}/christian-maass.png`}
+          alt={t.pages.index.hero.portraitAlt}
+          class="hero-portrait"
+          loading="eager"
+          fetchpriority="high"
+        />
+      </div>
     </div>
   </section>
 
@@ -164,4 +173,87 @@ const ogImage = `${siteUrl}/christian-maass.png`;
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .hero {
+    padding: var(--space-7) var(--container-padding-x);
+  }
+  .hero-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.85fr 1fr;
+    gap: var(--space-6);
+    align-items: center;
+  }
+  .hero-content {
+    max-width: 720px;
+  }
+  .hero-headline {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-hero);
+    font-weight: var(--weight-medium);
+    line-height: var(--line-height-hero);
+    letter-spacing: var(--letter-spacing-hero);
+    color: var(--color-text-strong);
+    margin: 0;
+    max-width: 14ch;
+  }
+  .hero-accent {
+    color: var(--color-accent);
+  }
+  .hero-lead {
+    margin: var(--space-4) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 1.05rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    max-width: 52ch;
+  }
+  .hero-credentials {
+    margin: var(--space-6) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+  }
+  .hero-portrait-wrap {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-portrait {
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    max-height: 640px;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(1) contrast(1.05) brightness(0.95);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
+            mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
+  }
+
+  @media (max-width: 900px) {
+    .hero {
+      padding: var(--space-5) var(--container-padding-x);
+    }
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .hero-headline {
+      max-width: 16ch;
+    }
+  }
+
+  @media (max-width: 640px) {
+    .hero-portrait-wrap {
+      display: none;
+    }
+  }
+</style>
 

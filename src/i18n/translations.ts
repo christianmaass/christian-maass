@@ -34,6 +34,11 @@ export interface Translations {
         miniBio: string;
         ctaProfile: string;
         ctaContact: string;
+        headlineLeading: string;
+        headlineAccent: string;
+        headlineTrailing: string;
+        credentials: string;
+        portraitAlt: string;
       };
       pillars: {
         eyebrow: string;
@@ -350,6 +355,11 @@ export const translations: Record<Locale, Translations> = {
           miniBio: '',
           ctaProfile: 'Mein Profil',
           ctaContact: 'Kontakt',
+          headlineLeading: 'Strategie, Technologie, ',
+          headlineAccent: 'Organisation',
+          headlineTrailing: '.',
+          credentials: 'CDO · Aufsichtsrat · Autor · Speaker',
+          portraitAlt: 'Christian Maaß — Porträt',
         },
         pillars: {
           eyebrow: 'Worüber ich arbeite',
@@ -750,6 +760,11 @@ export const translations: Record<Locale, Translations> = {
           miniBio: '',
           ctaProfile: 'My profile',
           ctaContact: 'Contact',
+          headlineLeading: 'Strategy, Technology, ',
+          headlineAccent: 'Organisation',
+          headlineTrailing: '.',
+          credentials: 'CDO · Board Director · Author · Speaker',
+          portraitAlt: 'Christian Maaß — portrait',
         },
         pillars: {
           eyebrow: 'What I work on',

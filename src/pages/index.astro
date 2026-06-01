@@ -149,14 +149,23 @@ const ogImage = `${siteUrl}/christian-maass.png`;
 </Fragment>
 
 <BaseLayout title={t.pages.index.title} description={t.pages.index.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
-  <section class="hero-banner hero-banner--brand">
-    <div class="hero-inner">
+  <section class="hero">
+    <div class="hero-grid">
       <div class="hero-content">
-        <h1>{t.pages.index.hero.h1}</h1>
+        <h1 class="hero-headline">
+          {t.pages.index.hero.headlineLeading}<span class="hero-accent">{t.pages.index.hero.headlineAccent}</span>{t.pages.index.hero.headlineTrailing}
+        </h1>
         <p class="hero-lead">{t.pages.index.hero.lead}</p>
+        <p class="hero-credentials">{t.pages.index.hero.credentials}</p>
       </div>
-      <div class="hero-image hero-image--stage">
-        <img src={`${assetPath}/lehre-dr-christian-maass.png`} alt="Christian Maaß auf der Bühne: digitale Skalierung im E-Commerce, Wachstums-Chart 2000–2023" loading="eager" fetchpriority="high" />
+      <div class="hero-portrait-wrap">
+        <img
+          src={`${assetPath}/christian-maass.png`}
+          alt={t.pages.index.hero.portraitAlt}
+          class="hero-portrait"
+          loading="eager"
+          fetchpriority="high"
+        />
       </div>
     </div>
   </section>
@@ -165,58 +174,83 @@ const ogImage = `${siteUrl}/christian-maass.png`;
 <script is:inline src="/js/locale-redirect.js"></script>
 
 <style>
-  .hero-banner--brand {
-    min-height: auto;
-    padding-top: var(--space-5);
-    padding-bottom: var(--space-5);
+  .hero {
+    padding: var(--space-7) var(--container-padding-x);
   }
-  .hero-banner--brand .hero-inner {
-    min-height: auto;
+  .hero-grid {
+    max-width: 1280px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.85fr 1fr;
+    gap: var(--space-6);
     align-items: center;
   }
-  .hero-banner--brand .hero-content {
-    max-width: 540px;
+  .hero-content {
+    max-width: 720px;
   }
-  .hero-banner--brand h1 {
-    font-size: var(--font-size-3xl);
-    line-height: var(--line-height-tight);
-    margin: 0 0 var(--space-3) 0;
-    font-weight: var(--weight-bold);
+  .hero-headline {
+    font-family: var(--font-family-display);
+    font-size: var(--font-size-hero);
+    font-weight: var(--weight-medium);
+    line-height: var(--line-height-hero);
+    letter-spacing: var(--letter-spacing-hero);
     color: var(--color-text-strong);
+    margin: 0;
+    max-width: 14ch;
+  }
+  .hero-accent {
+    color: var(--color-accent);
   }
   .hero-lead {
-    font-size: var(--font-size-md);
-    line-height: var(--line-height-lead);
-    margin: 0;
+    margin: var(--space-4) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 1.05rem;
+    line-height: 1.65;
     color: var(--color-text);
+    max-width: 52ch;
   }
-
-  .hero-image--stage {
-    max-width: 520px;
-    right: 1.5rem;
-    bottom: 1rem;
+  .hero-credentials {
+    margin: var(--space-6) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
   }
-  .hero-image--stage img {
+  .hero-portrait-wrap {
     width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .hero-portrait {
+    width: 100%;
+    max-width: 420px;
     height: auto;
-    max-height: 380px;
-    object-fit: contain;
-    object-position: right bottom;
-    border-radius: var(--radius-sm);
+    max-height: 640px;
+    object-fit: cover;
+    object-position: center top;
+    filter: grayscale(1) contrast(1.05) brightness(0.95);
+    -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
+            mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
   }
 
-  @media (max-width: 767px) {
-    .hero-banner--brand h1 {
-      font-size: 1.8rem;
+  @media (max-width: 900px) {
+    .hero {
+      padding: var(--space-5) var(--container-padding-x);
     }
-    .hero-lead {
-      font-size: 0.98rem;
+    .hero-grid {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
     }
-    .hero-banner--brand .hero-content {
-      padding-left: 1.5rem;
-      padding-right: 1.5rem;
+    .hero-headline {
+      max-width: 16ch;
     }
-    .hero-banner--brand .hero-image {
+  }
+
+  @media (max-width: 640px) {
+    .hero-portrait-wrap {
       display: none;
     }
   }
