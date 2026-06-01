@@ -1,40 +1,224 @@
 ---
-import { Astro } from 'astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, getBasePath } from '../i18n/utils';
+import { detectAndRedirect } from '../utils/localeDetection';
+
+const locale = 'de';
+const t = getTranslations(locale);
+const base = getBasePath(locale);
+const assetPath = '';
+const siteUrl = "https://christianmaass.com";
+const currentUrl = siteUrl;
+const ogImage = `${siteUrl}/christian-maass.png`;
 ---
 
-<BaseLayout>
-  <section class="hero-banner">
-    <div class="hero-content">
-      <h1>Ab dem 15. September im Handel</h1>
-      <p>Mein aktuelles Buch zum Thema "Executive Presence"</p>
-      <a href={Astro.resolve('/Executive Presence')} class="cta-btn">Zum Buch</a>
-    </div>
-    <div class="hero-image">
-      <img src={Astro.resolve('/hero-maass.png')} alt="Hero Bild" />
+<Fragment slot="head">
+  <script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "@id": "https://christianmaass.com/#person",
+      "name": "Christian Maaß",
+      "alternateName": "Dr. Christian Maaß",
+      "honorificPrefix": "Dr.",
+      "inLanguage": "de",
+      "url": "https://christianmaass.com/",
+      "image": "https://christianmaass.com/christian-maass.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/christianmaass/",
+        "https://www.amazon.de/stores/author/B0045949JA",
+        "https://www.instagram.com/christianmaass/",
+        "https://x.com/ChristianMaass"
+      ],
+      "jobTitle": "Managing Director & Chief Digital Officer",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Thomann",
+        "url": "https://www.thomann.de/",
+        "description": "World's largest digital music retailer with approx. EUR 1.6bn revenue"
+      },
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "additionalType": "TradeAssociation",
+          "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.",
+          "description": "Wirtschaftsverband für E-Commerce und Versandhandel",
+          "url": "https://www.bevh.org/",
+          "member": { "@id": "https://christianmaass.com/#person" },
+          "roleName": "Vice President E-Commerce",
+          "startDate": "2023-11-01"
+        }
+      ],
+      "knowsAbout": [
+        "Synchronisation digitaler Geschäfte",
+        "Digital Operating Models",
+        "E-Commerce-Skalierung",
+        "KI im Operating",
+        "Board-Perspektive auf Digital",
+        "Plattform-Transformation",
+        "Cross-border Commerce",
+        "Executive Leadership",
+        "Digital Governance"
+      ],
+      "description": "Operating Executive für digitale Geschäfte. Managing Director & CDO bei Thomann. Vizepräsident E-Commerce beim BEVH. Übernimmt digitale Geschäfte dort, wo Strategie, Technologie und Organisation nicht synchron laufen."
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://christianmaass.com/#organization",
+      "name": "Christian Maaß",
+      "url": "https://christianmaass.com/",
+      "logo": "https://christianmaass.com/logo-maass.png",
+      "sameAs": [
+        "https://www.linkedin.com/company/christian-maass/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+49-1735143253",
+        "contactType": "CustomerService",
+        "email": "christian@christianmaass.com",
+        "areaServed": "DE",
+        "availableLanguage": ["de", "en"]
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Hans-Thomann-Str. 1",
+        "addressLocality": "Burgebrach",
+        "postalCode": "96138",
+        "addressRegion": "Bayern",
+        "addressCountry": "DE"
+      },
+      "location": {
+        "@type": "Place",
+        "name": "Burgebrach, Bayern, Deutschland",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "Hans-Thomann-Str. 1",
+          "addressLocality": "Burgebrach",
+          "postalCode": "96138",
+          "addressRegion": "Bayern",
+          "addressCountry": "DE"
+        },
+        "geo": {
+          "@type": "GeoCoordinates",
+          "latitude": 49.8281,
+          "longitude": 10.7431
+        }
+      },
+      "potentialAction": {
+        "@type": "CommunicateAction",
+        "target": "mailto:christian@christianmaass.com",
+        "actionPlatform": [
+          "http://schema.org/DesktopWebPlatform",
+          "http://schema.org/IOSPlatform",
+          "http://schema.org/AndroidPlatform"
+        ]
+      }
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://christianmaass.com/#webpage",
+      "url": "https://christianmaass.com/",
+      "name": "Christian Maaß · Operating Executive für digitale Geschäfte",
+      "description": "Strategie, Technologie und Organisation laufen oft nicht synchron. Genau dort arbeite ich – seit 20 Jahren, als Manager, nicht als Berater. Managing Director & CDO Thomann.",
+      "inLanguage": "de",
+      "isPartOf": {
+        "@id": "https://christianmaass.com/#website"
+      },
+      "about": {
+        "@id": "https://christianmaass.com/#person"
+      },
+      "breadcrumb": {
+        "@id": "https://christianmaass.com/#breadcrumb"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://christianmaass.com/#website",
+      "url": "https://christianmaass.com/",
+      "name": "Christian Maaß",
+      "description": "Operating Executive für digitale Geschäfte. Synchronisation von Strategie, Technologie und Organisation.",
+      "publisher": {
+        "@id": "https://christianmaass.com/#organization"
+      },
+      "inLanguage": ["de", "en"]
+    }
+  ]
+}
+</script>
+</Fragment>
+
+<BaseLayout title={t.pages.index.title} description={t.pages.index.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+  <section class="hero-banner hero-banner--brand">
+    <div class="hero-inner">
+      <div class="hero-content">
+        <h1>{t.pages.index.hero.h1}</h1>
+        <p class="hero-lead">{t.pages.index.hero.lead}</p>
+      </div>
+      <div class="hero-image hero-image--stage">
+        <img src={`${assetPath}/lehre-dr-christian-maass.png`} alt="Christian Maaß auf der Bühne: digitale Skalierung im E-Commerce, Wachstums-Chart 2000–2023" loading="eager" fetchpriority="high" />
+      </div>
     </div>
   </section>
-
-  <div class="content-wrapper">
-    <div class="content-box-row">
-      <div class="content-box">
-        <img src={Astro.resolve('/box1.jpg')} alt="Bild 1" />
-        <h3>Titel 1</h3>
-        <p>Kurzer Beschreibungstext für Box 1.</p>
-        <a href={Astro.resolve('/mehr1')} class="cta-btn">Mehr erfahren</a>
-      </div>
-      <div class="content-box">
-        <img src={Astro.resolve('/box2.jpg')} alt="Bild 2" />
-        <h3>Titel 2</h3>
-        <p>Kurzer Beschreibungstext für Box 2.</p>
-        <a href={Astro.resolve('/mehr2')} class="cta-btn">Mehr erfahren</a>
-      </div>
-      <div class="content-box">
-        <img src={Astro.resolve('/box3.jpg')} alt="Bild 3" />
-        <h3>Titel 3</h3>
-        <p>Kurzer Beschreibungstext für Box 3.</p>
-        <a href={Astro.resolve('/mehr3')} class="cta-btn">Mehr erfahren</a>
-      </div>
-    </div>
-  </div>
 </BaseLayout>
+
+<script is:inline src="/js/locale-redirect.js"></script>
+
+<style>
+  .hero-banner--brand {
+    min-height: auto;
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-5);
+  }
+  .hero-banner--brand .hero-inner {
+    min-height: auto;
+    align-items: center;
+  }
+  .hero-banner--brand .hero-content {
+    max-width: 540px;
+  }
+  .hero-banner--brand h1 {
+    font-size: var(--font-size-3xl);
+    line-height: var(--line-height-tight);
+    margin: 0 0 var(--space-3) 0;
+    font-weight: var(--weight-bold);
+    color: var(--color-text-strong);
+  }
+  .hero-lead {
+    font-size: var(--font-size-md);
+    line-height: var(--line-height-lead);
+    margin: 0;
+    color: var(--color-text);
+  }
+
+  .hero-image--stage {
+    max-width: 520px;
+    right: 1.5rem;
+    bottom: 1rem;
+  }
+  .hero-image--stage img {
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+    object-fit: contain;
+    object-position: right bottom;
+    border-radius: var(--radius-sm);
+  }
+
+  @media (max-width: 767px) {
+    .hero-banner--brand h1 {
+      font-size: 1.8rem;
+    }
+    .hero-lead {
+      font-size: 0.98rem;
+    }
+    .hero-banner--brand .hero-content {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+    .hero-banner--brand .hero-image {
+      display: none;
+    }
+  }
+</style>

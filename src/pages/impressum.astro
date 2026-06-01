@@ -1,0 +1,41 @@
+---
+// filepath: /Users/christianmaass/christian-maass/src/pages/impressum.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = "";
+const title = "Impressum - Christian Maaß";
+const description = "Impressum und rechtliche Angaben der Website von Christian Maaß.";
+const siteUrl = "https://christianmaass.com";
+const currentUrl = `${siteUrl}/impressum`;
+const ogImage = `${siteUrl}/christian-maass.png`;
+---
+
+<Fragment slot="head">
+</Fragment>
+
+<BaseLayout title={title} description={description} canonical={currentUrl} ogImage={ogImage}>
+  <section class="content-wrapper">
+    <h1>Impressum</h1>
+    <p>
+      Angaben gemäß § 5 DDG<br>
+      Dr. Christian Maaß<br>
+      Am Leinritt 7<br>
+      96049 Bamberg<br>
+      Deutschland
+    </p>
+    <p>
+      Telefon: <a href="tel:+491735143253">+49 173 5143253</a><br>
+      E-Mail: <a href="mailto:info@christian-maass.de">info@christian-maass.de</a>
+    </p>
+    <p>
+      Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV:<br>
+      Dr. Christian Maaß, Adresse wie oben
+    </p>
+    <p>
+      <strong>Haftungsausschluss:</strong><br>
+      Die Inhalte dieser Website wurden mit größter Sorgfalt erstellt. Für die Richtigkeit, Vollständigkeit und Aktualität der Inhalte können wir jedoch keine Gewähr übernehmen.
+    </p>
+    <p>
+      <a href={`${base}/datenschutz`}>Datenschutzerklärung</a>
+    </p>
+  </section>
+</BaseLayout>

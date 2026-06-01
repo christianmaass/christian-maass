@@ -1,0 +1,67 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getBasePath } from '../i18n/utils';
+
+const locale = 'de';
+const base = getBasePath(locale);
+const siteUrl = "https://christianmaass.com";
+const currentUrl = `${siteUrl}/blog`;
+const ogImage = `${siteUrl}/og/default.jpg`;
+const title = 'Blog · Christian Maaß';
+const description = 'Blog von Christian Maaß zu Synchronität: Strategie, Technologie und Organisation. KI im Operating, vergessene Grundlagen, Board-Perspektive auf Digital.';
+---
+
+<Fragment slot="head">
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://christianmaass.com/blog/#webpage",
+  "url": "https://christianmaass.com/blog/",
+  "name": "Blog · Christian Maaß",
+  "description": "Blog von Christian Maaß zu Synchronität: Strategie, Technologie und Organisation.",
+  "inLanguage": "de",
+  "isPartOf": { "@id": "https://christianmaass.com/#website" },
+  "about": { "@id": "https://christianmaass.com/#person" }
+}
+</script>
+</Fragment>
+
+<BaseLayout title={title} description={description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+  <section class="content-wrapper">
+    <article class="blog-placeholder">
+      <p class="eyebrow">Blog</p>
+      <h1>In Vorbereitung.</h1>
+      <p class="lead">
+        Hier entstehen in Kürze eigene Beiträge zur These „Synchronität: Strategie, Technologie und Organisation" – zu KI im Operating, den vergessenen Grundlagen und der Board-Perspektive auf Digital.
+      </p>
+      <p>
+        Bis dahin: bereits veröffentlichte Beiträge in externen Medien gibt es unter <a href={`${base}/fachartikel`}>Essays</a>.
+      </p>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-placeholder {
+    max-width: 65ch;
+    padding-top: var(--space-5);
+    padding-bottom: var(--space-6);
+  }
+  .blog-placeholder h1 {
+    margin: 0 0 var(--space-3) 0;
+  }
+  .blog-placeholder .lead {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-lead);
+    margin: 0 0 var(--space-3) 0;
+  }
+  .blog-placeholder a {
+    color: var(--color-text-strong);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+  .blog-placeholder a:hover {
+    color: var(--color-text-muted);
+  }
+</style>

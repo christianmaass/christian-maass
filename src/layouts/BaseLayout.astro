@@ -1,27 +1,111 @@
 ---
+// filepath: /Users/christianmaass/christian-maass/src/layouts/BaseLayout.astro
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Breadcrumb from '../components/Breadcrumb.astro';
+import { getLocaleFromPath, getAlternateUrl, getBasePath, getTranslations, type Locale } from '../i18n/utils';
 
-const { title = "Christian Maaß – Autorenseite", description = "Persönliche Webseite von Christian Maaß" } = Astro.props;
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+  lang?: string;
+  currentLocale?: Locale;
+}
+
+const {
+  title = "Dr. Christian Maaß",
+  description = "Persönliche Seite von Christian Maaß, Unternehmer, Berater und Autor.",
+  canonical = "https://christianmaass.com",
+  ogImage,
+  lang = "de",
+  currentLocale,
+} = Astro.props;
+
+// Bestimme aktuelle Sprache aus URL falls nicht übergeben
+const locale: Locale = currentLocale || getLocaleFromPath(Astro.url.pathname);
+const t = getTranslations(locale);
+const base = getBasePath(locale);
+const assetPath = ''; // Assets werden immer vom Root geladen
+const siteUrl = "https://christianmaass.com";
+const siteName = "Christian Maaß";
+const defaultOgImage = `${siteUrl}/og/default.jpg`;
+const finalOgImage = ogImage || defaultOgImage;
+
+// Lang-Attribut automatisch aus locale ableiten (kritisch für SEO und LLM-Erkennung)
+// locale hat Priorität, da es immer korrekt aus currentLocale oder URL-Pfad abgeleitet wird
+const finalLang = locale || lang || "de";
+
+// Alternative URLs für hreflang
+const alternateUrls = {
+  de: getAlternateUrl(Astro.url.pathname, 'de'),
+  en: getAlternateUrl(Astro.url.pathname, 'en'),
+};
+const fullAlternateUrls = {
+  de: `${siteUrl}${alternateUrls.de}`,
+  en: `${siteUrl}${alternateUrls.en}`,
+};
 ---
 
 <!DOCTYPE html>
-<html lang="de">
+<html lang={finalLang}>
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self';" />
+    <link rel="icon" type="image/svg+xml" href={`${assetPath}/favicon.svg`} />
+    <link rel="stylesheet" href={`${assetPath}/styles.css`} />
+    
+    <!-- Basic SEO Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href={Astro.resolve('/styles.css')} />
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="canonical" href={canonical} />
+    
+    <!-- hreflang Tags für SEO -->
+    <link rel="alternate" hreflang="de" href={fullAlternateUrls.de} />
+    <link rel="alternate" hreflang="en" href={fullAlternateUrls.en} />
+    <link rel="alternate" hreflang="x-default" href={fullAlternateUrls.de} />
+    
+    <!-- Open Graph Tags -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={finalOgImage} />
+    <meta property="og:site_name" content={siteName} />
+    <meta property="og:locale" content={locale === 'de' ? 'de_DE' : 'en_US'} />
+    <meta property="og:locale:alternate" content={locale === 'de' ? 'en_US' : 'de_DE'} />
+    
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={finalOgImage} />
+    
+    <!-- Geo Tags -->
+    <meta name="geo.region" content="DE-BY" />
+    <meta name="geo.placename" content="Burgebrach" />
+    <meta name="geo.position" content="49.8281;10.7431" />
+    <meta name="ICBM" content="49.8281, 10.7431" />
+    
+    <!-- Additional head content slot -->
+    <slot name="head" />
+    
+    <!-- Breadcrumb strukturierte Daten für SEO (nur im Head, keine visuelle Anzeige) -->
+    {Astro.url.pathname !== '/' && Astro.url.pathname !== '/en/' && (
+      <Breadcrumb currentLocale={locale} pathname={Astro.url.pathname} siteUrl={siteUrl} />
+    )}
   </head>
   <body>
-    <Header />
+    <a class="skip-link" href="#main-content">{t.ui.skipToContent}</a>
+    <Header base={base} currentLocale={locale} pathname={Astro.url.pathname} />
 
-    <main>
-      <slot />  <!-- ALLES was jede Seite übergibt, wird hier gerendert -->
+
+    <main id="main-content">
+      <slot />  <!-- Der Platzhalter für alle Seiteninhalte -->
     </main>
 
-    <Footer />
+    <Footer base={base} currentLocale={locale} pathname={Astro.url.pathname} />
   </body>
 </html>

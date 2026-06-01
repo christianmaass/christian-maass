@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, getBasePath } from '../../i18n/utils';
+
+const locale = 'en';
+const t = getTranslations(locale);
+const base = getBasePath(locale);
+const assetPath = ''; // Assets werden immer vom Root geladen
+const siteUrl = "https://christianmaass.com";
+const currentUrl = `${siteUrl}/en/buecher`;
+const ogImage = `${siteUrl}/meine-buecher-maass.png`;
+---
+
+<Fragment slot="head">
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Book",
+      "@id": "https://christianmaass.com/buecher/#executive-presence",
+      "name": "Executive Presence – more than first impressions: How to appear, communicate and act confidently as a leader",
+      "alternateName": "Executive Presence (Haufe Fachbuch)",
+      "author": {
+        "@type": "Person",
+        "@id": "https://christianmaass.com/#person",
+        "name": "Christian Maaß"
+      },
+      "isbn": "978-3648190463",
+      "datePublished": "2025-08-21",
+      "description": "Executive Presence is the key that makes the difference: between someone who simply enters a room and someone who changes it. It determines whether people listen, follow and act – and whether leadership is accepted.",
+      "inLanguage": "en",
+      "numberOfPages": 156,
+      "bookFormat": "https://schema.org/Paperback",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Haufe"
+      },
+      "url": "https://www.amazon.de/Executive-Presence-F%C3%BChrungskraft-auftreten-kommunizieren/dp/3648190466",
+      "image": "https://christianmaass.com/executive-presence-maass.jpg"
+    }
+  ]
+}
+</script>
+</Fragment>
+
+<BaseLayout title={t.pages.buecher.title} description={t.pages.buecher.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+
+  <section class="content-wrapper books-section">
+    <h1>{t.pages.buecher.h1}</h1>
+    <p class="section-intro" set:html={t.pages.buecher.intro} />
+
+    <div class="books-list">
+      <div class="book-detail-box">
+        <div class="book-image">
+          <img src={`${assetPath}/executive-presence-maass.jpg`} alt="Book cover Executive Presence – more than first impressions" />
+        </div>
+        <div class="book-content">
+          <h2>{t.pages.buecher.executivePresence.title}</h2>
+          <p class="book-meta" set:html={t.pages.buecher.executivePresence.meta} />
+          <p>{t.pages.buecher.executivePresence.description1}</p>
+          <p>{t.pages.buecher.executivePresence.description2}</p>
+          <p>{t.pages.buecher.executivePresence.description3}</p>
+          <a href="https://www.amazon.de/Executive-Presence-F%C3%BChrungskraft-auftreten-kommunizieren/dp/3648190466" target="_blank" rel="noopener noreferrer" class="cta-btn">{t.pages.buecher.executivePresence.cta}</a>
+        </div>
+      </div>
+
+      <div class="book-detail-box">
+        <div class="book-image">
+          <img src={`${assetPath}/online-produktmanagement-maass.jpg`} alt="Book cover Online Product Management: From Idea to Online Product" />
+        </div>
+        <div class="book-content">
+          <h2>{t.pages.buecher.onlineProduktmanagement.title}</h2>
+          <p class="book-meta" set:html={t.pages.buecher.onlineProduktmanagement.meta} />
+          <p>{t.pages.buecher.onlineProduktmanagement.description1}</p>
+          <p>{t.pages.buecher.onlineProduktmanagement.description2}</p>
+          <p>{t.pages.buecher.onlineProduktmanagement.description3}</p>
+          <a href="https://www.amazon.de/Online-Produktmanagement-Von-Idee-zum-Online-Produkt/dp/3446424210" target="_blank" rel="noopener noreferrer" class="cta-btn">{t.pages.buecher.onlineProduktmanagement.cta}</a>
+        </div>
+      </div>
+
+      <div class="book-detail-box">
+        <div class="book-image">
+          <img src={`${assetPath}/ebusiness-management-maass.jpg`} alt="Book cover E-Business Management: Designing Business Models" />
+        </div>
+        <div class="book-content">
+          <h2>{t.pages.buecher.eBusinessManagement.title}</h2>
+          <p class="book-meta" set:html={t.pages.buecher.eBusinessManagement.meta} />
+          <p>{t.pages.buecher.eBusinessManagement.description1}</p>
+          <p>{t.pages.buecher.eBusinessManagement.description2}</p>
+          <p>{t.pages.buecher.eBusinessManagement.description3}</p>
+          <a href="https://www.amazon.de/Business-Management-Gestaltung-Gesch%C3%A4ftsmodellen-Uni-Taschenb%C3%BCcher/dp/3825229912" target="_blank" rel="noopener noreferrer" class="cta-btn">{t.pages.buecher.eBusinessManagement.cta}</a>
+        </div>
+      </div>
+
+      <div class="book-detail-box">
+        <div class="book-image">
+          <img src={`${assetPath}/open-source-maass.jpg`} alt="Book cover Strategic Options in Competition with Open Source Software" />
+        </div>
+        <div class="book-content">
+          <h2>{t.pages.buecher.openSource.title}</h2>
+          <p class="book-meta" set:html={t.pages.buecher.openSource.meta} />
+          <p>{t.pages.buecher.openSource.description1}</p>
+          <p>{t.pages.buecher.openSource.description2}</p>
+          <p>{t.pages.buecher.openSource.description3}</p>
+          <a href="https://www.amazon.de/Strategische-Optionen-Wettbewerb-mit-Open-Source-Software/dp/3832511229" target="_blank" rel="noopener noreferrer" class="cta-btn">{t.pages.buecher.openSource.cta}</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+

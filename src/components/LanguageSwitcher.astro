@@ -1,0 +1,58 @@
+---
+import { getAlternateUrl, type Locale } from '../i18n/utils';
+
+const { currentLocale, pathname } = Astro.props;
+
+const deUrl = getAlternateUrl(pathname, 'de');
+const enUrl = getAlternateUrl(pathname, 'en');
+---
+
+<div class="language-switcher">
+  <a 
+    href={deUrl} 
+    hreflang="de"
+    aria-label="Switch to Deutsch"
+    class={currentLocale === 'de' ? 'lang-link active' : 'lang-link'}
+  >
+    DE
+  </a>
+  <span class="lang-separator">/</span>
+  <a 
+    href={enUrl} 
+    hreflang="en"
+    aria-label="Switch to English"
+    class={currentLocale === 'en' ? 'lang-link active' : 'lang-link'}
+  >
+    EN
+  </a>
+</div>
+
+<style>
+  .language-switcher {
+    display: flex;
+    align-items: center;
+    gap: 0.1rem;
+  }
+  
+  .lang-link {
+    text-decoration: none;
+    color: #012030;
+    font-weight: 300;
+    transition: color 0.2s;
+  }
+  
+  .lang-link.active {
+    text-decoration: underline;
+    font-weight: 300;
+  }
+  
+  .lang-link:hover {
+    color: #5C7585;
+  }
+  
+  .lang-separator {
+    color: #012030;
+    font-weight: 300;
+  }
+</style>
+

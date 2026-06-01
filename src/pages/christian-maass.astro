@@ -1,0 +1,282 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, getBasePath } from '../i18n/utils';
+
+const locale = 'de';
+const t = getTranslations(locale);
+const base = getBasePath(locale);
+const siteUrl = "https://christianmaass.com";
+const currentUrl = `${siteUrl}/christian-maass`;
+const ogImage = `${siteUrl}/dr-christian-maass.png`;
+---
+
+<Fragment slot="head">
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://christianmaass.com/#person",
+  "name": "Christian Maaß",
+  "alternateName": "Dr. Christian Maaß",
+  "honorificPrefix": "Dr.",
+  "inLanguage": "de",
+  "url": "https://christianmaass.com/christian-maass/",
+  "image": "https://christianmaass.com/christian-maass-ueber-mich.png",
+  "sameAs": [
+    "https://www.linkedin.com/in/christianmaass/",
+    "https://www.amazon.de/stores/author/B0045949JA",
+    "https://www.instagram.com/christianmaass/",
+    "https://x.com/ChristianMaass"
+  ],
+  "jobTitle": "Managing Director & Chief Digital Officer",
+  "description": "Operating Executive für digitale Geschäfte. Übernimmt Unternehmen dort, wo Strategie, Technologie und Organisation nicht synchron laufen – als Manager, nicht als Berater. 20 Jahre als Operator: Thomann, OTTO, Vistaprint, Flyeralarm, Bertelsmann, AutoScout24.",
+  "worksFor": [
+    { "@type": "Organization", "name": "Thomann", "url": "https://www.thomann.de/", "startDate": "2022-01-01", "jobTitle": "Chief Digital Officer", "description": "Verantwortung des Digitalgeschäfts von Thomann" },
+    { "@type": "Organization", "name": "Christian Maaß Advisory", "url": "https://christianmaass.com/", "@id": "https://christianmaass.com/#organization", "startDate": "2016-01-01", "jobTitle": "Berater & Beirat", "description": "Beratung von Unternehmen in den Bereichen digitale Strategie, E-Commerce und agile Transformation sowie Wahrnehmung von Beiratsmandaten." },
+    { "@type": "Organization", "name": "Vistaprint", "url": "https://www.cimpress.com/", "startDate": "2016-05-01", "endDate": "2021-12-31", "jobTitle": "Managing Director", "description": "Managing des Portfolios von sechs Akquisitionen in Europa, Managing Partner Printbrothers (WirmachenDruck.de, Drukwerkdeal.nl, Druck.at)" },
+    { "@type": "Organization", "name": "Flyeralarm", "url": "https://www.flyeralarm.com/", "startDate": "2014-04-01", "endDate": "2016-04-30", "jobTitle": "Chief Product Officer", "description": "Verantwortlich für das Produktmanagement, die Webentwicklung und das Marketing" },
+    { "@type": "Organization", "name": "Bertelsmann", "url": "https://www.bertelsmann.de/", "startDate": "2010-03-01", "endDate": "2014-03-31", "jobTitle": "Director Business Development", "description": "Unterstützung des Bertelsmann Vorstands beim Ausbau des Digital- und E-Commerce-Geschäfts" },
+    { "@type": "Organization", "name": "OTTO", "url": "https://www.otto.de/", "startDate": "2009-09-01", "endDate": "2010-02-28", "jobTitle": "Head of Business Development", "description": "Digitalisierung von Otto und Erschließung neuer Wachstumsfelder" },
+    { "@type": "Organization", "name": "AutoScout24", "url": "https://www.autoscout24.de/", "startDate": "2008-08-01", "endDate": "2009-08-31", "jobTitle": "Senior Manager Business Development", "description": "Einführung agiler Methoden in der Produktentwicklung sowie strategische Wachstumsprojekte" },
+    { "@type": "Organization", "name": "Lycos Europe", "url": "https://de.lycos.com/", "startDate": "2005-02-01", "endDate": "2008-07-31", "jobTitle": "Head of Research", "description": "Leitung aller Projekte im Bereich KI und Semantic Web sowie Repräsentation von Lycos vor der EU und dem Bundeswirtschaftsministerium" }
+  ],
+  "memberOf": [
+    { "@type": "Organization", "additionalType": "TradeAssociation", "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.", "description": "Wirtschaftsverband für E-Commerce und Versandhandel", "url": "https://www.bevh.org/", "member": { "@id": "https://christianmaass.com/#person" }, "roleName": "Vorstand", "startDate": "2023-11-01" }
+  ],
+  "alumniOf": [
+    { "@type": "EducationalOrganization", "name": "University of Oxford", "url": "https://www.ox.ac.uk/" },
+    { "@type": "EducationalOrganization", "name": "INSEAD", "url": "https://www.insead.edu/" },
+    { "@type": "EducationalOrganization", "name": "Universität Paderborn", "url": "https://www.uni-paderborn.de/" },
+    { "@type": "EducationalOrganization", "name": "FernUniversität in Hagen", "url": "https://www.fernuni-hagen.de/" },
+    { "@type": "EducationalOrganization", "name": "DePaul University", "url": "https://www.depaul.edu/" }
+  ],
+  "knowsAbout": [
+    "Synchronisation digitaler Geschäfte", "Digital Operating Models", "E-Commerce-Skalierung",
+    "KI im Operating", "Board-Perspektive auf Digital", "Plattform-Transformation",
+    "Cross-border Commerce", "Executive Leadership", "Digital Governance"
+  ],
+  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://christianmaass.com/christian-maass/#webpage" }
+}
+</script>
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://christianmaass.com/christian-maass/#webpage",
+  "url": "https://christianmaass.com/christian-maass/",
+  "name": "Christian Maaß · Profil. Manager, nicht Berater.",
+  "description": "Christian Maaß übernimmt digitale Geschäfte dort, wo Strategie, Technologie und Organisation nicht synchron laufen. 20 Jahre als Operator: Thomann, OTTO, Vistaprint, Flyeralarm, Bertelsmann, AutoScout24.",
+  "inLanguage": "de",
+  "isPartOf": { "@id": "https://christianmaass.com/#website" },
+  "about": { "@id": "https://christianmaass.com/#person" },
+  "breadcrumb": { "@id": "https://christianmaass.com/christian-maass/#breadcrumb" }
+}
+</script>
+</Fragment>
+
+<BaseLayout title={t.pages.christianMaass.title} description={t.pages.christianMaass.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+  <section class="content-wrapper">
+    <article class="profile">
+      <header class="profile-header">
+        <div class="profile-portrait">
+          <img src="/dr-christian-maass.png" alt="Dr. Christian Maaß, Managing Director & CDO Thomann" width="440" height="520" loading="eager" fetchpriority="high" />
+        </div>
+        <div class="profile-intro">
+          <p class="eyebrow">Profil</p>
+          <h1>{t.pages.christianMaass.h1}</h1>
+          <p class="lead">{t.pages.christianMaass.intro}</p>
+          <p class="triade-mark">Strategie. Technologie. Organisation.</p>
+        </div>
+      </header>
+
+      <section class="section-cases">
+        <header class="section-header">
+          <p class="eyebrow">{t.pages.christianMaass.cases.eyebrow}</p>
+          <h2>Drei Stationen, drei Synchronisations-Probleme.</h2>
+        </header>
+
+        <article class="case">
+          <p class="case-meta">{t.pages.christianMaass.cases.thomann.subtitle}</p>
+          <h3>{t.pages.christianMaass.cases.thomann.title}</h3>
+          <p>{t.pages.christianMaass.cases.thomann.paragraph1}</p>
+          <p>{t.pages.christianMaass.cases.thomann.paragraph2}</p>
+        </article>
+
+        <article class="case">
+          <p class="case-meta">{t.pages.christianMaass.cases.otto.subtitle}</p>
+          <h3>{t.pages.christianMaass.cases.otto.title}</h3>
+          <p>{t.pages.christianMaass.cases.otto.paragraph1}</p>
+          <p>{t.pages.christianMaass.cases.otto.paragraph2}</p>
+        </article>
+
+        <article class="case">
+          <p class="case-meta">{t.pages.christianMaass.cases.vistaprint.subtitle}</p>
+          <h3>{t.pages.christianMaass.cases.vistaprint.title}</h3>
+          <p>{t.pages.christianMaass.cases.vistaprint.paragraph1}</p>
+          <p>{t.pages.christianMaass.cases.vistaprint.paragraph2}</p>
+        </article>
+      </section>
+
+      <section class="section-plug">
+        <p class="eyebrow">Arbeitsweise</p>
+        <h2>{t.pages.christianMaass.plugAndPlay.title}</h2>
+        <p>{t.pages.christianMaass.plugAndPlay.paragraph1}</p>
+        <blockquote class="pull-quote">
+          „Headhunter und Aufsichtsräte fragen mich genau deshalb: weil ich keine zehnjährige Branchen-Karriere brauche, um in sechs Wochen den Engpass zu finden."
+        </blockquote>
+      </section>
+
+      <section class="section-publications">
+        <p class="eyebrow">Werk</p>
+        <h2>{t.pages.christianMaass.publications.title}</h2>
+        <p>{t.pages.christianMaass.publications.paragraph}</p>
+      </section>
+
+      <section class="section-mandates">
+        <p class="eyebrow">Mandate</p>
+        <h2>{t.pages.christianMaass.mandates.title}</h2>
+        <p>{t.pages.christianMaass.mandates.paragraph}</p>
+      </section>
+
+      <aside class="profile-cta card-soft">
+        <h2>{t.pages.christianMaass.ctaSection.headline}</h2>
+        <p>{t.pages.christianMaass.ctaSection.text}</p>
+        <a href={`${base}/kontakt`} class="cta-btn">{t.pages.christianMaass.ctaSection.button}</a>
+      </aside>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .profile {
+    max-width: 72ch;
+    margin: 0;
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+
+  .profile-header {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: var(--space-5);
+    align-items: start;
+    margin-bottom: var(--space-6);
+  }
+  .profile-portrait {
+    background: var(--color-bg-soft-gradient);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+  }
+  .profile-portrait img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+  }
+  .profile-intro h1 {
+    margin: 0 0 var(--space-3) 0;
+  }
+  .profile-intro .lead {
+    font-size: var(--font-size-lg);
+    line-height: var(--line-height-lead);
+    margin: 0 0 var(--space-4) 0;
+    color: var(--color-text);
+  }
+
+  @media (max-width: 768px) {
+    .profile-header {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+    .profile-portrait {
+      max-width: 200px;
+      margin: 0 auto;
+    }
+  }
+  .triade-mark {
+    margin: 0;
+    padding: var(--space-2) 0;
+    font-size: var(--font-size-sm);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--letter-spacing-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-text-strong);
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+    text-align: center;
+  }
+
+  .profile > section {
+    padding: var(--space-5) 0;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .profile > section:last-of-type {
+    border-bottom: none;
+  }
+  .section-header {
+    margin-bottom: var(--space-4);
+  }
+  .section-header h2 {
+    margin: 0;
+  }
+
+  .case {
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-4);
+    border-bottom: 1px dashed var(--color-border-subtle);
+  }
+  .case:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+  .case .case-meta {
+    font-size: var(--font-size-xs);
+    font-weight: var(--weight-bold);
+    letter-spacing: var(--letter-spacing-eyebrow);
+    text-transform: uppercase;
+    color: var(--color-text-muted);
+    margin: 0 0 var(--space-1) 0;
+  }
+  .case h3 {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--font-size-xl);
+  }
+  .case p {
+    line-height: var(--line-height-base);
+  }
+
+  .section-plug h2,
+  .section-publications h2,
+  .section-mandates h2 {
+    margin: 0 0 var(--space-3) 0;
+  }
+  .section-plug p,
+  .section-publications p,
+  .section-mandates p {
+    line-height: var(--line-height-base);
+  }
+
+  .pull-quote {
+    margin: var(--space-4) 0 0 0;
+    padding: var(--space-3) var(--space-4);
+    border-left: 3px solid var(--color-accent);
+    font-size: var(--font-size-md);
+    font-weight: var(--weight-regular);
+    line-height: var(--line-height-lead);
+    color: var(--color-text-strong);
+    font-style: normal;
+  }
+
+  .profile-cta {
+    margin-top: var(--space-5);
+  }
+  .profile-cta h2 {
+    margin: 0 0 var(--space-2) 0;
+    font-size: var(--font-size-xl);
+  }
+  .profile-cta p {
+    margin: 0 0 var(--space-3) 0;
+    line-height: var(--line-height-base);
+  }
+</style>

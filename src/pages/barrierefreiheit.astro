@@ -1,0 +1,43 @@
+---
+// filepath: /Users/christianmaass/christian-maass/src/pages/barrierefreiheit.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = "";
+const title = "Barrierefreiheitserklärung - Christian Maaß";
+const description = "Das Thema Barrierefreiheit liegt mir sehr am Herzen.";
+const siteUrl = "https://christianmaass.com";
+const currentUrl = `${siteUrl}/barrierefreiheit`;
+const ogImage = `${siteUrl}/christian-maass.png`;
+---
+
+<Fragment slot="head">
+</Fragment>
+
+<BaseLayout title={title} description={description} canonical={currentUrl} ogImage={ogImage}>
+  <section class="content-wrapper">
+    <h1>Erklärung zur Barrierefreiheit</h1>
+    <p>
+      Ich bemühe mich, meine Website im Einklang mit den gesetzlichen Vorgaben zur Barrierefreiheit zugänglich zu gestalten. Ziel ist es, die Inhalte für möglichst viele Menschen – unabhängig von Einschränkungen – nutzbar zu machen.
+    </p>
+    <h2>Stand der Vereinbarkeit mit den Anforderungen</h2>
+    <p>
+      Diese Website ist nach bestem Wissen und Gewissen barrierefrei gestaltet. Dennoch kann es vorkommen, dass einzelne Inhalte nicht vollständig barrierefrei sind. Die kontinuierliche Verbesserung der Zugänglichkeit ist mir ein Anliegen.
+    </p>
+    <h2>Bekannte Probleme</h2>
+    <ul>
+      <li>Einige Bilder und Grafiken verfügen möglicherweise nicht über vollständige Alternativtexte.</li>
+      <li>Die Tastaturbedienbarkeit und der Kontrast werden regelmäßig überprüft, können aber vereinzelt noch optimiert werden.</li>
+      <li>PDF-Dokumente oder externe Inhalte können nicht immer barrierefrei bereitgestellt werden.</li>
+    </ul>
+    <h2>Feedback und Kontakt</h2>
+    <p>
+      Sollten Ihnen Barrieren auf dieser Website auffallen, kontaktieren Sie mich bitte. Ich bin dankbar für Hinweise und bemühe mich um schnelle Verbesserung.
+    </p>
+    <p>
+      Kontakt:<br>
+      Dr. Christian Maaß<br>
+      Am Leinritt 7<br>
+      96049 Bamberg<br>
+      E-Mail: <a href="mailto:info@christian-maass.de">info@christian-maass.de</a>
+    </p>
+    <p>
+      Stand: Juli 2025

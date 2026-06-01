@@ -1,48 +1,64 @@
+---
+import { getTranslations, getAlternateUrl, type Locale } from '../i18n/utils';
+
+const { base = "", currentLocale = "de" as Locale, pathname: pathnameProp } = Astro.props;
+const pathname = pathnameProp || Astro.url.pathname;
+const t = getTranslations(currentLocale);
+const assetPath = ''; // Assets werden immer vom Root geladen
+---
+
 <footer>
   <div class="footer-container">
 
     <div class="footer-block">
-      <h3>Navigation</h3>
+      <h3>{t.footer.navigation}</h3>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/buecher">Bücher</a></li>
-        <li><a href="/fachartikel">Fachartikel</a></li>
-        <li><a href="/christian-maass">Christian Maaß</a></li>
-        <li><a href="/kontakt">Kontakt</a></li>
+        <li><a href={`${base}/blog`}>{t.nav.blog}</a></li>
+        <li><a href={`${base}/fachartikel`}>{t.nav.perspectives}</a></li>
+        <li><a href={`${base}/buecher`}>{t.nav.books}</a></li>
+        <li><a href={`${base}/beirat`}>{t.nav.boardAdvisory}</a></li>
+        <li><a href={`${base}/christian-maass`}>{t.nav.about}</a></li>
+        <li><a href={`${base}/kontakt`}>{t.nav.contact}</a></li>
       </ul>
     </div>
 
     <div class="footer-block">
-      <h3>Kontakt</h3>
+      <h3>{t.footer.contact}</h3>
       <address>
         Dr. Christian Maaß<br>
-        Am Leinritt 7<br>
-        96049 Bamberg<br>
-        <a href="mailto:christian@netzbaron.de">Christian@netzbaron.de</a><br>
-        <a href="tel:+491735143253">+49 173 5143253</a>
+        Thomann GmbH<br>
+        Hans-Thomann-Str. 1<br>
+        96138 Burgebrach
       </address>
+      <div class="social-icons">
+        <a href="https://www.linkedin.com/in/christianmaass" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+          <img src={`${assetPath}/linkedin.svg`} alt="LinkedIn" width="24" height="24" loading="lazy" />
+        </a>
+        <a href="mailto:info@christian-maass.de" aria-label="E-Mail">
+          <img src={`${assetPath}/mail.svg`} alt="E-Mail" width="24" height="24" loading="lazy" />
+        </a>
+      </div>
     </div>
 
     <div class="footer-block">
-      <h3>Rechtliches</h3>
+      <h3>{t.footer.legal}</h3>
       <ul>
-        <li><a href="/impressum">Impressum</a></li>
-        <li><a href="/datenschutz">Datenschutz</a></li>
-        <li><a href="/barrierefreiheit">Barrierefreiheit</a></li>
+       <li><a href="/impressum">{t.footer.imprint}</a></li>
+       <li><a href="/datenschutz">{t.footer.privacy}</a></li>
+       <li><a href="/barrierefreiheit">{t.footer.accessibility}</a></li>
       </ul>
     </div>
 
     <div class="footer-block">
-      <h3>Aktuelles Buch</h3>
-      <a href="/buecher/mein-aktuelles-buch">
-        <img src="/executive-presence-maass.jpg" alt="Executive Presence" class="footer-book-cover" />
+      <h3>{t.footer.myMostRecentBook}</h3>
+      <a href="https://www.amazon.de/Executive-Presence-Führungskraft-auftreten-kommunizieren/dp/3648190466" target="_blank" rel="noopener noreferrer">
+        <img src={`${assetPath}/executive-presence-maass.jpg`} alt="Buchcover Executive Presence" class="footer-book-cover" width="150" height="225" loading="lazy" />
       </a>
-      <p>„Executive Presence“</p>
     </div>
 
   </div>
 
   <div class="footer-copy">
-    &copy; 2025 Christian Maaß. Alle Rechte vorbehalten.
+    {t.footer.allRightsReserved}
   </div>
 </footer>

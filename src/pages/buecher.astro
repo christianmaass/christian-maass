@@ -1,0 +1,284 @@
+---
+// filepath: /Users/christianmaass/christian-maass/src/pages/buecher.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getTranslations, getBasePath } from '../i18n/utils';
+
+const locale = 'de';
+const t = getTranslations(locale);
+const base = getBasePath(locale);
+const assetPath = ''; // Assets werden immer vom Root geladen
+const siteUrl = "https://christianmaass.com";
+const currentUrl = `${siteUrl}/buecher`;
+const ogImage = `${siteUrl}/meine-buecher-maass.png`;
+---
+
+
+<Fragment slot="head">
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Book",
+      "@id": "https://christianmaass.com/buecher/#executive-presence",
+      "name": "Executive Presence – mehr als der erste Eindruck: Als Führungskraft souverän auftreten, kommunizieren und wirken",
+      "alternateName": "Executive Presence (Haufe Fachbuch)",
+      "author": {
+        "@type": "Person",
+        "@id": "https://christianmaass.com/#person",
+        "name": "Christian Maaß"
+      },
+      "isbn": "978-3648190463",
+      "datePublished": "2025-08-21",
+      "description": "Executive Presence ist der Schlüssel, der den Unterschied ausmacht: zwischen jemandem, der einfach einen Raum betritt, und jemandem, der ihn verändert. Sie entscheidet darüber, ob Menschen zuhören, folgen und handeln – und ob Führung akzeptiert wird. Dieses Buch unterstützt Führungskräfte dabei, ihre Wirkung in sozialen Interaktionen zu optimieren, Einfluss zu gewinnen und ihre Führungsstärke auszubauen. Es beleuchtet, warum wir manche Menschen als Führungspersönlichkeiten wahrnehmen. Dabei stehen vier zentrale Säulen, die eine starke Präsenz ausmachen, im Fokus: Auftreten, Kommunikation, Wirkung sowie Feedback/Selbstreflexion. Praxiserprobte Methoden, Fallbeispiele und Selbstchecks helfen Ihnen, auch unter Druck oder in schwierigen Situationen souverän aufzutreten und Ihre Führungsstärke gezielt einzusetzen.",
+      "inLanguage": "de",
+      "numberOfPages": 156,
+      "bookFormat": "https://schema.org/Paperback",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Haufe"
+      },
+      "url": "https://www.amazon.de/Executive-Presence-F%C3%BChrungskraft-auftreten-kommunizieren/dp/3648190466",
+      "image": "https://christianmaass.com/executive-presence-maass.jpg"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://christianmaass.com/buecher/#online-produktmanagement",
+      "name": "Online-Produktmanagement: Von der Idee zum Online-Produkt",
+      "author": [
+        {
+          "@type": "Person",
+          "@id": "https://christianmaass.com/#person",
+          "name": "Christian Maaß"
+        },
+        {
+          "@type": "Person",
+          "name": "Gotthard Pietsch"
+        }
+      ],
+      "isbn": "978-3446424210",
+      "datePublished": "2010-11-04",
+      "description": "PRODUKTMANAGEMENT GOES ONLINE - Verschaffen Sie sich einen umfassenden Überblick über die Aufgabenbereiche, Tools und Methoden des Online-Produktmanagements - Erfahren Sie, wie Sie Online-Produkte erfolgreich planen, entwickeln und betreiben - Basiert auf der Erfahrung der Autoren mit erfolgreich etablierten Online-Produkten von Unternehmen wie AutoScout24, Lycos Europe, Otto, Bertelsmann u.a. - Nutzen Sie die in der Praxis erprobten Arbeitsvorlagen und Checklisten. Online-Produkte wie z.B. Amazon, Twitter & Co. oder auch die Webpräsenz Ihres Unternehmens prägen mittlerweile die moderne Wirtschaft und bringen grundlegende Veränderungen gewachsener Business-Strukturen mit sich. Auch für Sie als Produktmanager bedeutet das einschneidende Veränderungen. Die betriebswirtschaftlichen Kenntnisse alleine reichen nicht mehr aus. Wer Online-Produkte erfolgreich etablieren will, muss sich auch mit der Informationstechnik auseinandersetzen. Hier erhalten Sie einen praxisorientierten und systematischen Überblick über das Online-Produktmanagement und damit einen Leitfaden für Ihre tägliche Arbeit. Er beschreibt die zentralen Aufgaben und Tätigkeitsfelder und stellt die dafür benötigten Arbeitsinstrumente und -methoden vor. Beispiele aus der Praxis, Erfahrungsberichte verschiedener Online-Produktmanager sowie Arbeitsvorlagen und Checklisten helfen beim Transfer des Gelernten in Ihre Projekte. Aus dem Inhalt: Einführung in das Online-Produktmanagement; Besonderheiten des Wettbewerbs; Strategische Grundlagen; Organisatorische Grundsatzentscheidungen; Online-Produktideen entwickeln, bewerten und präzisieren; Verfassen von Grobkonzepten und Produktspezifikationen; Das finanzwirtschaftliche Erfolgspotenzial von Online-Produkten; Vorarbeiten im Vorfeld von Online-Entwicklungsprojekten; Projektdurchführung und \"Going live\".",
+      "inLanguage": "de",
+      "numberOfPages": 272,
+      "bookFormat": "https://schema.org/Hardcover",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Carl Hanser Verlag GmbH & Co. KG"
+      },
+      "url": "https://www.amazon.de/Online-Produktmanagement-Von-Idee-zum-Online-Produkt/dp/3446424210"
+      ,
+      "image": "https://christianmaass.com/online-produktmanagement-maass.jpg"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://christianmaass.com/buecher/#e-business-management",
+      "name": "E-Business Management: Gestaltung von Geschäftsmodellen in der vernetzten Wirtschaft",
+      "author": {
+        "@type": "Person",
+        "@id": "https://christianmaass.com/#person",
+        "name": "Christian Maaß"
+      },
+      "isbn": "978-3825229917",
+      "datePublished": "2008-03-19",
+      "description": "Die elektronische Geschäftstätigkeit gewinnt für Unternehmen in allen Wirtschaftszweigen immer mehr an Bedeutung. Die Auseinandersetzung mit dem E-Business Management bereitet mitunter jedoch erhebliche Probleme. An dieser Stelle setzt das vorliegende Buch an. Es soll dem Leser die aus betriebswirtschaftlicher Sicht relevanten technischen Grundlagen vermitteln, um Geschäftsmodelle im E-Business beurteilen, gestalten und modifizieren zu können, sowie die dazu benötigten Steuerungs- / Analysewerkzeuge kennen zu lernen. Das Buch ist als Einführung und zugleich Nachschlagewerk für das Thema E-Business Management konzipiert und richtet sich an Studenten und Lehrende an Universitäten und Fachhochschulen, aber auch Leser aus der Unternehmenspraxis.",
+      "inLanguage": "de",
+      "numberOfPages": 321,
+      "bookFormat": "https://schema.org/Paperback",
+      "publisher": {
+        "@type": "Organization",
+        "name": "UTB"
+      },
+      "url": "https://www.amazon.de/Business-Management-Gestaltung-Gesch%C3%A4ftsmodellen-Uni-Taschenb%C3%BCcher/dp/3825229912",
+      "image": "https://christianmaass.com/ebusiness-management-maass.jpg"
+    },
+    {
+      "@type": "Book",
+      "@id": "https://christianmaass.com/buecher/#strategische-optionen-open-source",
+      "name": "Strategische Optionen im Wettbewerb mit Open-Source-Software",
+      "author": {
+        "@type": "Person",
+        "@id": "https://christianmaass.com/#person",
+        "name": "Christian Maaß"
+      },
+      "isbn": "978-3832511227",
+      "datePublished": "2006-03-15",
+      "description": "Open-Source-Software hat in den vergangenen Jahren eine große Resonanz in der Wirtschaft hervorgerufen. In dieser Arbeit werden damit einhergehende wettbewerbsstrategische Fragen diskutiert. Dabei wird eine neue Strategietypologie entwickelt und deren inhaltliche Ausgestaltung im Bereich der Preis- und Lizenzpolitik erörtert. Das Buch richtet sich an Dozenten und Studenten der Wirtschaftsinformatik und Betriebswirtschaftslehre sowie an Führungskräfte in der IT-Branche.",
+      "inLanguage": "de",
+      "numberOfPages": 241,
+      "bookFormat": "https://schema.org/Paperback",
+      "publisher": {
+        "@type": "Organization",
+        "name": "Logos Berlin"
+      },
+      "url": "https://www.amazon.de/Strategische-Optionen-Wettbewerb-mit-Open-Source-Software/dp/3832511229",
+      "image": "https://christianmaass.com/open-source-maass.jpg"
+    }
+  ]
+}
+</script>
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "@id": "https://christianmaass.com/buecher/#webpage",
+  "url": "https://christianmaass.com/buecher/",
+  "name": "Fachbücher zu Leadership und Digital Business | Christian Maaß",
+  "description": "Fachbücher zu Leadership, E-Commerce und Digital Business. Von Executive Presence über Online-Produktmanagement bis hin zu E-Business Management – basierend auf 20 Jahren Praxiserfahrung.",
+  "inLanguage": "de",
+  "isPartOf": {
+    "@id": "https://christianmaass.com/#website"
+  },
+  "about": {
+    "@id": "https://christianmaass.com/#person"
+  },
+  "breadcrumb": {
+    "@id": "https://christianmaass.com/buecher/#breadcrumb"
+  }
+}
+</script>
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "@id": "https://christianmaass.com/buecher/#itemlist",
+  "name": "Bücher von Christian Maaß",
+  "description": "Liste aller Fachbücher zu Leadership und Digital Business von Christian Maaß",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "item": {
+        "@id": "https://christianmaass.com/buecher/#executive-presence"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "item": {
+        "@id": "https://christianmaass.com/buecher/#online-produktmanagement"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "item": {
+        "@id": "https://christianmaass.com/buecher/#e-business-management"
+      }
+    },
+    {
+      "@type": "ListItem",
+      "position": 4,
+      "item": {
+        "@id": "https://christianmaass.com/buecher/#strategische-optionen-open-source"
+      }
+    }
+  ]
+}
+</script>
+</Fragment>
+
+<BaseLayout title={t.pages.buecher.title} description={t.pages.buecher.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+
+  <section class="content-wrapper books-section" aria-label="Bücher-Liste">
+    <header class="books-header">
+      <div class="books-intro">
+        <h1>{t.pages.buecher.h1}</h1>
+        <p class="section-intro" set:html={t.pages.buecher.intro} />
+      </div>
+      <figure class="books-figure">
+        <img src={`${assetPath}/meine-buecher-maass.png`} alt="Bücher-Stapel: E-Business Management (UTB) und Online-Produktmanagement (Hanser) von Christian Maaß" loading="eager" />
+      </figure>
+    </header>
+
+    <div class="books-list">
+      <article class="book-detail-box">
+        <div class="book-image">
+          <img src={`${assetPath}/executive-presence-maass.jpg`} alt="Buchcover Executive Presence – mehr als der erste Eindruck" width="300" height="450" loading="lazy" />
+        </div>
+        <div class="book-content">
+          <h2>{t.pages.buecher.executivePresence.title}</h2>
+          <p class="book-meta" set:html={t.pages.buecher.executivePresence.meta} />
+          <p>{t.pages.buecher.executivePresence.description1}</p>
+          <p>{t.pages.buecher.executivePresence.description2}</p>
+          <p>{t.pages.buecher.executivePresence.description3}</p>
+          <a href="https://www.amazon.de/Executive-Presence-F%C3%BChrungskraft-auftreten-kommunizieren/dp/3648190466" target="_blank" rel="noopener noreferrer" class="cta-btn">{t.pages.buecher.executivePresence.cta}</a>
+        </div>
+      </article>
+
+      <article class="book-detail-box">
+        <div class="book-image">
+          <img src={`${assetPath}/online-produktmanagement-maass.jpg`} alt="Buchcover Online-Produktmanagement: Von der Idee zum Online-Produkt" width="300" height="450" loading="lazy" />
+        </div>
+        <div class="book-content">
+          <h2>{t.pages.buecher.onlineProduktmanagement.title}</h2>
+          <p class="book-meta" set:html={t.pages.buecher.onlineProduktmanagement.meta} />
+          <p>{t.pages.buecher.onlineProduktmanagement.description1}</p>
+          <p>{t.pages.buecher.onlineProduktmanagement.description2}</p>
+          <p>{t.pages.buecher.onlineProduktmanagement.description3}</p>
+          <a href="https://www.amazon.de/Online-Produktmanagement-Von-Idee-zum-Online-Produkt/dp/3446424210" target="_blank" rel="noopener noreferrer" class="cta-btn">{t.pages.buecher.onlineProduktmanagement.cta}</a>
+        </div>
+      </article>
+
+      <article class="book-detail-box">
+        <div class="book-image">
+          <img src={`${assetPath}/ebusiness-management-maass.jpg`} alt="Buchcover E-Business Management: Gestaltung von Geschäftsmodellen" width="300" height="450" loading="lazy" />
+        </div>
+        <div class="book-content">
+          <h2>{t.pages.buecher.eBusinessManagement.title}</h2>
+          <p class="book-meta" set:html={t.pages.buecher.eBusinessManagement.meta} />
+          <p>{t.pages.buecher.eBusinessManagement.description1}</p>
+          <p>{t.pages.buecher.eBusinessManagement.description2}</p>
+          <p>{t.pages.buecher.eBusinessManagement.description3}</p>
+          <a href="https://www.amazon.de/Business-Management-Gestaltung-Gesch%C3%A4ftsmodellen-Uni-Taschenb%C3%BCcher/dp/3825229912" target="_blank" rel="noopener noreferrer" class="cta-btn">{t.pages.buecher.eBusinessManagement.cta}</a>
+        </div>
+      </article>
+
+      <article class="book-detail-box">
+        <div class="book-image">
+          <img src={`${assetPath}/open-source-maass.jpg`} alt="Buchcover Strategische Optionen im Wettbewerb mit Open-Source-Software" width="300" height="450" loading="lazy" />
+        </div>
+        <div class="book-content">
+          <h2>{t.pages.buecher.openSource.title}</h2>
+          <p class="book-meta" set:html={t.pages.buecher.openSource.meta} />
+          <p>{t.pages.buecher.openSource.description1}</p>
+          <p>{t.pages.buecher.openSource.description2}</p>
+          <p>{t.pages.buecher.openSource.description3}</p>
+          <a href="https://www.amazon.de/Strategische-Optionen-Wettbewerb-mit-Open-Source-Software/dp/3832511229" target="_blank" rel="noopener noreferrer" class="cta-btn">{t.pages.buecher.openSource.cta}</a>
+        </div>
+      </article>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .books-header {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: var(--space-5);
+    align-items: center;
+    margin-bottom: var(--space-5);
+  }
+  .books-intro {
+    max-width: 60ch;
+  }
+  .books-figure {
+    margin: 0;
+  }
+  .books-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: var(--radius-sm);
+  }
+  @media (max-width: 900px) {
+    .books-header {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+    .books-figure {
+      max-width: 240px;
+      margin: 0 auto;
+    }
+  }
+</style>

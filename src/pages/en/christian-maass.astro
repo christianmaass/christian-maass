@@ -1,0 +1,95 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, getBasePath } from '../../i18n/utils';
+
+const locale = 'en';
+const t = getTranslations(locale);
+const base = getBasePath(locale);
+const siteUrl = "https://christianmaass.com";
+const currentUrl = `${siteUrl}/en/christian-maass`;
+const ogImage = `${siteUrl}/dr-christian-maass.png`;
+---
+
+<Fragment slot="head">
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "@id": "https://christianmaass.com/#person",
+  "name": "Christian Maaß",
+  "alternateName": "Dr. Christian Maaß",
+  "honorificPrefix": "Dr.",
+  "inLanguage": "en",
+  "url": "https://christianmaass.com/christian-maass/",
+  "image": "https://christianmaass.com/christian-maass-ueber-mich.png",
+  "sameAs": [
+    "https://www.linkedin.com/in/christianmaass/",
+    "https://www.amazon.de/stores/author/B0045949JA",
+    "https://www.instagram.com/christianmaass/",
+    "https://x.com/ChristianMaass"
+  ],
+  "jobTitle": "Managing Director & Chief Digital Officer",
+  "description": "Christian Maaß is an experienced managing director, recognized book author and versatile advisor and board member. With over 20 years of experience in the media industry and commerce (B2C & B2B), he brings expertise in strategy development, product management, project management and marketing. His focus is on digital transformation and supporting companies through complex change processes.",
+  "worksFor": [
+    {
+      "@type": "Organization",
+      "name": "Thomann",
+      "url": "https://www.thomann.de/",
+      "startDate": "2022-01-01",
+      "jobTitle": "Chief Digital Officer",
+      "description": "Responsibility for Thomann's digital business"
+    },
+    {
+      "@type": "Organization",
+      "name": "Christian Maaß Advisory",
+      "url": "https://christianmaass.com/",
+      "@id": "https://christianmaass.com/#organization",
+      "startDate": "2016-01-01",
+      "jobTitle": "Advisor & Board Member",
+      "description": "Advising companies in the areas of digital strategy, e-commerce and agile transformation as well as serving on advisory boards."
+    }
+  ],
+  "memberOf": [
+    {
+      "@type": "Organization",
+      "additionalType": "TradeAssociation",
+      "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.",
+      "description": "German E-Commerce and Mail Order Association",
+      "url": "https://www.bevh.org/",
+      "member": { "@id": "https://christianmaass.com/#person" },
+      "roleName": "Vice President E-Commerce",
+      "startDate": "2023-11-01"
+    }
+  ]
+}
+</script>
+</Fragment>
+
+<BaseLayout title={t.pages.christianMaass.title} description={t.pages.christianMaass.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+  <section class="content-wrapper">
+    <article class="bio">
+      <h1 set:html={t.pages.christianMaass.h1.replace('Chief Digital Officer', 'Chief<br>Digital Officer')}></h1>
+
+      <section>
+        <h2>{t.pages.christianMaass.whatIDo.title}</h2>
+        <p>{t.pages.christianMaass.whatIDo.text}</p>
+      </section>
+
+      <section>
+        <h2>{t.pages.christianMaass.whereIDoIt.title}</h2>
+        <p>{t.pages.christianMaass.whereIDoIt.text}</p>
+      </section>
+
+      <section>
+        <h2>{t.pages.christianMaass.whenCompanies.title}</h2>
+        <p>{t.pages.christianMaass.whenCompanies.text}</p>
+      </section>
+
+      <section>
+        <h2>{t.pages.christianMaass.whatIPublish.title}</h2>
+        <p>{t.pages.christianMaass.whatIPublish.text}</p>
+      </section>
+    </article>
+  </section>
+</BaseLayout>
+

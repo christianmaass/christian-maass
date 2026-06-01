@@ -1,0 +1,76 @@
+---
+import { getTranslations, getBasePath, type Locale } from '../i18n/utils';
+
+const { currentLocale = "de" as Locale, pathname: pathnameProp, siteUrl = "https://christianmaass.com" } = Astro.props;
+const pathname = pathnameProp || Astro.url.pathname;
+const t = getTranslations(currentLocale);
+const base = getBasePath(currentLocale);
+
+// Breadcrumb-Mapping für Seiten
+const breadcrumbMap: Record<string, { de: string; en: string }> = {
+  '/': { de: 'Startseite', en: 'Home' },
+  '/christian-maass': { de: 'Christian Maaß', en: 'Christian Maaß' },
+  '/buecher': { de: 'Bücher', en: 'Books' },
+  '/fachartikel': { de: 'Fachartikel', en: 'Articles' },
+  '/lehre': { de: 'Lehre', en: 'Teaching' },
+  '/beirat': { de: 'Beirat', en: 'Board Advisory' },
+  '/kontakt': { de: 'Kontakt', en: 'Contact' },
+  '/impressum': { de: 'Impressum', en: 'Imprint' },
+  '/datenschutz': { de: 'Datenschutz', en: 'Privacy' },
+  '/barrierefreiheit': { de: 'Barrierefreiheit', en: 'Accessibility' },
+};
+
+// Englische Pfade
+const breadcrumbMapEn: Record<string, { de: string; en: string }> = {
+  '/en/': { de: 'Startseite', en: 'Home' },
+  '/en/christian-maass': { de: 'Christian Maaß', en: 'Christian Maaß' },
+  '/en/buecher': { de: 'Bücher', en: 'Books' },
+  '/en/fachartikel': { de: 'Fachartikel', en: 'Articles' },
+  '/en/lehre': { de: 'Lehre', en: 'Teaching' },
+  '/en/beirat': { de: 'Beirat', en: 'Board Advisory' },
+  '/en/kontakt': { de: 'Kontakt', en: 'Contact' },
+};
+
+// Normalisiere den Pfad
+const normalizedPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
+const currentPath = normalizedPath || '/';
+
+// Generiere Breadcrumb-Items
+const items: Array<{ name: string; url: string }> = [];
+
+// Home immer hinzufügen
+items.push({
+  name: currentLocale === 'de' ? 'Startseite' : 'Home',
+  url: `${siteUrl}${base}/`,
+});
+
+// Wenn nicht Homepage, aktuellen Pfad hinzufügen
+if (currentPath !== '/' && currentPath !== '/en/') {
+  const pathKey = currentPath.startsWith('/en/') ? currentPath : currentPath;
+  const map = currentPath.startsWith('/en/') ? breadcrumbMapEn : breadcrumbMap;
+  const breadcrumb = map[pathKey];
+  
+  if (breadcrumb) {
+    items.push({
+      name: breadcrumb[currentLocale],
+      url: `${siteUrl}${currentPath}`,
+    });
+  }
+}
+
+// Generiere BreadcrumbList Schema
+const breadcrumbListSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.name,
+    "item": item.url,
+  })),
+};
+---
+
+<!-- Nur strukturierte Daten für SEO, keine visuelle Anzeige -->
+<script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbListSchema)} />
+

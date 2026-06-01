@@ -1,0 +1,50 @@
+---
+// filepath: /Users/christianmaass/christian-maass/src/pages/datenschutz.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+const base = "";
+const title = "Datenschutzerklärung von Christian Maaß";
+const description = "Datenschutzerklärung, Sammlung von Daten, etc.";
+const siteUrl = "https://christianmaass.com";
+const currentUrl = `${siteUrl}/datenschutz`;
+const ogImage = `${siteUrl}/christian-maass.png`;
+---
+
+<Fragment slot="head">
+</Fragment>
+
+<BaseLayout title={title} description={description} canonical={currentUrl} ogImage={ogImage}>
+  <section class="content-wrapper">
+    <h1>Datenschutzerklärung</h1>
+    <p>
+      Der Schutz Ihrer persönlichen Daten ist mir ein besonderes Anliegen. Ich verarbeite Ihre Daten daher ausschließlich auf Grundlage der gesetzlichen Bestimmungen (DSGVO, TMG).
+    </p>
+    <h2>Kontakt mit mir</h2>
+    <p>
+      Wenn Sie per Formular auf der Website oder per E-Mail Kontakt mit mir aufnehmen, werden Ihre angegebenen Daten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen sechs Monate bei mir gespeichert. Diese Daten gebe ich nicht ohne Ihre Einwilligung weiter.
+    </p>
+    <h2>Cookies</h2>
+    <p>
+      Meine Website verwendet keine Cookies zur Speicherung personenbezogener Daten.
+    </p>
+    <h2>Server-Logfiles</h2>
+    <p>
+      Der Provider der Seiten erhebt und speichert automatisch Informationen in so genannten Server-Logfiles, die Ihr Browser automatisch übermittelt. Dies sind: Browsertyp und Browserversion, verwendetes Betriebssystem, Referrer URL, Hostname des zugreifenden Rechners, Uhrzeit der Serveranfrage. Diese Daten sind nicht bestimmten Personen zuordenbar. Eine Zusammenführung dieser Daten mit anderen Datenquellen wird nicht vorgenommen.
+    </p>
+    <h2>Ihre Rechte</h2>
+    <p>
+      Ihnen stehen grundsätzlich die Rechte auf Auskunft, Berichtigung, Löschung, Einschränkung, Datenübertragbarkeit, Widerruf und Widerspruch zu. Wenn Sie glauben, dass die Verarbeitung Ihrer Daten gegen das Datenschutzrecht verstößt oder Ihre datenschutzrechtlichen Ansprüche sonst in einer Weise verletzt worden sind, können Sie sich bei der Aufsichtsbehörde beschweren.
+    </p>
+    <h2>Kontakt</h2>
+    <p>
+      Verantwortlich für den Datenschutz:<br>
+      Dr. Christian Maaß<br>
+      Am Leinritt 7<br>
+      96049 Bamberg<br>
+      Deutschland<br>
+      E-Mail: <a href="mailto:info@christian-maass.de">info@christian-maass.de</a>
+    </p>
+    <p>
+      Stand: Juli 2025
+    </p>
+  </section>
+</BaseLayout>

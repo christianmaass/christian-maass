@@ -1,0 +1,183 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getTranslations, getBasePath } from '../../i18n/utils';
+
+const locale = 'en';
+const t = getTranslations(locale);
+const base = getBasePath(locale);
+const siteUrl = "https://christianmaass.com";
+const currentUrl = `${siteUrl}/en/kontakt`;
+const ogImage = `${siteUrl}/og/default.jpg`;
+---
+
+<Fragment slot="head">
+<script is:inline type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": "https://christianmaass.com/en/kontakt/#webpage",
+  "url": "https://christianmaass.com/en/kontakt/",
+  "name": "Contact · Christian Maaß",
+  "description": "Advisory and mandate enquiries, speaker bookings, media requests for Christian Maaß. Personal, discreet, no forms.",
+  "inLanguage": "en",
+  "isPartOf": { "@id": "https://christianmaass.com/#website" },
+  "about": { "@id": "https://christianmaass.com/#person" },
+  "mainEntity": {
+    "@type": "Person",
+    "@id": "https://christianmaass.com/#person",
+    "email": "christian@christianmaass.com",
+    "sameAs": ["https://www.linkedin.com/in/christianmaass/"]
+  }
+}
+</script>
+</Fragment>
+
+<BaseLayout title={t.pages.kontakt.title} description={t.pages.kontakt.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+  <section class="content-wrapper">
+    <article class="contact-page">
+      <header class="contact-header">
+        <h1>{t.pages.kontakt.h1}</h1>
+        <p class="lead">{t.pages.kontakt.lead}</p>
+      </header>
+
+      <div class="contact-channels">
+        <section class="contact-channel">
+          <h2>{t.pages.kontakt.advisory.title}</h2>
+          <p>{t.pages.kontakt.advisory.description}</p>
+          <a href={`mailto:${t.pages.kontakt.advisory.cta}`} class="contact-link">{t.pages.kontakt.advisory.cta}</a>
+        </section>
+
+        <section class="contact-channel">
+          <h2>{t.pages.kontakt.speaker.title}</h2>
+          <p>{t.pages.kontakt.speaker.description}</p>
+          <a href={`mailto:${t.pages.kontakt.speaker.cta}`} class="contact-link">{t.pages.kontakt.speaker.cta}</a>
+        </section>
+
+        <section class="contact-channel">
+          <h2>{t.pages.kontakt.media.title}</h2>
+          <p>{t.pages.kontakt.media.description}</p>
+          <a href={`mailto:${t.pages.kontakt.media.cta}`} class="contact-link">{t.pages.kontakt.media.cta}</a>
+        </section>
+      </div>
+
+      <aside class="contact-details">
+        <h2>{t.pages.kontakt.details.title}</h2>
+        <ul>
+          <li><strong>Email:</strong> <a href={`mailto:${t.pages.kontakt.details.email}`}>{t.pages.kontakt.details.email}</a></li>
+          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/christianmaass/" target="_blank" rel="noopener noreferrer">{t.pages.kontakt.details.linkedin}</a></li>
+        </ul>
+        <h3>{t.pages.kontakt.details.addressTitle}</h3>
+        <address>
+          Dr. Christian Maaß<br>
+          Hans-Thomann-Str. 1<br>
+          96138 Burgebrach<br>
+          Germany
+        </address>
+      </aside>
+    </article>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact-page {
+    max-width: 80ch;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+  }
+  .contact-header {
+    margin-bottom: 3rem;
+  }
+  .contact-header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #012030;
+    margin: 0 0 1rem 0;
+    line-height: 1.15;
+  }
+  .contact-header .lead {
+    font-size: 1.15rem;
+    line-height: 1.6;
+    color: #333;
+    margin: 0;
+  }
+  .contact-channels {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+  .contact-channel {
+    padding: var(--space-4);
+    background: var(--color-bg-soft-gradient);
+    border-radius: var(--radius-sm);
+  }
+  .contact-channel h2 {
+    margin: 0 0 0.75rem 0;
+    font-size: 1.25rem;
+    color: #012030;
+    border: none;
+    padding: 0;
+  }
+  .contact-channel p {
+    margin: 0 0 1rem 0;
+    line-height: 1.6;
+    color: #333;
+  }
+  .contact-link {
+    color: #012030;
+    font-weight: 700;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: color 0.2s;
+  }
+  .contact-link:hover {
+    color: #5C7585;
+  }
+  .contact-details {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(0,0,0,0.1);
+  }
+  .contact-details h2 {
+    margin: 0 0 1rem 0;
+    font-size: 1.25rem;
+    color: #012030;
+    border: none;
+    padding: 0;
+  }
+  .contact-details h3 {
+    margin: 1.5rem 0 0.5rem 0;
+    font-size: 1rem;
+    color: #012030;
+  }
+  .contact-details ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .contact-details ul li {
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+  }
+  .contact-details a {
+    color: #012030;
+    text-decoration: underline;
+  }
+  .contact-details a:hover {
+    color: #5C7585;
+  }
+  .contact-details address {
+    font-style: normal;
+    line-height: 1.6;
+    color: #333;
+  }
+
+  @media (max-width: 768px) {
+    .contact-header h1 {
+      font-size: 1.8rem;
+    }
+    .contact-channel {
+      padding: 1.5rem;
+    }
+  }
+</style>
