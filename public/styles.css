@@ -73,7 +73,7 @@
   --font-size-xl: 1.5rem;
   --font-size-2xl: 1.75rem;
   --font-size-3xl: 2.5rem;   /* Page-H1 (alle Seiten gleich) */
-  --font-size-hero: clamp(2.75rem, 6vw, 5.5rem);
+  --font-size-hero: clamp(2.5rem, 5vw, 4.75rem);
   --line-height-tight: 1.2;
   --line-height-hero: 1.05;
   --line-height-base: 1.6;
