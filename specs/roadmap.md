@@ -97,7 +97,7 @@ Aktuelles `src/pages/blog.astro` wird gelöscht und durch `src/pages/blog/index.
 | 14 | [Autoren-Box](#epic-14) | ✅ Done | S | Bio + Foto unter Artikel-Body |
 | 15 | [Übersichtsseite & Pagination](#epic-15) | ✅ Done | M | `/blog/`, `/blog/2/` etc., 10 pro Seite |
 | 16 | [SEO, RSS, JSON-LD](#epic-16) | ✅ Done | S | BlogPosting-Schema, OG-Article, RSS-Feed, Sitemap-Priorität |
-| 17 | [QA & Release](#epic-17) | ⏳ Pending | S–M | A11y, Lighthouse, Cross-Browser, Empty-State |
+| 17 | [QA & Release](#epic-17) | ✅ Code-QA Done · Manual TBD | S–M | A11y-Smoke ✓ · Empty-State ✓ · Safari-Audit ✓ · Lighthouse manuell |
 
 ## Reihenfolge & Abhängigkeiten
 
@@ -419,26 +419,76 @@ Blog ist für Suchmaschinen, Social-Sharing-Crawler und RSS-Reader korrekt aufge
 
 Vor Live-Schaltung sicherstellen, dass die Blog-Funktion produktionsreif ist.
 
-### Checkliste
+### Automatisierte QA (in diesem Epic erledigt)
 
-- [ ] **Kontraste**: Body-Prose, Byline, Sidebar-Links, Pagination — alle WCAG AA
-- [ ] **Keyboard-Nav**: Tab durch Homepage-Sektion-Items, Pagination-Links, Share-Buttons, AuthorBox-Link
-- [ ] **Focus-Visible**: alle interaktiven Elemente sichtbar auf Dark-Bg
-- [ ] **`prefers-reduced-motion`**: Hover-Animationen respektieren System-Setting (sollte global bereits greifen)
-- [ ] **Lighthouse** auf `/blog/`, `/blog/{slug}/`, Startseite: Perf/A11y/Best-Practices/SEO ≥ 90
-- [ ] **Cross-Browser**: Safari, Chrome, Firefox, Edge — sticky Sidebar (falls Epic 12-Refinement das beschließt), Share-Links
-- [ ] **Mobile**: 375 px – 768 px Viewport; Touch-Targets ≥ 44 px für Share-Buttons und Pagination
-- [ ] **Print-Stylesheet** für Detail-Page (optional, Refinement)
-- [ ] **Empty-State**: 0 Artikel, 1 Artikel, genau 10, genau 11 (Pagination kickt) testen
-- [ ] **Draft-Artikel** im Production-Build nicht sichtbar
-- [ ] **Image-Performance**: Featured-Images haben `width`/`height`/`loading`, Thumbnails `loading="lazy"`
-- [ ] **DE/EN-Switch**: führt auf Blog-Pfaden konsistent auf DE-Variante
-- [ ] **Build & Deploy**: `npm run build` sauber, dist enthält alle Pages, Sitemap valide
+**A11y-Smoke via Playwright + DOM-Inspection** auf `/`, `/blog/`, `/blog/[slug]/`:
+- ✅ Genau eine `<h1>` pro Seite
+- ✅ Alle `<img>`-Tags haben `alt`-Attribute
+- ✅ Alle interaktiven Elemente (a, button) haben einen Accessible-Name (Text, aria-label oder Inner-Image-Alt)
+- ✅ Alle `target="_blank"`-Links haben `rel="noopener noreferrer"`
+- ✅ Alle Landmark-Rollen vorhanden: header, nav, main, footer
+- ✅ Keine doppelten IDs
+- ✅ Saubere Headings-Hierarchie auf Detail-Page (H1 → H2 → H3)
 
-### Refinement-Punkte
+**Empty-State live verifiziert** (alle 3 Stubs temporär auf `draft: true` gesetzt):
+- ✅ `/` rendert **keine** „Neueste Beiträge"-Sektion (Component bricht früh ab, da `articles.length === 0`)
+- ✅ `/blog/` rendert „Noch keine Beiträge veröffentlicht." statt einer leeren Liste
+- ✅ Drei Detail-Pages dropt sauber aus dem Build (Pages: 21 → 18)
+- ✅ Drafts danach zurückgesetzt, Build wieder 21 Pages
 
-- Welcher OG-Image-Fallback, falls Frontmatter kein image hat?
-- Festlegung: was bedeutet „released" — wird automatisch deployed (gh-pages) oder manuell?
+**Safari-Risk-Audit** (alle modernen Safari-Versionen ≥ 13 OK):
+- ✅ `mask-image` (Hero-Portrait) hat `-webkit-mask-image`-Prefix neben dem Standard
+- ✅ `position: sticky` (Article-Sidebar): Safari 13+ ohne Prefix; älter irrelevant
+- ✅ `aspect-ratio` in ArticleRow/Header/AuthorBox: Safari 15+
+- ✅ Clipboard-API in ShareSidebar mit `document.execCommand`-Fallback
+- ✅ Kein `backdrop-filter` verwendet
+
+**Build/Deploy**:
+- ✅ `npm run build`: 21 Pages, ~830 ms, clean
+- ✅ `npm run check`: 0 errors, 0 warnings, 5 hints (alle in Pre-Existing-Code, nicht im Blog)
+- ✅ RSS-Feed `/blog/rss.xml` validiert (3 Items, `de-DE`)
+- ✅ Sitemap filtert Pagination + RSS heraus, listet `/blog/` + 3 Detail-URLs
+
+### Manual-Checkliste (vom Nutzer abzuarbeiten vor Release)
+
+**Lighthouse** (Chrome DevTools, Mobile + Desktop) auf:
+- [ ] `/` → Perf/A11y/Best-Practices/SEO jeweils ≥ 90
+- [ ] `/blog/` → dito
+- [ ] `/blog/ki-im-operating-statt-im-marketing/` → dito (Detail-Page Repräsentant)
+
+**Cross-Browser Safari** (kritisch für mask-image + sticky):
+- [ ] Hero-Portrait fadet sauber in den Hintergrund (radial-gradient mask)
+- [ ] Article-Sidebar bleibt beim Scrollen oben (sticky), bricht nicht aus
+- [ ] Share-Sidebar Copy-Link-Button funktioniert (clipboard.writeText)
+- [ ] Detail-Page-Layout 2/3 + 1/3 stabil bei verschiedenen Viewport-Breiten
+
+**Cross-Browser Firefox / Edge**: schneller Smoke-Test (Layout, Hover, Tab-Navigation)
+
+**Mobile (echte Geräte, nicht nur DevTools-Emulation)**:
+- [ ] 375 px Viewport (iPhone SE): Hero, Latest-Articles, Detail-Page, Pagination
+- [ ] Burger-Menu im dunklen Look funktioniert, Body-Scroll-Lock
+- [ ] Share-Buttons Touch-Targets ≥ 44 × 44 px
+- [ ] AuthorBox stacked: Portrait über Bio (max 220 px breit)
+
+**Reduced-Motion-Test** (macOS: System Settings → Accessibility → Display → Reduce Motion):
+- [ ] Hover-Transitions auf Article-Rows / Buttons werden auf 0,01 ms reduziert (greift global)
+
+**Pagination mit ≥ 11 Artikeln** (Edge-Case, sobald reale Artikel da sind):
+- [ ] Seite 2 wird automatisch generiert
+- [ ] „Vorherige/Nächste"-Links navigieren korrekt
+- [ ] Titel auf Seite 2 ist „Alle Beiträge — Seite 2 · Christian Maaß"
+
+**RSS-Reader-Validation**:
+- [ ] `/blog/rss.xml` öffnet sich in einem RSS-Reader (z. B. Feedly, NetNewsWire) ohne Fehler
+- [ ] Items zeigen Titel, Summary, Datum, Kategorie korrekt
+
+### Refinement-Punkte (offene Folge-Themen)
+
+- OG-Image-Generator (Satori) als eigenes Folge-Epic, sobald echte Artikel mit eigenen Featured-Images existieren
+- Code-Highlighting (Shiki) aktivieren, sobald erster Code-Artikel kommt
+- Kategorie-Filter auf Overview als Folge-Epic, sobald ≥ 10 Artikel da sind
+- Image-Pipeline (`astro:assets`) wenn Lighthouse-Performance darunter leidet
+- Newsletter-Signup als zusätzliches Sidebar-Modul
 
 ---
 
