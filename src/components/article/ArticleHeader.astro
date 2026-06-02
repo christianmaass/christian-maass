@@ -1,0 +1,85 @@
+---
+import type { Article } from '../../utils/articles';
+import { formatDateDE, formatDateISO, readingTimeMinutes } from '../../utils/formatDate';
+
+interface Props {
+  entry: Article;
+}
+
+const { entry } = Astro.props;
+const { title, summary, date, author, category, image } = entry.data;
+const readingTime = readingTimeMinutes(entry.body ?? '');
+---
+
+<header class="article-header">
+  <p class="article-eyebrow">{category}</p>
+  <h1 class="article-title">{title}</h1>
+  <p class="article-byline">
+    <span>{author}</span>
+    <span aria-hidden="true"> · </span>
+    <time datetime={formatDateISO(date)}>{formatDateDE(date)}</time>
+    <span aria-hidden="true"> · </span>
+    <span>{readingTime} min Lesezeit</span>
+  </p>
+  <p class="article-lead">{summary}</p>
+  <figure class="article-figure">
+    <img
+      src={image.src}
+      alt={image.alt}
+      loading="eager"
+      fetchpriority="high"
+      decoding="async"
+    />
+  </figure>
+</header>
+
+<style>
+  .article-header {
+    margin-bottom: var(--space-5);
+  }
+  .article-eyebrow {
+    margin: 0 0 var(--space-3) 0;
+    font-family: var(--font-family-base);
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+  }
+  .article-title {
+    font-family: var(--font-family-display);
+    font-size: clamp(2rem, 4.5vw, 3.5rem);
+    font-weight: var(--weight-medium);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--color-text-strong);
+    margin: 0;
+    max-width: 22ch;
+  }
+  .article-byline {
+    margin: var(--space-3) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+  }
+  .article-lead {
+    margin: var(--space-5) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--color-text-strong);
+    max-width: 60ch;
+  }
+  .article-figure {
+    margin: var(--space-6) 0 0 0;
+  }
+  .article-figure img {
+    width: 100%;
+    height: auto;
+    display: block;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-elevated);
+  }
+</style>
