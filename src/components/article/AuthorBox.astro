@@ -1,0 +1,132 @@
+---
+import { getTranslations, type Locale } from '../../i18n/utils';
+
+interface Props {
+  currentLocale?: Locale;
+  name?: string;
+  bio?: string;
+  image?: { src: string; alt: string };
+  ctaHref?: string;
+  ctaLabel?: string;
+}
+
+const {
+  currentLocale = 'de',
+  name,
+  bio,
+  image,
+  ctaHref = '/christian-maass',
+  ctaLabel,
+} = Astro.props;
+
+const t = getTranslations(currentLocale).components.authorBox;
+const displayName = name ?? t.name;
+const displayBio = bio ?? t.bio;
+const displayImage = image ?? { src: '/christian-maass.png', alt: t.portraitAlt };
+const displayCta = ctaLabel ?? t.cta;
+---
+
+<aside class="author-box" aria-labelledby="author-box-name">
+  <div class="author-box-text">
+    <p class="author-box-eyebrow">{t.eyebrow}</p>
+    <h3 id="author-box-name" class="author-box-name">{displayName}</h3>
+    <p class="author-box-bio">{displayBio}</p>
+    {ctaHref && (
+      <a href={ctaHref} class="author-box-cta">
+        {displayCta}
+        <span aria-hidden="true"> →</span>
+      </a>
+    )}
+  </div>
+  <div class="author-box-portrait-wrap">
+    <img
+      src={displayImage.src}
+      alt={displayImage.alt}
+      class="author-box-portrait"
+      loading="lazy"
+      decoding="async"
+    />
+  </div>
+</aside>
+
+<style>
+  .author-box {
+    margin-top: var(--space-7);
+    padding-top: var(--space-5);
+    border-top: 1px solid var(--color-border-subtle);
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-5);
+    align-items: start;
+  }
+  .author-box-text {
+    min-width: 0;
+  }
+  .author-box-eyebrow {
+    margin: 0;
+    font-family: var(--font-family-base);
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+  }
+  .author-box-name {
+    margin: var(--space-2) 0 0 0;
+    font-family: var(--font-family-display);
+    font-size: 1.5rem;
+    font-weight: var(--weight-medium);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--color-text-strong);
+  }
+  .author-box-bio {
+    margin: var(--space-3) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    max-width: 56ch;
+  }
+  .author-box-cta {
+    display: inline-flex;
+    align-items: center;
+    margin-top: var(--space-3);
+    font-family: var(--font-family-base);
+    font-size: 0.85rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .author-box-cta:hover {
+    color: var(--color-text-strong);
+  }
+  .author-box-portrait-wrap {
+    width: 100%;
+  }
+  .author-box-portrait {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center top;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-elevated);
+    filter: grayscale(1) contrast(1.05) brightness(0.95);
+    display: block;
+  }
+
+  @media (max-width: 640px) {
+    .author-box {
+      grid-template-columns: 1fr;
+      gap: var(--space-4);
+    }
+    .author-box-portrait-wrap {
+      order: -1;
+      max-width: 220px;
+    }
+  }
+</style>

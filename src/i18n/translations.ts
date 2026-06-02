@@ -322,6 +322,15 @@ export interface Translations {
     skipToContent: string;
     menuToggle: string;
   };
+  components: {
+    authorBox: {
+      eyebrow: string;
+      name: string;
+      bio: string;
+      cta: string;
+      portraitAlt: string;
+    };
+  };
 }
 
 export const translations: Record<Locale, Translations> = {
@@ -733,6 +742,15 @@ export const translations: Record<Locale, Translations> = {
       skipToContent: 'Zum Inhalt springen',
       menuToggle: 'Menü öffnen/Schließen',
     },
+    components: {
+      authorBox: {
+        eyebrow: 'Über den Autor',
+        name: 'Christian Maaß',
+        bio: 'Christian Maaß ist Managing Director und Chief Digital Officer bei Thomann sowie Aufsichtsrat im E-Commerce. Er schreibt und spricht über die Übersetzung zwischen Strategie, Technologie und Organisation — und über die Operating-Realität, in der sich entscheidet, ob digitale Vorhaben Wert schaffen. Vier Fachbücher, zuletzt „Executive Presence" (Haufe, 2025), Lehrauftrag an der Frankfurt School of Business & Finance.',
+        cta: 'Mehr über mich',
+        portraitAlt: 'Porträt von Christian Maaß',
+      },
+    },
   },
   en: {
     nav: {
@@ -1141,6 +1159,15 @@ export const translations: Record<Locale, Translations> = {
     ui: {
       skipToContent: 'Skip to content',
       menuToggle: 'Open/Close menu',
+    },
+    components: {
+      authorBox: {
+        eyebrow: 'About the author',
+        name: 'Christian Maaß',
+        bio: 'Christian Maaß is Managing Director and Chief Digital Officer at Thomann and serves as a non-executive director in e-commerce. He writes and speaks about the translation between strategy, technology and organisation — and about the operating reality in which digital ventures either create value or quietly fail to. Four expert books, most recently „Executive Presence" (Haufe, 2025); lecturer at Frankfurt School of Business & Finance.',
+        cta: 'More about me',
+        portraitAlt: 'Portrait of Christian Maaß',
+      },
     },
   },
 };
