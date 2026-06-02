@@ -5,6 +5,7 @@ import ArticleHeader from '../../components/article/ArticleHeader.astro';
 import ShareSidebar from '../../components/article/ShareSidebar.astro';
 import AuthorBox from '../../components/article/AuthorBox.astro';
 import { getPublishedArticles, articleSlug } from '../../utils/articles';
+import { formatDateISO } from '../../utils/formatDate';
 
 export async function getStaticPaths() {
   const articles = await getPublishedArticles();
@@ -22,6 +23,37 @@ const canonical = `${siteUrl}/blog/${articleSlug(entry)}/`;
 const ogImage = entry.data.image.src.startsWith('http')
   ? entry.data.image.src
   : `${siteUrl}${entry.data.image.src}`;
+const datePublishedISO = formatDateISO(entry.data.date);
+
+const blogPostingJsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'BlogPosting',
+  headline: entry.data.title,
+  description: entry.data.summary,
+  image: ogImage,
+  datePublished: datePublishedISO,
+  dateModified: datePublishedISO,
+  author: {
+    '@type': 'Person',
+    name: 'Christian Maaß',
+    url: `${siteUrl}/christian-maass`,
+    sameAs: [
+      'https://www.linkedin.com/in/christianmaass/',
+      'https://www.amazon.de/stores/author/B0045949JA',
+      'https://www.instagram.com/christianmaass/',
+      'https://x.com/ChristianMaass',
+    ],
+  },
+  publisher: {
+    '@type': 'Person',
+    name: 'Christian Maaß',
+    url: siteUrl,
+  },
+  mainEntityOfPage: {
+    '@type': 'WebPage',
+    '@id': canonical,
+  },
+};
 ---
 
 <BaseLayout
@@ -29,8 +61,15 @@ const ogImage = entry.data.image.src.startsWith('http')
   description={entry.data.summary}
   canonical={canonical}
   ogImage={ogImage}
+  ogType="article"
   currentLocale="de"
 >
+  <Fragment slot="head">
+    <meta property="article:published_time" content={datePublishedISO} />
+    <meta property="article:author" content="Christian Maaß" />
+    <meta property="article:section" content={entry.data.category} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(blogPostingJsonLd)} />
+  </Fragment>
   <article class="article-page">
     <div class="article-page-grid">
       <div class="article-main">

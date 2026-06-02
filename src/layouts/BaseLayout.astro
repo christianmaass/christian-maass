@@ -10,6 +10,7 @@ interface Props {
   description?: string;
   canonical?: string;
   ogImage?: string;
+  ogType?: string;
   lang?: string;
   currentLocale?: Locale;
 }
@@ -19,6 +20,7 @@ const {
   description = "Persönliche Seite von Christian Maaß, Unternehmer, Berater und Autor.",
   canonical = "https://christianmaass.com",
   ogImage,
+  ogType = "website",
   lang = "de",
   currentLocale,
 } = Astro.props;
@@ -69,7 +71,7 @@ const fullAlternateUrls = {
     <link rel="alternate" hreflang="x-default" href={fullAlternateUrls.de} />
     
     <!-- Open Graph Tags -->
-    <meta property="og:type" content="website" />
+    <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />

@@ -15,6 +15,13 @@ export default defineConfig({
       changefreq: 'monthly',
       priority: 0.7,
       lastmod: new Date(),
+      filter: (page) => {
+        // Pagination-URLs (/blog/2/, /blog/3/, …) und RSS aus dem
+        // Sitemap ausschließen — sind keine kanonischen Inhalte.
+        if (/\/blog\/\d+\/?$/.test(page)) return false;
+        if (/\/blog\/rss\.xml$/.test(page)) return false;
+        return true;
+      },
       serialize(item) {
         const path = new URL(item.url).pathname.replace(/^\/(en\/)?/, '/').replace(/\/$/, '');
         if (path === '' || path === '/') {
@@ -24,6 +31,12 @@ export default defineConfig({
         } else if (path === '/fachartikel') {
           item.priority = 0.85;
           item.changefreq = 'weekly';
+        } else if (path === '/blog') {
+          item.priority = 0.85;
+          item.changefreq = 'weekly';
+        } else if (path.startsWith('/blog/')) {
+          item.priority = 0.7;
+          item.changefreq = 'monthly';
         } else if (path === '/buecher' || path === '/beirat') {
           item.priority = 0.8;
         } else if (path === '/lehre') {
