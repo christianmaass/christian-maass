@@ -1,0 +1,85 @@
+---
+import type { GetStaticPaths, Page } from 'astro';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ArticleRow from '../../components/article/ArticleRow.astro';
+import Pagination from '../../components/article/Pagination.astro';
+import { getPublishedArticles, type Article } from '../../utils/articles';
+
+export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
+  const articles = await getPublishedArticles();
+  return paginate(articles, { pageSize: 10 });
+};
+
+const { page } = Astro.props as { page: Page<Article> };
+const siteUrl = 'https://christianmaass.com';
+const canonical = `${siteUrl}${page.url.current}`;
+const title = page.currentPage === 1
+  ? 'Alle Beiträge · Christian Maaß'
+  : `Alle Beiträge — Seite ${page.currentPage} · Christian Maaß`;
+const description =
+  'Alle Beiträge von Christian Maaß zu Strategie, Technologie und Organisation — der Operating-Realität hinter digitalen Vorhaben.';
+---
+
+<BaseLayout title={title} description={description} canonical={canonical} currentLocale="de">
+  <section class="blog-overview">
+    <div class="blog-overview-inner">
+      <p class="blog-overview-eyebrow">Beiträge</p>
+      <h1 class="blog-overview-heading">Alle Beiträge</h1>
+
+      {page.data.length === 0 ? (
+        <p class="blog-overview-empty">Noch keine Beiträge veröffentlicht.</p>
+      ) : (
+        <div class="blog-overview-list">
+          {page.data.map((entry) => <ArticleRow entry={entry} />)}
+        </div>
+      )}
+
+      <Pagination
+        currentPage={page.currentPage}
+        lastPage={page.lastPage}
+        prevUrl={page.url.prev}
+        nextUrl={page.url.next}
+      />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .blog-overview {
+    padding: var(--space-6) 0 var(--space-7) 0;
+  }
+  .blog-overview-inner {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding-x);
+    box-sizing: border-box;
+  }
+  .blog-overview-eyebrow {
+    margin: 0 0 var(--space-2) 0;
+    font-family: var(--font-family-base);
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+  }
+  .blog-overview-heading {
+    margin: 0 0 var(--space-6) 0;
+    font-family: var(--font-family-display);
+    font-size: clamp(2rem, 4vw, 3rem);
+    font-weight: var(--weight-medium);
+    line-height: 1.1;
+    letter-spacing: -0.015em;
+    color: var(--color-text-strong);
+  }
+  .blog-overview-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-7);
+  }
+  .blog-overview-empty {
+    margin: var(--space-4) 0;
+    font-family: var(--font-family-base);
+    color: var(--color-text-muted);
+  }
+</style>
