@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import LatestArticles from '../components/article/LatestArticles.astro';
 import { getTranslations } from '../i18n/utils';
 import { detectAndRedirect } from '../utils/localeDetection';
 
@@ -169,6 +170,8 @@ const ogImage = `${siteUrl}/christian-maass.png`;
       </div>
     </div>
   </section>
+
+  <LatestArticles currentLocale={locale} />
 </BaseLayout>
 
 <script is:inline src="/js/locale-redirect.js"></script>

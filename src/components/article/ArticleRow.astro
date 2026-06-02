@@ -1,0 +1,109 @@
+---
+import type { Article } from '../../utils/articles';
+import { articleUrl } from '../../utils/articles';
+import { formatDateDE, formatDateISO } from '../../utils/formatDate';
+
+interface Props {
+  entry: Article;
+}
+
+const { entry } = Astro.props;
+const { title, summary, date, category, image } = entry.data;
+const href = articleUrl(entry);
+---
+
+<article class="article-row">
+  <div class="article-text">
+    <h3 class="article-title">
+      <a href={href}>{title}</a>
+    </h3>
+    <p class="article-summary">{summary}</p>
+    <p class="article-meta">
+      {category}
+      <span aria-hidden="true"> · </span>
+      <time datetime={formatDateISO(date)}>{formatDateDE(date)}</time>
+    </p>
+  </div>
+  <a href={href} class="article-thumb" aria-hidden="true" tabindex="-1">
+    <img
+      src={image.src}
+      alt={image.alt}
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
+</article>
+
+<style>
+  .article-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-5);
+    align-items: center;
+  }
+  .article-text {
+    min-width: 0;
+  }
+  .article-title {
+    font-family: var(--font-family-display);
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    font-weight: var(--weight-medium);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--color-text-strong);
+  }
+  .article-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .article-title a:hover {
+    color: var(--color-accent);
+  }
+  .article-summary {
+    margin: var(--space-2) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    max-width: 56ch;
+  }
+  .article-meta {
+    margin: var(--space-3) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+  }
+  .article-thumb {
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-elevated);
+    transition: transform 0.25s ease;
+  }
+  .article-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .article-thumb:hover img {
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    .article-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+    .article-thumb {
+      order: -1;
+    }
+  }
+</style>

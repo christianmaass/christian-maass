@@ -1,0 +1,85 @@
+---
+import ArticleRow from './ArticleRow.astro';
+import { getPublishedArticles } from '../../utils/articles';
+import { getTranslations, type Locale } from '../../i18n/utils';
+
+interface Props {
+  currentLocale: Locale;
+  limit?: number;
+}
+
+const { currentLocale, limit = 5 } = Astro.props;
+const t = getTranslations(currentLocale);
+const articles = (await getPublishedArticles()).slice(0, limit);
+---
+
+{articles.length > 0 && (
+  <section class="latest-articles" aria-labelledby="latest-articles-heading">
+    <div class="latest-articles-inner">
+      <h2 id="latest-articles-heading" class="latest-articles-heading">
+        {t.pages.index.latestArticles.heading}
+      </h2>
+
+      <div class="latest-articles-list">
+        {articles.map((entry) => <ArticleRow entry={entry} />)}
+      </div>
+
+      <a href="/blog/" class="latest-articles-cta">
+        {t.pages.index.latestArticles.readAll}
+        <span aria-hidden="true"> →</span>
+      </a>
+    </div>
+  </section>
+)}
+
+<style>
+  .latest-articles {
+    padding: var(--space-7) 0;
+    border-top: 1px solid var(--color-border-subtle);
+  }
+  .latest-articles-inner {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding-x);
+    box-sizing: border-box;
+  }
+  .latest-articles-heading {
+    font-family: var(--font-family-display);
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: var(--weight-medium);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--color-text-strong);
+    margin: 0 0 var(--space-6) 0;
+  }
+  .latest-articles-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-7);
+  }
+  .latest-articles-cta {
+    display: inline-flex;
+    align-items: center;
+    margin-top: var(--space-6);
+    font-family: var(--font-family-base);
+    font-size: 0.85rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .latest-articles-cta:hover {
+    color: var(--color-text-strong);
+  }
+
+  @media (max-width: 768px) {
+    .latest-articles {
+      padding: var(--space-5) 0;
+    }
+    .latest-articles-list {
+      gap: var(--space-6);
+    }
+  }
+</style>

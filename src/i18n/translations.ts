@@ -40,6 +40,10 @@ export interface Translations {
         credentials: string;
         portraitAlt: string;
       };
+      latestArticles: {
+        heading: string;
+        readAll: string;
+      };
       pillars: {
         eyebrow: string;
         intro: string;
@@ -360,6 +364,10 @@ export const translations: Record<Locale, Translations> = {
           headlineTrailing: '.',
           credentials: 'CDO · Aufsichtsrat · Autor · Speaker',
           portraitAlt: 'Christian Maaß — Porträt',
+        },
+        latestArticles: {
+          heading: 'Neueste Beiträge',
+          readAll: 'alle Artikel lesen',
         },
         pillars: {
           eyebrow: 'Worüber ich arbeite',
@@ -765,6 +773,10 @@ export const translations: Record<Locale, Translations> = {
           headlineTrailing: '.',
           credentials: 'CDO · Board Director · Author · Speaker',
           portraitAlt: 'Christian Maaß — portrait',
+        },
+        latestArticles: {
+          heading: 'Latest Articles',
+          readAll: 'read all articles',
         },
         pillars: {
           eyebrow: 'What I work on',
