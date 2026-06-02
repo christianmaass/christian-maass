@@ -1,0 +1,68 @@
+---
+interface Props {
+  eyebrow: string;
+  heading: string;
+  body: string;
+  cta: string;
+  ctaHref: string;
+}
+
+const { eyebrow, heading, body, cta, ctaHref } = Astro.props;
+---
+
+<section class="press-box" aria-labelledby="press-heading">
+  <p class="press-eyebrow">{eyebrow}</p>
+  <h2 id="press-heading" class="press-heading">{heading}</h2>
+  <p class="press-body">{body}</p>
+  <a class="press-cta" href={ctaHref}>
+    {cta}
+    <span aria-hidden="true"> →</span>
+  </a>
+</section>
+
+<style>
+  .press-box {
+    padding: var(--space-5);
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-sm);
+    font-family: var(--font-family-base);
+  }
+  .press-eyebrow {
+    margin: 0 0 var(--space-3) 0;
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+  }
+  .press-heading {
+    margin: 0 0 var(--space-3) 0;
+    font-family: var(--font-family-display);
+    font-size: 1.35rem;
+    font-weight: var(--weight-medium);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    color: var(--color-text-strong);
+  }
+  .press-body {
+    margin: 0 0 var(--space-4) 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    color: var(--color-text);
+  }
+  .press-cta {
+    display: inline-block;
+    font-size: 0.85rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-strong);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+  .press-cta:hover {
+    color: var(--color-text-muted);
+  }
+</style>

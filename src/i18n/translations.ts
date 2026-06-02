@@ -223,6 +223,13 @@ export interface Translations {
         url: string;
         image: { src: string; alt: string };
       }>;
+      pressInquiries: {
+        eyebrow: string;
+        heading: string;
+        body: string;
+        cta: string;
+        ctaHref: string;
+      };
     };
     lehre: {
       title: string;
@@ -571,6 +578,13 @@ export const translations: Record<Locale, Translations> = {
             image: { src: '/essays/krisenfest-2023.jpg', alt: 'Wie krisenfest ist der E-Commerce 2023' },
           },
         ],
+        pressInquiries: {
+          eyebrow: 'Presseanfragen',
+          heading: 'Interview & Speaker',
+          body: 'Für Interview-, Speaker- oder Medienanfragen erreichen Sie mich am besten direkt per E-Mail. Ich antworte persönlich — ohne Agentur, ohne Formular.',
+          cta: 'Anfrage senden',
+          ctaHref: '/kontakt',
+        },
       },
       lehre: {
         title: 'Vorträge & Lehre · Christian Maaß',
@@ -953,6 +967,13 @@ export const translations: Record<Locale, Translations> = {
             image: { src: '/essays/krisenfest-2023.jpg', alt: 'Wie krisenfest ist der E-Commerce 2023' },
           },
         ],
+        pressInquiries: {
+          eyebrow: 'Press inquiries',
+          heading: 'Interview & speaker',
+          body: 'For interview, speaker, or media inquiries please reach out directly by email. I respond personally — no agency, no form.',
+          cta: 'Send inquiry',
+          ctaHref: '/en/kontakt',
+        },
       },
       lehre: {
         title: 'Talks & Teaching · Christian Maaß',
