@@ -176,11 +176,13 @@ const ogImage = `${siteUrl}/christian-maass.png`;
 
 <style>
   .hero {
-    padding: var(--space-7) var(--container-padding-x);
+    padding: var(--space-7) 0;
   }
   .hero-grid {
     max-width: var(--container-max-width);
     margin: 0 auto;
+    padding: 0 var(--container-padding-x);
+    box-sizing: border-box;
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: var(--space-6);
@@ -239,7 +241,7 @@ const ogImage = `${siteUrl}/christian-maass.png`;
 
   @media (max-width: 900px) {
     .hero {
-      padding: var(--space-5) var(--container-padding-x);
+      padding: var(--space-5) 0;
     }
     .hero-grid {
       grid-template-columns: 1fr;
