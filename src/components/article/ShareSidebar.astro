@@ -1,0 +1,194 @@
+---
+interface Props {
+  title: string;
+  url: string;
+}
+
+const { title, url } = Astro.props;
+
+const encodedUrl = encodeURIComponent(url);
+const encodedTitle = encodeURIComponent(title);
+const mailBody = encodeURIComponent(`${title}\n\n${url}`);
+const whatsappText = encodeURIComponent(`${title} ${url}`);
+
+const links = [
+  {
+    id: 'linkedin',
+    label: 'LinkedIn',
+    href: `https://www.linkedin.com/sharing/share-offsite/?url=${encodedUrl}`,
+  },
+  {
+    id: 'facebook',
+    label: 'Facebook',
+    href: `https://www.facebook.com/sharer/sharer.php?u=${encodedUrl}`,
+  },
+  {
+    id: 'mail',
+    label: 'Mail',
+    href: `mailto:?subject=${encodedTitle}&body=${mailBody}`,
+  },
+  {
+    id: 'whatsapp',
+    label: 'WhatsApp',
+    href: `https://wa.me/?text=${whatsappText}`,
+  },
+] as const;
+---
+
+<section class="share-sidebar" aria-labelledby="share-heading">
+  <h2 id="share-heading" class="share-heading">Teilen</h2>
+  <ul class="share-list">
+    {links.map((link) => (
+      <li>
+        <a
+          class="share-item"
+          href={link.href}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Auf ${link.label} teilen`}
+        >
+          <span class="share-icon" aria-hidden="true">
+            {link.id === 'linkedin' && (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect width="4" height="12" x="2" y="9"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>
+            )}
+            {link.id === 'facebook' && (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/>
+              </svg>
+            )}
+            {link.id === 'mail' && (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <rect width="20" height="16" x="2" y="4" rx="2"/>
+                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+              </svg>
+            )}
+            {link.id === 'whatsapp' && (
+              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+            )}
+          </span>
+          <span class="share-label">{link.label}</span>
+        </a>
+      </li>
+    ))}
+    <li>
+      <button
+        type="button"
+        class="share-item share-copy"
+        data-share-url={url}
+        aria-label="Artikel-Link in die Zwischenablage kopieren"
+      >
+        <span class="share-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+            <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+          </svg>
+        </span>
+        <span class="share-label" data-default-label="Link kopieren">Link kopieren</span>
+      </button>
+    </li>
+  </ul>
+</section>
+
+<script is:inline>
+  document.querySelectorAll('.share-copy').forEach((btn) => {
+    btn.addEventListener('click', async () => {
+      const target = btn.getAttribute('data-share-url');
+      if (!target) return;
+      const label = btn.querySelector('.share-label');
+      const original = label?.getAttribute('data-default-label') ?? '';
+      try {
+        await navigator.clipboard.writeText(target);
+        if (label) label.textContent = 'Link kopiert';
+      } catch (_) {
+        const ta = document.createElement('textarea');
+        ta.value = target;
+        ta.style.position = 'fixed';
+        ta.style.opacity = '0';
+        document.body.appendChild(ta);
+        ta.select();
+        try {
+          document.execCommand('copy');
+          if (label) label.textContent = 'Link kopiert';
+        } catch (_e) {
+          if (label) label.textContent = 'Kopieren fehlgeschlagen';
+        }
+        document.body.removeChild(ta);
+      }
+      btn.classList.add('is-copied');
+      setTimeout(() => {
+        if (label) label.textContent = original;
+        btn.classList.remove('is-copied');
+      }, 2000);
+    });
+  });
+</script>
+
+<style>
+  .share-sidebar {
+    font-family: var(--font-family-base);
+  }
+  .share-heading {
+    margin: 0 0 var(--space-3) 0;
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-text-muted);
+  }
+  .share-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .share-item {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.55rem 0;
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: var(--color-text-muted);
+    font: inherit;
+    font-size: 0.95rem;
+    text-align: left;
+    text-decoration: none;
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+  .share-item:hover,
+  .share-item:focus-visible {
+    color: var(--color-text-strong);
+  }
+  .share-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 999px;
+    flex-shrink: 0;
+    transition: border-color 0.2s ease;
+  }
+  .share-item:hover .share-icon,
+  .share-item:focus-visible .share-icon {
+    border-color: var(--color-text-strong);
+  }
+  .share-copy.is-copied {
+    color: var(--color-text-strong);
+  }
+  .share-copy.is-copied .share-icon {
+    border-color: var(--color-accent);
+    color: var(--color-accent);
+  }
+</style>

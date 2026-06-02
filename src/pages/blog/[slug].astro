@@ -2,6 +2,7 @@
 import { render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ArticleHeader from '../../components/article/ArticleHeader.astro';
+import ShareSidebar from '../../components/article/ShareSidebar.astro';
 import { getPublishedArticles, articleSlug } from '../../utils/articles';
 
 export async function getStaticPaths() {
@@ -40,8 +41,7 @@ const ogImage = entry.data.image.src.startsWith('http')
       </div>
       <aside class="article-sidebar" aria-label="Artikel-Werkzeuge">
         <div class="article-sidebar-sticky">
-          <h2 class="article-sidebar-heading">Teilen</h2>
-          <!-- Epic 13: ShareSidebar -->
+          <ShareSidebar title={entry.data.title} url={canonical} />
         </div>
       </aside>
     </div>
@@ -71,15 +71,6 @@ const ogImage = entry.data.image.src.startsWith('http')
   .article-sidebar-sticky {
     position: sticky;
     top: var(--space-5);
-  }
-  .article-sidebar-heading {
-    font-family: var(--font-family-base);
-    font-size: 0.78rem;
-    font-weight: var(--weight-medium);
-    text-transform: uppercase;
-    letter-spacing: 0.18em;
-    color: var(--color-text-muted);
-    margin: 0;
   }
 
   @media (max-width: 900px) {
