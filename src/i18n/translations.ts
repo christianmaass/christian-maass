@@ -214,42 +214,15 @@ export interface Translations {
       description: string;
       h1: string;
       intro: string;
-      pillars: {
-        kiOperating: { title: string; description: string };
-        grundlagen: { title: string; description: string };
-        boardPerspective: { title: string; description: string };
-      };
-      pillarLabels: {
-        kiOperating: string;
-        grundlagen: string;
-        boardPerspective: string;
-      };
-      articlesTitle: string;
-      articlesIntro: string;
       articles: Array<{
         title: string;
-        meta: string;
+        type: 'Essay' | 'Interview';
+        year: string;
         description: string;
         cta: string;
         url: string;
-        pillar: 'kiOperating' | 'grundlagen' | 'boardPerspective';
-        year: string;
+        image: { src: string; alt: string };
       }>;
-      strategic: {
-        title: string;
-        description: string;
-        cta: string;
-      };
-      operational: {
-        title: string;
-        description: string;
-        cta: string;
-      };
-      legal: {
-        title: string;
-        description: string;
-        cta: string;
-      };
     };
     lehre: {
       title: string;
@@ -538,102 +511,66 @@ export const translations: Record<Locale, Translations> = {
         },
       },
       fachartikel: {
-        title: 'Perspektiven · Christian Maaß',
-        description: 'Sechs Artikel, drei Themen-Säulen: KI im Operating, vergessene Grundlagen, Board-Perspektive. Beobachtungen aus der operativen Verantwortung.',
-        h1: 'Perspektiven.',
-        intro: 'Sechs Artikel im eTailment-Expertenrat, drei Themen-Säulen: KI im Operating, vergessene Grundlagen, Board-Perspektive auf Digital. Keine Marketing-Sprech, keine Pressemitteilungen – Beobachtungen aus der operativen Verantwortung.',
-        pillars: {
-          kiOperating: {
-            title: 'KI im Operating, nicht im Marketing',
-            description: 'Die meisten Unternehmen reden über KI, statt mit KI zu arbeiten. Der echte Hebel liegt in Prozessen und Softwareentwicklung – nicht in Demo-Reels.',
-          },
-          grundlagen: {
-            title: 'Die vergessenen Grundlagen',
-            description: 'Während alle über Transformation reden, liegt der größte ungehobene Wert in operativen Grundlagen, die übersehen werden. Margen, Komplexitätsdisziplin, Reihenfolge.',
-          },
-          boardPerspective: {
-            title: 'Board-Perspektive auf Digital & KI',
-            description: 'Aufsichtsräte stellen bei Digital und KI oft die falschen Fragen – oder gar keine. Strategische Marktbeobachtung in Board-Sprache.',
-          },
-        },
-        pillarLabels: {
-          kiOperating: 'KI im Operating',
-          grundlagen: 'Vergessene Grundlagen',
-          boardPerspective: 'Board-Perspektive',
-        },
-        articlesTitle: 'Artikel im eTailment-Expertenrat',
-        articlesIntro: 'Gruppiert nach Säule, innerhalb chronologisch sortiert (neueste zuerst).',
+        title: 'Essays & Interviews · Christian Maaß',
+        description: 'Journalistische Veröffentlichungen in der Fachpresse — Essays und Interviews zu Handel, KI im Operating und digitaler Verantwortung. Erschienen im Expertenrat von eTailment.',
+        h1: 'Essays & Interviews.',
+        intro: 'Journalistische Veröffentlichungen in der Fachpresse — Essays und Interviews zu Handel, KI im Operating und digitaler Verantwortung. Erschienen im Expertenrat von eTailment. Persönliche Beobachtungen aus der operativen Praxis, nicht aus der Beraterperspektive.',
         articles: [
           {
             title: 'Warum das Spiel mit den Margen endlich ist',
-            meta: '<strong>2024</strong> | eTailment',
-            description: 'Black Friday und Cyber Week haben sich zu einem Margenwettbewerb entwickelt, der langfristig nicht nachhaltig ist. Wie Händler aus dem Teufelskreis ausbrechen – und warum Margen-Disziplin eine vergessene Grundlage ist.',
-            cta: 'Artikel lesen →',
-            url: 'https://etailment.de/news/stories/black-friday-und-cyber-week-warum-das-spiel-mit-den-margen-endlich-ist-24992',
-            pillar: 'grundlagen',
+            type: 'Essay',
             year: '2024',
+            description: 'Black Friday und Cyber Week haben sich zu einem Margenwettbewerb entwickelt, der langfristig nicht nachhaltig ist. Wie Händler aus dem Teufelskreis ausbrechen – und warum Margen-Disziplin eine vergessene Grundlage ist.',
+            cta: 'Zum Artikel',
+            url: 'https://etailment.de/news/stories/black-friday-und-cyber-week-warum-das-spiel-mit-den-margen-endlich-ist-24992',
+            image: { src: '/essays/margen-spiel.jpg', alt: 'Warum das Spiel mit den Margen endlich ist' },
           },
           {
             title: 'Braucht der E-Commerce noch Entwickler – oder nur noch Anwälte?',
-            meta: '<strong>2024</strong> | eTailment',
-            description: 'Die zunehmende Regulierung im E-Commerce verschiebt Ressourcen. Wo Engineering-Kapazität durch Compliance-Kapazität ersetzt wird – und warum das eine Frage des Operating-Modells ist, nicht der Strategie.',
-            cta: 'Artikel lesen →',
-            url: 'https://etailment.de/news/stories/buerokratie-braucht-der-e-commerce-noch-entwickler---oder-nur-noch-anwaelte-24923',
-            pillar: 'kiOperating',
+            type: 'Essay',
             year: '2024',
+            description: 'Die zunehmende Regulierung im E-Commerce verschiebt Ressourcen. Wo Engineering-Kapazität durch Compliance-Kapazität ersetzt wird – und warum das eine Frage des Operating-Modells ist, nicht der Strategie.',
+            cta: 'Zum Artikel',
+            url: 'https://etailment.de/news/stories/buerokratie-braucht-der-e-commerce-noch-entwickler---oder-nur-noch-anwaelte-24923',
+            image: { src: '/essays/entwickler-oder-anwaelte.jpg', alt: 'Braucht der E-Commerce noch Entwickler oder nur noch Anwälte' },
           },
           {
             title: 'Hier lauern Komplexitätsfallen für Online-Händler',
-            meta: '<strong>2024</strong> | eTailment',
-            description: 'Systemkomplexität ist eine der größten Herausforderungen im E-Commerce. Welche Komplexitätsfallen typisch sind, woran man sie erkennt – und warum Komplexitätsdisziplin oft wichtiger ist als die nächste neue Plattform.',
-            cta: 'Artikel lesen →',
-            url: 'https://etailment.de/news/stories/e-commerce-hier-lauern-komplexitaetsfallen-fuer-online-haendler-24738',
-            pillar: 'grundlagen',
+            type: 'Essay',
             year: '2024',
+            description: 'Systemkomplexität ist eine der größten Herausforderungen im E-Commerce. Welche Komplexitätsfallen typisch sind, woran man sie erkennt – und warum Komplexitätsdisziplin oft wichtiger ist als die nächste neue Plattform.',
+            cta: 'Zum Artikel',
+            url: 'https://etailment.de/news/stories/e-commerce-hier-lauern-komplexitaetsfallen-fuer-online-haendler-24738',
+            image: { src: '/essays/komplexitaetsfallen.jpg', alt: 'Komplexitätsfallen für Online-Händler' },
           },
           {
             title: 'Erlebt der Handel mit Temu den Tesla-Moment der Autoindustrie?',
-            meta: '<strong>2023</strong> | eTailment',
-            description: 'Was Temu für den europäischen Handel bedeutet – analysiert in Board-Sprache. Welche strategischen Implikationen für etablierte Händler aus dieser Disruption folgen.',
-            cta: 'Artikel lesen →',
-            url: 'https://etailment.de/news/stories/etailment-expertenrat-erlebt-der-handel-mit-temu-den-tesla-moment-der-autoindustrie-24433',
-            pillar: 'boardPerspective',
+            type: 'Essay',
             year: '2023',
+            description: 'Was Temu für den europäischen Handel bedeutet – analysiert in Board-Sprache. Welche strategischen Implikationen für etablierte Händler aus dieser Disruption folgen.',
+            cta: 'Zum Artikel',
+            url: 'https://etailment.de/news/stories/etailment-expertenrat-erlebt-der-handel-mit-temu-den-tesla-moment-der-autoindustrie-24433',
+            image: { src: '/essays/temu-tesla-moment.jpg', alt: 'Temu Tesla-Moment der Autoindustrie' },
           },
           {
             title: 'Krisenjahr 2023: Diese Hausaufgaben muss der Handel jetzt machen',
-            meta: '<strong>2022</strong> | eTailment',
-            description: 'In multiplen Krisen müssen Aufsichtsräte und Boards Prioritäten setzen. Welche strategischen Anpassungen krisenfest machen – und welche Fragen Boards stellen sollten, bevor sie genehmigen.',
-            cta: 'Artikel lesen →',
-            url: 'https://etailment.de/news/stories/etailment-expertenrat-krisenjahr-2023-diese-hausaufgaben-muss-der-handel-jetzt-machen-24190',
-            pillar: 'boardPerspective',
+            type: 'Essay',
             year: '2022',
+            description: 'In multiplen Krisen müssen Aufsichtsräte und Boards Prioritäten setzen. Welche strategischen Anpassungen krisenfest machen – und welche Fragen Boards stellen sollten, bevor sie genehmigen.',
+            cta: 'Zum Artikel',
+            url: 'https://etailment.de/news/stories/etailment-expertenrat-krisenjahr-2023-diese-hausaufgaben-muss-der-handel-jetzt-machen-24190',
+            image: { src: '/essays/krisenjahr-2023.jpg', alt: 'Krisenjahr 2023 Hausaufgaben für den Handel' },
           },
           {
             title: 'Wie krisenfest ist der E-Commerce 2023?',
-            meta: '<strong>2022</strong> | eTailment',
-            description: 'Strukturanalyse: Welche Stärken und Schwächen des digitalen Handels in der Krise sichtbar werden. Eine Standortbestimmung für strategische Entscheidungen auf Board-Ebene.',
-            cta: 'Artikel lesen →',
-            url: 'https://etailment.de/news/stories/handeln-in-zeiten-der-krise-wie-krisenfest-ist-der-e-commerce-2023-24090',
-            pillar: 'boardPerspective',
+            type: 'Essay',
             year: '2022',
+            description: 'Strukturanalyse: Welche Stärken und Schwächen des digitalen Handels in der Krise sichtbar werden. Eine Standortbestimmung für strategische Entscheidungen auf Board-Ebene.',
+            cta: 'Zum Artikel',
+            url: 'https://etailment.de/news/stories/handeln-in-zeiten-der-krise-wie-krisenfest-ist-der-e-commerce-2023-24090',
+            image: { src: '/essays/krisenfest-2023.jpg', alt: 'Wie krisenfest ist der E-Commerce 2023' },
           },
         ],
-        strategic: {
-          title: 'Strategische Marktentwicklungen',
-          description: 'Veraltet – wird durch Säulen ersetzt.',
-          cta: 'Zu den Artikeln',
-        },
-        operational: {
-          title: 'Operative Herausforderungen',
-          description: 'Veraltet – wird durch Säulen ersetzt.',
-          cta: 'Zu den Artikeln',
-        },
-        legal: {
-          title: 'Rechtliche und organisatorische Aspekte',
-          description: 'Veraltet – wird durch Säulen ersetzt.',
-          cta: 'Zu den Artikeln',
-        },
       },
       lehre: {
         title: 'Vorträge & Lehre · Christian Maaß',
@@ -956,102 +893,66 @@ export const translations: Record<Locale, Translations> = {
         },
       },
       fachartikel: {
-        title: 'Perspectives · Christian Maaß',
-        description: 'Six articles, three thematic pillars: AI in operating, forgotten fundamentals, board perspective. Observations from operational responsibility.',
-        h1: 'Perspectives.',
-        intro: 'Six articles in the eTailment expert panel, three thematic pillars: AI in operating, forgotten fundamentals, board perspective on digital. No marketing talk, no press releases – observations from operational responsibility.',
-        pillars: {
-          kiOperating: {
-            title: 'AI in operating, not in marketing',
-            description: 'Most companies talk about AI instead of working with it. The real leverage is in processes and software engineering – not in demo reels.',
-          },
-          grundlagen: {
-            title: 'The forgotten fundamentals',
-            description: 'While everyone talks transformation, the largest untapped value sits in operational fundamentals that get overlooked. Margins, complexity discipline, sequence.',
-          },
-          boardPerspective: {
-            title: 'Board perspective on digital & AI',
-            description: 'Supervisory boards often ask the wrong digital and AI questions – or none at all. Strategic market observation in board language.',
-          },
-        },
-        pillarLabels: {
-          kiOperating: 'AI in operating',
-          grundlagen: 'Forgotten fundamentals',
-          boardPerspective: 'Board perspective',
-        },
-        articlesTitle: 'Articles in the eTailment expert panel',
-        articlesIntro: 'Grouped by pillar, within sorted chronologically (newest first). Published in German.',
+        title: 'Essays & Interviews · Christian Maaß',
+        description: 'Journalistic publications in the trade press — essays and interviews on retail, AI in operations, and digital accountability. Published in the eTailment expert council.',
+        h1: 'Essays & Interviews.',
+        intro: 'Journalistic publications in the trade press — essays and interviews on retail, AI in operations, and digital accountability. Published in the eTailment expert council. Personal observations from operational practice, not consulting decks. Articles are in German.',
         articles: [
           {
-            title: 'Why the margin game is over',
-            meta: '<strong>2024</strong> | eTailment',
+            title: 'Warum das Spiel mit den Margen endlich ist',
+            type: 'Essay',
+            year: '2024',
             description: 'Black Friday and Cyber Week have turned into a margin race that is not sustainable. How retailers can break out of the vicious circle – and why margin discipline is a forgotten fundamental.',
-            cta: 'Read article →',
+            cta: 'Read article',
             url: 'https://etailment.de/news/stories/black-friday-und-cyber-week-warum-das-spiel-mit-den-margen-endlich-ist-24992',
-            pillar: 'grundlagen',
-            year: '2024',
+            image: { src: '/essays/margen-spiel.jpg', alt: 'Warum das Spiel mit den Margen endlich ist' },
           },
           {
-            title: 'Does e-commerce still need developers – or just lawyers?',
-            meta: '<strong>2024</strong> | eTailment',
+            title: 'Braucht der E-Commerce noch Entwickler – oder nur noch Anwälte?',
+            type: 'Essay',
+            year: '2024',
             description: 'Increasing regulation in e-commerce shifts resources. Where engineering capacity is replaced by compliance capacity – and why that is a question of operating model, not strategy.',
-            cta: 'Read article →',
+            cta: 'Read article',
             url: 'https://etailment.de/news/stories/buerokratie-braucht-der-e-commerce-noch-entwickler---oder-nur-noch-anwaelte-24923',
-            pillar: 'kiOperating',
-            year: '2024',
+            image: { src: '/essays/entwickler-oder-anwaelte.jpg', alt: 'Braucht der E-Commerce noch Entwickler oder nur noch Anwälte' },
           },
           {
-            title: 'Complexity traps for online retailers',
-            meta: '<strong>2024</strong> | eTailment',
+            title: 'Hier lauern Komplexitätsfallen für Online-Händler',
+            type: 'Essay',
+            year: '2024',
             description: 'System complexity is one of the biggest challenges in e-commerce. Which complexity traps are typical, how to recognise them – and why complexity discipline is often more important than the next new platform.',
-            cta: 'Read article →',
+            cta: 'Read article',
             url: 'https://etailment.de/news/stories/e-commerce-hier-lauern-komplexitaetsfallen-fuer-online-haendler-24738',
-            pillar: 'grundlagen',
-            year: '2024',
+            image: { src: '/essays/komplexitaetsfallen.jpg', alt: 'Komplexitätsfallen für Online-Händler' },
           },
           {
-            title: 'Is commerce experiencing the Tesla moment of the automotive industry with Temu?',
-            meta: '<strong>2023</strong> | eTailment',
-            description: 'What Temu means for European commerce – analysed in board language. Which strategic implications follow from this disruption for established retailers.',
-            cta: 'Read article →',
-            url: 'https://etailment.de/news/stories/etailment-expertenrat-erlebt-der-handel-mit-temu-den-tesla-moment-der-autoindustrie-24433',
-            pillar: 'boardPerspective',
+            title: 'Erlebt der Handel mit Temu den Tesla-Moment der Autoindustrie?',
+            type: 'Essay',
             year: '2023',
+            description: 'What Temu means for European commerce – analysed in board language. Which strategic implications follow from this disruption for established retailers.',
+            cta: 'Read article',
+            url: 'https://etailment.de/news/stories/etailment-expertenrat-erlebt-der-handel-mit-temu-den-tesla-moment-der-autoindustrie-24433',
+            image: { src: '/essays/temu-tesla-moment.jpg', alt: 'Temu Tesla-Moment der Autoindustrie' },
           },
           {
-            title: 'Crisis year 2023: These are the tasks commerce must now complete',
-            meta: '<strong>2022</strong> | eTailment',
+            title: 'Krisenjahr 2023: Diese Hausaufgaben muss der Handel jetzt machen',
+            type: 'Essay',
+            year: '2022',
             description: 'In multiple crises, boards and supervisory boards must set priorities. Which strategic adjustments build resilience – and which questions boards should ask before approving.',
-            cta: 'Read article →',
+            cta: 'Read article',
             url: 'https://etailment.de/news/stories/etailment-expertenrat-krisenjahr-2023-diese-hausaufgaben-muss-der-handel-jetzt-machen-24190',
-            pillar: 'boardPerspective',
-            year: '2022',
+            image: { src: '/essays/krisenjahr-2023.jpg', alt: 'Krisenjahr 2023 Hausaufgaben für den Handel' },
           },
           {
-            title: 'How crisis-proof is e-commerce 2023?',
-            meta: '<strong>2022</strong> | eTailment',
-            description: 'Structural analysis: which strengths and weaknesses of digital commerce become visible in crisis. A baseline for strategic decisions at board level.',
-            cta: 'Read article →',
-            url: 'https://etailment.de/news/stories/handeln-in-zeiten-der-krise-wie-krisenfest-ist-der-e-commerce-2023-24090',
-            pillar: 'boardPerspective',
+            title: 'Wie krisenfest ist der E-Commerce 2023?',
+            type: 'Essay',
             year: '2022',
+            description: 'Structural analysis: which strengths and weaknesses of digital commerce become visible in crisis. A baseline for strategic decisions at board level.',
+            cta: 'Read article',
+            url: 'https://etailment.de/news/stories/handeln-in-zeiten-der-krise-wie-krisenfest-ist-der-e-commerce-2023-24090',
+            image: { src: '/essays/krisenfest-2023.jpg', alt: 'Wie krisenfest ist der E-Commerce 2023' },
           },
         ],
-        strategic: {
-          title: 'Strategic Market Developments',
-          description: 'Deprecated – replaced by pillars.',
-          cta: 'To the articles',
-        },
-        operational: {
-          title: 'Operational Challenges',
-          description: 'Deprecated – replaced by pillars.',
-          cta: 'To the articles',
-        },
-        legal: {
-          title: 'Legal and Organizational Aspects',
-          description: 'Deprecated – replaced by pillars.',
-          cta: 'To the articles',
-        },
       },
       lehre: {
         title: 'Talks & Teaching · Christian Maaß',

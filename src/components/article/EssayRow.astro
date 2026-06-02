@@ -1,0 +1,138 @@
+---
+interface Props {
+  title: string;
+  type: 'Essay' | 'Interview';
+  year: string;
+  summary: string;
+  cta: string;
+  url: string;
+  image: { src: string; alt: string };
+}
+
+const { title, type, year, summary, cta, url, image } = Astro.props;
+---
+
+<article class="essay-row">
+  <div class="essay-text">
+    <h3 class="essay-title">
+      <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
+    </h3>
+    <p class="essay-summary">{summary}</p>
+    <p class="essay-meta">
+      {type}
+      <span aria-hidden="true"> · </span>
+      <time datetime={`${year}-01-01`}>{year}</time>
+      <span aria-hidden="true"> · </span>
+      eTailment
+    </p>
+    <a class="essay-cta" href={url} target="_blank" rel="noopener noreferrer">
+      {cta}
+      <span aria-hidden="true"> →</span>
+    </a>
+  </div>
+  <a
+    class="essay-thumb"
+    href={url}
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label={title}
+  >
+    <img
+      src={image.src}
+      alt={image.alt}
+      loading="lazy"
+      decoding="async"
+    />
+  </a>
+</article>
+
+<style>
+  .essay-row {
+    display: grid;
+    grid-template-columns: 1.4fr 1fr;
+    gap: var(--space-5);
+    align-items: center;
+  }
+  .essay-text {
+    min-width: 0;
+  }
+  .essay-title {
+    font-family: var(--font-family-display);
+    font-size: clamp(1.35rem, 2.2vw, 1.75rem);
+    font-weight: var(--weight-medium);
+    line-height: 1.2;
+    letter-spacing: -0.01em;
+    margin: 0;
+    color: var(--color-text-strong);
+  }
+  .essay-title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .essay-title a:hover {
+    color: var(--color-accent);
+  }
+  .essay-summary {
+    margin: var(--space-2) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 1rem;
+    line-height: 1.65;
+    color: var(--color-text);
+    max-width: 56ch;
+  }
+  .essay-meta {
+    margin: var(--space-3) 0 0 0;
+    font-family: var(--font-family-base);
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-muted);
+  }
+  .essay-cta {
+    display: inline-block;
+    margin-top: var(--space-3);
+    font-family: var(--font-family-base);
+    font-size: 0.85rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--color-text-strong);
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+    padding-bottom: 2px;
+    transition: color 0.2s ease;
+  }
+  .essay-cta:hover {
+    color: var(--color-text-muted);
+  }
+  .essay-thumb {
+    display: block;
+    aspect-ratio: 16 / 9;
+    overflow: hidden;
+    border-radius: var(--radius-sm);
+    background: var(--color-bg-elevated);
+    transition: transform 0.25s ease;
+  }
+  .essay-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+  }
+  .essay-thumb:hover img {
+    transform: scale(1.02);
+  }
+
+  @media (max-width: 768px) {
+    .essay-row {
+      grid-template-columns: 1fr;
+      gap: var(--space-3);
+    }
+    .essay-thumb {
+      order: -1;
+    }
+  }
+</style>

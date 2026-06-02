@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import EssayRow from '../components/article/EssayRow.astro';
 import { getTranslations } from '../i18n/utils';
 
 const locale = 'de';
@@ -8,20 +9,6 @@ const siteUrl = "https://christianmaass.com";
 const currentUrl = `${siteUrl}/fachartikel`;
 const ogImage = `${siteUrl}/christian-maass.png`;
 
-type PillarKey = 'kiOperating' | 'grundlagen' | 'boardPerspective';
-const pillarOrder: PillarKey[] = ['kiOperating', 'grundlagen', 'boardPerspective'];
-
-const articlesByPillar = pillarOrder.reduce((acc, key) => {
-  acc[key] = t.pages.fachartikel.articles.filter((a) => a.pillar === key);
-  return acc;
-}, {} as Record<PillarKey, typeof t.pages.fachartikel.articles>);
-
-const pillarSectionMap: Record<PillarKey, string> = {
-  kiOperating: 'AI in Operating',
-  grundlagen: 'Forgotten Fundamentals',
-  boardPerspective: 'Board Perspective on Digital',
-};
-
 const articleSchemas = t.pages.fachartikel.articles.map((article, index) => ({
   "@type": "Article",
   "@id": `https://christianmaass.com/fachartikel/#article-${index + 1}`,
@@ -29,6 +16,7 @@ const articleSchemas = t.pages.fachartikel.articles.map((article, index) => ({
   "description": article.description,
   "url": article.url,
   "datePublished": `${article.year}-01-01`,
+  "genre": article.type,
   "author": {
     "@id": "https://christianmaass.com/#person",
     "@type": "Person",
@@ -39,7 +27,6 @@ const articleSchemas = t.pages.fachartikel.articles.map((article, index) => ({
     "name": "eTailment",
     "url": "https://etailment.de/"
   },
-  "articleSection": pillarSectionMap[article.pillar as PillarKey],
   "inLanguage": "de"
 }));
 ---
@@ -52,8 +39,8 @@ const articleSchemas = t.pages.fachartikel.articles.map((article, index) => ({
   "@type": "WebPage",
   "@id": "https://christianmaass.com/fachartikel/#webpage",
   "url": "https://christianmaass.com/fachartikel/",
-  "name": "Perspektiven · Christian Maaß",
-  "description": "Sechs Artikel, drei Themen-Säulen: KI im Operating, vergessene Grundlagen, Board-Perspektive. Beobachtungen aus der operativen Verantwortung.",
+  "name": "Essays & Interviews · Christian Maaß",
+  "description": "Journalistische Veröffentlichungen in der Fachpresse — Essays und Interviews zu Handel, KI im Operating und digitaler Verantwortung.",
   "inLanguage": "de",
   "isPartOf": { "@id": "https://christianmaass.com/#website" },
   "about": { "@id": "https://christianmaass.com/#person" },
@@ -64,8 +51,8 @@ const articleSchemas = t.pages.fachartikel.articles.map((article, index) => ({
   "@context": "https://schema.org",
   "@type": "ItemList",
   "@id": "https://christianmaass.com/fachartikel/#itemlist",
-  "name": "Perspektiven",
-  "description": "Artikel im eTailment-Expertenrat, gruppiert nach Themen-Säulen",
+  "name": "Essays & Interviews",
+  "description": "Journalistische Veröffentlichungen von Christian Maaß im eTailment-Expertenrat",
   "itemListElement": articleSchemas.map((article, index) => ({
     "@type": "ListItem",
     "position": index + 1,
@@ -85,36 +72,19 @@ const articleSchemas = t.pages.fachartikel.articles.map((article, index) => ({
       <p class="lead">{t.pages.fachartikel.intro}</p>
     </header>
 
-    <section class="pillar-overview">
-      <div class="content-box-row">
-        {pillarOrder.map((key) => (
-          <div class="content-box pillar-card">
-            <h2><a href={`#${key}`}>{t.pages.fachartikel.pillars[key].title}</a></h2>
-            <p>{t.pages.fachartikel.pillars[key].description}</p>
-            <p class="pillar-count">{articlesByPillar[key].length} Artikel</p>
-          </div>
-        ))}
-      </div>
-    </section>
-
-    {pillarOrder.map((key) => (
-      <section id={key} class="pillar-section" aria-labelledby={`${key}-heading`}>
-        <p class="section-eyebrow">{t.pages.fachartikel.pillarLabels[key]}</p>
-        <h2 id={`${key}-heading`}>{t.pages.fachartikel.pillars[key].title}</h2>
-        <div class="articles-list">
-          {articlesByPillar[key].map((article) => (
-            <article class="article-card">
-              <h3><a href={article.url} target="_blank" rel="noopener noreferrer">{article.title}</a></h3>
-              <p class="article-meta">
-                <time datetime={`${article.year}-01-01`}>{article.year}</time> · eTailment
-              </p>
-              <p>{article.description}</p>
-              <a href={article.url} target="_blank" rel="noopener noreferrer" class="text-cta">{article.cta}</a>
-            </article>
-          ))}
-        </div>
-      </section>
-    ))}
+    <div class="essays-list">
+      {t.pages.fachartikel.articles.map((article) => (
+        <EssayRow
+          title={article.title}
+          type={article.type}
+          year={article.year}
+          summary={article.description}
+          cta={article.cta}
+          url={article.url}
+          image={article.image}
+        />
+      ))}
+    </div>
   </section>
 </BaseLayout>
 
@@ -137,109 +107,15 @@ const articleSchemas = t.pages.fachartikel.articles.map((article, index) => ({
     margin: 0;
     max-width: 80ch;
   }
-  .pillar-overview {
-    margin-bottom: 4rem;
-  }
-  .pillar-card h2 {
-    font-size: 1.15rem;
-    margin: 0 0 0.75rem 0;
-    padding: 0 0 0.75rem 0;
-    border-bottom: 1px solid var(--color-border-strong);
-    border: none;
-    padding-bottom: 0;
-  }
-  .pillar-card h2 a {
-    color: var(--color-text-strong);
-    text-decoration: none;
-    border-bottom: 2px solid currentColor;
-    padding-bottom: 2px;
-  }
-  .pillar-card h2 a:hover {
-    color: var(--color-text-muted);
-  }
-  .pillar-count {
-    margin-top: 1rem;
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    font-weight: 700;
-  }
-  .pillar-section {
-    margin-bottom: 4rem;
-    scroll-margin-top: 2rem;
-  }
-  .pillar-section:last-of-type {
-    margin-bottom: 0;
-  }
-  .section-eyebrow {
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin: 0 0 0.5rem 0;
-  }
-  .pillar-section > h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
-    color: var(--color-text-strong);
-    margin: 0 0 2rem 0;
-    line-height: 1.25;
-  }
-  .articles-list {
+  .essays-list {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-  }
-  .article-card {
-    padding: var(--space-4);
-    background: var(--color-bg-elevated);
-    border-radius: var(--radius-sm);
-  }
-  .article-card h3 {
-    margin: 0 0 0.5rem 0;
-    font-size: 1.2rem;
-    color: var(--color-text-strong);
-    line-height: 1.3;
-  }
-  .article-card h3 a {
-    color: var(--color-text-strong);
-    text-decoration: none;
-    transition: color 0.2s;
-  }
-  .article-card h3 a:hover {
-    color: var(--color-text-muted);
-  }
-  .article-meta {
-    font-size: 0.85rem;
-    color: var(--color-text-muted);
-    margin: 0 0 1rem 0;
-  }
-  .article-card p:not(.article-meta) {
-    margin: 0 0 1rem 0;
-    line-height: 1.6;
-    color: var(--color-text);
-  }
-  .text-cta {
-    color: var(--color-text-strong);
-    font-weight: 700;
-    text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
-    transition: color 0.2s;
-  }
-  .text-cta:hover {
-    color: var(--color-text-muted);
+    gap: var(--space-7);
   }
 
   @media (max-width: 900px) {
     .page-header h1 {
       font-size: 1.8rem;
-    }
-    .pillar-section > h2 {
-      font-size: 1.4rem;
-    }
-    .article-card {
-      padding: 1.5rem;
     }
   }
 </style>
