@@ -90,7 +90,7 @@ Aktuelles `src/pages/blog.astro` wird gelöscht und durch `src/pages/blog/index.
 
 | # | Epic | Status | Aufwand | Beschreibung |
 |---|---|---|---|---|
-| 10 | [Foundation — Content Collection](#epic-10) | ⏳ Pending | S | Schema, Verzeichnis, 2–3 Stub-Artikel, Date-Formatter |
+| 10 | [Foundation — Content Collection](#epic-10) | ✅ Done | S | Schema, Verzeichnis, 2–3 Stub-Artikel, Date-Formatter |
 | 11 | [Homepage-Sektion „Neueste Beiträge"](#epic-11) | ⏳ Pending | M | Komponente unter Hero, 5 Artikel, „alle Artikel lesen" |
 | 12 | [Article-Detail-Page Layout & Prose](#epic-12) | ⏳ Pending | M | Route `/blog/[slug]`, 2 ⁄ 3 + 1 ⁄ 3 Grid, Artikel-Header, Markdown-Prose |
 | 13 | [Share-Sidebar](#epic-13) | ⏳ Pending | S | LinkedIn/Facebook/Mail/WhatsApp im Sidebar-Slot |
