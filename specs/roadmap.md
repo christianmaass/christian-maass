@@ -94,7 +94,7 @@ Aktuelles `src/pages/blog.astro` wird gelöscht und durch `src/pages/blog/index.
 | 11 | [Homepage-Sektion „Neueste Beiträge"](#epic-11) | ✅ Done | M | Komponente unter Hero, 5 Artikel, „alle Artikel lesen" |
 | 12 | [Article-Detail-Page Layout & Prose](#epic-12) | ✅ Done | M | Route `/blog/[slug]`, 2 ⁄ 3 + 1 ⁄ 3 Grid, Artikel-Header, Markdown-Prose |
 | 13 | [Share-Sidebar](#epic-13) | ✅ Done | S | LinkedIn/Facebook/Mail/WhatsApp + Copy-Link im Sidebar-Slot |
-| 14 | [Autoren-Box](#epic-14) | ⏳ Pending | S | Bio + Foto unter Artikel-Body |
+| 14 | [Autoren-Box](#epic-14) | ✅ Done | S | Bio + Foto unter Artikel-Body |
 | 15 | [Übersichtsseite & Pagination](#epic-15) | ⏳ Pending | M | `/blog/`, `/blog/2/` etc., 10 pro Seite |
 | 16 | [SEO, RSS, JSON-LD](#epic-16) | ⏳ Pending | S | Article-Schema, OG, RSS, Sitemap-Priorität |
 | 17 | [QA & Release](#epic-17) | ⏳ Pending | S–M | A11y, Lighthouse, Cross-Browser, Empty-State |
