@@ -3,7 +3,8 @@
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import Breadcrumb from '../components/Breadcrumb.astro';
-import { getLocaleFromPath, getAlternateUrl, getBasePath, getTranslations, type Locale } from '../i18n/utils';
+import { getTranslations } from '../i18n/utils';
+import { SITE_URL as siteUrl } from '../utils/config';
 
 interface Props {
   title?: string;
@@ -11,8 +12,7 @@ interface Props {
   canonical?: string;
   ogImage?: string;
   ogType?: string;
-  lang?: string;
-  currentLocale?: Locale;
+  breadcrumbTitle?: string;
 }
 
 const {
@@ -21,55 +21,43 @@ const {
   canonical = "https://christianmaass.com",
   ogImage,
   ogType = "website",
-  lang = "de",
-  currentLocale,
+  breadcrumbTitle,
 } = Astro.props;
 
-// Bestimme aktuelle Sprache aus URL falls nicht übergeben
-const locale: Locale = currentLocale || getLocaleFromPath(Astro.url.pathname);
-const t = getTranslations(locale);
-const base = getBasePath(locale);
-const assetPath = ''; // Assets werden immer vom Root geladen
-const siteUrl = "https://christianmaass.com";
+const t = getTranslations();
+const assetPath = '';
 const siteName = "Christian Maaß";
 const defaultOgImage = `${siteUrl}/og/default.jpg`;
 const finalOgImage = ogImage || defaultOgImage;
-
-// Lang-Attribut automatisch aus locale ableiten (kritisch für SEO und LLM-Erkennung)
-// locale hat Priorität, da es immer korrekt aus currentLocale oder URL-Pfad abgeleitet wird
-const finalLang = locale || lang || "de";
-
-// Alternative URLs für hreflang
-const alternateUrls = {
-  de: getAlternateUrl(Astro.url.pathname, 'de'),
-  en: getAlternateUrl(Astro.url.pathname, 'en'),
-};
-const fullAlternateUrls = {
-  de: `${siteUrl}${alternateUrls.de}`,
-  en: `${siteUrl}${alternateUrls.en}`,
-};
 ---
 
 <!DOCTYPE html>
-<html lang={finalLang}>
+<html lang="de" data-theme="dark">
   <head>
+    <script is:inline>
+      (function () {
+        try {
+          var stored = localStorage.getItem('theme');
+          if (stored === 'light' || stored === 'dark') {
+            document.documentElement.setAttribute('data-theme', stored);
+          }
+        } catch (e) {}
+      })();
+    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self';" />
     <link rel="icon" type="image/svg+xml" href={`${assetPath}/favicon.svg`} />
+    <link rel="apple-touch-icon" sizes="180x180" href={`${assetPath}/apple-touch-icon.png`} />
     <link rel="preload" href={`${assetPath}/fonts/satoshi-500.woff2`} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={`${assetPath}/fonts/montserrat-400.woff2`} as="font" type="font/woff2" crossorigin />
     <link rel="stylesheet" href={`${assetPath}/styles.css`} />
-    
+
     <!-- Basic SEO Tags -->
     <title>{title}</title>
     <meta name="description" content={description} />
     <link rel="canonical" href={canonical} />
-    
-    <!-- hreflang Tags für SEO -->
-    <link rel="alternate" hreflang="de" href={fullAlternateUrls.de} />
-    <link rel="alternate" hreflang="en" href={fullAlternateUrls.en} />
-    <link rel="alternate" hreflang="x-default" href={fullAlternateUrls.de} />
-    
+
     <!-- Open Graph Tags -->
     <meta property="og:type" content={ogType} />
     <meta property="og:title" content={title} />
@@ -77,38 +65,37 @@ const fullAlternateUrls = {
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={finalOgImage} />
     <meta property="og:site_name" content={siteName} />
-    <meta property="og:locale" content={locale === 'de' ? 'de_DE' : 'en_US'} />
-    <meta property="og:locale:alternate" content={locale === 'de' ? 'en_US' : 'de_DE'} />
-    
+    <meta property="og:locale" content="de_DE" />
+
     <!-- Twitter Card Tags -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={finalOgImage} />
-    
+
     <!-- Geo Tags -->
     <meta name="geo.region" content="DE-BY" />
     <meta name="geo.placename" content="Burgebrach" />
     <meta name="geo.position" content="49.8281;10.7431" />
     <meta name="ICBM" content="49.8281, 10.7431" />
-    
+
     <!-- Additional head content slot -->
     <slot name="head" />
-    
+
     <!-- Breadcrumb strukturierte Daten für SEO (nur im Head, keine visuelle Anzeige) -->
-    {Astro.url.pathname !== '/' && Astro.url.pathname !== '/en/' && (
-      <Breadcrumb currentLocale={locale} pathname={Astro.url.pathname} siteUrl={siteUrl} />
+    {Astro.url.pathname !== '/' && (
+      <Breadcrumb pathname={Astro.url.pathname} siteUrl={siteUrl} title={breadcrumbTitle} />
     )}
   </head>
   <body>
     <a class="skip-link" href="#main-content">{t.ui.skipToContent}</a>
-    <Header base={base} currentLocale={locale} pathname={Astro.url.pathname} />
+    <Header pathname={Astro.url.pathname} />
 
 
     <main id="main-content">
       <slot />  <!-- Der Platzhalter für alle Seiteninhalte -->
     </main>
 
-    <Footer base={base} currentLocale={locale} pathname={Astro.url.pathname} />
+    <Footer />
   </body>
 </html>

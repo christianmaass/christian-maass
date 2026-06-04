@@ -85,7 +85,7 @@
   --weight-medium: 500;
   --weight-bold: 700;
 
-  /* Color-Tokens — Dark Editorial */
+  /* Color-Tokens — Dark (Default) */
   --color-bg: #0a0a0a;
   --color-bg-elevated: #111111;
   --color-text: #c8c8c8;
@@ -94,11 +94,25 @@
   --color-border-subtle: rgba(255, 255, 255, 0.08);
   --color-border-strong: rgba(255, 255, 255, 0.16);
   --color-accent: #315a78;
+  --color-accent-hover: #3d647f;
   --color-on-accent: #ffffff;
+  --color-media-bg: #ffffff; /* feste weiße Fläche für externe Logos/Thumbnails — themeunabhängig */
 
   /* Radii */
   --radius-sm: 0.5rem;
   --radius-md: 1rem;
+}
+
+/* Color-Tokens — Light */
+[data-theme="light"] {
+  --color-bg: #fafafa;
+  --color-bg-elevated: #ffffff;
+  --color-text: #1a1a1a;
+  --color-text-strong: #000000;
+  --color-text-muted: #5a5a5a;
+  --color-border-subtle: rgba(0, 0, 0, 0.08);
+  --color-border-strong: rgba(0, 0, 0, 0.16);
+  --color-accent-hover: #264a64;
 }
 
 /* --- Reset und Basis --- */
@@ -141,6 +155,19 @@ html, body {
   }
 }
 
+/* Globale Link-Default-Farbe (Petrol) */
+body a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--color-accent);
+  text-underline-offset: 0.2em;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+body a:hover,
+body a:focus-visible {
+  color: var(--color-text-strong);
+}
+
 /* Globale Typo-Hierarchie (Page-Titel & Sektions-Headings) */
 body h1 {
   font-family: var(--font-family-display);
@@ -175,7 +202,7 @@ body h3 {
   font-weight: var(--weight-bold);
   letter-spacing: var(--letter-spacing-eyebrow);
   text-transform: uppercase;
-  color: var(--color-text-muted);
+  color: var(--color-accent);
   margin: 0 0 var(--space-1) 0;
 }
 
@@ -262,9 +289,12 @@ body h3 {
   transition: color 0.2s ease;
 }
 
-.nav a:hover,
-.nav a.active {
+.nav a:hover {
   color: var(--color-text-strong);
+}
+
+.nav a.active {
+  color: var(--color-accent);
 }
 
 .header-right {
@@ -291,8 +321,37 @@ body h3 {
 }
 
 .contact-pill:hover {
-  background: #3d647f;
+  background: var(--color-accent-hover);
   transform: translateY(-1px);
+}
+
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 999px;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+}
+.theme-toggle:hover,
+.theme-toggle:focus-visible {
+  color: var(--color-text-strong);
+  border-color: var(--color-border-strong);
+}
+.theme-icon-moon {
+  display: none;
+}
+[data-theme="light"] .theme-icon-sun {
+  display: none;
+}
+[data-theme="light"] .theme-icon-moon {
+  display: inline-block;
 }
 
 .burger {
@@ -485,7 +544,7 @@ main {
 }
 
 .cta-btn:hover {
-  background: #3d647f;
+  background: var(--color-accent-hover);
   transform: translateY(-1px);
 }
 
@@ -846,6 +905,20 @@ footer {
   transform: translateY(-2px);
 }
 
+.footer-sponsor-logo {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  display: block;
+  margin-left: 0;
+  margin-right: auto;
+  transition: transform 0.2s ease;
+}
+
+.footer-sponsor-logo:hover {
+  transform: translateY(-2px);
+}
+
 @media (max-width: 768px) {
   .footer-container {
     grid-template-columns: 1fr;
@@ -962,7 +1035,7 @@ footer {
   color: var(--color-text-muted);
   margin: 0 0 1.5rem 0;
   padding-bottom: 0.75rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .book-content p:not(.book-meta) {
@@ -1050,7 +1123,7 @@ footer {
   color: var(--color-text-muted);
   margin: 0 0 1rem 0;
   padding-bottom: 0.5rem;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid var(--color-border-subtle);
 }
 
 .article-box p:not(.article-meta) {
@@ -1096,7 +1169,7 @@ footer {
   width: 180px;
   height: auto;
   object-fit: cover;
-  background: #fff;
+  background: var(--color-media-bg);
 }
 
 .fachartikel-content {
@@ -1123,10 +1196,13 @@ footer {
 
 
 .fachartikel-content a {
-  color: var(--color-text);         /* Rotton anpassen */
+  color: var(--color-accent);
   text-decoration: underline;
   font-weight: 500;
   transition: color 0.2s;
+}
+.fachartikel-content a:hover {
+  color: var(--color-text-strong);
 }
 
 
@@ -1243,7 +1319,7 @@ footer {
   letter-spacing: -0.01em;
   color: var(--color-text-strong);
   padding-bottom: 0.75rem;
-  border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+  border-bottom: 2px solid var(--color-border-subtle);
 }
 
 .bio section:first-child h2 {
@@ -1325,14 +1401,14 @@ footer {
 }
 
 .article-prose a {
-  color: var(--color-text-strong);
+  color: var(--color-accent);
   text-decoration: underline;
-  text-decoration-color: var(--color-text-muted);
+  text-decoration-color: var(--color-accent);
   text-underline-offset: 0.2em;
-  transition: text-decoration-color 0.2s ease;
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
 }
 .article-prose a:hover {
-  text-decoration-color: var(--color-accent);
+  color: var(--color-text-strong);
 }
 
 .article-prose ul,
