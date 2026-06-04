@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { SITE_URL as siteUrl } from '../utils/config';
+
+const canonical = `${siteUrl}/404`;
+---
+
+<BaseLayout
+  title="Seite nicht gefunden · Christian Maaß"
+  description="Diese Seite existiert nicht (mehr). Zurück zur Startseite oder direkt zu Blog, Essays oder Profil."
+  canonical={canonical}
+>
+  <section class="not-found">
+    <div class="not-found-inner">
+      <p class="not-found-eyebrow">404</p>
+      <h1>Seite nicht gefunden.</h1>
+      <p class="lead">
+        Die Adresse existiert nicht — oder nicht mehr. Vielleicht hilft einer der folgenden Wege weiter.
+      </p>
+      <ul class="not-found-links">
+        <li><a href="/">Startseite</a></li>
+        <li><a href="/christian-maass">Profil</a></li>
+        <li><a href="/blog">Blog</a></li>
+        <li><a href="/fachartikel">Essays &amp; Interviews</a></li>
+        <li><a href="/buecher">Bücher</a></li>
+        <li><a href="/kontakt">Kontakt</a></li>
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .not-found {
+    padding: var(--space-6) 0 var(--space-7) 0;
+  }
+  .not-found-inner {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding-x);
+    box-sizing: border-box;
+  }
+  .not-found-eyebrow {
+    margin: 0 0 var(--space-2) 0;
+    font-family: var(--font-family-base);
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-accent);
+  }
+  .not-found h1 {
+    margin: 0 0 var(--space-3) 0;
+  }
+  .not-found .lead {
+    max-width: 56ch;
+    margin: 0 0 var(--space-5) 0;
+  }
+  .not-found-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-3);
+  }
+  .not-found-links a {
+    color: var(--color-text-strong);
+    text-decoration: underline;
+    text-underline-offset: 4px;
+  }
+  .not-found-links a:hover {
+    color: var(--color-accent);
+  }
+</style>

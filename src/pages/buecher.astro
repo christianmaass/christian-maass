@@ -2,11 +2,10 @@
 // filepath: /Users/christianmaass/christian-maass/src/pages/buecher.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getTranslations } from '../i18n/utils';
+import { SITE_URL as siteUrl } from '../utils/config';
 
-const locale = 'de';
-const t = getTranslations(locale);
+const t = getTranslations();
 const assetPath = ''; // Assets werden immer vom Root geladen
-const siteUrl = "https://christianmaass.com";
 const currentUrl = `${siteUrl}/buecher`;
 const ogImage = `${siteUrl}/meine-buecher-maass.png`;
 ---
@@ -177,17 +176,15 @@ const ogImage = `${siteUrl}/meine-buecher-maass.png`;
 </script>
 </Fragment>
 
-<BaseLayout title={t.pages.buecher.title} description={t.pages.buecher.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+<BaseLayout title={t.pages.buecher.title} description={t.pages.buecher.description} canonical={currentUrl} ogImage={ogImage}>
 
   <section class="content-wrapper books-section" aria-label="Bücher-Liste">
     <header class="books-header">
       <div class="books-intro">
+        <p class="books-eyebrow">{t.pages.buecher.eyebrow}</p>
         <h1>{t.pages.buecher.h1}</h1>
         <p class="section-intro" set:html={t.pages.buecher.intro} />
       </div>
-      <figure class="books-figure">
-        <img src={`${assetPath}/meine-buecher-maass.png`} alt="Bücher-Stapel: E-Business Management (UTB) und Online-Produktmanagement (Hanser) von Christian Maaß" loading="eager" />
-      </figure>
     </header>
 
     <div class="books-list">
@@ -251,33 +248,22 @@ const ogImage = `${siteUrl}/meine-buecher-maass.png`;
 </BaseLayout>
 
 <style>
+  .books-section {
+    padding-top: var(--space-6);
+  }
   .books-header {
-    display: grid;
-    grid-template-columns: 1fr 280px;
-    gap: var(--space-5);
-    align-items: center;
-    margin-bottom: var(--space-5);
+    margin-bottom: var(--space-6);
   }
   .books-intro {
     max-width: 60ch;
   }
-  .books-figure {
-    margin: 0;
-  }
-  .books-figure img {
-    width: 100%;
-    height: auto;
-    display: block;
-    border-radius: var(--radius-sm);
-  }
-  @media (max-width: 900px) {
-    .books-header {
-      grid-template-columns: 1fr;
-      gap: var(--space-3);
-    }
-    .books-figure {
-      max-width: 240px;
-      margin: 0 auto;
-    }
+  .books-eyebrow {
+    margin: 0 0 var(--space-2) 0;
+    font-family: var(--font-family-base);
+    font-size: 0.78rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-accent);
   }
 </style>

@@ -2,12 +2,10 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LatestArticles from '../components/article/LatestArticles.astro';
 import { getTranslations } from '../i18n/utils';
-import { detectAndRedirect } from '../utils/localeDetection';
+import { SITE_URL as siteUrl } from '../utils/config';
 
-const locale = 'de';
-const t = getTranslations(locale);
+const t = getTranslations();
 const assetPath = '';
-const siteUrl = "https://christianmaass.com";
 const currentUrl = siteUrl;
 const ogImage = `${siteUrl}/christian-maass.png`;
 ---
@@ -149,7 +147,7 @@ const ogImage = `${siteUrl}/christian-maass.png`;
 </script>
 </Fragment>
 
-<BaseLayout title={t.pages.index.title} description={t.pages.index.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+<BaseLayout title={t.pages.index.title} description={t.pages.index.description} canonical={currentUrl} ogImage={ogImage}>
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-content">
@@ -171,7 +169,7 @@ const ogImage = `${siteUrl}/christian-maass.png`;
     </div>
   </section>
 
-  <LatestArticles currentLocale={locale} />
+  <LatestArticles />
 </BaseLayout>
 
 <script is:inline src="/js/locale-redirect.js"></script>
