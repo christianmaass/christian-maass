@@ -2,28 +2,23 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getTranslations } from '../i18n/utils';
 import { SITE_URL as siteUrl } from '../utils/config';
+import { webPage } from '../utils/jsonLd';
 
 const t = getTranslations();
 const assetPath = '';
 const currentUrl = `${siteUrl}/beirat`;
 const ogImage = `${siteUrl}/advisor-beirat-christian-maass.png`;
+
+const beiratPageSchema = webPage({
+  path: '/beirat/',
+  name: t.pages.beirat.title,
+  description: t.pages.beirat.description,
+  mainEntityPerson: false,
+});
 ---
 
 <Fragment slot="head">
-<script is:inline type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://christianmaass.com/beirat/#webpage",
-  "url": "https://christianmaass.com/beirat/",
-  "name": "Beirat & Verbandsarbeit · Christian Maaß",
-  "description": "Vier Beirats-Mandate, eine Vorstandsrolle im BEVH. Christian Maaß wird gerufen, wenn es um die Reihenfolge geht – was wird zuerst entschieden, wer entscheidet, wann wird umgesetzt.",
-  "inLanguage": "de",
-  "isPartOf": { "@id": "https://christianmaass.com/#website" },
-  "about": { "@id": "https://christianmaass.com/#person" },
-  "breadcrumb": { "@id": "https://christianmaass.com/beirat/#breadcrumb" }
-}
-</script>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(beiratPageSchema)} />
 <script is:inline type="application/ld+json">
 {
   "@context": "https://schema.org",

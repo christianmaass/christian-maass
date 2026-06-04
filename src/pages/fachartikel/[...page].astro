@@ -7,6 +7,7 @@ import { getPublishedEssays, type Essay } from '../../utils/essays';
 import { getTranslations } from '../../i18n/utils';
 import { formatDateISO } from '../../utils/formatDate';
 import { SITE_URL as siteUrl } from '../../utils/config';
+import { PERSON_ID, personRef, webPage } from '../../utils/jsonLd';
 
 export const getStaticPaths: GetStaticPaths = async ({ paginate }) => {
   const essays = await getPublishedEssays();
@@ -36,7 +37,7 @@ const articleSchemas = allEssays.map((entry, index) => ({
   datePublished: formatDateISO(entry.data.date),
   genre: entry.data.type,
   author: {
-    '@id': `${siteUrl}/#person`,
+    ...personRef(),
     '@type': 'Person',
     name: 'Christian Maaß',
   },
@@ -47,23 +48,19 @@ const articleSchemas = allEssays.map((entry, index) => ({
   },
   inLanguage: 'de',
 }));
+
+const webPageSchema = webPage({
+  path: '/fachartikel/',
+  name: t.pages.fachartikel.title,
+  description: t.pages.fachartikel.description,
+  mainEntityPerson: false,
+});
 ---
 
 <BaseLayout title={title} description={description} canonical={canonical} ogImage={ogImage}>
   <Fragment slot="head">
-    <meta property="article:author" content={`${siteUrl}/#person`} />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'WebPage',
-      '@id': `${siteUrl}/fachartikel/#webpage`,
-      url: `${siteUrl}/fachartikel/`,
-      name: t.pages.fachartikel.title,
-      description: t.pages.fachartikel.description,
-      inLanguage: 'de',
-      isPartOf: { '@id': `${siteUrl}/#website` },
-      about: { '@id': `${siteUrl}/#person` },
-      breadcrumb: { '@id': `${siteUrl}/fachartikel/#breadcrumb` },
-    })} />
+    <meta property="article:author" content={PERSON_ID} />
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify({
       '@context': 'https://schema.org',
       '@type': 'ItemList',

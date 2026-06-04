@@ -7,6 +7,7 @@ import AuthorBox from '../../components/article/AuthorBox.astro';
 import { getPublishedArticles, articleSlug } from '../../utils/articles';
 import { formatDateISO } from '../../utils/formatDate';
 import { SITE_URL as siteUrl } from '../../utils/config';
+import { authorPerson, publisherPerson, speakable } from '../../utils/jsonLd';
 
 export async function getStaticPaths() {
   const articles = await getPublishedArticles();
@@ -46,32 +47,13 @@ const blogPostingJsonLd = {
   },
   datePublished: datePublishedISO,
   dateModified: dateModifiedISO,
-  author: {
-    '@id': `${siteUrl}/#person`,
-    '@type': 'Person',
-    name: 'Christian Maaß',
-    url: `${siteUrl}/christian-maass`,
-    sameAs: [
-      'https://www.linkedin.com/in/christianmaass/',
-      'https://www.amazon.de/stores/author/B0045949JA',
-      'https://www.instagram.com/christianmaass/',
-      'https://x.com/ChristianMaass',
-    ],
-  },
-  publisher: {
-    '@id': `${siteUrl}/#person`,
-    '@type': 'Person',
-    name: 'Christian Maaß',
-    url: siteUrl,
-  },
+  author: authorPerson(),
+  publisher: publisherPerson(),
   mainEntityOfPage: {
     '@type': 'WebPage',
     '@id': canonical,
   },
-  speakable: {
-    '@type': 'SpeakableSpecification',
-    cssSelector: ['.article-title', '.article-lead'],
-  },
+  speakable: speakable(['.article-title', '.article-lead']),
 };
 ---
 

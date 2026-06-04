@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getTranslations } from '../i18n/utils';
 import { SITE_URL as siteUrl } from '../utils/config';
+import { webPage } from '../utils/jsonLd';
 
 const t = getTranslations();
 const currentUrl = `${siteUrl}/lehre`;
@@ -9,24 +10,16 @@ const ogImage = `${siteUrl}/lehre-dr-christian-maass.png`;
 
 type PillarKey = 'kiOperating' | 'grundlagen' | 'boardPerspective';
 const pillarOrder: PillarKey[] = ['kiOperating', 'grundlagen', 'boardPerspective'];
+
+const lehrePageSchema = webPage({
+  path: '/lehre/',
+  name: t.pages.lehre.title,
+  description: t.pages.lehre.description,
+});
 ---
 
 <Fragment slot="head">
-<script is:inline type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://christianmaass.com/lehre/#webpage",
-  "url": "https://christianmaass.com/lehre/",
-  "name": "Vorträge & Lehre · Christian Maaß",
-  "description": "Vorträge entlang drei Säulen: KI im Operating, vergessene Grundlagen, Board-Perspektive. Plus Lehrauftrag an der Frankfurt School of Business & Finance.",
-  "inLanguage": "de",
-  "isPartOf": { "@id": "https://christianmaass.com/#website" },
-  "about": { "@id": "https://christianmaass.com/#person" },
-  "mainEntity": { "@id": "https://christianmaass.com/#person" },
-  "breadcrumb": { "@id": "https://christianmaass.com/lehre/#breadcrumb" }
-}
-</script>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(lehrePageSchema)} />
 </Fragment>
 
 <BaseLayout title={t.pages.lehre.title} description={t.pages.lehre.description} canonical={currentUrl} ogImage={ogImage}>

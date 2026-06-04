@@ -2,32 +2,31 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getTranslations } from '../i18n/utils';
 import { SITE_URL as siteUrl } from '../utils/config';
+import { PERSON_ID, webPage } from '../utils/jsonLd';
 
 const t = getTranslations();
 const currentUrl = `${siteUrl}/kontakt`;
 const ogImage = `${siteUrl}/og/default.jpg`;
+
+const contactPageSchema = webPage({
+  path: '/kontakt/',
+  type: 'ContactPage',
+  name: t.pages.kontakt.title,
+  description: t.pages.kontakt.description,
+  mainEntityPerson: false,
+  extra: {
+    mainEntity: {
+      '@type': 'Person',
+      '@id': PERSON_ID,
+      email: 'christian@christianmaass.com',
+      sameAs: ['https://www.linkedin.com/in/christianmaass/'],
+    },
+  },
+});
 ---
 
 <Fragment slot="head">
-<script is:inline type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "@id": "https://christianmaass.com/kontakt/#webpage",
-  "url": "https://christianmaass.com/kontakt/",
-  "name": "Kontakt · Christian Maaß",
-  "description": "Kontakt zu Christian Maaß — per E-Mail, LinkedIn oder Telefon. Keine Formulare, keine vertriebliche Kaltakquise.",
-  "inLanguage": "de",
-  "isPartOf": { "@id": "https://christianmaass.com/#website" },
-  "about": { "@id": "https://christianmaass.com/#person" },
-  "mainEntity": {
-    "@type": "Person",
-    "@id": "https://christianmaass.com/#person",
-    "email": "christian@christianmaass.com",
-    "sameAs": ["https://www.linkedin.com/in/christianmaass/"]
-  }
-}
-</script>
+<script is:inline type="application/ld+json" set:html={JSON.stringify(contactPageSchema)} />
 </Fragment>
 
 <BaseLayout title={t.pages.kontakt.title} description={t.pages.kontakt.description} canonical={currentUrl} ogImage={ogImage}>
