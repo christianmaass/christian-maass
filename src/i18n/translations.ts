@@ -424,7 +424,7 @@ export const translations: Translations = {
       title: 'Essays, Interviews & Podcasts · Christian Maaß',
       description:
         'Journalistische Veröffentlichungen in der Fachpresse — Essays, Interviews und Podcasts zu Handel, KI im Operating und digitaler Verantwortung. Erschienen u. a. bei eTailment, Textilwirtschaft, t3n, W&V, Kassenzone und digital kompakt.',
-      h1: 'Essays, Interviews & Podcasts in den Fachmedien',
+      h1: 'Beiträge in Fachmedien',
       intro:
         'Journalistische Veröffentlichungen in der Fachpresse — Essays, Interviews und Podcasts zu Handel, KI im Operating und digitaler Verantwortung. Erschienen u. a. bei eTailment, Textilwirtschaft, t3n, W&V, Kassenzone und digital kompakt. Persönliche Beobachtungen aus der operativen Praxis, nicht aus der Beraterperspektive.',
       emptyState: 'Noch keine Beiträge veröffentlicht.',
