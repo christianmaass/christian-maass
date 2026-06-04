@@ -7,11 +7,11 @@ const assetPath = '';
 
 <footer>
   <div class="footer-container">
-
     <div class="footer-block">
       <h3>{t.footer.navigation}</h3>
       <ul>
-        <li><a href="/blog">{t.nav.blog}</a></li>
+        {/* Blog vorübergehend deaktiviert — zum Reaktivieren Kommentar entfernen */}
+        {/* <li><a href="/blog">{t.nav.blog}</a></li> */}
         <li><a href="/fachartikel">{t.nav.perspectives}</a></li>
         <li><a href="/buecher">{t.nav.books}</a></li>
         <li><a href="/beirat">{t.nav.boardAdvisory}</a></li>
@@ -23,26 +23,48 @@ const assetPath = '';
     <div class="footer-block">
       <h3>{t.footer.legal}</h3>
       <ul>
-       <li><a href="/impressum">{t.footer.imprint}</a></li>
-       <li><a href="/datenschutz">{t.footer.privacy}</a></li>
-       <li><a href="/barrierefreiheit">{t.footer.accessibility}</a></li>
+        <li><a href="/impressum">{t.footer.imprint}</a></li>
+        <li><a href="/datenschutz">{t.footer.privacy}</a></li>
+        <li><a href="/barrierefreiheit">{t.footer.accessibility}</a></li>
       </ul>
     </div>
 
     <div class="footer-block">
       <h3>{t.footer.myMostRecentBook}</h3>
-      <a href="https://www.amazon.de/Executive-Presence-Führungskraft-auftreten-kommunizieren/dp/3648190466" target="_blank" rel="noopener noreferrer">
-        <img src={`${assetPath}/executive-presence-maass.jpg`} alt="Buchcover Executive Presence" class="footer-book-cover" width="150" height="225" loading="lazy" />
+      <a
+        href="https://www.amazon.de/Executive-Presence-Führungskraft-auftreten-kommunizieren/dp/3648190466"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          src={`${assetPath}/executive-presence-maass.jpg`}
+          alt="Buchcover Executive Presence"
+          class="footer-book-cover"
+          width="150"
+          height="225"
+          loading="lazy"
+        />
       </a>
     </div>
 
     <div class="footer-block">
       <h3>{t.footer.sponsors}</h3>
-      <a href="https://www.thomann.de" target="_blank" rel="noopener noreferrer" aria-label="Thomann">
-        <img src={`${assetPath}/logo-thomann.png`} alt="Logo Thomann" class="footer-sponsor-logo" width="600" height="170" loading="lazy" />
+      <a
+        href="https://www.thomann.de"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="Thomann"
+      >
+        <img
+          src={`${assetPath}/logo-thomann.png`}
+          alt="Logo Thomann"
+          class="footer-sponsor-logo"
+          width="600"
+          height="170"
+          loading="lazy"
+        />
       </a>
     </div>
-
   </div>
 
   <div class="footer-copy">

@@ -42,6 +42,10 @@ export interface Translations {
         heading: string;
         readAll: string;
       };
+      latestEssays: {
+        heading: string;
+        readAll: string;
+      };
       pillars: {
         eyebrow: string;
         intro: string;
@@ -231,7 +235,7 @@ export const translations: Translations = {
   nav: {
     home: 'Start',
     about: 'Über mich',
-    perspectives: 'Essays',
+    perspectives: 'Essays, Interviews & Podcasts',
     books: 'Bücher',
     teaching: 'Vorträge & Lehre',
     boardAdvisory: 'Mandate',
@@ -271,6 +275,10 @@ export const translations: Translations = {
       latestArticles: {
         heading: 'Neueste Beiträge',
         readAll: 'alle Artikel lesen',
+      },
+      latestEssays: {
+        heading: 'Neueste Beiträge',
+        readAll: 'alle Essays & Interviews lesen',
       },
       pillars: {
         eyebrow: 'Worüber ich arbeite',
@@ -413,13 +421,13 @@ export const translations: Translations = {
       },
     },
     fachartikel: {
-      title: 'Essays & Interviews · Christian Maaß',
+      title: 'Essays, Interviews & Podcasts · Christian Maaß',
       description:
-        'Journalistische Veröffentlichungen in der Fachpresse — Essays und Interviews zu Handel, KI im Operating und digitaler Verantwortung. Erschienen im Expertenrat von eTailment.',
-      h1: 'Essays & Interviews in den Fachmedien',
+        'Journalistische Veröffentlichungen in der Fachpresse — Essays, Interviews und Podcasts zu Handel, KI im Operating und digitaler Verantwortung. Erschienen u. a. bei eTailment, Textilwirtschaft, t3n, W&V, Kassenzone und digital kompakt.',
+      h1: 'Essays, Interviews & Podcasts in den Fachmedien',
       intro:
-        'Journalistische Veröffentlichungen in der Fachpresse — Essays und Interviews zu Handel, KI im Operating und digitaler Verantwortung. Erschienen im Expertenrat von eTailment. Persönliche Beobachtungen aus der operativen Praxis, nicht aus der Beraterperspektive.',
-      emptyState: 'Noch keine Essays veröffentlicht.',
+        'Journalistische Veröffentlichungen in der Fachpresse — Essays, Interviews und Podcasts zu Handel, KI im Operating und digitaler Verantwortung. Erschienen u. a. bei eTailment, Textilwirtschaft, t3n, W&V, Kassenzone und digital kompakt. Persönliche Beobachtungen aus der operativen Praxis, nicht aus der Beraterperspektive.',
+      emptyState: 'Noch keine Beiträge veröffentlicht.',
     },
     lehre: {
       title: 'Vorträge & Lehre · Christian Maaß',

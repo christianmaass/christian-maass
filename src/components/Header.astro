@@ -15,7 +15,8 @@ const isActivePrefix = (path: string) =>
     <a href="/" class="brand" aria-label="Christian Maaß – Startseite">Christian Maaß</a>
 
     <nav id="main-nav" class="nav" aria-label="Hauptnavigation">
-      <a href="/blog" class={isActivePrefix('/blog')}>{t.nav.blog}</a>
+      {/* Blog vorübergehend deaktiviert — zum Reaktivieren Kommentar entfernen */}
+      {/* <a href="/blog" class={isActivePrefix('/blog')}>{t.nav.blog}</a> */}
       <a href="/fachartikel" class={isActive('/fachartikel')}>{t.nav.perspectives}</a>
       <a href="/buecher" class={isActive('/buecher')}>{t.nav.books}</a>
       <a href="/beirat" class={isActive('/beirat')}>{t.nav.boardAdvisory}</a>

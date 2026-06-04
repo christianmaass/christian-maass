@@ -18,9 +18,10 @@ const { page } = Astro.props as { page: Page<Essay> };
 const t = getTranslations();
 const canonical = `${siteUrl}${page.url.current}`;
 const ogImage = `${siteUrl}/christian-maass.png`;
-const title = page.currentPage === 1
-  ? t.pages.fachartikel.title
-  : `${t.pages.fachartikel.h1.replace(/\.$/, '')} — Seite ${page.currentPage} · Christian Maaß`;
+const title =
+  page.currentPage === 1
+    ? t.pages.fachartikel.title
+    : `${t.pages.fachartikel.h1.replace(/\.$/, '')} — Seite ${page.currentPage} · Christian Maaß`;
 const description = t.pages.fachartikel.description;
 
 const allEssays = await getPublishedEssays();
@@ -61,36 +62,48 @@ const webPageSchema = webPage({
   <Fragment slot="head">
     <meta property="article:author" content={PERSON_ID} />
     <script is:inline type="application/ld+json" set:html={JSON.stringify(webPageSchema)} />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@type': 'ItemList',
-      '@id': `${siteUrl}/fachartikel/#itemlist`,
-      name: 'Essays & Interviews',
-      description: 'Journalistische Veröffentlichungen von Christian Maaß im eTailment-Expertenrat',
-      itemListElement: articleSchemas.map((article, index) => ({
-        '@type': 'ListItem',
-        position: index + 1,
-        item: article,
-      })),
-    })} />
-    <script is:inline type="application/ld+json" set:html={JSON.stringify({
-      '@context': 'https://schema.org',
-      '@graph': articleSchemas,
-    })} />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'ItemList',
+        '@id': `${siteUrl}/fachartikel/#itemlist`,
+        name: 'Essays, Interviews & Podcasts',
+        description: 'Journalistische Veröffentlichungen von Christian Maaß in der Fachpresse',
+        itemListElement: articleSchemas.map((article, index) => ({
+          '@type': 'ListItem',
+          position: index + 1,
+          item: article,
+        })),
+      })}
+    />
+    <script
+      is:inline
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@graph': articleSchemas,
+      })}
+    />
   </Fragment>
 
   <section class="blog-overview">
     <div class="blog-overview-inner">
-      <p class="blog-overview-eyebrow">Essays & Interviews</p>
+      <p class="blog-overview-eyebrow">Essays, Interviews & Podcasts</p>
       <h1 class="blog-overview-heading">{t.pages.fachartikel.h1}</h1>
 
-      {page.data.length === 0 ? (
-        <p class="blog-overview-empty">{t.pages.fachartikel.emptyState}</p>
-      ) : (
-        <div class="blog-overview-list">
-          {page.data.map((entry) => <EssayRow entry={entry} />)}
-        </div>
-      )}
+      {
+        page.data.length === 0 ? (
+          <p class="blog-overview-empty">{t.pages.fachartikel.emptyState}</p>
+        ) : (
+          <div class="blog-overview-list">
+            {page.data.map((entry) => (
+              <EssayRow entry={entry} />
+            ))}
+          </div>
+        )
+      }
 
       <Pagination
         currentPage={page.currentPage}

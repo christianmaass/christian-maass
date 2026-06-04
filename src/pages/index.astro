@@ -1,7 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import LatestArticles from '../components/article/LatestArticles.astro';
+import LatestEssays from '../components/article/LatestEssays.astro';
 import { getTranslations } from '../i18n/utils';
 import { SITE_URL as siteUrl } from '../utils/config';
 import heroPortrait from '../assets/christian-maass.png';
@@ -177,7 +177,7 @@ const ogImage = `${siteUrl}/christian-maass.png`;
     </div>
   </section>
 
-  <LatestArticles />
+  <LatestEssays />
 </BaseLayout>
 
 <style>
