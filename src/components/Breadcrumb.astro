@@ -1,82 +1,62 @@
 ---
-import { getTranslations, getBasePath, type Locale } from '../i18n/utils';
-
 interface Props {
-  currentLocale?: Locale;
   pathname?: string;
   siteUrl?: string;
+  title?: string;
 }
 
-const { currentLocale = 'de', pathname: pathnameProp, siteUrl = 'https://christianmaass.com' } = Astro.props as Props;
+const { pathname: pathnameProp, siteUrl = 'https://christianmaass.com', title } = Astro.props as Props;
 const pathname = pathnameProp || Astro.url.pathname;
-const t = getTranslations(currentLocale);
-const base = getBasePath(currentLocale);
 
-// Breadcrumb-Mapping für Seiten
-const breadcrumbMap: Record<string, { de: string; en: string }> = {
-  '/': { de: 'Startseite', en: 'Home' },
-  '/christian-maass': { de: 'Christian Maaß', en: 'Christian Maaß' },
-  '/buecher': { de: 'Bücher', en: 'Books' },
-  '/fachartikel': { de: 'Fachartikel', en: 'Articles' },
-  '/lehre': { de: 'Lehre', en: 'Teaching' },
-  '/beirat': { de: 'Beirat', en: 'Board Advisory' },
-  '/kontakt': { de: 'Kontakt', en: 'Contact' },
-  '/impressum': { de: 'Impressum', en: 'Imprint' },
-  '/datenschutz': { de: 'Datenschutz', en: 'Privacy' },
-  '/barrierefreiheit': { de: 'Barrierefreiheit', en: 'Accessibility' },
+const breadcrumbMap: Record<string, string> = {
+  '/': 'Startseite',
+  '/christian-maass': 'Christian Maaß',
+  '/buecher': 'Bücher',
+  '/fachartikel': 'Essays & Interviews',
+  '/lehre': 'Vorträge & Lehre',
+  '/beirat': 'Beirat & Verbandsarbeit',
+  '/kontakt': 'Kontakt',
+  '/blog': 'Blog',
+  '/impressum': 'Impressum',
+  '/datenschutz': 'Datenschutz',
+  '/barrierefreiheit': 'Barrierefreiheit',
 };
 
-// Englische Pfade
-const breadcrumbMapEn: Record<string, { de: string; en: string }> = {
-  '/en/': { de: 'Startseite', en: 'Home' },
-  '/en/christian-maass': { de: 'Christian Maaß', en: 'Christian Maaß' },
-  '/en/buecher': { de: 'Bücher', en: 'Books' },
-  '/en/fachartikel': { de: 'Fachartikel', en: 'Articles' },
-  '/en/lehre': { de: 'Lehre', en: 'Teaching' },
-  '/en/beirat': { de: 'Beirat', en: 'Board Advisory' },
-  '/en/kontakt': { de: 'Kontakt', en: 'Contact' },
-};
-
-// Normalisiere den Pfad
 const normalizedPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
-const currentPath = normalizedPath || '/';
 
-// Generiere Breadcrumb-Items
-const items: Array<{ name: string; url: string }> = [];
+// Pagination-Pfade wie /blog/2 oder /fachartikel/3 auf den Basis-Pfad reduzieren
+const paginationStripped = normalizedPath.replace(/^(\/blog|\/fachartikel)\/\d+$/, '$1');
 
-// Home immer hinzufügen
-items.push({
-  name: currentLocale === 'de' ? 'Startseite' : 'Home',
-  url: `${siteUrl}${base}/`,
-});
+const currentPath = paginationStripped || '/';
 
-// Wenn nicht Homepage, aktuellen Pfad hinzufügen
-if (currentPath !== '/' && currentPath !== '/en/') {
-  const pathKey = currentPath.startsWith('/en/') ? currentPath : currentPath;
-  const map = currentPath.startsWith('/en/') ? breadcrumbMapEn : breadcrumbMap;
-  const breadcrumb = map[pathKey];
-  
-  if (breadcrumb) {
-    items.push({
-      name: breadcrumb[currentLocale],
-      url: `${siteUrl}${currentPath}`,
-    });
+const items: Array<{ name: string; url: string }> = [
+  { name: 'Startseite', url: `${siteUrl}/` },
+];
+
+if (currentPath !== '/') {
+  const directMatch = breadcrumbMap[currentPath];
+  if (directMatch) {
+    items.push({ name: directMatch, url: `${siteUrl}${currentPath}` });
+  } else if (currentPath.startsWith('/blog/')) {
+    // Einzel-Artikel: Home > Blog > Titel
+    items.push({ name: 'Blog', url: `${siteUrl}/blog` });
+    if (title) {
+      items.push({ name: title, url: `${siteUrl}${currentPath}` });
+    }
   }
 }
 
-// Generiere BreadcrumbList Schema
 const breadcrumbListSchema = {
-  "@context": "https://schema.org",
-  "@type": "BreadcrumbList",
-  "itemListElement": items.map((item, index) => ({
-    "@type": "ListItem",
-    "position": index + 1,
-    "name": item.name,
-    "item": item.url,
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.name,
+    item: item.url,
   })),
 };
 ---
 
 <!-- Nur strukturierte Daten für SEO, keine visuelle Anzeige -->
 <script is:inline type="application/ld+json" set:html={JSON.stringify(breadcrumbListSchema)} />
-

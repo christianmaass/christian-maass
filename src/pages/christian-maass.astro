@@ -1,11 +1,9 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getTranslations, getBasePath } from '../i18n/utils';
+import { getTranslations } from '../i18n/utils';
+import { SITE_URL as siteUrl } from '../utils/config';
 
-const locale = 'de';
-const t = getTranslations(locale);
-const base = getBasePath(locale);
-const siteUrl = "https://christianmaass.com";
+const t = getTranslations();
 const currentUrl = `${siteUrl}/christian-maass`;
 const ogImage = `${siteUrl}/dr-christian-maass.png`;
 ---
@@ -69,80 +67,69 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
   "inLanguage": "de",
   "isPartOf": { "@id": "https://christianmaass.com/#website" },
   "about": { "@id": "https://christianmaass.com/#person" },
+  "mainEntity": { "@id": "https://christianmaass.com/#person" },
+  "speakable": {
+    "@type": "SpeakableSpecification",
+    "cssSelector": [".profile-intro h1", ".profile-body"]
+  },
   "breadcrumb": { "@id": "https://christianmaass.com/christian-maass/#breadcrumb" }
 }
 </script>
 </Fragment>
 
-<BaseLayout title={t.pages.christianMaass.title} description={t.pages.christianMaass.description} canonical={currentUrl} ogImage={ogImage} currentLocale={locale}>
+<BaseLayout title={t.pages.christianMaass.title} description={t.pages.christianMaass.description} canonical={currentUrl} ogImage={ogImage}>
   <section class="content-wrapper">
     <article class="profile">
       <header class="profile-header">
-        <div class="profile-portrait">
-          <img src="/dr-christian-maass.png" alt="Dr. Christian Maaß, Managing Director & CDO Thomann" width="440" height="520" loading="eager" fetchpriority="high" />
+        <div class="profile-aside">
+          <div class="profile-portrait">
+            <img src="/dr-christian-maass.png" alt="Dr. Christian Maaß, Managing Director & CDO Thomann" width="440" height="520" loading="eager" fetchpriority="high" />
+          </div>
+          <ul class="profile-socials">
+            <li>
+              <a href="https://www.linkedin.com/in/christianmaass/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn-Profil von Christian Maaß">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                  <rect width="4" height="12" x="2" y="9"/>
+                  <circle cx="4" cy="4" r="2"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="mailto:christian@netzbaron.de" aria-label="E-Mail an Christian Maaß">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <rect width="20" height="16" x="2" y="4" rx="2"/>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.thomann.de" target="_blank" rel="noopener noreferrer" aria-label="Thomann Shop">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
+                  <line x1="3" y1="6" x2="21" y2="6"/>
+                  <path d="M16 10a4 4 0 0 1-8 0"/>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.amazon.de/stores/Christian-Maa%C3%9F/author/B0045949JA" target="_blank" rel="noopener noreferrer" aria-label="Autorenprofil von Christian Maaß bei Amazon">
+                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+                </svg>
+              </a>
+            </li>
+          </ul>
         </div>
         <div class="profile-intro">
-          <p class="eyebrow">Profil</p>
+          <p class="eyebrow profile-eyebrow">Profil</p>
           <h1>{t.pages.christianMaass.h1}</h1>
-          <p class="lead">{t.pages.christianMaass.intro}</p>
-          <p class="triade-mark">Strategie. Technologie. Organisation.</p>
+          {t.pages.christianMaass.intro.map((paragraph) => (
+            <p class="profile-body">{paragraph}</p>
+          ))}
         </div>
       </header>
-
-      <section class="section-cases">
-        <header class="section-header">
-          <p class="eyebrow">{t.pages.christianMaass.cases.eyebrow}</p>
-          <h2>Drei Stationen, drei Synchronisations-Probleme.</h2>
-        </header>
-
-        <article class="case">
-          <p class="case-meta">{t.pages.christianMaass.cases.thomann.subtitle}</p>
-          <h3>{t.pages.christianMaass.cases.thomann.title}</h3>
-          <p>{t.pages.christianMaass.cases.thomann.paragraph1}</p>
-          <p>{t.pages.christianMaass.cases.thomann.paragraph2}</p>
-        </article>
-
-        <article class="case">
-          <p class="case-meta">{t.pages.christianMaass.cases.otto.subtitle}</p>
-          <h3>{t.pages.christianMaass.cases.otto.title}</h3>
-          <p>{t.pages.christianMaass.cases.otto.paragraph1}</p>
-          <p>{t.pages.christianMaass.cases.otto.paragraph2}</p>
-        </article>
-
-        <article class="case">
-          <p class="case-meta">{t.pages.christianMaass.cases.vistaprint.subtitle}</p>
-          <h3>{t.pages.christianMaass.cases.vistaprint.title}</h3>
-          <p>{t.pages.christianMaass.cases.vistaprint.paragraph1}</p>
-          <p>{t.pages.christianMaass.cases.vistaprint.paragraph2}</p>
-        </article>
-      </section>
-
-      <section class="section-plug">
-        <p class="eyebrow">Arbeitsweise</p>
-        <h2>{t.pages.christianMaass.plugAndPlay.title}</h2>
-        <p>{t.pages.christianMaass.plugAndPlay.paragraph1}</p>
-        <blockquote class="pull-quote">
-          „Headhunter und Aufsichtsräte fragen mich genau deshalb: weil ich keine zehnjährige Branchen-Karriere brauche, um in sechs Wochen den Engpass zu finden."
-        </blockquote>
-      </section>
-
-      <section class="section-publications">
-        <p class="eyebrow">Werk</p>
-        <h2>{t.pages.christianMaass.publications.title}</h2>
-        <p>{t.pages.christianMaass.publications.paragraph}</p>
-      </section>
-
-      <section class="section-mandates">
-        <p class="eyebrow">Mandate</p>
-        <h2>{t.pages.christianMaass.mandates.title}</h2>
-        <p>{t.pages.christianMaass.mandates.paragraph}</p>
-      </section>
-
-      <aside class="profile-cta card-soft">
-        <h2>{t.pages.christianMaass.ctaSection.headline}</h2>
-        <p>{t.pages.christianMaass.ctaSection.text}</p>
-        <a href={`${base}/kontakt`} class="cta-btn">{t.pages.christianMaass.ctaSection.button}</a>
-      </aside>
     </article>
   </section>
 </BaseLayout>
@@ -162,6 +149,11 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
     align-items: start;
     margin-bottom: var(--space-6);
   }
+  .profile-aside {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
   .profile-portrait {
     background: var(--color-bg-elevated);
     border-radius: var(--radius-sm);
@@ -173,14 +165,39 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
     display: block;
     object-fit: cover;
   }
+  .profile-socials {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: var(--space-2);
+    justify-content: center;
+  }
+  .profile-socials a {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    color: var(--color-text-strong);
+    background: var(--color-bg-elevated);
+    text-decoration: none;
+    transition: color 0.15s ease, background-color 0.15s ease;
+  }
+  .profile-socials a:hover,
+  .profile-socials a:focus-visible {
+    color: var(--color-accent);
+    background: var(--color-bg-subtle, var(--color-bg-elevated));
+  }
   .profile-intro h1 {
     margin: 0 0 var(--space-3) 0;
   }
-  .profile-intro .lead {
-    font-size: var(--font-size-lg);
-    line-height: var(--line-height-lead);
-    margin: 0 0 var(--space-4) 0;
-    color: var(--color-text);
+  .profile-eyebrow {
+    font-weight: var(--weight-medium);
+  }
+  .profile-body + .profile-body {
+    margin-top: var(--space-3);
   }
 
   @media (max-width: 768px) {
@@ -188,95 +205,10 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
       grid-template-columns: 1fr;
       gap: var(--space-3);
     }
-    .profile-portrait {
+    .profile-aside {
       max-width: 200px;
       margin: 0 auto;
     }
   }
-  .triade-mark {
-    margin: 0;
-    padding: var(--space-2) 0;
-    font-size: var(--font-size-sm);
-    font-weight: var(--weight-bold);
-    letter-spacing: var(--letter-spacing-eyebrow);
-    text-transform: uppercase;
-    color: var(--color-text-strong);
-    border-top: 1px solid var(--color-border-subtle);
-    border-bottom: 1px solid var(--color-border-subtle);
-    text-align: center;
-  }
 
-  .profile > section {
-    padding: var(--space-5) 0;
-    border-bottom: 1px solid var(--color-border-subtle);
-  }
-  .profile > section:last-of-type {
-    border-bottom: none;
-  }
-  .section-header {
-    margin-bottom: var(--space-4);
-  }
-  .section-header h2 {
-    margin: 0;
-  }
-
-  .case {
-    margin-bottom: var(--space-4);
-    padding-bottom: var(--space-4);
-    border-bottom: 1px dashed var(--color-border-subtle);
-  }
-  .case:last-of-type {
-    border-bottom: none;
-    margin-bottom: 0;
-    padding-bottom: 0;
-  }
-  .case .case-meta {
-    font-size: var(--font-size-xs);
-    font-weight: var(--weight-bold);
-    letter-spacing: var(--letter-spacing-eyebrow);
-    text-transform: uppercase;
-    color: var(--color-text-muted);
-    margin: 0 0 var(--space-1) 0;
-  }
-  .case h3 {
-    margin: 0 0 var(--space-2) 0;
-    font-size: var(--font-size-xl);
-  }
-  .case p {
-    line-height: var(--line-height-base);
-  }
-
-  .section-plug h2,
-  .section-publications h2,
-  .section-mandates h2 {
-    margin: 0 0 var(--space-3) 0;
-  }
-  .section-plug p,
-  .section-publications p,
-  .section-mandates p {
-    line-height: var(--line-height-base);
-  }
-
-  .pull-quote {
-    margin: var(--space-4) 0 0 0;
-    padding: var(--space-3) var(--space-4);
-    border-left: 3px solid var(--color-accent);
-    font-size: var(--font-size-md);
-    font-weight: var(--weight-regular);
-    line-height: var(--line-height-lead);
-    color: var(--color-text-strong);
-    font-style: normal;
-  }
-
-  .profile-cta {
-    margin-top: var(--space-5);
-  }
-  .profile-cta h2 {
-    margin: 0 0 var(--space-2) 0;
-    font-size: var(--font-size-xl);
-  }
-  .profile-cta p {
-    margin: 0 0 var(--space-3) 0;
-    line-height: var(--line-height-base);
-  }
 </style>

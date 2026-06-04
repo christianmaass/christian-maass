@@ -1,41 +1,34 @@
 ---
+import type { Essay } from '../../utils/essays';
+import { formatDateDE, formatDateISO } from '../../utils/formatDate';
+
 interface Props {
-  title: string;
-  type: 'Essay' | 'Interview';
-  year: string;
-  summary: string;
-  cta: string;
-  url: string;
-  image: { src: string; alt: string };
+  entry: Essay;
 }
 
-const { title, type, year, summary, cta, url, image } = Astro.props;
+const { entry } = Astro.props;
+const { title, summary, date, type, externalUrl, image } = entry.data;
 ---
 
-<article class="essay-row">
-  <div class="essay-text">
-    <h3 class="essay-title">
-      <a href={url} target="_blank" rel="noopener noreferrer">{title}</a>
+<article class="article-row">
+  <div class="article-text">
+    <h3 class="article-title">
+      <a href={externalUrl} target="_blank" rel="noopener noreferrer">{title}</a>
     </h3>
-    <p class="essay-summary">{summary}</p>
-    <p class="essay-meta">
-      {type}
+    <p class="article-summary">{summary}</p>
+    <p class="article-meta">
+      <span class="article-meta-type">{type}</span>
       <span aria-hidden="true"> · </span>
-      <time datetime={`${year}-01-01`}>{year}</time>
-      <span aria-hidden="true"> · </span>
-      eTailment
+      <time datetime={formatDateISO(date)}>{formatDateDE(date)}</time>
     </p>
-    <a class="essay-cta" href={url} target="_blank" rel="noopener noreferrer">
-      {cta}
-      <span aria-hidden="true"> →</span>
-    </a>
   </div>
   <a
-    class="essay-thumb"
-    href={url}
+    href={externalUrl}
     target="_blank"
     rel="noopener noreferrer"
-    aria-label={title}
+    class="article-thumb"
+    aria-hidden="true"
+    tabindex="-1"
   >
     <img
       src={image.src}
@@ -47,16 +40,16 @@ const { title, type, year, summary, cta, url, image } = Astro.props;
 </article>
 
 <style>
-  .essay-row {
+  .article-row {
     display: grid;
     grid-template-columns: 1.4fr 1fr;
     gap: var(--space-5);
     align-items: center;
   }
-  .essay-text {
+  .article-text {
     min-width: 0;
   }
-  .essay-title {
+  .article-title {
     font-family: var(--font-family-display);
     font-size: clamp(1.35rem, 2.2vw, 1.75rem);
     font-weight: var(--weight-medium);
@@ -65,15 +58,15 @@ const { title, type, year, summary, cta, url, image } = Astro.props;
     margin: 0;
     color: var(--color-text-strong);
   }
-  .essay-title a {
+  .article-title a {
     color: inherit;
     text-decoration: none;
     transition: color 0.2s ease;
   }
-  .essay-title a:hover {
+  .article-title a:hover {
     color: var(--color-accent);
   }
-  .essay-summary {
+  .article-summary {
     margin: var(--space-2) 0 0 0;
     font-family: var(--font-family-base);
     font-size: 1rem;
@@ -81,7 +74,7 @@ const { title, type, year, summary, cta, url, image } = Astro.props;
     color: var(--color-text);
     max-width: 56ch;
   }
-  .essay-meta {
+  .article-meta {
     margin: var(--space-3) 0 0 0;
     font-family: var(--font-family-base);
     font-size: 0.78rem;
@@ -90,24 +83,10 @@ const { title, type, year, summary, cta, url, image } = Astro.props;
     letter-spacing: 0.12em;
     color: var(--color-text-muted);
   }
-  .essay-cta {
-    display: inline-block;
-    margin-top: var(--space-3);
-    font-family: var(--font-family-base);
-    font-size: 0.85rem;
-    font-weight: var(--weight-medium);
-    text-transform: uppercase;
-    letter-spacing: 0.12em;
-    color: var(--color-text-strong);
-    text-decoration: none;
-    border-bottom: 1px solid currentColor;
-    padding-bottom: 2px;
-    transition: color 0.2s ease;
+  .article-meta-type {
+    color: var(--color-accent);
   }
-  .essay-cta:hover {
-    color: var(--color-text-muted);
-  }
-  .essay-thumb {
+  .article-thumb {
     display: block;
     aspect-ratio: 16 / 9;
     overflow: hidden;
@@ -115,23 +94,23 @@ const { title, type, year, summary, cta, url, image } = Astro.props;
     background: var(--color-bg-elevated);
     transition: transform 0.25s ease;
   }
-  .essay-thumb img {
+  .article-thumb img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
     transition: transform 0.4s ease;
   }
-  .essay-thumb:hover img {
+  .article-thumb:hover img {
     transform: scale(1.02);
   }
 
   @media (max-width: 768px) {
-    .essay-row {
+    .article-row {
       grid-template-columns: 1fr;
       gap: var(--space-3);
     }
-    .essay-thumb {
+    .article-thumb {
       order: -1;
     }
   }

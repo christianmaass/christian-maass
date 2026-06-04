@@ -19,7 +19,7 @@ const href = articleUrl(entry);
     </h3>
     <p class="article-summary">{summary}</p>
     <p class="article-meta">
-      {category}
+      <span class="article-meta-type">{category}</span>
       <span aria-hidden="true"> · </span>
       <time datetime={formatDateISO(date)}>{formatDateDE(date)}</time>
     </p>
@@ -77,6 +77,9 @@ const href = articleUrl(entry);
     text-transform: uppercase;
     letter-spacing: 0.12em;
     color: var(--color-text-muted);
+  }
+  .article-meta-type {
+    color: var(--color-accent);
   }
   .article-thumb {
     display: block;
