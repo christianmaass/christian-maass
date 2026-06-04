@@ -3,15 +3,15 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://christianmaass.com',
+  prefetch: {
+    defaultStrategy: 'hover',
+  },
+  compressHTML: true,
+  image: {
+    service: { entrypoint: 'astro/assets/services/sharp' },
+  },
   integrations: [
     sitemap({
-      i18n: {
-        defaultLocale: 'de',
-        locales: {
-          de: 'de-DE',
-          en: 'en-US',
-        },
-      },
       changefreq: 'monthly',
       priority: 0.7,
       lastmod: new Date(),
@@ -23,7 +23,7 @@ export default defineConfig({
         return true;
       },
       serialize(item) {
-        const path = new URL(item.url).pathname.replace(/^\/(en\/)?/, '/').replace(/\/$/, '');
+        const path = new URL(item.url).pathname.replace(/\/$/, '');
         if (path === '' || path === '/') {
           item.priority = 1.0;
         } else if (path === '/christian-maass') {

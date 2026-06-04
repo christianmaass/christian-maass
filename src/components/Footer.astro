@@ -1,10 +1,8 @@
 ---
-import { getTranslations, getAlternateUrl, type Locale } from '../i18n/utils';
+import { getTranslations } from '../i18n/utils';
 
-const { base = "", currentLocale = "de" as Locale, pathname: pathnameProp } = Astro.props;
-const pathname = pathnameProp || Astro.url.pathname;
-const t = getTranslations(currentLocale);
-const assetPath = ''; // Assets werden immer vom Root geladen
+const t = getTranslations();
+const assetPath = '';
 ---
 
 <footer>
@@ -13,31 +11,13 @@ const assetPath = ''; // Assets werden immer vom Root geladen
     <div class="footer-block">
       <h3>{t.footer.navigation}</h3>
       <ul>
-        <li><a href={`${base}/blog`}>{t.nav.blog}</a></li>
-        <li><a href={`${base}/fachartikel`}>{t.nav.perspectives}</a></li>
-        <li><a href={`${base}/buecher`}>{t.nav.books}</a></li>
-        <li><a href={`${base}/beirat`}>{t.nav.boardAdvisory}</a></li>
-        <li><a href={`${base}/christian-maass`}>{t.nav.about}</a></li>
-        <li><a href={`${base}/kontakt`}>{t.nav.contact}</a></li>
+        <li><a href="/blog">{t.nav.blog}</a></li>
+        <li><a href="/fachartikel">{t.nav.perspectives}</a></li>
+        <li><a href="/buecher">{t.nav.books}</a></li>
+        <li><a href="/beirat">{t.nav.boardAdvisory}</a></li>
+        <li><a href="/christian-maass">{t.nav.about}</a></li>
+        <li><a href="/kontakt">{t.nav.contact}</a></li>
       </ul>
-    </div>
-
-    <div class="footer-block">
-      <h3>{t.footer.contact}</h3>
-      <address>
-        Dr. Christian Maaß<br>
-        Thomann GmbH<br>
-        Hans-Thomann-Str. 1<br>
-        96138 Burgebrach
-      </address>
-      <div class="social-icons">
-        <a href="https://www.linkedin.com/in/christianmaass" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
-          <img src={`${assetPath}/linkedin.svg`} alt="LinkedIn" width="24" height="24" loading="lazy" />
-        </a>
-        <a href="mailto:info@christian-maass.de" aria-label="E-Mail">
-          <img src={`${assetPath}/mail.svg`} alt="E-Mail" width="24" height="24" loading="lazy" />
-        </a>
-      </div>
     </div>
 
     <div class="footer-block">
@@ -53,6 +33,13 @@ const assetPath = ''; // Assets werden immer vom Root geladen
       <h3>{t.footer.myMostRecentBook}</h3>
       <a href="https://www.amazon.de/Executive-Presence-Führungskraft-auftreten-kommunizieren/dp/3648190466" target="_blank" rel="noopener noreferrer">
         <img src={`${assetPath}/executive-presence-maass.jpg`} alt="Buchcover Executive Presence" class="footer-book-cover" width="150" height="225" loading="lazy" />
+      </a>
+    </div>
+
+    <div class="footer-block">
+      <h3>{t.footer.sponsors}</h3>
+      <a href="https://www.thomann.de" target="_blank" rel="noopener noreferrer" aria-label="Thomann">
+        <img src={`${assetPath}/logo-thomann.png`} alt="Logo Thomann" class="footer-sponsor-logo" width="600" height="170" loading="lazy" />
       </a>
     </div>
 

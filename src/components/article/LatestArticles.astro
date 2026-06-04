@@ -1,15 +1,14 @@
 ---
 import ArticleRow from './ArticleRow.astro';
 import { getPublishedArticles } from '../../utils/articles';
-import { getTranslations, type Locale } from '../../i18n/utils';
+import { getTranslations } from '../../i18n/utils';
 
 interface Props {
-  currentLocale: Locale;
   limit?: number;
 }
 
-const { currentLocale, limit = 5 } = Astro.props;
-const t = getTranslations(currentLocale);
+const { limit = 5 } = Astro.props;
+const t = getTranslations();
 const articles = (await getPublishedArticles()).slice(0, limit);
 ---
 

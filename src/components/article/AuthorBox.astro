@@ -1,8 +1,7 @@
 ---
-import { getTranslations, type Locale } from '../../i18n/utils';
+import { getTranslations } from '../../i18n/utils';
 
 interface Props {
-  currentLocale?: Locale;
   name?: string;
   bio?: string;
   image?: { src: string; alt: string };
@@ -11,7 +10,6 @@ interface Props {
 }
 
 const {
-  currentLocale = 'de',
   name,
   bio,
   image,
@@ -19,7 +17,7 @@ const {
   ctaLabel,
 } = Astro.props;
 
-const t = getTranslations(currentLocale).components.authorBox;
+const t = getTranslations().components.authorBox;
 const displayName = name ?? t.name;
 const displayBio = bio ?? t.bio;
 const displayImage = image ?? { src: '/christian-maass.png', alt: t.portraitAlt };
@@ -69,7 +67,7 @@ const displayCta = ctaLabel ?? t.cta;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
     letter-spacing: 0.18em;
-    color: var(--color-text-muted);
+    color: var(--color-accent);
   }
   .author-box-name {
     margin: var(--space-2) 0 0 0;
