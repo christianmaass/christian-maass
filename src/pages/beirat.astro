@@ -18,40 +18,44 @@ const beiratPageSchema = webPage({
 ---
 
 <Fragment slot="head">
-<script is:inline type="application/ld+json" set:html={JSON.stringify(beiratPageSchema)} />
-<script is:inline type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ProfessionalService",
-  "@id": "https://christianmaass.com/beirat/#professionalservice",
-  "name": "Christian Maaß Advisory Services",
-  "description": "Board Advisory und Beiratsmandate für Unternehmen in den Bereichen digitale Strategie, E-Commerce und agile Transformation.",
-  "provider": {
-    "@id": "https://christianmaass.com/#person",
-    "@type": "Person",
-    "name": "Christian Maaß"
-  },
-  "serviceType": [
-    "Board Advisory",
-    "Beiratsmandate",
-    "Strategieberatung",
-    "Digitale Transformation",
-    "E-Commerce Beratung"
-  ],
-  "areaServed": { "@type": "Country", "name": "Deutschland" },
-  "url": "https://christianmaass.com/beirat/",
-  "telephone": "+49-1735143253",
-  "email": "christian@christianmaass.com"
-}
-</script>
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(beiratPageSchema)} />
+  <script is:inline type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "@id": "https://christianmaass.com/beirat/#professionalservice",
+      "name": "Christian Maaß Advisory Services",
+      "description": "Board Advisory und Beiratsmandate für Unternehmen in den Bereichen digitale Strategie, E-Commerce und agile Transformation.",
+      "provider": {
+        "@id": "https://christianmaass.com/#person",
+        "@type": "Person",
+        "name": "Christian Maaß"
+      },
+      "serviceType": [
+        "Board Advisory",
+        "Beiratsmandate",
+        "Strategieberatung",
+        "Digitale Transformation",
+        "E-Commerce Beratung"
+      ],
+      "areaServed": { "@type": "Country", "name": "Deutschland" },
+      "url": "https://christianmaass.com/beirat/",
+      "telephone": "+49-1735143253",
+      "email": "christian@christianmaass.com"
+    }
+  </script>
 </Fragment>
 
-<BaseLayout title={t.pages.beirat.title} description={t.pages.beirat.description} canonical={currentUrl} ogImage={ogImage}>
+<BaseLayout
+  title={t.pages.beirat.title}
+  description={t.pages.beirat.description}
+  canonical={currentUrl}
+  ogImage={ogImage}
+>
   <section class="content-wrapper beirat-section">
     <header class="page-header">
       <p class="page-header-eyebrow">{t.pages.beirat.eyebrow}</p>
       <h1>{t.pages.beirat.h1}</h1>
-      <p class="lead">{t.pages.beirat.intro}</p>
     </header>
 
     <div class="mandate-list">

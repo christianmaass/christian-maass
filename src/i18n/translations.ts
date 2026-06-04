@@ -185,7 +185,6 @@ export interface Translations {
       description: string;
       eyebrow: string;
       h1: string;
-      intro: string;
       bevh: {
         title: string;
         item1: string;
@@ -479,8 +478,6 @@ export const translations: Translations = {
         'Vier Beirats-Mandate, eine Vorstandsrolle im BEVH. Ich werde gerufen, wenn es um die Reihenfolge geht – was wird zuerst entschieden, wer entscheidet, wann wird umgesetzt.',
       eyebrow: 'Mandate',
       h1: 'Beirat & Verbandsarbeit.',
-      intro:
-        'Vier Beirats-Mandate, eine Vorstandsrolle im BEVH. Ich werde gerufen, wenn es nicht um die nächste Strategie geht, sondern um die Reihenfolge: Was wird zuerst entschieden, wer entscheidet, wann wird umgesetzt.',
       bevh: {
         title: 'Vorstand im Bundesverband E-Commerce und Versandhandel',
         item1: 'Seit 2023 bin ich Vorstandsmitglied im Bundesverband E-Commerce und Versandhandel.',
