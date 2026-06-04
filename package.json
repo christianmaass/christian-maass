@@ -8,20 +8,31 @@
     "preview": "astro preview",
     "astro": "astro",
     "check": "astro check",
+    "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "*.{ts,astro,js,mjs}": "eslint --fix",
+    "*.{ts,astro,js,mjs,md,json,css,yml,yaml}": "prettier --write"
   },
   "dependencies": {
-    "astro": "^5.16.8"
+    "astro": "^6.4.4"
   },
   "devDependencies": {
     "@astrojs/check": "^0.9.9",
     "@astrojs/rss": "^4.0.18",
     "@astrojs/sitemap": "^3.7.3",
+    "eslint": "^10.4.1",
+    "eslint-plugin-astro": "^1.7.0",
     "gh-pages": "^6.3.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.4.0",
     "prettier": "^3.8.3",
     "prettier-plugin-astro": "^0.14.1",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.60.1"
   }
 }

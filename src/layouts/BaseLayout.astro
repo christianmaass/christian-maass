@@ -16,28 +16,28 @@ interface Props {
 }
 
 const {
-  title = "Dr. Christian Maaß",
-  description = "Persönliche Seite von Christian Maaß, Unternehmer, Berater und Autor.",
-  canonical = "https://christianmaass.com",
+  title = 'Dr. Christian Maaß',
+  description = 'Persönliche Seite von Christian Maaß, Unternehmer, Berater und Autor.',
+  canonical = 'https://christianmaass.com',
   ogImage,
-  ogType = "website",
+  ogType = 'website',
   breadcrumbTitle,
 } = Astro.props;
 
 const t = getTranslations();
 const assetPath = '';
-const siteName = "Christian Maaß";
+const siteName = 'Christian Maaß';
 const defaultOgImage = `${siteUrl}/og/default.jpg`;
 const finalOgImage = ogImage || defaultOgImage;
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="de" data-theme="dark">
   <head>
     <script is:inline>
       (function () {
         try {
-          var stored = localStorage.getItem('theme');
+          const stored = localStorage.getItem('theme');
           if (stored === 'light' || stored === 'dark') {
             document.documentElement.setAttribute('data-theme', stored);
           }
@@ -46,11 +46,26 @@ const finalOgImage = ogImage || defaultOgImage;
     </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self';" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self';"
+    />
     <link rel="icon" type="image/svg+xml" href={`${assetPath}/favicon.svg`} />
     <link rel="apple-touch-icon" sizes="180x180" href={`${assetPath}/apple-touch-icon.png`} />
-    <link rel="preload" href={`${assetPath}/fonts/satoshi-500.woff2`} as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href={`${assetPath}/fonts/montserrat-400.woff2`} as="font" type="font/woff2" crossorigin />
+    <link
+      rel="preload"
+      href={`${assetPath}/fonts/satoshi-500.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
+    <link
+      rel="preload"
+      href={`${assetPath}/fonts/montserrat-400.woff2`}
+      as="font"
+      type="font/woff2"
+      crossorigin
+    />
     <link rel="stylesheet" href={`${assetPath}/styles.css`} />
 
     <!-- Basic SEO Tags -->
@@ -83,17 +98,19 @@ const finalOgImage = ogImage || defaultOgImage;
     <slot name="head" />
 
     <!-- Breadcrumb strukturierte Daten für SEO (nur im Head, keine visuelle Anzeige) -->
-    {Astro.url.pathname !== '/' && (
-      <Breadcrumb pathname={Astro.url.pathname} siteUrl={siteUrl} title={breadcrumbTitle} />
-    )}
+    {
+      Astro.url.pathname !== '/' && (
+        <Breadcrumb pathname={Astro.url.pathname} siteUrl={siteUrl} title={breadcrumbTitle} />
+      )
+    }
   </head>
   <body>
     <a class="skip-link" href="#main-content">{t.ui.skipToContent}</a>
     <Header pathname={Astro.url.pathname} />
 
-
     <main id="main-content">
-      <slot />  <!-- Der Platzhalter für alle Seiteninhalte -->
+      <slot />
+      <!-- Der Platzhalter für alle Seiteninhalte -->
     </main>
 
     <Footer />
