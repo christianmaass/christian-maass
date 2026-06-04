@@ -1,11 +1,15 @@
 ---
 // filepath: /Users/christianmaass/christian-maass/src/pages/buecher.astro
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getTranslations } from '../i18n/utils';
 import { SITE_URL as siteUrl } from '../utils/config';
+import executivePresenceCover from '../assets/executive-presence-maass.jpg';
+import onlineProduktmanagementCover from '../assets/online-produktmanagement-maass.jpg';
+import eBusinessManagementCover from '../assets/ebusiness-management-maass.jpg';
+import openSourceCover from '../assets/open-source-maass.jpg';
 
 const t = getTranslations();
-const assetPath = ''; // Assets werden immer vom Root geladen
 const currentUrl = `${siteUrl}/buecher`;
 const ogImage = `${siteUrl}/meine-buecher-maass.png`;
 ---
@@ -190,7 +194,7 @@ const ogImage = `${siteUrl}/meine-buecher-maass.png`;
     <div class="books-list">
       <article class="book-detail-box">
         <div class="book-image">
-          <img src={`${assetPath}/executive-presence-maass.jpg`} alt="Buchcover Executive Presence – mehr als der erste Eindruck" width="300" height="450" loading="lazy" />
+          <Image src={executivePresenceCover} alt="Buchcover Executive Presence – mehr als der erste Eindruck" widths={[150, 300, 600]} sizes="(max-width: 768px) 150px, 300px" loading="lazy" />
         </div>
         <div class="book-content">
           <h2>{t.pages.buecher.executivePresence.title}</h2>
@@ -204,7 +208,7 @@ const ogImage = `${siteUrl}/meine-buecher-maass.png`;
 
       <article class="book-detail-box">
         <div class="book-image">
-          <img src={`${assetPath}/online-produktmanagement-maass.jpg`} alt="Buchcover Online-Produktmanagement: Von der Idee zum Online-Produkt" width="300" height="450" loading="lazy" />
+          <Image src={onlineProduktmanagementCover} alt="Buchcover Online-Produktmanagement: Von der Idee zum Online-Produkt" widths={[150, 300, 600]} sizes="(max-width: 768px) 150px, 300px" loading="lazy" />
         </div>
         <div class="book-content">
           <h2>{t.pages.buecher.onlineProduktmanagement.title}</h2>
@@ -218,7 +222,7 @@ const ogImage = `${siteUrl}/meine-buecher-maass.png`;
 
       <article class="book-detail-box">
         <div class="book-image">
-          <img src={`${assetPath}/ebusiness-management-maass.jpg`} alt="Buchcover E-Business Management: Gestaltung von Geschäftsmodellen" width="300" height="450" loading="lazy" />
+          <Image src={eBusinessManagementCover} alt="Buchcover E-Business Management: Gestaltung von Geschäftsmodellen" widths={[150, 300, 600]} sizes="(max-width: 768px) 150px, 300px" loading="lazy" />
         </div>
         <div class="book-content">
           <h2>{t.pages.buecher.eBusinessManagement.title}</h2>
@@ -232,7 +236,7 @@ const ogImage = `${siteUrl}/meine-buecher-maass.png`;
 
       <article class="book-detail-box">
         <div class="book-image">
-          <img src={`${assetPath}/open-source-maass.jpg`} alt="Buchcover Strategische Optionen im Wettbewerb mit Open-Source-Software" width="300" height="450" loading="lazy" />
+          <Image src={openSourceCover} alt="Buchcover Strategische Optionen im Wettbewerb mit Open-Source-Software" widths={[150, 300, 600]} sizes="(max-width: 768px) 150px, 300px" loading="lazy" />
         </div>
         <div class="book-content">
           <h2>{t.pages.buecher.openSource.title}</h2>

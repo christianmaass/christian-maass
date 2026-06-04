@@ -1,11 +1,12 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LatestArticles from '../components/article/LatestArticles.astro';
 import { getTranslations } from '../i18n/utils';
 import { SITE_URL as siteUrl } from '../utils/config';
+import heroPortrait from '../assets/christian-maass.png';
 
 const t = getTranslations();
-const assetPath = '';
 const currentUrl = siteUrl;
 const ogImage = `${siteUrl}/christian-maass.png`;
 ---
@@ -158,10 +159,12 @@ const ogImage = `${siteUrl}/christian-maass.png`;
         <p class="hero-credentials">{t.pages.index.hero.credentials}</p>
       </div>
       <div class="hero-portrait-wrap">
-        <img
-          src={`${assetPath}/christian-maass.png`}
+        <Image
+          src={heroPortrait}
           alt={t.pages.index.hero.portraitAlt}
           class="hero-portrait"
+          widths={[270, 540, 1080]}
+          sizes="(max-width: 900px) 100vw, 540px"
           loading="eager"
           fetchpriority="high"
         />

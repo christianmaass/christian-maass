@@ -1,7 +1,9 @@
 ---
+import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getTranslations } from '../i18n/utils';
 import { SITE_URL as siteUrl } from '../utils/config';
+import portraitImage from '../assets/dr-christian-maass.png';
 
 const t = getTranslations();
 const currentUrl = `${siteUrl}/christian-maass`;
@@ -83,7 +85,7 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
       <header class="profile-header">
         <div class="profile-aside">
           <div class="profile-portrait">
-            <img src="/dr-christian-maass.png" alt="Dr. Christian Maaß, Managing Director & CDO Thomann" width="440" height="520" loading="eager" fetchpriority="high" />
+            <Image src={portraitImage} alt="Dr. Christian Maaß, Managing Director & CDO Thomann" widths={[220, 440, 880]} sizes="(max-width: 768px) 200px, 440px" loading="eager" fetchpriority="high" />
           </div>
           <ul class="profile-socials">
             <li>
