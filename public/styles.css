@@ -54,13 +54,13 @@
   --content-alignment-offset: var(--container-padding-x);
 
   /* Spacing-Skala (8px-Basis) */
-  --space-1: 0.5rem;   /*  8px */
-  --space-2: 1rem;     /* 16px */
-  --space-3: 1.5rem;   /* 24px */
-  --space-4: 2rem;     /* 32px */
-  --space-5: 3rem;     /* 48px */
-  --space-6: 4rem;     /* 64px */
-  --space-7: 6rem;     /* 96px */
+  --space-1: 0.5rem; /*  8px */
+  --space-2: 1rem; /* 16px */
+  --space-3: 1.5rem; /* 24px */
+  --space-4: 2rem; /* 32px */
+  --space-5: 3rem; /* 48px */
+  --space-6: 4rem; /* 64px */
+  --space-7: 6rem; /* 96px */
 
   /* Typo-Skala */
   --font-family-base: 'Montserrat', Arial, sans-serif;
@@ -72,7 +72,7 @@
   --font-size-lg: 1.25rem;
   --font-size-xl: 1.5rem;
   --font-size-2xl: 1.75rem;
-  --font-size-3xl: 2.5rem;   /* Page-H1 (alle Seiten gleich) */
+  --font-size-3xl: 2.5rem; /* Page-H1 (alle Seiten gleich) */
   --font-size-hero: clamp(2.5rem, 5vw, 4.75rem);
   --line-height-tight: 1.2;
   --line-height-hero: 1.05;
@@ -104,7 +104,7 @@
 }
 
 /* Color-Tokens — Light */
-[data-theme="light"] {
+[data-theme='light'] {
   --color-bg: #fafafa;
   --color-bg-elevated: #ffffff;
   --color-text: #1a1a1a;
@@ -116,7 +116,8 @@
 }
 
 /* --- Reset und Basis --- */
-html, body {
+html,
+body {
   margin: 0;
   padding: 0;
   background-color: var(--color-bg);
@@ -161,7 +162,9 @@ body a {
   text-decoration: underline;
   text-decoration-color: var(--color-accent);
   text-underline-offset: 0.2em;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
 }
 body a:hover,
 body a:focus-visible {
@@ -260,7 +263,7 @@ body h3 {
 .brand {
   font-family: var(--font-family-display);
   font-size: 1.05rem;
-  font-weight: var(--weight-medium);
+  font-weight: var(--weight-bold);
   letter-spacing: -0.01em;
   color: var(--color-text-strong);
   text-decoration: none;
@@ -316,7 +319,9 @@ body h3 {
   text-transform: uppercase;
   border-radius: 999px;
   text-decoration: none;
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
   white-space: nowrap;
 }
 
@@ -337,7 +342,10 @@ body h3 {
   border-radius: 999px;
   color: var(--color-text-muted);
   cursor: pointer;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  transition:
+    color 0.2s ease,
+    border-color 0.2s ease,
+    background 0.2s ease;
 }
 .theme-toggle:hover,
 .theme-toggle:focus-visible {
@@ -347,10 +355,10 @@ body h3 {
 .theme-icon-moon {
   display: none;
 }
-[data-theme="light"] .theme-icon-sun {
+[data-theme='light'] .theme-icon-sun {
   display: none;
 }
-[data-theme="light"] .theme-icon-moon {
+[data-theme='light'] .theme-icon-moon {
   display: inline-block;
 }
 
@@ -371,7 +379,9 @@ body h3 {
   height: 28px;
   display: block;
   filter: grayscale(1);
-  transition: filter 0.2s, transform 0.2s;
+  transition:
+    filter 0.2s,
+    transform 0.2s;
 }
 
 .social-icons a:hover img {
@@ -379,11 +389,13 @@ body h3 {
   transform: scale(1.1);
 }
 
-.close-btn { display: none; }
+.close-btn {
+  display: none;
+}
 
 @media (max-width: 768px) {
   .social-icons {
-    display: flex; 
+    display: flex;
     pointer-events: auto;
     justify-content: flex-end;
     margin-top: 1.5rem;
@@ -538,7 +550,9 @@ main {
   letter-spacing: 0.04em;
   text-decoration: none !important;
   font-weight: var(--weight-medium);
-  transition: background 0.2s ease, transform 0.2s ease;
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
   display: inline-block;
   margin-top: 1rem;
 }
@@ -603,7 +617,6 @@ main {
 
   .cta-btn {
     margin: 1rem 0 0 0;
-
   }
 
   .hero-image {
@@ -947,7 +960,9 @@ footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  transition: box-shadow 0.2s, transform 0.2s;
+  transition:
+    box-shadow 0.2s,
+    transform 0.2s;
 }
 
 .book-card img {
@@ -973,7 +988,6 @@ footer {
   margin: 0 0 1.2rem 0;
   text-align: center;
 }
-
 
 /* --- Responsive: 1-Spalte auf Mobile --- */
 @media (max-width: 900px) {
@@ -1059,18 +1073,18 @@ footer {
     gap: 2rem;
     padding: 2rem 1.5rem;
   }
-  
+
   .book-image {
     width: 100%;
     max-width: 250px;
     margin: 0 auto;
   }
-  
+
   .book-content h2 {
     font-size: 1.3rem;
     text-align: center;
   }
-  
+
   .book-content .cta-btn {
     align-self: center;
     width: 100%;
@@ -1194,7 +1208,6 @@ footer {
   margin-bottom: 0.5rem;
 }
 
-
 .fachartikel-content a {
   color: var(--color-accent);
   text-decoration: underline;
@@ -1204,7 +1217,6 @@ footer {
 .fachartikel-content a:hover {
   color: var(--color-text-strong);
 }
-
 
 @media (max-width: 900px) {
   .fachartikel-box {
@@ -1221,7 +1233,7 @@ footer {
     align-items: flex-start;
     text-align: left;
   }
-    .articles-list {
+  .articles-list {
     text-align: left;
   }
 }
@@ -1230,7 +1242,7 @@ footer {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 300px !important;      /* Größe nach Wunsch */
+  width: 300px !important; /* Größe nach Wunsch */
   max-width: 100% !important;
   height: auto !important;
   border-radius: 0.5rem;
@@ -1252,8 +1264,8 @@ footer {
   background: var(--color-bg-elevated);
   flex-direction: column;
   justify-content: center; /* vertikal mittig */
-  align-items: center;     /* horizontal mittig */
-  height: 100%;            /* falls nötig, Höhe der Box */
+  align-items: center; /* horizontal mittig */
+  height: 100%; /* falls nötig, Höhe der Box */
 }
 .kontakt-text {
   text-align: center;
@@ -1266,7 +1278,7 @@ footer {
 .profil-img {
   width: 400px;
   max-width: 100%;
-  height: auto; 
+  height: auto;
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -1405,7 +1417,9 @@ footer {
   text-decoration: underline;
   text-decoration-color: var(--color-accent);
   text-underline-offset: 0.2em;
-  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+  transition:
+    color 0.2s ease,
+    text-decoration-color 0.2s ease;
 }
 .article-prose a:hover {
   color: var(--color-text-strong);
