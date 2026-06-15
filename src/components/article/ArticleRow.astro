@@ -25,12 +25,7 @@ const href = articleUrl(entry);
     </p>
   </div>
   <a href={href} class="article-thumb" aria-hidden="true" tabindex="-1">
-    <img
-      src={image.src}
-      alt={image.alt}
-      loading="lazy"
-      decoding="async"
-    />
+    <img src={image.src} alt={image.alt} loading="lazy" decoding="async" />
   </a>
 </article>
 
@@ -72,10 +67,10 @@ const href = articleUrl(entry);
   .article-meta {
     margin: var(--space-3) 0 0 0;
     font-family: var(--font-family-base);
-    font-size: 0.78rem;
+    font-size: 0.72rem;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: 0.16em;
     color: var(--color-text-muted);
   }
   .article-meta-type {
