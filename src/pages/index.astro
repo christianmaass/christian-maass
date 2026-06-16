@@ -2,6 +2,7 @@
 import { Image } from 'astro:assets';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import LatestEssays from '../components/article/LatestEssays.astro';
+import PressStrip from '../components/PressStrip.astro';
 import { getTranslations } from '../i18n/utils';
 import { SITE_URL as siteUrl } from '../utils/config';
 import heroPortrait from '../assets/christian-maass.png';
@@ -161,7 +162,7 @@ const ogImage = `${siteUrl}/christian-maass.png`;
           >{t.pages.index.hero.headlineTrailing}
         </h1>
         <p class="hero-lead">{t.pages.index.hero.lead}</p>
-        <p class="hero-credentials">{t.pages.index.hero.credentials}</p>
+        <p class="hero-credentials">{t.pages.index.hero.credentialsLine}</p>
       </div>
       <div class="hero-portrait-wrap">
         <Image
@@ -177,12 +178,14 @@ const ogImage = `${siteUrl}/christian-maass.png`;
     </div>
   </section>
 
+  <PressStrip />
+
   <LatestEssays />
 </BaseLayout>
 
 <style>
   .hero {
-    padding: var(--space-7) 0;
+    padding: var(--space-5) 0 var(--space-4) 0;
   }
   .hero-grid {
     max-width: var(--container-max-width);
@@ -211,21 +214,22 @@ const ogImage = `${siteUrl}/christian-maass.png`;
     color: var(--color-accent);
   }
   .hero-lead {
-    margin: var(--space-4) 0 0 0;
+    margin: var(--space-3) 0 0 0;
     font-family: var(--font-family-base);
     font-size: 1.05rem;
-    line-height: 1.65;
+    line-height: 1.6;
     color: var(--color-text);
     max-width: 52ch;
   }
   .hero-credentials {
-    margin: var(--space-6) 0 0 0;
+    margin: var(--space-3) 0 0 0;
     font-family: var(--font-family-base);
     font-size: 0.78rem;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.16em;
     color: var(--color-text-muted);
+    line-height: 1.3;
   }
   .hero-portrait-wrap {
     width: 100%;

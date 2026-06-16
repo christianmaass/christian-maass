@@ -1,0 +1,119 @@
+---
+import { getTranslations } from '../i18n/utils';
+
+const t = getTranslations();
+const { groups } = t.pages.index.pressStrip;
+---
+
+<section class="press-strip" aria-label="Credibility-Marker">
+  <div class="press-strip-inner">
+    {
+      groups.map((group) => (
+        <div class="press-strip-group">
+          <p class="press-strip-eyebrow">{group.eyebrow}</p>
+          <ul class="press-strip-list">
+            {group.mentions.map((m, i) => (
+              <li class="press-strip-item">
+                <a
+                  href={m.url}
+                  class="press-strip-link"
+                  target={m.url.startsWith('http') ? '_blank' : undefined}
+                  rel={m.url.startsWith('http') ? 'noopener noreferrer' : undefined}
+                >
+                  {m.name}
+                </a>
+                {i < group.mentions.length - 1 && (
+                  <span class="press-strip-sep" aria-hidden="true">
+                    ·
+                  </span>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</section>
+
+<style>
+  .press-strip {
+    padding: var(--space-3) 0;
+    border-top: 1px solid var(--color-border-subtle);
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+  .press-strip-inner {
+    max-width: var(--container-max-width);
+    margin: 0 auto;
+    padding: 0 var(--container-padding-x);
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-3);
+  }
+  .press-strip-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-1);
+    text-align: center;
+  }
+  .press-strip-eyebrow {
+    margin: 0;
+    font-family: var(--font-family-base);
+    font-size: 0.72rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-accent);
+  }
+  .press-strip-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.4rem 1rem;
+  }
+  .press-strip-item {
+    display: inline-flex;
+    align-items: baseline;
+    gap: 0.6rem;
+  }
+  .press-strip-link {
+    font-family: var(--font-family-display);
+    font-style: italic;
+    font-weight: 500;
+    font-size: 1.15rem;
+    letter-spacing: 0.005em;
+    color: var(--color-text);
+    text-decoration: none;
+    transition: color 0.2s ease;
+  }
+  .press-strip-link:hover,
+  .press-strip-link:focus-visible {
+    color: var(--color-accent);
+  }
+  .press-strip-sep {
+    color: var(--color-text-muted);
+    opacity: 0.5;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 640px) {
+    .press-strip {
+      padding: var(--space-4) 0;
+    }
+    .press-strip-inner {
+      gap: var(--space-3);
+    }
+    .press-strip-list {
+      gap: 0.3rem 0.8rem;
+    }
+    .press-strip-link {
+      font-size: 1rem;
+    }
+  }
+</style>

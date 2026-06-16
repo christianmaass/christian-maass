@@ -11,114 +11,280 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
 ---
 
 <Fragment slot="head">
-<script is:inline type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "@id": "https://christianmaass.com/#person",
-  "name": "Christian Maaß",
-  "alternateName": "Dr. Christian Maaß",
-  "honorificPrefix": "Dr.",
-  "inLanguage": "de",
-  "url": "https://christianmaass.com/christian-maass/",
-  "image": "https://christianmaass.com/christian-maass-ueber-mich.png",
-  "sameAs": [
-    "https://www.linkedin.com/in/christianmaass/",
-    "https://www.amazon.de/stores/author/B0045949JA",
-    "https://www.instagram.com/christianmaass/",
-    "https://x.com/ChristianMaass"
-  ],
-  "jobTitle": "Managing Director & Chief Digital Officer",
-  "description": "Operating Executive für digitale Geschäfte. Übernimmt Unternehmen dort, wo Strategie, Technologie und Organisation nicht synchron laufen – als Manager, nicht als Berater. 20 Jahre als Operator: Thomann, OTTO, Vistaprint, Flyeralarm, Bertelsmann, AutoScout24.",
-  "worksFor": [
-    { "@type": "Organization", "name": "Thomann", "url": "https://www.thomann.de/", "startDate": "2022-01-01", "jobTitle": "Chief Digital Officer", "description": "Verantwortung des Digitalgeschäfts von Thomann" },
-    { "@type": "Organization", "name": "Christian Maaß Advisory", "url": "https://christianmaass.com/", "@id": "https://christianmaass.com/#organization", "startDate": "2016-01-01", "jobTitle": "Berater & Beirat", "description": "Beratung von Unternehmen in den Bereichen digitale Strategie, E-Commerce und agile Transformation sowie Wahrnehmung von Beiratsmandaten." },
-    { "@type": "Organization", "name": "Vistaprint", "url": "https://www.cimpress.com/", "startDate": "2016-05-01", "endDate": "2021-12-31", "jobTitle": "Managing Director", "description": "Managing des Portfolios von sechs Akquisitionen in Europa, Managing Partner Printbrothers (WirmachenDruck.de, Drukwerkdeal.nl, Druck.at)" },
-    { "@type": "Organization", "name": "Flyeralarm", "url": "https://www.flyeralarm.com/", "startDate": "2014-04-01", "endDate": "2016-04-30", "jobTitle": "Chief Product Officer", "description": "Verantwortlich für das Produktmanagement, die Webentwicklung und das Marketing" },
-    { "@type": "Organization", "name": "Bertelsmann", "url": "https://www.bertelsmann.de/", "startDate": "2010-03-01", "endDate": "2014-03-31", "jobTitle": "Director Business Development", "description": "Unterstützung des Bertelsmann Vorstands beim Ausbau des Digital- und E-Commerce-Geschäfts" },
-    { "@type": "Organization", "name": "OTTO", "url": "https://www.otto.de/", "startDate": "2009-09-01", "endDate": "2010-02-28", "jobTitle": "Head of Business Development", "description": "Digitalisierung von Otto und Erschließung neuer Wachstumsfelder" },
-    { "@type": "Organization", "name": "AutoScout24", "url": "https://www.autoscout24.de/", "startDate": "2008-08-01", "endDate": "2009-08-31", "jobTitle": "Senior Manager Business Development", "description": "Einführung agiler Methoden in der Produktentwicklung sowie strategische Wachstumsprojekte" },
-    { "@type": "Organization", "name": "Lycos Europe", "url": "https://de.lycos.com/", "startDate": "2005-02-01", "endDate": "2008-07-31", "jobTitle": "Head of Research", "description": "Leitung aller Projekte im Bereich KI und Semantic Web sowie Repräsentation von Lycos vor der EU und dem Bundeswirtschaftsministerium" }
-  ],
-  "memberOf": [
-    { "@type": "Organization", "additionalType": "TradeAssociation", "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.", "description": "Wirtschaftsverband für E-Commerce und Versandhandel", "url": "https://www.bevh.org/", "member": { "@id": "https://christianmaass.com/#person" }, "roleName": "Vorstand", "startDate": "2023-11-01" }
-  ],
-  "alumniOf": [
-    { "@type": "EducationalOrganization", "name": "University of Oxford", "url": "https://www.ox.ac.uk/" },
-    { "@type": "EducationalOrganization", "name": "INSEAD", "url": "https://www.insead.edu/" },
-    { "@type": "EducationalOrganization", "name": "Universität Paderborn", "url": "https://www.uni-paderborn.de/" },
-    { "@type": "EducationalOrganization", "name": "FernUniversität in Hagen", "url": "https://www.fernuni-hagen.de/" },
-    { "@type": "EducationalOrganization", "name": "DePaul University", "url": "https://www.depaul.edu/" }
-  ],
-  "knowsAbout": [
-    "Synchronisation digitaler Geschäfte", "Digital Operating Models", "E-Commerce-Skalierung",
-    "KI im Operating", "Board-Perspektive auf Digital", "Plattform-Transformation",
-    "Cross-border Commerce", "Executive Leadership", "Digital Governance"
-  ],
-  "mainEntityOfPage": { "@type": "WebPage", "@id": "https://christianmaass.com/christian-maass/#webpage" }
-}
-</script>
-<script is:inline type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "WebPage",
-  "@id": "https://christianmaass.com/christian-maass/#webpage",
-  "url": "https://christianmaass.com/christian-maass/",
-  "name": "Christian Maaß · Profil. Manager, nicht Berater.",
-  "description": "Christian Maaß übernimmt digitale Geschäfte dort, wo Strategie, Technologie und Organisation nicht synchron laufen. 20 Jahre als Operator: Thomann, OTTO, Vistaprint, Flyeralarm, Bertelsmann, AutoScout24.",
-  "inLanguage": "de",
-  "isPartOf": { "@id": "https://christianmaass.com/#website" },
-  "about": { "@id": "https://christianmaass.com/#person" },
-  "mainEntity": { "@id": "https://christianmaass.com/#person" },
-  "speakable": {
-    "@type": "SpeakableSpecification",
-    "cssSelector": [".profile-intro h1", ".profile-body"]
-  },
-  "breadcrumb": { "@id": "https://christianmaass.com/christian-maass/#breadcrumb" }
-}
-</script>
+  <script is:inline type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "@id": "https://christianmaass.com/#person",
+      "name": "Christian Maaß",
+      "alternateName": "Dr. Christian Maaß",
+      "honorificPrefix": "Dr.",
+      "inLanguage": "de",
+      "url": "https://christianmaass.com/christian-maass/",
+      "image": "https://christianmaass.com/christian-maass-ueber-mich.png",
+      "sameAs": [
+        "https://www.linkedin.com/in/christianmaass/",
+        "https://www.amazon.de/stores/author/B0045949JA",
+        "https://www.instagram.com/christianmaass/",
+        "https://x.com/ChristianMaass"
+      ],
+      "jobTitle": "Managing Director & Chief Digital Officer",
+      "description": "Operating Executive für digitale Geschäfte. Übernimmt Unternehmen dort, wo Strategie, Technologie und Organisation nicht synchron laufen – als Manager, nicht als Berater. 20 Jahre als Operator: Thomann, OTTO, Vistaprint, Flyeralarm, Bertelsmann, AutoScout24.",
+      "worksFor": [
+        {
+          "@type": "Organization",
+          "name": "Thomann",
+          "url": "https://www.thomann.de/",
+          "startDate": "2022-01-01",
+          "jobTitle": "Chief Digital Officer",
+          "description": "Verantwortung des Digitalgeschäfts von Thomann"
+        },
+        {
+          "@type": "Organization",
+          "name": "Christian Maaß Advisory",
+          "url": "https://christianmaass.com/",
+          "@id": "https://christianmaass.com/#organization",
+          "startDate": "2016-01-01",
+          "jobTitle": "Berater & Beirat",
+          "description": "Beratung von Unternehmen in den Bereichen digitale Strategie, E-Commerce und agile Transformation sowie Wahrnehmung von Beiratsmandaten."
+        },
+        {
+          "@type": "Organization",
+          "name": "Vistaprint",
+          "url": "https://www.cimpress.com/",
+          "startDate": "2016-05-01",
+          "endDate": "2021-12-31",
+          "jobTitle": "Managing Director",
+          "description": "Managing des Portfolios von sechs Akquisitionen in Europa, Managing Partner Printbrothers (WirmachenDruck.de, Drukwerkdeal.nl, Druck.at)"
+        },
+        {
+          "@type": "Organization",
+          "name": "Flyeralarm",
+          "url": "https://www.flyeralarm.com/",
+          "startDate": "2014-04-01",
+          "endDate": "2016-04-30",
+          "jobTitle": "Chief Product Officer",
+          "description": "Verantwortlich für das Produktmanagement, die Webentwicklung und das Marketing"
+        },
+        {
+          "@type": "Organization",
+          "name": "Bertelsmann",
+          "url": "https://www.bertelsmann.de/",
+          "startDate": "2010-03-01",
+          "endDate": "2014-03-31",
+          "jobTitle": "Director Business Development",
+          "description": "Unterstützung des Bertelsmann Vorstands beim Ausbau des Digital- und E-Commerce-Geschäfts"
+        },
+        {
+          "@type": "Organization",
+          "name": "OTTO",
+          "url": "https://www.otto.de/",
+          "startDate": "2009-09-01",
+          "endDate": "2010-02-28",
+          "jobTitle": "Head of Business Development",
+          "description": "Digitalisierung von Otto und Erschließung neuer Wachstumsfelder"
+        },
+        {
+          "@type": "Organization",
+          "name": "AutoScout24",
+          "url": "https://www.autoscout24.de/",
+          "startDate": "2008-08-01",
+          "endDate": "2009-08-31",
+          "jobTitle": "Senior Manager Business Development",
+          "description": "Einführung agiler Methoden in der Produktentwicklung sowie strategische Wachstumsprojekte"
+        },
+        {
+          "@type": "Organization",
+          "name": "Lycos Europe",
+          "url": "https://de.lycos.com/",
+          "startDate": "2005-02-01",
+          "endDate": "2008-07-31",
+          "jobTitle": "Head of Research",
+          "description": "Leitung aller Projekte im Bereich KI und Semantic Web sowie Repräsentation von Lycos vor der EU und dem Bundeswirtschaftsministerium"
+        }
+      ],
+      "memberOf": [
+        {
+          "@type": "Organization",
+          "additionalType": "TradeAssociation",
+          "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.",
+          "description": "Wirtschaftsverband für E-Commerce und Versandhandel",
+          "url": "https://www.bevh.org/",
+          "member": { "@id": "https://christianmaass.com/#person" },
+          "roleName": "Vorstand",
+          "startDate": "2023-11-01"
+        }
+      ],
+      "alumniOf": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "University of Oxford",
+          "url": "https://www.ox.ac.uk/"
+        },
+        { "@type": "EducationalOrganization", "name": "INSEAD", "url": "https://www.insead.edu/" },
+        {
+          "@type": "EducationalOrganization",
+          "name": "Universität Paderborn",
+          "url": "https://www.uni-paderborn.de/"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "FernUniversität in Hagen",
+          "url": "https://www.fernuni-hagen.de/"
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "DePaul University",
+          "url": "https://www.depaul.edu/"
+        }
+      ],
+      "knowsAbout": [
+        "Synchronisation digitaler Geschäfte",
+        "Digital Operating Models",
+        "E-Commerce-Skalierung",
+        "KI im Operating",
+        "Board-Perspektive auf Digital",
+        "Plattform-Transformation",
+        "Cross-border Commerce",
+        "Executive Leadership",
+        "Digital Governance"
+      ],
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://christianmaass.com/christian-maass/#webpage"
+      }
+    }
+  </script>
+  <script is:inline type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebPage",
+      "@id": "https://christianmaass.com/christian-maass/#webpage",
+      "url": "https://christianmaass.com/christian-maass/",
+      "name": "Christian Maaß · Profil. Manager, nicht Berater.",
+      "description": "Christian Maaß übernimmt digitale Geschäfte dort, wo Strategie, Technologie und Organisation nicht synchron laufen. 20 Jahre als Operator: Thomann, OTTO, Vistaprint, Flyeralarm, Bertelsmann, AutoScout24.",
+      "inLanguage": "de",
+      "isPartOf": { "@id": "https://christianmaass.com/#website" },
+      "about": { "@id": "https://christianmaass.com/#person" },
+      "mainEntity": { "@id": "https://christianmaass.com/#person" },
+      "speakable": {
+        "@type": "SpeakableSpecification",
+        "cssSelector": [".profile-intro h1", ".profile-body"]
+      },
+      "breadcrumb": { "@id": "https://christianmaass.com/christian-maass/#breadcrumb" }
+    }
+  </script>
 </Fragment>
 
-<BaseLayout title={t.pages.christianMaass.title} description={t.pages.christianMaass.description} canonical={currentUrl} ogImage={ogImage}>
+<BaseLayout
+  title={t.pages.christianMaass.title}
+  description={t.pages.christianMaass.description}
+  canonical={currentUrl}
+  ogImage={ogImage}
+>
   <section class="content-wrapper">
     <article class="profile">
       <header class="profile-header">
         <div class="profile-aside">
           <div class="profile-portrait">
-            <Image src={portraitImage} alt="Dr. Christian Maaß, Managing Director & CDO Thomann" widths={[220, 440, 880]} sizes="(max-width: 768px) 200px, 440px" loading="eager" fetchpriority="high" />
+            <Image
+              src={portraitImage}
+              alt="Dr. Christian Maaß, Managing Director & CDO Thomann"
+              widths={[220, 440, 880]}
+              sizes="(max-width: 768px) 200px, 440px"
+              loading="eager"
+              fetchpriority="high"
+            />
           </div>
           <ul class="profile-socials">
             <li>
-              <a href="https://www.linkedin.com/in/christianmaass/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn-Profil von Christian Maaß">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
-                  <rect width="4" height="12" x="2" y="9"/>
-                  <circle cx="4" cy="4" r="2"/>
+              <a
+                href="https://www.linkedin.com/in/christianmaass/"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="LinkedIn-Profil von Christian Maaß"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path
+                    d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                  ></path>
+                  <rect width="4" height="12" x="2" y="9"></rect>
+                  <circle cx="4" cy="4" r="2"></circle>
                 </svg>
               </a>
             </li>
             <li>
               <a href="mailto:christian@netzbaron.de" aria-label="E-Mail an Christian Maaß">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect width="20" height="16" x="2" y="4" rx="2"/>
-                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                  <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
                 </svg>
               </a>
             </li>
             <li>
-              <a href="https://www.thomann.de" target="_blank" rel="noopener noreferrer" aria-label="Thomann Shop">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/>
-                  <line x1="3" y1="6" x2="21" y2="6"/>
-                  <path d="M16 10a4 4 0 0 1-8 0"/>
+              <a
+                href="https://www.thomann.de"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Thomann Shop"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                  <line x1="3" y1="6" x2="21" y2="6"></line>
+                  <path d="M16 10a4 4 0 0 1-8 0"></path>
                 </svg>
               </a>
             </li>
             <li>
-              <a href="https://www.amazon.de/stores/Christian-Maa%C3%9F/author/B0045949JA" target="_blank" rel="noopener noreferrer" aria-label="Autorenprofil von Christian Maaß bei Amazon">
-                <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+              <a
+                href="https://www.amazon.de/stores/Christian-Maa%C3%9F/author/B0045949JA"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="Autorenprofil von Christian Maaß bei Amazon"
+              >
+                <svg
+                  viewBox="0 0 24 24"
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.75"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  aria-hidden="true"
+                >
+                  <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                  <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
                 </svg>
               </a>
             </li>
@@ -127,9 +293,29 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
         <div class="profile-intro">
           <p class="eyebrow profile-eyebrow">Profil</p>
           <h1>{t.pages.christianMaass.h1}</h1>
-          {t.pages.christianMaass.intro.map((paragraph) => (
-            <p class="profile-body">{paragraph}</p>
-          ))}
+          <section class="profile-proof" aria-label="Rollen, Publikationen und Lehre">
+            <div class="profile-proof-col">
+              <p class="profile-proof-heading">{t.pages.christianMaass.proof.rolesHeading}</p>
+              <ul class="profile-proof-list">
+                {t.pages.christianMaass.proof.roles.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+            <div class="profile-proof-col">
+              <p class="profile-proof-heading">
+                {t.pages.christianMaass.proof.publicationsHeading}
+              </p>
+              <ul class="profile-proof-list">
+                {t.pages.christianMaass.proof.publications.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+            <div class="profile-proof-col">
+              <p class="profile-proof-heading">{t.pages.christianMaass.proof.teachingHeading}</p>
+              <ul class="profile-proof-list">
+                {t.pages.christianMaass.proof.teaching.map((item) => <li>{item}</li>)}
+              </ul>
+            </div>
+          </section>
+          {t.pages.christianMaass.intro.map((paragraph) => <p class="profile-body">{paragraph}</p>)}
         </div>
       </header>
     </article>
@@ -185,7 +371,9 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
     color: var(--color-text-strong);
     background: var(--color-bg-elevated);
     text-decoration: none;
-    transition: color 0.15s ease, background-color 0.15s ease;
+    transition:
+      color 0.15s ease,
+      background-color 0.15s ease;
   }
   .profile-socials a:hover,
   .profile-socials a:focus-visible {
@@ -201,6 +389,50 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
   .profile-body + .profile-body {
     margin-top: var(--space-3);
   }
+  .profile-proof {
+    margin: var(--space-3) 0 var(--space-5) 0;
+    padding-bottom: var(--space-4);
+    border-bottom: 1px solid var(--color-border-subtle);
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: var(--space-4);
+  }
+  .profile-proof-col {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+  }
+  .profile-proof-heading {
+    margin: 0;
+    font-family: var(--font-family-base);
+    font-size: 0.72rem;
+    font-weight: var(--weight-medium);
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--color-accent);
+  }
+  .profile-proof-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+  .profile-proof-list li {
+    position: relative;
+    padding-left: 1.1rem;
+    font-family: var(--font-family-base);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    color: var(--color-text);
+  }
+  .profile-proof-list li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--color-text-muted);
+  }
 
   @media (max-width: 768px) {
     .profile-header {
@@ -212,5 +444,4 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
       margin: 0 auto;
     }
   }
-
 </style>

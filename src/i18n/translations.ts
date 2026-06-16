@@ -37,6 +37,7 @@ export interface Translations {
         headlineTrailing: string;
         credentials: string;
         portraitAlt: string;
+        credentialsLine: string;
       };
       latestArticles: {
         heading: string;
@@ -45,6 +46,12 @@ export interface Translations {
       latestEssays: {
         heading: string;
         readAll: string;
+      };
+      pressStrip: {
+        groups: {
+          eyebrow: string;
+          mentions: { name: string; url: string }[];
+        }[];
       };
       pillars: {
         eyebrow: string;
@@ -90,6 +97,14 @@ export interface Translations {
       description: string;
       h1: string;
       intro: string[];
+      proof: {
+        rolesHeading: string;
+        publicationsHeading: string;
+        teachingHeading: string;
+        roles: string[];
+        publications: string[];
+        teaching: string[];
+      };
     };
     kontakt: {
       title: string;
@@ -271,6 +286,7 @@ export const translations: Translations = {
         headlineTrailing: '.',
         credentials: 'CDO · Aufsichtsrat · Autor · Speaker',
         portraitAlt: 'Christian Maaß — Porträt',
+        credentialsLine: 'Geschäftsführer Thomann.io, Vorstand BEVH, Autor',
       },
       latestArticles: {
         heading: 'Neueste Beiträge',
@@ -279,6 +295,42 @@ export const translations: Translations = {
       latestEssays: {
         heading: 'Neueste Beiträge',
         readAll: 'alle Essays & Interviews lesen',
+      },
+      pressStrip: {
+        groups: [
+          {
+            eyebrow: 'Zu Wort gekommen & in Büchern verlegt',
+            mentions: [
+              {
+                name: 'Forbes',
+                url: 'https://www.forbes.com/sites/peggyannesalz/2024/02/18/how-europes-e-commerce-innovators-lead-shoppers-to-the-finish-line/',
+              },
+              {
+                name: 'W&V',
+                url: 'https://www.wuv.de/Themen/Commerce/Christian-Maass-Thomann-Music-KI-wird-bei-uns-nicht-alles-loesen-koennen',
+              },
+              {
+                name: 'Textilwirtschaft',
+                url: 'https://www.textilwirtschaft.de/tech/wie-thomann-die-klaviatur-der-kundenbindung-beherrscht-158662',
+              },
+              {
+                name: 'Kassenzone',
+                url: 'https://www.kassenzone.de/dr-christian-maass-cdo-und-md-von-thomann/',
+              },
+              {
+                name: 't3n',
+                url: 'https://t3n.de/news/softwareentwicklung-ceo-fragen-it-1502858/',
+              },
+              {
+                name: 'digital kompakt',
+                url: 'https://www.digitalkompakt.de/podcast/wohlstand/digitale-transformation/thomann-digitalisierung-digitale-transformation-christian-maass',
+              },
+              { name: 'Haufe Verlag', url: '/buecher' },
+              { name: 'Carl Hanser Verlag', url: '/buecher' },
+              { name: 'UTB Verlag', url: '/buecher' },
+            ],
+          },
+        ],
       },
       pillars: {
         eyebrow: 'Worüber ich arbeite',
@@ -365,6 +417,25 @@ export const translations: Translations = {
         'Ich bin Geschäftsführer und Chief Digital Officer bei Thomann. Mit knapp 2 Mrd. EUR Umsatz sind wir die weltweite Nr. 1 im Musikhandel. Ich verantworte den gesamten Digitalbereich – 98 % des Umsatzes. Mein aktueller Fokus liegt auf KI und den strategischen, organisatorischen und technischen Fragen, die damit aufbrechen.',
         'Neben meiner operativen Rolle in der Geschäftsführung arbeite ich in Aufsichts- und Beiratskontexten im Schnittbereich dieser drei Kräfte – u. a. als VP E-Commerce und Vorstand beim bevh, dem Bundesverband E-Commerce und Versandhandel.',
       ],
+      proof: {
+        rolesHeading: 'Rollen',
+        publicationsHeading: 'Publikationen',
+        teachingHeading: 'Lehre',
+        roles: [
+          'CDO Thomann (Geschäftsführer, ca. 2 Mrd. EUR Umsatz)',
+          'Vorstand bevh — Bundesverband E-Commerce',
+          'Aufsichts- und Beiratsmandate',
+        ],
+        publications: [
+          '4 Bücher, zuletzt „Executive Presence" (2025)',
+          'Regelmäßig in W&V, Textilwirtschaft, etailment, t3n',
+          'Podcasts: Kassenzone, digital kompakt',
+        ],
+        teaching: [
+          'Frankfurt School: „KI im E-Commerce" (Lehrauftrag)',
+          'Vorträge zu Operating, KI und Board-Perspektive',
+        ],
+      },
     },
     buecher: {
       title: 'Bücher · Christian Maaß',
