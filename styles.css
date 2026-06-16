@@ -96,6 +96,7 @@
   /* Color-Tokens — Dark (Default) */
   --color-bg: #0a0a0a;
   --color-bg-elevated: #111111;
+  --color-footer-bg: #0d0d0d;
   --color-text: #c8c8c8;
   --color-text-strong: #f5f5f5;
   --color-text-muted: #8a8a8a;
@@ -114,7 +115,8 @@
 /* Color-Tokens — Light */
 [data-theme='light'] {
   --color-bg: #f6f1e8;
-  --color-bg-elevated: #ffffff;
+  --color-bg-elevated: #fcf8ee;
+  --color-footer-bg: #ede5d5;
   --color-text: #1a1a1a;
   --color-text-strong: #000000;
   --color-text-muted: #5a5a5a;
@@ -708,6 +710,7 @@ main {
 .card-soft {
   padding: var(--space-4);
   background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-subtle);
   border-radius: var(--radius-sm);
 }
 .card-soft--accent {
@@ -843,8 +846,8 @@ main {
 
 /* --- Footer --- */
 footer {
-  background-color: var(--color-bg-elevated);
-  border-top: 1px solid var(--color-border-subtle);
+  background-color: var(--color-footer-bg);
+  border-top: 1px solid var(--color-border-strong);
   padding-top: var(--space-5);
   padding-bottom: var(--space-4);
   font-size: 0.95rem;
@@ -1021,6 +1024,7 @@ footer {
   align-items: flex-start;
   gap: 3rem;
   background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-subtle);
   padding: 2.5rem;
   border-radius: 0.5rem;
 }
@@ -1182,6 +1186,7 @@ footer {
   display: flex;
   align-items: flex-start;
   background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border-subtle);
   padding: 2rem;
   gap: 2rem;
   margin: 2rem 0;
