@@ -269,9 +269,9 @@ export const translations: Translations = {
   },
   pages: {
     index: {
-      title: 'Christian Maaß · Operating Executive für digitale Geschäfte',
+      title: 'Dr. Christian Maaß · Unternehmer & Autor',
       description:
-        'Strategie, Technologie und Organisation laufen oft nicht synchron. Genau dort arbeite ich – seit 20 Jahren, als Manager, nicht als Berater. Managing Director & CDO Thomann.',
+        'Digitale Geschäfte gewinnen dort, wo Strategie, Organisation und Technik/KI synchron laufen. Daran arbeite ich – Geschäftsführer Thomann.io, Vorstand BEVH.',
       heroTitle: 'Dr. Christian Maaß',
       heroSubtitle: 'Managing Director & CDO Thomann',
       hero: {
