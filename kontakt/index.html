@@ -1,4 +1,4 @@
-<!DOCTYPE html><script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","@id":"https://christianmaass.com/kontakt/#webpage","url":"https://christianmaass.com/kontakt/","name":"Kontakt · Christian Maaß","description":"Kontakt zu Christian Maaß — per E-Mail, LinkedIn oder Telefon. Keine Formulare, keine vertriebliche Kaltakquise.","inLanguage":"de","isPartOf":{"@id":"https://christianmaass.com/#website"},"about":{"@id":"https://christianmaass.com/#person"},"breadcrumb":{"@id":"https://christianmaass.com/kontakt/#breadcrumb"},"mainEntity":{"@type":"Person","@id":"https://christianmaass.com/#person","email":"christian@christianmaass.com","sameAs":["https://www.linkedin.com/in/christianmaass/"]}}</script><html lang="de" data-theme="dark"> <head><script>
+<!DOCTYPE html><script type="application/ld+json">{"@context":"https://schema.org","@type":"ContactPage","@id":"https://christianmaass.com/kontakt/#webpage","url":"https://christianmaass.com/kontakt/","name":"Kontakt · Christian Maaß","description":"Kontakt zu Christian Maaß — per E-Mail, LinkedIn oder Telefon. Keine Formulare, keine vertriebliche Kaltakquise.","inLanguage":"de","isPartOf":{"@id":"https://christianmaass.com/#website"},"about":{"@id":"https://christianmaass.com/#person"},"breadcrumb":{"@id":"https://christianmaass.com/kontakt/#breadcrumb"},"mainEntity":{"@type":"Person","@id":"https://christianmaass.com/#person","email":"christian@christianmaass.com","sameAs":["https://www.linkedin.com/in/christianmaass/"]}}</script><html lang="de" data-theme="light"> <head><script>
       (function () {
         try {
           const stored = localStorage.getItem('theme');
@@ -13,12 +13,12 @@
     const btn = document.getElementById('theme-toggle');
     if (!btn) return;
     function sync() {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
       btn.setAttribute('aria-pressed', current === 'light' ? 'true' : 'false');
     }
     sync();
     btn.addEventListener('click', function () {
-      const current = document.documentElement.getAttribute('data-theme') || 'dark';
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
       const next = current === 'light' ? 'dark' : 'light';
       document.documentElement.setAttribute('data-theme', next);
       try {
