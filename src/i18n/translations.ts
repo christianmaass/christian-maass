@@ -99,11 +99,7 @@ export interface Translations {
       intro: string[];
       proof: {
         rolesHeading: string;
-        publicationsHeading: string;
-        teachingHeading: string;
         roles: string[];
-        publications: string[];
-        teaching: string[];
       };
     };
     kontakt: {
@@ -408,7 +404,7 @@ export const translations: Translations = {
       },
     },
     christianMaass: {
-      title: 'Christian Maaß · Profil. Manager, nicht Berater.',
+      title: 'Dr. Christian Maaß · Unternehmer, Beirat & Autor',
       description:
         'Christian Maaß übernimmt digitale Geschäfte dort, wo Strategie, Technologie und Organisation nicht synchron laufen. 20 Jahre als Operator: Thomann, OTTO, Vistaprint, Flyeralarm, Bertelsmann, AutoScout24.',
       h1: 'Strategie. Technologie. Organisation.',
@@ -419,21 +415,10 @@ export const translations: Translations = {
       ],
       proof: {
         rolesHeading: 'Rollen',
-        publicationsHeading: 'Publikationen',
-        teachingHeading: 'Lehre',
         roles: [
           'CDO Thomann (Geschäftsführer, ca. 2 Mrd. EUR Umsatz)',
           'Vorstand bevh — Bundesverband E-Commerce',
           'Aufsichts- und Beiratsmandate',
-        ],
-        publications: [
-          '4 Bücher, zuletzt „Executive Presence" (2025)',
-          'Regelmäßig in W&V, Textilwirtschaft, etailment, t3n',
-          'Podcasts: Kassenzone, digital kompakt',
-        ],
-        teaching: [
-          'Frankfurt School: „KI im E-Commerce" (Lehrauftrag)',
-          'Vorträge zu Operating, KI und Board-Perspektive',
         ],
       },
     },
