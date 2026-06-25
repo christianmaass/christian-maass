@@ -10,6 +10,6 @@ type: 'Essay'
 externalUrl: 'https://www.sunlab.de/news/recap-zur-beyond-performance-marketing-konferenz-2024/'
 publisher: 'sunlab'
 image:
-  src: '/essays/sunlab-beyond-performance.jpg'
-  alt: 'Beyond Performance Marketing Konferenz 2024 — Vortrag Christian Maaß'
+  src: '/logos/sunlab.png'
+  alt: 'sunlab'
 ---

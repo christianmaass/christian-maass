@@ -10,6 +10,6 @@ type: 'Essay'
 externalUrl: 'https://t3n.de/news/softwareentwicklung-ceo-fragen-it-1502858/'
 publisher: 't3n'
 image:
-  src: '/essays/t3n-ceo-fragen-it.jpg'
-  alt: 't3n-Gastbeitrag: Welche Fragen ein CEO der IT-Abteilung stellen muss'
+  src: '/logos/t3n.png'
+  alt: 't3n'
 ---

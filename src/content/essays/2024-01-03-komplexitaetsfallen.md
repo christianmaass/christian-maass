@@ -8,6 +8,6 @@ date: 2024-01-01
 type: 'Essay'
 externalUrl: 'https://etailment.de/news/stories/e-commerce-hier-lauern-komplexitaetsfallen-fuer-online-haendler-24738'
 image:
-  src: '/essays/komplexitaetsfallen.jpg'
-  alt: 'Komplexitätsfallen für Online-Händler'
+  src: '/logos/etailment.webp'
+  alt: 'eTailment'
 ---

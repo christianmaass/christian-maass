@@ -8,6 +8,7 @@ interface Props {
 
 const { entry } = Astro.props;
 const { title, summary, date, type, externalUrl, image } = entry.data;
+const isLogo = image.src.startsWith('/logos/');
 ---
 
 <article class="article-row">
@@ -26,7 +27,7 @@ const { title, summary, date, type, externalUrl, image } = entry.data;
     href={externalUrl}
     target="_blank"
     rel="noopener noreferrer"
-    class="article-thumb"
+    class:list={['article-thumb', { 'is-logo': isLogo }]}
     aria-hidden="true"
     tabindex="-1"
   >
@@ -98,6 +99,26 @@ const { title, summary, date, type, externalUrl, image } = entry.data;
   }
   .article-thumb:hover img {
     transform: scale(1.02);
+  }
+
+  /* Logo-Variante: Medienlogo zentriert, vollständig sichtbar, ohne Kachel */
+  .article-thumb.is-logo {
+    background: transparent;
+    border-radius: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--space-4);
+  }
+  .article-thumb.is-logo img {
+    width: auto;
+    height: auto;
+    max-width: 72%;
+    max-height: 56%;
+    object-fit: contain;
+  }
+  .article-thumb.is-logo:hover img {
+    transform: none;
   }
 
   @media (max-width: 768px) {

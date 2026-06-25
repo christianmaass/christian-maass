@@ -10,6 +10,6 @@ type: 'Essay'
 externalUrl: 'https://ecommercegermany.com/blog/e-commerce-berlin-expo-your-guide-to-the-star-packed-schedule/'
 publisher: 'E-Commerce Germany News'
 image:
-  src: '/essays/berlin-expo-forgotten-foundations.jpg'
-  alt: 'E-Commerce Berlin Expo 2024 — Vortrag: The Forgotten Foundations of E-Commerce'
+  src: '/logos/ecommerce-berlin-expo.png'
+  alt: 'E-Commerce Berlin Expo'
 ---

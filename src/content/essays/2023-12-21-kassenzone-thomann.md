@@ -10,6 +10,6 @@ type: 'Interview'
 externalUrl: 'https://www.kassenzone.de/dr-christian-maass-cdo-und-md-von-thomann/'
 publisher: 'Kassenzone'
 image:
-  src: '/essays/kassenzone-thomann.jpg'
-  alt: 'Kassenzone-Interview mit Christian Maaß, CDO Thomann'
+  src: '/logos/kassenzone.svg'
+  alt: 'Kassenzone'
 ---

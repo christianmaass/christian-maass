@@ -10,6 +10,6 @@ type: 'Interview'
 externalUrl: 'https://www.digitalkompakt.de/podcast/wohlstand/digitale-transformation/thomann-digitalisierung-digitale-transformation-christian-maass'
 publisher: 'digital kompakt'
 image:
-  src: '/essays/digitalkompakt-thomann.jpg'
-  alt: 'digital kompakt Podcast: Christian Maaß über Thomann'
+  src: '/logos/digital-kompakt.svg'
+  alt: 'digital kompakt'
 ---

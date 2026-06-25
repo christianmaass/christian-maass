@@ -9,6 +9,6 @@ type: 'Interview'
 externalUrl: 'https://www.textilwirtschaft.de/tech/wie-thomann-die-klaviatur-der-kundenbindung-beherrscht-158662'
 publisher: 'Textilwirtschaft'
 image:
-  src: '/essays/thomann-kundenbindung.jpg'
-  alt: 'Interview: Thomann Kundenbindung'
+  src: '/logos/textilwirtschaft.svg'
+  alt: 'Textilwirtschaft'
 ---

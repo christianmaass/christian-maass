@@ -10,6 +10,6 @@ type: 'Essay'
 externalUrl: 'https://www.technologiebox.de/2024/08/22/e-commerce-bbq-2024-branchentreffen-mit-genuss-und-fachwissen-am-06-09-2024-in-bielefeld/'
 publisher: 'technologiebox'
 image:
-  src: '/essays/ecbbq-vergessene-grundlagen.jpg'
-  alt: 'E-Commerce-BBQ 2024 — Vortrag: Die vergessenen Grundlagen im E-Commerce'
+  src: '/logos/ecommerce-bbq.webp'
+  alt: 'E-Commerce BBQ'
 ---

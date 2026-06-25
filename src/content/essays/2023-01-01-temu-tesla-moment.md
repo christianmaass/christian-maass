@@ -8,6 +8,6 @@ date: 2023-01-01
 type: 'Essay'
 externalUrl: 'https://etailment.de/news/stories/etailment-expertenrat-erlebt-der-handel-mit-temu-den-tesla-moment-der-autoindustrie-24433'
 image:
-  src: '/essays/temu-tesla-moment.jpg'
-  alt: 'Temu Tesla-Moment der Autoindustrie'
+  src: '/logos/etailment.webp'
+  alt: 'eTailment'
 ---

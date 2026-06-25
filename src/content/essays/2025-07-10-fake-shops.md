@@ -9,6 +9,6 @@ date: 2025-07-10
 type: 'Essay'
 externalUrl: 'https://etailment.de/news/stories/cyberkriminalitaet-wie-fake-shops-e-commerce-marken-bedrohen-25187'
 image:
-  src: '/essays/fake-shops.jpg'
-  alt: 'Fake-Shops als Bedrohung für E-Commerce-Marken'
+  src: '/logos/etailment.webp'
+  alt: 'eTailment'
 ---

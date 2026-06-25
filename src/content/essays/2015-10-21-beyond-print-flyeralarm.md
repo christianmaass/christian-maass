@@ -9,6 +9,6 @@ type: 'Interview'
 externalUrl: 'https://www.beyond-print.de/da-ist-noch-luft-nach-oben-zukunftsvisionen-bei-flyeralarm/'
 publisher: 'beyond-print'
 image:
-  src: '/essays/beyond-print-flyeralarm.jpg'
-  alt: 'beyond-print-Interview: Zukunftsvisionen bei Flyeralarm'
+  src: '/logos/beyond-print.png'
+  alt: 'beyond-print'
 ---

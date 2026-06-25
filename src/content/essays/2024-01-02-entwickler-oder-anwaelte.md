@@ -8,6 +8,6 @@ date: 2024-01-02
 type: 'Essay'
 externalUrl: 'https://etailment.de/news/stories/buerokratie-braucht-der-e-commerce-noch-entwickler---oder-nur-noch-anwaelte-24923'
 image:
-  src: '/essays/entwickler-oder-anwaelte.jpg'
-  alt: 'Braucht der E-Commerce noch Entwickler oder nur noch Anwälte'
+  src: '/logos/etailment.webp'
+  alt: 'eTailment'
 ---

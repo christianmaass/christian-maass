@@ -9,6 +9,6 @@ date: 2026-03-18
 type: 'Essay'
 externalUrl: 'https://etailment.de/news/stories/expertenbeitrag-agentic-engineering-im-e-commerce-erst-die-grundlagen-dann-die-agenten-25426'
 image:
-  src: '/essays/agentic-engineering.jpg'
-  alt: 'Agentic Engineering im E-Commerce'
+  src: '/logos/etailment.webp'
+  alt: 'eTailment'
 ---
