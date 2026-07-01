@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>KI Governance — Agentic Engineering Plattform — Thomann Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --font-family-base: 'Montserrat', Arial, sans-serif;
+      --font-family-display: 'Newsreader', 'Source Serif Pro', Georgia, serif;
+      --weight-light: 300; --weight-regular: 400; --weight-medium: 500; --weight-bold: 700;
+      --container-max-width: 1200px; --container-padding-x: 1.5rem;
+      --color-bg: #f6f1e8; --color-bg-elevated: #fcf8ee;
+      --color-text: #1a1a1a; --color-text-strong: #000000; --color-text-muted: #5a5a5a;
+      --color-border-subtle: rgba(0,0,0,0.08); --color-border-strong: rgba(0,0,0,0.16);
+      --color-accent: #315a78; --color-accent-hover: #264a64; --color-on-accent: #ffffff;
+      --radius-sm: 0.5rem; --radius-md: 1rem;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font-family-base); font-weight: var(--weight-light);
+      color: var(--color-text); background-color: var(--color-bg);
+      -webkit-font-smoothing: antialiased; min-height: 100vh;
+      display: flex; flex-direction: column; position: relative; isolation: isolate;
+    }
+    body.is-leaving .slide { transition: opacity 0.4s ease; opacity: 0; }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -2; background-color: var(--color-bg);
+      background-image: url('assets/hero.jpg');
+      background-image: -webkit-image-set(url('assets/hero.webp') type('image/webp'), url('assets/hero.jpg') type('image/jpeg'));
+      background-image: image-set(url('assets/hero.webp') type('image/webp'), url('assets/hero.jpg') type('image/jpeg'));
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      filter: grayscale(1) brightness(1.05) contrast(1.02);
+    }
+    body::after {
+      content: ""; position: fixed; inset: 0; z-index: -1;
+      background: linear-gradient(180deg, rgba(246,241,232,0.90) 0%, rgba(246,241,232,0.92) 55%, rgba(246,241,232,0.95) 100%);
+    }
+    .brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 60; pointer-events: none; }
+    .brand-bar__inner { max-width: var(--container-max-width,1200px); margin: 0 auto; padding: clamp(2.9rem,6.4vh,5.0rem) var(--container-padding-x,1.5rem) 0; display: flex; justify-content: flex-end; }
+    .brand-logo { height: 52px; width: auto; filter: brightness(0); opacity: 0.85; }
+
+    .slide {
+      flex: 1; width: 100%; max-width: var(--container-max-width); margin: 0 auto;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--container-padding-x) clamp(2rem, 5vh, 3.5rem);
+      display: flex; flex-direction: column; opacity: 0;
+      animation: content-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+    }
+    @keyframes content-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    .slide__title {
+      font-family: var(--font-family-display); font-weight: var(--weight-medium);
+      font-size: clamp(1.8rem, 3.9vw, 3.0rem); line-height: 1.12; letter-spacing: -0.01em;
+      color: var(--color-text-strong); margin: 0;
+    }
+    .slide__title .accent { color: var(--color-accent); }
+
+    .section-label { font-size: 0.78rem; font-weight: var(--weight-medium); letter-spacing: 0.12em; text-transform: uppercase; color: var(--color-text-muted); margin: clamp(1.2rem,2.8vh,1.9rem) 0 0.65rem; }
+    .slide > .section-label:first-of-type { margin-top: auto; }
+
+    .flow { display: flex; align-items: stretch; gap: 0.6rem; }
+    .step { flex: 1; background: var(--color-bg-elevated); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); padding: 0.85rem 0.95rem; display: flex; flex-direction: column; gap: 0.35rem; }
+    .step__n { width: 1.75rem; height: 1.75rem; border-radius: 50%; background: var(--color-accent); color: #fff; font-size: 0.92rem; font-weight: var(--weight-medium); display: inline-flex; align-items: center; justify-content: center; }
+    .step__t { font-weight: var(--weight-medium); font-size: 1.05rem; color: var(--color-text-strong); }
+    .step__d { font-size: 0.85rem; line-height: 1.4; color: var(--color-text-muted); }
+    .flow__arrow { align-self: center; color: var(--color-accent); font-size: 1.25rem; flex: none; }
+
+    .motto { margin: 0.85rem 0 0; font-family: var(--font-family-display); font-style: italic; font-size: clamp(1.1rem,1.7vw,1.4rem); color: var(--color-accent); }
+
+    .layers { display: flex; flex-direction: column; gap: 0.55rem; margin-bottom: auto; }
+    .layer { display: flex; align-items: baseline; gap: 0.9rem; background: var(--color-bg-elevated); border: 1px solid var(--color-border-subtle); border-left: 5px solid var(--color-accent); border-radius: var(--radius-sm); padding: 0.75rem 1.1rem; }
+    .layer__k { flex: none; width: clamp(7.5rem, 15vw, 11rem); font-weight: var(--weight-medium); font-size: 1rem; color: var(--color-text-strong); }
+    .layer__v { font-size: 0.92rem; line-height: 1.45; color: var(--color-text-muted); }
+    .layer__v b { font-weight: var(--weight-medium); color: var(--color-text); }
+    .layer--base { border-left-color: var(--color-text-muted); background: rgba(0,0,0,0.03); }
+
+    @media (max-width: 760px) {
+      .flow { flex-wrap: wrap; } .flow__arrow { display: none; } .step { flex: 1 1 42%; }
+      .layer { flex-direction: column; gap: 0.15rem; } .layer__k { width: auto; }
+    }
+    @media (prefers-reduced-motion: reduce) { .slide { animation: none; opacity: 1; transform: none; } }
+
+    .deck-nav { position: fixed; bottom: 1.25rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 50; }
+    .deck-nav a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.25); background: rgba(255,255,255,0.7); color: rgba(0,0,0,0.7); text-decoration: none; font-size: 1.1rem; backdrop-filter: blur(4px); transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+    .deck-nav a:hover { color: var(--color-accent); border-color: var(--color-accent); transform: translateY(-1px); }
+    .byline{position:fixed;bottom:1.25rem;left:0;right:0;z-index:55;pointer-events:none;} .byline__inner{max-width:var(--container-max-width,1200px);margin:0 auto;padding:0 var(--container-padding-x,1.5rem);} .byline__text{font-size:0.8rem;color:var(--color-text-muted,#5a5a5a);letter-spacing:0.02em;}
+    .title-row{display:flex;align-items:flex-start;gap:0.85rem;} .q-badge{flex:none;display:inline-flex;align-items:center;justify-content:center;width:clamp(2.1rem,3.6vw,2.7rem);height:clamp(2.1rem,3.6vw,2.7rem);border-radius:50%;background:var(--color-accent);color:#fff;font-weight:500;font-size:clamp(1.1rem,1.9vw,1.45rem);line-height:1;margin-top:clamp(0.15rem,0.5vw,0.4rem);}
+  </style>
+</head>
+<body>
+  <div class="brand-bar"><div class="brand-bar__inner"><img class="brand-logo" src="assets/logo.png" alt="Thomann Music" /></div></div>
+  <div class="byline"><div class="byline__inner"><span class="byline__text">Dr. Christian Maaß</span></div></div>
+  <main class="slide">
+    <div class="title-row"><span class="q-badge" aria-hidden="true">3</span><h1 class="slide__title">Das Fundament muss tragen –<br>eine eigene Agentic Engineering Platform</h1></div>
+
+    <p class="section-label">Prozess — vom Bauen zum Betrieb</p>
+    <div class="flow">
+      <div class="step"><span class="step__n">1</span><span class="step__t">Bauen</span><span class="step__d">Dev erstellt internes Tool, Dashboard oder KI-Agenten.</span></div>
+      <span class="flow__arrow" aria-hidden="true">→</span>
+      <div class="step"><span class="step__n">2</span><span class="step__t">Leitplanken</span><span class="step__d">Automatische CI/CD-Checks: Security, Performance, erlaubte Ressourcen.</span></div>
+      <span class="flow__arrow" aria-hidden="true">→</span>
+      <div class="step"><span class="step__n">3</span><span class="step__t">Veröffentlichen</span><span class="step__d">Eintrag in die Registry + Deploy auf Cloud Run.</span></div>
+      <span class="flow__arrow" aria-hidden="true">→</span>
+      <div class="step"><span class="step__n">4</span><span class="step__t">Besitzen &amp; Betreiben</span><span class="step__d">Owner + Sponsor, klarer Lifecycle bis zur Abschaltung.</span></div>
+    </div>
+    <p class="motto">„You build it, you own it."</p>
+
+    <p class="section-label">Plattform</p>
+    <div class="layers">
+      <div class="layer"><span class="layer__k">Dev</span><span class="layer__v"><b>Thomann IO Engineers</b> zuerst · Business-Devs folgen</span></div>
+      <div class="layer"><span class="layer__k">Publishing-Pfad</span><span class="layer__v">CI/CD mit Leitplanken — <b>Security</b> · <b>Performance</b> · <b>Ressourcen-Allowlist</b></span></div>
+      <div class="layer"><span class="layer__k">Laufzeit</span><span class="layer__v">Schlankes gemeinsames <b>GCP-Projekt</b> · <b>Cloud Run</b> · <b>Vertex AI</b> als Default-Modell</span></div>
+      <div class="layer"><span class="layer__k">Governance</span><span class="layer__v"><b>App-Registry</b> (Owner · Zweck · Status) · Kosten &amp; Nutzung zurechenbar · Lifecycle</span></div>
+      <div class="layer layer--base"><span class="layer__k">Fundament</span><span class="layer__v">Einheitliche Identity · leichtgewichtige Data-Classification · zentrales Terraform</span></div>
+    </div>
+  </main>
+
+  <nav class="deck-nav" aria-label="Präsentationsnavigation">
+    <a href="11-governance-warum.html" id="prev" aria-label="Zurück zu Seite 11">←</a>
+    <a href="13-sollbruchstellen.html" id="next" aria-label="Weiter zu Seite 13">→</a>
+  </nav>
+
+  <script>
+    const PREV = '11-governance-warum.html';
+    const NEXT = '13-sollbruchstellen.html';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(url) {
+      if (reduce) { window.location.href = url; return; }
+      document.body.classList.add('is-leaving');
+      setTimeout(() => { window.location.href = url; }, 450);
+    }
+    document.getElementById('prev').addEventListener('click', (e) => { e.preventDefault(); go(PREV); });
+    document.getElementById('next').addEventListener('click', (e) => { e.preventDefault(); go(NEXT); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') go(PREV);
+      else if (e.key === 'ArrowRight') go(NEXT);
+    });
+  </script>
+</body>
+</html>

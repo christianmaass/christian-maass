@@ -20,6 +20,8 @@ export default defineConfig({
         // Sitemap ausschließen — sind keine kanonischen Inhalte.
         if (/\/blog\/\d+\/?$/.test(page)) return false;
         if (/\/blog\/rss\.xml$/.test(page)) return false;
+        // /thomann ist eine nicht-öffentliche Präsentation (nur direkte URL)
+        if (/\/thomann(\/|$)/.test(page)) return false;
         return true;
       },
       serialize(item) {

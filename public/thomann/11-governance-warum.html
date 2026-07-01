@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>KI Governance — Warum jetzt — Thomann Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --font-family-base: 'Montserrat', Arial, sans-serif;
+      --font-family-display: 'Newsreader', 'Source Serif Pro', Georgia, serif;
+      --weight-light: 300; --weight-regular: 400; --weight-medium: 500; --weight-bold: 700;
+      --container-max-width: 1200px; --container-padding-x: 1.5rem;
+      --color-bg: #f6f1e8; --color-bg-elevated: #fcf8ee;
+      --color-text: #1a1a1a; --color-text-strong: #000000; --color-text-muted: #5a5a5a;
+      --color-border-subtle: rgba(0,0,0,0.08); --color-border-strong: rgba(0,0,0,0.16);
+      --color-accent: #315a78; --color-accent-hover: #264a64; --color-on-accent: #ffffff;
+      --color-risk: #a6402f;
+      --radius-sm: 0.5rem; --radius-md: 1rem;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+    body {
+      font-family: var(--font-family-base); font-weight: var(--weight-light);
+      color: var(--color-text); background-color: var(--color-bg);
+      -webkit-font-smoothing: antialiased; min-height: 100vh;
+      display: flex; flex-direction: column; position: relative; isolation: isolate;
+    }
+    body.is-leaving .slide { transition: opacity 0.4s ease; opacity: 0; }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -2; background-color: var(--color-bg);
+      background-image: url('assets/hero.jpg');
+      background-image: -webkit-image-set(url('assets/hero.webp') type('image/webp'), url('assets/hero.jpg') type('image/jpeg'));
+      background-image: image-set(url('assets/hero.webp') type('image/webp'), url('assets/hero.jpg') type('image/jpeg'));
+      background-size: cover; background-position: center; background-repeat: no-repeat;
+      filter: grayscale(1) brightness(1.05) contrast(1.02);
+    }
+    body::after {
+      content: ""; position: fixed; inset: 0; z-index: -1;
+      background: linear-gradient(180deg, rgba(246,241,232,0.90) 0%, rgba(246,241,232,0.92) 55%, rgba(246,241,232,0.95) 100%);
+    }
+    .brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 60; pointer-events: none; }
+    .brand-bar__inner { max-width: var(--container-max-width,1200px); margin: 0 auto; padding: clamp(2.9rem,6.4vh,5.0rem) var(--container-padding-x,1.5rem) 0; display: flex; justify-content: flex-end; }
+    .brand-logo { height: 52px; width: auto; filter: brightness(0); opacity: 0.85; }
+
+    .slide {
+      flex: 1; width: 100%; max-width: var(--container-max-width); margin: 0 auto;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--container-padding-x) clamp(2rem, 5vh, 3.5rem);
+      display: flex; flex-direction: column; opacity: 0;
+      animation: content-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+    }
+    @keyframes content-in { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+
+    .slide__title {
+      font-family: var(--font-family-display); font-weight: var(--weight-medium);
+      font-size: clamp(1.8rem, 3.9vw, 3.0rem); line-height: 1.12; letter-spacing: -0.01em;
+      color: var(--color-text-strong); margin: 0;
+    }
+    .slide__title .accent { color: var(--color-accent); }
+    .slide__sub { margin: 0.7rem 0 0; font-size: clamp(0.98rem,1.45vw,1.15rem); color: var(--color-text-muted); }
+    .slide__sub b { font-weight: var(--weight-medium); color: var(--color-text); }
+
+    .grid {
+      margin: auto 0;
+      display: grid; grid-template-columns: minmax(0,0.9fr) minmax(0,1.4fr);
+      gap: clamp(1.1rem,2.4vw,2rem); align-items: stretch;
+    }
+    .kpi {
+      background: var(--color-accent); color: #fff; border-radius: var(--radius-md);
+      padding: clamp(1.5rem,4vh,2.6rem); display: flex; flex-direction: column; justify-content: center;
+      box-shadow: 0 10px 26px rgba(0,0,0,0.12);
+    }
+    .kpi__n { font-family: var(--font-family-display); font-weight: var(--weight-medium); font-size: clamp(3.6rem,8.5vw,6.2rem); line-height: 1; }
+    .kpi__l { margin-top: 0.6rem; font-size: clamp(0.98rem,1.45vw,1.18rem); opacity: 0.92; line-height: 1.45; }
+
+    .issues { display: flex; flex-direction: column; gap: 0.8rem; }
+    .issue { display: flex; gap: 0.8rem; align-items: flex-start; background: var(--color-bg-elevated); border: 1px solid var(--color-border-subtle); border-radius: var(--radius-sm); padding: 0.9rem 1.15rem; }
+    .issue__dot { flex: none; width: 0.65rem; height: 0.65rem; border-radius: 50%; background: var(--color-risk); margin-top: 0.5rem; }
+    .issue__t { font-size: clamp(0.95rem,1.35vw,1.1rem); line-height: 1.45; color: var(--color-text); }
+    .issue__t b { font-weight: var(--weight-medium); }
+
+    .consequence {
+      margin-top: clamp(1rem,2.4vh,1.6rem);
+      margin-bottom: clamp(1.5rem,5vh,3.5rem);
+      border-left: 4px solid var(--color-accent); padding: 0.5rem 0 0.5rem 0.9rem;
+      font-size: clamp(0.98rem,1.4vw,1.15rem); line-height: 1.5; color: var(--color-text);
+    }
+    .consequence b { font-weight: var(--weight-medium); color: var(--color-accent); }
+
+    @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+    @media (prefers-reduced-motion: reduce) { .slide { animation: none; opacity: 1; transform: none; } }
+
+    .deck-nav { position: fixed; bottom: 1.25rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 50; }
+    .deck-nav a { display: inline-flex; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(0,0,0,0.25); background: rgba(255,255,255,0.7); color: rgba(0,0,0,0.7); text-decoration: none; font-size: 1.1rem; backdrop-filter: blur(4px); transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease; }
+    .deck-nav a:hover { color: var(--color-accent); border-color: var(--color-accent); transform: translateY(-1px); }
+    .byline{position:fixed;bottom:1.25rem;left:0;right:0;z-index:55;pointer-events:none;} .byline__inner{max-width:var(--container-max-width,1200px);margin:0 auto;padding:0 var(--container-padding-x,1.5rem);} .byline__text{font-size:0.8rem;color:var(--color-text-muted,#5a5a5a);letter-spacing:0.02em;}
+    .title-row{display:flex;align-items:flex-start;gap:0.85rem;} .q-badge{flex:none;display:inline-flex;align-items:center;justify-content:center;width:clamp(2.1rem,3.6vw,2.7rem);height:clamp(2.1rem,3.6vw,2.7rem);border-radius:50%;background:var(--color-accent);color:#fff;font-weight:500;font-size:clamp(1.1rem,1.9vw,1.45rem);line-height:1;margin-top:clamp(0.15rem,0.5vw,0.4rem);}
+  </style>
+</head>
+<body>
+  <div class="brand-bar"><div class="brand-bar__inner"><img class="brand-logo" src="assets/logo.png" alt="Thomann Music" /></div></div>
+  <div class="byline"><div class="byline__inner"><span class="byline__text">Dr. Christian Maaß</span></div></div>
+  <main class="slide">
+    <div class="title-row"><span class="q-badge" aria-hidden="true">3</span><h1 class="slide__title">Das Fundament muss tragen –<br>in der Realität ist das fast nie der Fall</h1></div>
+
+    <div class="grid">
+      <div class="kpi">
+        <div class="kpi__n">~200</div>
+        <div class="kpi__l">interne Tools bereits heute im Bestand — Tendenz steigend durch KI-Unterstützung.</div>
+      </div>
+      <div class="issues">
+        <div class="issue"><span class="issue__dot"></span><span class="issue__t"><b>Einzweck-Tools</b>, teils mit geteilten Datenbanken — das erzeugt Konflikte.</span></div>
+        <div class="issue"><span class="issue__dot"></span><span class="issue__t"><b>Lose oder keine Ownership</b>, kein zentrales Verzeichnis (Registry).</span></div>
+        <div class="issue"><span class="issue__dot"></span><span class="issue__t">Tools entstehen <b>auf einzelnen Rechnern</b> und bleiben dort — kein Weg zum Teilen.</span></div>
+        <div class="issue"><span class="issue__dot"></span><span class="issue__t">KI <b>beschleunigt das Bauen</b> — Code entsteht schneller als Review &amp; Wartung.</span></div>
+      </div>
+    </div>
+
+    <p class="consequence">Ohne eine Governance Struktur wächst der Wildwuchs schneller, als wir ihn kontrollieren können. <b>Deshalb braucht es eine eigene Plattform.</b></p>
+  </main>
+
+  <nav class="deck-nav" aria-label="Präsentationsnavigation">
+    <a href="10-erfuellungsgehilfe.html" id="prev" aria-label="Zurück zu Seite 10">←</a>
+    <a href="12-agentic-plattform.html" id="next" aria-label="Weiter zu Seite 12">→</a>
+  </nav>
+
+  <script>
+    const PREV = '10-erfuellungsgehilfe.html';
+    const NEXT = '12-agentic-plattform.html';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(url) {
+      if (reduce) { window.location.href = url; return; }
+      document.body.classList.add('is-leaving');
+      setTimeout(() => { window.location.href = url; }, 450);
+    }
+    document.getElementById('prev').addEventListener('click', (e) => { e.preventDefault(); go(PREV); });
+    document.getElementById('next').addEventListener('click', (e) => { e.preventDefault(); go(NEXT); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') go(PREV);
+      else if (e.key === 'ArrowRight') go(NEXT);
+    });
+  </script>
+</body>
+</html>
