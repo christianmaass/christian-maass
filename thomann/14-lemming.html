@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
+  <title>Sei kein Lemming — Thomann Music</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;700&family=Newsreader:ital,opsz,wght@0,6..72,500;0,6..72,700;1,6..72,500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --font-family-base: 'Montserrat', Arial, sans-serif;
+      --font-family-display: 'Newsreader', 'Source Serif Pro', Georgia, serif;
+      --weight-light: 300;
+      --weight-regular: 400;
+      --weight-medium: 500;
+      --weight-bold: 700;
+      --container-max-width: 1200px;
+      --container-padding-x: 1.5rem;
+
+      --color-bg: #f6f1e8;
+      --color-bg-elevated: #fcf8ee;
+      --color-text: #1a1a1a;
+      --color-text-strong: #000000;
+      --color-text-muted: #5a5a5a;
+      --color-border-subtle: rgba(0,0,0,0.08);
+      --color-border-strong: rgba(0,0,0,0.16);
+      --color-accent: #315a78;
+      --color-accent-hover: #264a64;
+      --color-on-accent: #ffffff;
+      --radius-sm: 0.5rem;
+      --radius-md: 1rem;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; }
+
+    body {
+      font-family: var(--font-family-base);
+      font-weight: var(--weight-light);
+      color: var(--color-text);
+      background-color: var(--color-bg);
+      -webkit-font-smoothing: antialiased;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      isolation: isolate;
+    }
+    body.is-leaving .slide { transition: opacity 0.4s ease; opacity: 0; }
+
+    /* Originalfoto als gedämpfte Graustufen-Ebene hinter dem Creme-Ton */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      background-color: var(--color-bg);
+      background-image: url('assets/hero.jpg');
+      background-image: -webkit-image-set(url('assets/hero.webp') type('image/webp'), url('assets/hero.jpg') type('image/jpeg'));
+      background-image: image-set(url('assets/hero.webp') type('image/webp'), url('assets/hero.jpg') type('image/jpeg'));
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      filter: grayscale(1) brightness(1.05) contrast(1.02);
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: linear-gradient(
+        180deg,
+        rgba(246,241,232,0.86) 0%,
+        rgba(246,241,232,0.88) 55%,
+        rgba(246,241,232,0.92) 100%
+      );
+    }
+
+    .slide {
+      flex: 1;
+      width: 100%;
+      max-width: var(--container-max-width);
+      margin: 0 auto;
+      padding: clamp(2.5rem, 6vh, 4.5rem) var(--container-padding-x) clamp(2rem, 5vh, 3.5rem);
+      display: flex;
+      flex-direction: column;
+      opacity: 0;
+      animation: content-in 0.9s cubic-bezier(0.16, 1, 0.3, 1) 0.15s both;
+    }
+    @keyframes content-in {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .slide__title {
+      font-family: var(--font-family-display);
+      font-weight: var(--weight-medium);
+      font-size: clamp(1.8rem, 3.9vw, 3.0rem);
+      line-height: 1.15;
+      letter-spacing: -0.01em;
+      color: var(--color-text-strong);
+      margin: 0;
+    }
+    .slide__title .accent { color: var(--color-accent); }
+    .slide__sub {
+      margin: 1rem 0 0 0;
+      font-size: 1.05rem;
+      line-height: 1.6;
+      color: var(--color-text-muted);
+      max-width: 52ch;
+    }
+
+    /* --- Lemming-Animation --- */
+    .scene {
+      position: relative;
+      margin: auto 0;
+      height: clamp(240px, 38vh, 340px);
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      border: 1px solid var(--color-border-subtle);
+      background: linear-gradient(180deg, #faf6ee 0%, #f1e9da 100%);
+    }
+
+    /* Plateau */
+    .ground {
+      position: absolute;
+      left: 0;
+      width: 56%;
+      top: 50%;
+      bottom: 0;
+      background: linear-gradient(180deg, #d8ccb0 0%, #c6b793 60%, #b6a47c 100%);
+    }
+    .ground::before { /* Grasnarbe */
+      content: "";
+      position: absolute;
+      top: -4px; left: 0; right: 0;
+      height: 7px;
+      background: #315a78;
+      border-radius: 3px 3px 0 0;
+    }
+    .ground::after { /* Kliff-Kante rechts, kleiner Schatten */
+      content: "";
+      position: absolute;
+      top: -4px; right: 0;
+      width: 10px; height: 18px;
+      background: linear-gradient(90deg, rgba(0,0,0,0), rgba(0,0,0,0.18));
+    }
+
+    /* Abgrund rechts der Kante */
+    .abyss {
+      position: absolute;
+      left: 56%;
+      right: 0;
+      top: 50%;
+      bottom: 0;
+      background:
+        linear-gradient(180deg, rgba(28,24,38,0.04) 0%, rgba(24,20,34,0.55) 55%, rgba(18,15,28,0.9) 100%);
+    }
+    .abyss::after { /* Tiefe links an der Kliffwand */
+      content: "";
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 26px;
+      background: linear-gradient(90deg, rgba(10,8,18,0.55), rgba(10,8,18,0));
+    }
+
+    /* Ein Lemming */
+    .lemming {
+      position: absolute;
+      bottom: 50%;
+      left: var(--x, 0%);
+      width: 20px;
+      height: 24px;
+      transform-origin: 50% 82%;
+      animation: march 8s linear infinite;
+      z-index: 3;
+    }
+    .lemming__bob {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      animation: bob 0.42s ease-in-out infinite;
+    }
+    .lemming__body {
+      position: absolute;
+      left: 50%;
+      bottom: 5px;
+      transform: translateX(-50%);
+      width: 16px;
+      height: 16px;
+      background: #315a78;
+      border-radius: 48% 48% 42% 42%;
+    }
+    .lemming__body::before { /* Haar */
+      content: "";
+      position: absolute;
+      top: -5px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 15px;
+      height: 9px;
+      background: #6f93ab;
+      border-radius: 50% 50% 35% 35%;
+    }
+    .lemming__body::after { /* Auge (blickt nach rechts) */
+      content: "";
+      position: absolute;
+      top: 6px;
+      right: 3px;
+      width: 2.6px;
+      height: 2.6px;
+      background: #fff;
+      border-radius: 50%;
+    }
+    .lemming__legs {
+      position: absolute;
+      left: 50%;
+      bottom: 0;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 4px;
+    }
+    .lemming__legs span {
+      display: block;
+      width: 2.6px;
+      height: 6px;
+      background: #1f3e52;
+      border-radius: 0 0 2px 2px;
+      transform-origin: top center;
+    }
+    .lemming__legs span:nth-child(1) { animation: legA 0.42s ease-in-out infinite; }
+    .lemming__legs span:nth-child(2) { animation: legB 0.42s ease-in-out infinite; }
+
+    /* Staffelung der Lemminge */
+    .lemming:nth-child(1) { --x: 2%;  animation-delay: 0s; }
+    .lemming:nth-child(2) { --x: 12%; animation-delay: -1s; }
+    .lemming:nth-child(3) { --x: 22%; animation-delay: -2s; }
+    .lemming:nth-child(4) { --x: 32%; animation-delay: -3s; }
+    .lemming:nth-child(5) { --x: 42%; animation-delay: -4s; }
+    .lemming:nth-child(6) { --x: 18%; animation-delay: -5s; }
+    .lemming:nth-child(7) { --x: 28%; animation-delay: -6s; }
+    .lemming:nth-child(8) { --x: 38%; animation-delay: -7s; }
+
+    @keyframes march {
+      0%   { left: -8%; bottom: 50%; transform: rotate(0deg);  opacity: 0; }
+      5%   { opacity: 1; }
+      52%  { left: 50%; bottom: 50%; transform: rotate(0deg);  opacity: 1; }
+      60%  { left: 55%; bottom: 50%; transform: rotate(0deg);  opacity: 1; }
+      74%  { left: 60%; bottom: -14%; transform: rotate(88deg); opacity: 1; }
+      82%  { opacity: 0; }
+      100% { left: 60%; bottom: -14%; transform: rotate(88deg); opacity: 0; }
+    }
+    @keyframes bob { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-2.5px); } }
+    @keyframes legA { 0%, 100% { transform: rotate(18deg); } 50% { transform: rotate(-18deg); } }
+    @keyframes legB { 0%, 100% { transform: rotate(-18deg); } 50% { transform: rotate(18deg); } }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide { animation: none; opacity: 1; transform: none; }
+      .lemming, .lemming__bob, .lemming__legs span { animation: none; }
+      .lemming { bottom: 50%; opacity: 1; }
+    }
+
+    /* --- Slide-Navigation --- */
+    .deck-nav { position: fixed; bottom: 1.25rem; right: 1.5rem; display: flex; gap: 0.5rem; z-index: 50; }
+    .deck-nav a {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px; border-radius: 999px;
+      border: 1px solid rgba(0,0,0,0.25); background: rgba(255,255,255,0.7); color: rgba(0,0,0,0.7);
+      text-decoration: none; font-size: 1.1rem; backdrop-filter: blur(4px);
+      transition: color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+    }
+    .deck-nav a:hover { color: var(--color-accent); border-color: var(--color-accent); transform: translateY(-1px); }
+    .brand-bar { position: fixed; top: 0; left: 0; right: 0; z-index: 60; pointer-events: none; }
+    .brand-bar__inner {
+      max-width: var(--container-max-width, 1200px);
+      margin: 0 auto;
+      padding: clamp(2.9rem, 6.4vh, 5.0rem) var(--container-padding-x, 1.5rem) 0;
+      display: flex;
+      justify-content: flex-end;
+    }
+    .brand-logo { height: 52px; width: auto; filter: brightness(0); opacity: 0.85; }
+    .byline{position:fixed;bottom:1.25rem;left:0;right:0;z-index:55;pointer-events:none;} .byline__inner{max-width:var(--container-max-width,1200px);margin:0 auto;padding:0 var(--container-padding-x,1.5rem);} .byline__text{font-size:0.8rem;color:var(--color-text-muted,#5a5a5a);letter-spacing:0.02em;}
+  </style>
+</head>
+<body>
+  <div class="brand-bar"><div class="brand-bar__inner"><img class="brand-logo" src="assets/logo.png" alt="Thomann Music" /></div></div>
+  <div class="byline"><div class="byline__inner"><span class="byline__text">Dr. Christian Maaß</span></div></div>
+  <main class="slide">
+    <h1 class="slide__title">Key Learning 2: Sei kein Lemming –<br>gerade im KI Kontext</h1>
+    <p class="slide__sub">Wer blind der Masse hinterherläuft, landet irgendwann am selben Abgrund.</p>
+
+    <div class="scene" aria-label="Animation: Lemminge laufen hintereinander und fallen in den Abgrund">
+      <div class="ground"></div>
+      <div class="abyss"></div>
+
+      <div class="lemming"><div class="lemming__bob"><div class="lemming__legs"><span></span><span></span></div><div class="lemming__body"></div></div></div>
+      <div class="lemming"><div class="lemming__bob"><div class="lemming__legs"><span></span><span></span></div><div class="lemming__body"></div></div></div>
+      <div class="lemming"><div class="lemming__bob"><div class="lemming__legs"><span></span><span></span></div><div class="lemming__body"></div></div></div>
+      <div class="lemming"><div class="lemming__bob"><div class="lemming__legs"><span></span><span></span></div><div class="lemming__body"></div></div></div>
+      <div class="lemming"><div class="lemming__bob"><div class="lemming__legs"><span></span><span></span></div><div class="lemming__body"></div></div></div>
+      <div class="lemming"><div class="lemming__bob"><div class="lemming__legs"><span></span><span></span></div><div class="lemming__body"></div></div></div>
+      <div class="lemming"><div class="lemming__bob"><div class="lemming__legs"><span></span><span></span></div><div class="lemming__body"></div></div></div>
+      <div class="lemming"><div class="lemming__bob"><div class="lemming__legs"><span></span><span></span></div><div class="lemming__body"></div></div></div>
+    </div>
+  </main>
+
+  <nav class="deck-nav" aria-label="Präsentationsnavigation">
+    <a href="13-sollbruchstellen.html" id="prev" aria-label="Zurück zu Seite 13">←</a>
+    <a href="15-danke.html" id="next" aria-label="Weiter zu Seite 15">→</a>
+  </nav>
+
+  <script>
+    const PREV = '13-sollbruchstellen.html';
+    const NEXT = '15-danke.html';
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    function go(url) {
+      if (reduce) { window.location.href = url; return; }
+      document.body.classList.add('is-leaving');
+      setTimeout(() => { window.location.href = url; }, 450);
+    }
+    document.getElementById('prev').addEventListener('click', (e) => { e.preventDefault(); go(PREV); });
+    document.getElementById('next').addEventListener('click', (e) => { e.preventDefault(); go(NEXT); });
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') go(PREV);
+      else if (e.key === 'ArrowRight') go(NEXT);
+    });
+  </script>
+</body>
+</html>
