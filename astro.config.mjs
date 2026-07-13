@@ -22,6 +22,8 @@ export default defineConfig({
         if (/\/blog\/rss\.xml$/.test(page)) return false;
         // /thomann ist eine nicht-öffentliche Präsentation (nur direkte URL)
         if (/\/thomann(\/|$)/.test(page)) return false;
+        // /ecommerce ist eine nicht-öffentliche Präsentation (nur direkte URL, noindex)
+        if (/\/ecommerce(\/|$)/.test(page)) return false;
         return true;
       },
       serialize(item) {

@@ -6,3 +6,10 @@
   Permissions-Policy: camera=(), microphone=(), geolocation=()
   Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self'; frame-ancestors 'none';
 
+# Nicht-öffentliche Präsentation: serverseitig von der Indexierung ausschließen.
+# HINWEIS: GitHub Pages wertet diese _headers-Datei NICHT aus – dieser Header
+# ist dort wirkungslos. Wirksam ist aktuell nur das <meta robots="noindex">
+# in der HTML. Dieser Block greift erst bei einem Wechsel zu Netlify/Cloudflare Pages.
+/ecommerce/*
+  X-Robots-Tag: noindex, nofollow
+
