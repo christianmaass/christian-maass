@@ -24,6 +24,8 @@ export default defineConfig({
         if (/\/thomann(\/|$)/.test(page)) return false;
         // /ecommerce ist eine nicht-öffentliche Präsentation (nur direkte URL, noindex)
         if (/\/ecommerce(\/|$)/.test(page)) return false;
+        // /ehi2026 ist eine nicht-öffentliche Präsentation (nur direkte URL, noindex)
+        if (/\/ehi2026(\/|$)/.test(page)) return false;
         return true;
       },
       serialize(item) {

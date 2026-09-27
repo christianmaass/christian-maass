@@ -13,3 +13,6 @@
 /ecommerce/*
   X-Robots-Tag: noindex, nofollow
 
+
+/ehi2026/*
+  X-Robots-Tag: noindex, nofollow
