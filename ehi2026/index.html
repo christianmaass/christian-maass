@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Der Engpass sitzt zwischen Idee und Kundenerlebnis — EHI 2026</title>
+<style>
+  :root{
+    --petrol:#388092;
+    --petrol-light:#A9CFDB;
+    --teal:#00898C;
+    --ink:#231f20;
+    --muted:#4a565b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html,body{height:100%}
+  body{
+    background:#14181a;
+    font-family:"Helvetica Neue",Helvetica,Arial,"Segoe UI",sans-serif;
+    display:flex;align-items:center;justify-content:center;
+    padding:env(safe-area-inset-top,0) 0 env(safe-area-inset-bottom,0);
+  }
+
+  /* ---------- Bühne: immer 16:9 ---------- */
+  .deck{
+    position:relative;overflow:hidden;
+    width:min(100vw, calc((100vh - env(safe-area-inset-top,0px) - env(safe-area-inset-bottom,0px)) * 16 / 9));
+    aspect-ratio:16/9;
+    background:#fff;
+    container-type:inline-size;
+  }
+  .slide{position:absolute;inset:0;display:none}
+  .slide.is-active{display:block}
+
+  /* ---------- Gemeinsame Elemente ---------- */
+  .logo{position:absolute;top:5cqw;right:5.5cqw;width:14.5cqw}
+  .logo img{width:100%;height:auto;display:block}
+
+  /* ---------- Folie 1: Titel ---------- */
+  .slide--titel{background:#06222c}
+  .slide--titel .bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+  .slide--titel .scrim{
+    position:absolute;inset:0;
+    background:
+      linear-gradient(to top, rgba(2,20,28,.82) 0%, rgba(2,20,28,.55) 26%, rgba(2,20,28,0) 58%),
+      linear-gradient(to right, rgba(2,20,28,.45) 0%, rgba(2,20,28,0) 45%);
+  }
+  .slide--titel .text{position:absolute;left:6cqw;right:6cqw;bottom:8.5cqw;color:#fff}
+  .slide--titel h1{
+    font-size:5.2cqw;line-height:1.07;font-weight:400;letter-spacing:-.015em;
+    max-width:20ch;text-wrap:balance;text-shadow:0 .15cqw 1.2cqw rgba(0,0,0,.45);
+  }
+  .slide--titel .untertitel{margin-top:1.6cqw;max-width:38ch;
+    font-size:2.15cqw;line-height:1.35;color:rgba(255,255,255,.88);
+    text-shadow:0 .1cqw .9cqw rgba(0,0,0,.5)}
+  .slide--titel .rule{width:7.5cqw;height:.4cqw;background:var(--teal);margin:2.4cqw 0 2cqw}
+  .byline{font-size:2.2cqw;line-height:1.35;color:rgba(255,255,255,.93);
+    text-shadow:0 .1cqw .9cqw rgba(0,0,0,.5)}
+  .byline span{display:block;font-size:1.9cqw;color:rgba(255,255,255,.72);margin-top:.5cqw}
+
+  /* ---------- Folie 2: Umsatz ---------- */
+  .slide--inhalt{background:#fff;color:var(--ink)}
+  .slide--inhalt header{position:absolute;top:6.5cqw;left:7cqw;right:5.5cqw;
+    display:flex;align-items:flex-start;justify-content:space-between;gap:4cqw}
+  .slide--inhalt .titelgruppe{flex:1;min-width:0}
+  .slide--inhalt .logo{position:static;flex:0 0 auto;width:14.5cqw;margin-top:.75cqw}
+  .slide--inhalt h1{font-size:4.2cqw;line-height:1.05;font-weight:400;
+    color:var(--petrol);letter-spacing:-.01em}
+  .slide--langtitel h1{font-size:3.9cqw;text-wrap:balance}
+  .slide--inhalt .sub{margin-top:1.3cqw;font-size:1.8cqw}
+
+  .chart{position:absolute;left:7cqw;right:7cqw;top:19.5cqw}
+  .plot{height:26cqw;display:flex;align-items:flex-end;gap:.85cqw;
+    border-bottom:.12cqw solid #9fadb3}
+  .col{position:relative;flex:1;height:100%;display:flex;flex-direction:column;
+    justify-content:flex-end;align-items:center}
+  .bar{flex:0 0 auto;width:100%;background:var(--petrol);display:block}
+  .col.key .bar{background:var(--petrol-light)}
+  .val{flex:0 0 auto;font-size:1.75cqw;margin-bottom:.6cqw;white-space:nowrap}
+  .year{position:absolute;top:100%;right:50%;margin-top:.9cqw;
+    transform-origin:100% 0;transform:rotate(-45deg);
+    font-size:1.5cqw;color:var(--muted);white-space:nowrap}
+
+  .inhalt{position:absolute;left:7cqw;right:7cqw;top:19.5cqw;bottom:7.5cqw}
+
+  /* ---------- Medien: Video + Bild ---------- */
+  .medien{display:flex;gap:3cqw;height:100%}
+  .medien figure{flex:1;display:flex;flex-direction:column;min-width:0}
+  .rahmen{position:relative;height:23.5cqw;background:transparent;overflow:hidden;
+    border:0;border-radius:1.1cqw;
+    -webkit-mask-image:-webkit-radial-gradient(#fff,#000)}
+  .rahmen img{width:100%;height:100%;object-fit:contain;display:block;background:transparent;border-radius:1.1cqw}
+  .rahmen img.fuellen{object-fit:cover}
+  .rahmen iframe{position:absolute;inset:0;width:100%;height:100%;border:0;border-radius:1.1cqw}
+  .video{cursor:pointer;background:
+    radial-gradient(120% 120% at 50% 35%, #2c6272 0%, #0b2630 70%)}
+  .video .play{
+    position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:8cqw;height:8cqw;border-radius:50%;border:.22cqw solid rgba(255,255,255,.85);
+    background:rgba(0,0,0,.28);cursor:pointer;display:grid;place-items:center;padding:0}
+  .video .play::after{content:"";border-left:2.3cqw solid #fff;
+    border-top:1.45cqw solid transparent;border-bottom:1.45cqw solid transparent;
+    margin-left:.7cqw}
+  .video:hover .play{background:rgba(0,0,0,.45);border-color:#fff}
+  .video .hinweis{position:absolute;left:0;right:0;bottom:1.6cqw;text-align:center;
+    color:rgba(255,255,255,.8);font-size:1.3cqw}
+  figcaption{margin-top:1.1cqw;font-size:1.7cqw;color:var(--ink)}
+  .slide--chronicles .rahmen{height:20.5cqw}
+  .slide--chronicles figcaption{font-size:1.45cqw;line-height:1.4}
+  figcaption b{font-weight:700}
+  figcaption a{color:var(--petrol);font-size:1.35cqw;
+    text-decoration:none;border-bottom:1px solid rgba(56,128,146,.4)}
+  figcaption a:hover{border-bottom-color:var(--petrol)}
+
+  /* ---------- Bildcollage ---------- */
+  .slide--collage .inhalt{top:17.5cqw;bottom:10cqw}
+  .collage{display:grid;height:100%;overflow:hidden;gap:1.3cqw;
+    grid-template-columns:.80fr .50fr .50fr .79fr;
+    grid-template-rows:1.24fr 1fr}
+  .collage img{width:100%;height:100%;min-width:0;min-height:0;
+    object-fit:cover;display:block;border-radius:1.1cqw}
+  .collage .a{grid-area:1/1/3/2}
+  .collage .b{grid-area:1/2/2/4}
+  .collage .c{grid-area:2/2/3/3}
+  .collage .d{grid-area:2/3/3/4}
+  .collage .e{grid-area:1/4/3/5}
+
+  /* ---------- Bildfolie ---------- */
+  .slide--bild .inhalt{top:17.5cqw;bottom:9cqw}
+  .grossbild{height:100%;display:flex;align-items:center;justify-content:center}
+  .grossbild img{max-width:100%;max-height:100%;width:auto;height:auto;
+    object-fit:contain;border-radius:1.1cqw}
+
+  /* ---------- Loop (Folie 12) ---------- */
+  .loop{height:100%;display:flex;flex-direction:column;justify-content:center;gap:2.4cqw}
+  .loop-reihe{display:grid;grid-template-columns:9cqw 1fr;align-items:center;gap:1.6cqw}
+  .loop-label{font-size:1.45cqw;color:var(--muted);text-align:right}
+  .kette{display:flex;align-items:center;gap:1.4cqw;flex-wrap:nowrap}
+  .chip{padding:1.5cqw 2.2cqw;border-radius:1.2cqw;font-size:2.05cqw;white-space:nowrap}
+  .chip.alt{background:#edf0f1;color:#6b7679}
+  .chip.neu{background:var(--petrol);color:#fff}
+  .pfeil{font-size:2cqw;color:#9aa6aa;line-height:1}
+  .pfeil.stark{color:var(--teal)}
+  .substrat{margin-left:10.6cqw;background:linear-gradient(90deg,#e6eef1,#bcd6dd);
+    border-radius:1.2cqw;padding:1.6cqw 2.2cqw;font-size:1.7cqw;color:#16414d}
+
+  /* ---------- Thesenfolie ---------- */
+  .thesen{display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw;flex:1}
+  .thesen.zwei{grid-template-columns:repeat(2,1fr);gap:5cqw}
+  .thesen.zwei .box{width:21cqw;font-size:1.8cqw}
+  .these{border-top:.28cqw solid var(--petrol);padding-top:1.5cqw}
+  .these .nr{display:block;font-size:1.3cqw;color:#9bb4bd;margin-bottom:.8cqw}
+  .these h3{font-size:2.3cqw;font-weight:400;line-height:1.15;color:var(--petrol);margin-bottom:1.2cqw}
+  .these{display:flex;flex-direction:column}
+  .these .box{margin-top:auto;width:19cqw;max-width:100%;aspect-ratio:1;
+    display:flex;align-items:center;border-radius:1.4cqw;
+    padding:1.8cqw;font-size:1.6cqw;line-height:1.35}
+  .these .box.c1{background:var(--petrol);color:#fff}
+  .these .box.c2{background:var(--teal);color:#fff}
+  .these .box.c3{background:var(--petrol-light);color:#16414d}
+  .slide--thesen h1{font-size:3.6cqw}
+  .slide--thesen .inhalt{top:18.5cqw;bottom:8cqw}
+  .merksatz{font-size:1.45cqw;line-height:1.4;color:var(--muted);margin-top:2cqw}
+  .fazit .quelle{margin-top:.9cqw;font-size:1.3cqw;color:#7b888d}
+
+  /* ---------- Zeitstrahl (Folie 8) ---------- */
+  .slide--langtitel .inhalt{top:17.5cqw;bottom:8cqw;display:flex;flex-direction:column;
+    gap:2cqw;justify-content:center}
+  .ts{display:flex;flex-direction:column}
+  .ts-oben,.ts-unten{position:relative;height:11.6cqw}
+  .ts-marke{position:absolute;width:14cqw;font-size:1.05cqw;line-height:1.35;color:var(--muted)}
+  .ts-marke b{display:block;font-size:2.15cqw;font-weight:400;color:var(--petrol);line-height:1.1}
+  .ts-marke em{display:block;font-style:normal;font-weight:700;color:var(--ink);
+    font-size:1.5cqw;margin:.25cqw 0 .5cqw}
+  .ts-oben .ts-marke{bottom:1.3cqw}
+  .ts-unten .ts-marke{top:1.3cqw}
+  .ts-marke.rechts{transform:translateX(-100%);text-align:right}
+  .ts-marke.rechts::after,.ts-marke::after{content:"";position:absolute;
+    width:1px;height:1.3cqw;background:rgba(56,128,146,.45)}
+  .ts-oben .ts-marke::after{top:100%;left:0}
+  .ts-unten .ts-marke::after{bottom:100%;left:0}
+  .ts-oben .ts-marke.rechts::after,.ts-unten .ts-marke.rechts::after{left:auto;right:0}
+
+  .ts-linie{position:relative;height:.9cqw}
+  .ts-linie::before{content:"";position:absolute;left:0;right:0;top:50%;
+    height:.16cqw;background:var(--petrol);transform:translateY(-50%)}
+  .ts-punkt{position:absolute;top:50%;width:.9cqw;height:.9cqw;border-radius:50%;
+    background:var(--petrol);transform:translate(-50%,-50%)}
+  .ts-punkt.erst{transform:translate(0,-50%)}
+  .ts-punkt.letzt{transform:translate(-100%,-50%)}
+
+  .ts-phasen{position:relative;height:2.7cqw;margin-bottom:2.6cqw}
+  .ts-phase{position:absolute;top:0;bottom:0;border-radius:.4cqw;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.45cqw;color:var(--petrol)}
+  .ts-phase.p1{background:#e6eef1}
+  .ts-phase.p2{background:#d3e3e8}
+  .ts-phase.p3{background:#bcd6dd}
+
+  .fazit{background:#eef4f6;border-left:.4cqw solid var(--petrol);
+    border-radius:0 .8cqw .8cqw 0;padding:1.8cqw 2.2cqw}
+  .fazit p{font-size:1.75cqw;line-height:1.4}
+  .fazit b{font-weight:700;color:var(--petrol)}
+  .credit{position:absolute;left:7cqw;bottom:3.2cqw;font-size:1.6cqw}
+
+  /* ---------- Navigation ---------- */
+  .nav{position:absolute;right:2.6cqw;bottom:2.2cqw;z-index:20;
+    display:flex;align-items:center;gap:.6cqw;
+    background:rgba(255,255,255,.94);border:1px solid rgba(35,31,32,.14);
+    border-radius:10cqw;padding:.5cqw .8cqw;
+    box-shadow:0 .2cqw .8cqw rgba(0,0,0,.12)}
+  .nav button{
+    font:inherit;cursor:pointer;background:transparent;border:0;
+    font-size:2.1cqw;line-height:1;color:var(--ink);
+    padding:.5cqw 1.1cqw;border-radius:6cqw}
+  .nav button:hover:not(:disabled),.nav button:focus-visible{
+    background:rgba(56,128,146,.14);color:var(--petrol);outline:none}
+  .nav button:disabled{opacity:.28;cursor:default}
+  .counter{font-size:1.45cqw;color:#5d6a6f;min-width:4.4cqw;text-align:center}
+</style>
+</head>
+<body>
+<div class="deck" data-theme="dark">
+
+  <!-- 1 — Titel -->
+  <section class="slide slide--titel is-active" data-theme="dark" aria-label="Folie 1">
+    <img class="bg" src="bilder/titel.jpg" alt="Live-Konzert mit Publikum">
+    <div class="scrim"></div>
+    <div class="logo"><img src="bilder/logo-weiss.png" alt="Thomann — Music is our passion"></div>
+    <div class="text">
+      <h1>Der Engpass sitzt zwischen Idee und Kundenerlebnis</h1>
+      <p class="untertitel">Warum wir bei Thomann gezielt die Softwareentwicklung und Organisation umbauen, statt stumpf überall KI dranzuschreiben</p>
+      <div class="rule"></div>
+      <p class="byline">Dr. Christian Maaß<span>Geschäftsführer / Managing Director</span></p>
+    </div>
+  </section>
+
+  <!-- 2 — Umsatzentwicklung -->
+  <section class="slide slide--inhalt slide--umsatz" data-theme="light" aria-label="Folie 2">
+    <header>
+      <div class="titelgruppe">
+        <h1>Wir verkaufen Emotionen</h1>
+        <p class="sub">Umsatzentwicklung 2006–2026 in Mio. EUR · 2026 = Prognose</p>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+    <div class="chart">
+      <div class="plot">
+          <div class="col"><span class="bar" style="height:9.3%"></span><span class="year">2006</span></div>
+          <div class="col"><span class="bar" style="height:12.7%"></span><span class="year">2007</span></div>
+          <div class="col"><span class="bar" style="height:14.9%"></span><span class="year">2008</span></div>
+          <div class="col"><span class="bar" style="height:17.1%"></span><span class="year">2009</span></div>
+          <div class="col"><span class="bar" style="height:20.8%"></span><span class="year">2010</span></div>
+          <div class="col"><span class="bar" style="height:23.8%"></span><span class="year">2011</span></div>
+          <div class="col"><span class="bar" style="height:26.3%"></span><span class="year">2012</span></div>
+          <div class="col"><span class="bar" style="height:27.7%"></span><span class="year">2013</span></div>
+          <div class="col"><span class="bar" style="height:31.5%"></span><span class="year">2014</span></div>
+          <div class="col"><span class="bar" style="height:34.5%"></span><span class="year">2015</span></div>
+          <div class="col"><span class="bar" style="height:37.6%"></span><span class="year">2016</span></div>
+          <div class="col"><span class="bar" style="height:40.5%"></span><span class="year">2017</span></div>
+          <div class="col"><span class="bar" style="height:44.5%"></span><span class="year">2018</span></div>
+          <div class="col"><span class="bar" style="height:51.5%"></span><span class="year">2019</span></div>
+          <div class="col"><span class="bar" style="height:59.1%"></span><span class="year">2020</span></div>
+          <div class="col"><span class="bar" style="height:65.3%"></span><span class="year">2021</span></div>
+          <div class="col"><span class="bar" style="height:70.4%"></span><span class="year">2022</span></div>
+          <div class="col"><span class="bar" style="height:76.2%"></span><span class="year">2023</span></div>
+          <div class="col"><span class="bar" style="height:80.3%"></span><span class="year">2024</span></div>
+          <div class="col"><span class="bar" style="height:87.2%"></span><span class="year">2025</span></div>
+          <div class="col key"><span class="val">1.750</span><span class="bar" style="height:92.0%"></span><span class="year">2026</span></div>
+      </div>
+    </div>
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 3 — Einstellungskriterium Musiker -->
+  <section class="slide slide--inhalt slide--collage" data-theme="light" aria-label="Folie 3">
+    <header>
+      <div class="titelgruppe">
+        <h1>Einstellungskriterium Musiker</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="collage">
+        <img class="a" src="bilder/f3-band.jpg" alt="Bläserband mit jubelndem Publikum">
+        <img class="b" src="bilder/f3-orchester.jpg" alt="Orchester im Konzertsaal">
+        <img class="c" src="bilder/f3-saengerin.jpg" alt="Sängerin am Mikrofon">
+        <img class="d" src="bilder/f3-gitarre.jpg" alt="Gitarrist am Verstärker">
+        <img class="e" src="bilder/f3-historisch.jpg" alt="Historische Aufnahme einer Musikgruppe">
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 4 — Auf der Bühne und vor der Kamera -->
+  <section class="slide slide--inhalt" data-theme="light" aria-label="Folie 4">
+    <header>
+      <div class="titelgruppe">
+        <h1>Auf der Bühne und vor der Kamera</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="medien">
+
+        <figure>
+          <div class="rahmen video" data-src="https://www.youtube.com/embed/VLgNd4Uz9N8?rel=0">
+            <button class="play" type="button" aria-label="Video abspielen"></button>
+            <span class="hinweis">Video abspielen</span>
+          </div>
+          <figcaption><a href="https://youtu.be/VLgNd4Uz9N8" target="_blank" rel="noopener">auf YouTube öffnen &#8599;</a></figcaption>
+        </figure>
+
+        <figure>
+          <div class="rahmen video" data-src="https://www.youtube.com/embed/VpXuBUOFviY?rel=0">
+            <button class="play" type="button" aria-label="Video abspielen"></button>
+            <span class="hinweis">Video abspielen</span>
+          </div>
+          <figcaption><a href="https://youtu.be/VpXuBUOFviY" target="_blank" rel="noopener">auf YouTube öffnen &#8599;</a></figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 5 — Skalierung von Emotionen > KI -->
+  <section class="slide slide--inhalt" data-theme="light" aria-label="Folie 5">
+    <header>
+      <div class="titelgruppe">
+        <h1>Skalierung von Emotionen &gt; KI</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="medien">
+
+        <figure>
+          <div class="rahmen video" data-src="https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Fmusikhausthomann%2Fvideos%2F1811880692644966%2F&amp;show_text=false&amp;width=560&amp;height=315&amp;t=0">
+            <button class="play" type="button" aria-label="Video abspielen"></button>
+            <span class="hinweis">Cymbot-Video abspielen</span>
+          </div>
+          <figcaption><b>Cymbot</b> – Beckenklänge erlebbar machen <a href="https://www.facebook.com/musikhausthomann/videos/1811880692644966/" target="_blank" rel="noopener">auf Facebook öffnen &#8599;</a></figcaption>
+        </figure>
+
+        <figure>
+          <div class="rahmen"><img src="bilder/cymbot.jpg" alt="Cymbot im Thomann-Shop: vergleichbare Beckensounds"></div>
+          <figcaption><b>Cymbot</b> – Beckenklänge vergleichbar machen</figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 6 — Skalierung von Emotionen > KI -->
+  <section class="slide slide--inhalt" data-theme="light" aria-label="Folie 6">
+    <header>
+      <div class="titelgruppe">
+        <h1>Skalierung von Emotionen &gt; KI</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="medien">
+
+        <figure>
+          <div class="rahmen video" data-src="https://www.youtube.com/embed/-hQcQKkMXC8?si=Zgo1_QHpxCytK71C&amp;rel=0">
+            <button class="play" type="button" aria-label="Video abspielen"></button>
+            <span class="hinweis">Video abspielen</span>
+          </div>
+          <figcaption><a href="https://www.youtube.com/watch?v=-hQcQKkMXC8" target="_blank" rel="noopener">auf YouTube öffnen &#8599;</a></figcaption>
+        </figure>
+
+        <figure>
+          <div class="rahmen"><img class="fuellen" src="bilder/stompenberg.jpg" alt="Testaufbau mit Effektgeräten, Platinen und Messtechnik"></div>
+        </figure>
+
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 7 — Was mit KI und im Handel oft falsch läuft -->
+  <section class="slide slide--inhalt slide--bild" data-theme="light" aria-label="Folie 7">
+    <header>
+      <div class="titelgruppe">
+        <h1>Was mit KI und im Handel oft falsch läuft</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="grossbild">
+        <img src="bilder/pferd.jpg" alt="Reiter auf einem galoppierenden Pferd">
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 8 — Tech & Architektur sind Enabler oder Disabler -->
+  <section class="slide slide--inhalt slide--langtitel" data-theme="light" aria-label="Folie 8">
+    <header>
+      <div class="titelgruppe">
+        <h1>Tech &amp; Architektur sind Enabler oder Disabler</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="ts">
+        <div class="ts-phasen">
+        <span class="ts-phase p1" style="left:0.0%;width:16.7%">Schnittstellen</span>
+        <span class="ts-phase p2" style="left:16.7%;width:45.8%">Cloud und Skalierung</span>
+        <span class="ts-phase p3" style="left:62.5%;width:37.5%">KI und Agenten</span>
+        </div>
+        <div class="ts-oben">
+        <span class="ts-marke" style="left:0.0%"><b>2002</b><em>API-Mandat bei Amazon</em>Alle Teams kommunizieren nur noch über Service-Schnittstellen.</span>
+        <span class="ts-marke" style="left:25.0%"><b>2008</b><em>Die Cloud wird Markt</em>Google App Engine startet, Microsoft kündigt Azure an.</span>
+        <span class="ts-marke" style="left:50.0%"><b>2014</b><em>Kubernetes und Lambda</em>Orchestrierung und Serverless: Rechenleistung nach Bedarf.</span>
+        <span class="ts-marke" style="left:83.3%"><b>2022</b><em>ChatGPT</em>KI wird Massenprodukt. Die Infrastruktur dafür steht seit Jahren.</span>
+        </div>
+        <div class="ts-linie">
+        <span class="ts-punkt erst" style="left:0.0%"></span>
+        <span class="ts-punkt" style="left:16.7%"></span>
+        <span class="ts-punkt" style="left:25.0%"></span>
+        <span class="ts-punkt" style="left:45.8%"></span>
+        <span class="ts-punkt" style="left:50.0%"></span>
+        <span class="ts-punkt" style="left:62.5%"></span>
+        <span class="ts-punkt" style="left:83.3%"></span>
+        <span class="ts-punkt letzt" style="left:100.0%"></span>
+        </div>
+        <div class="ts-unten">
+        <span class="ts-marke" style="left:16.7%"><b>2006</b><em>AWS wird Produkt</em>S3, EC2 und SQS gehen in den Regelbetrieb. Infrastruktur wird mietbar.</span>
+        <span class="ts-marke" style="left:45.8%"><b>2013</b><em>Docker</em>Anwendungen werden portabel und überall gleich lauffähig.</span>
+        <span class="ts-marke" style="left:62.5%"><b>2017</b><em>Transformer-Architektur</em>Die Grundlage heutiger Modelle – trainierbar nur auf Cloud-Compute.</span>
+        <span class="ts-marke rechts" style="left:100.0%"><b>2026</b><em>Agenten</em>Sie brauchen genau das, was 2002 begann: offene Schnittstellen und klare Modulgrenzen.</span>
+        </div>
+
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+
+  <!-- 9 — Aha Moment > Business Case -->
+  <section class="slide slide--inhalt slide--bild" data-theme="light" aria-label="Folie 9">
+    <header>
+      <div class="titelgruppe">
+        <h1>Aha Moment &gt; Business Case</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="grossbild">
+        <img src="bilder/bootcamp.jpg" alt="KI-Bootcamp bei Thomann: Teilnehmende arbeiten an Laptops">
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 10 — Customer Chronicles -->
+  <section class="slide slide--inhalt slide--chronicles" data-theme="light" aria-label="Folie 10">
+    <header>
+      <div class="titelgruppe">
+        <h1>Customer Chronicles starten den Loop</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="medien">
+
+        <figure>
+          <div class="rahmen"><img src="bilder/chronicles-slack.jpg" alt="Automatischer Report im Slack-Kanal der Product Division"></div>
+          <figcaption>KI wertet Kundenfeedback automatisch aus und informiert die Produktteams proaktiv.</figcaption>
+        </figure>
+
+        <figure>
+          <div class="rahmen"><img src="bilder/chronicles-report.jpg" alt="Übersichtsseite mit Ampelfarben, Trends und Originalzitaten"></div>
+          <figcaption>KI analysiert den Trend von Kundenfeedback, arbeitet grundsätzlich datenschutzkonform, visuelle Ampeldarstellung für Management und Product Manager.</figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 11 — Momentum nutzen und im kleinen Alltag verankern -->
+  <section class="slide slide--inhalt" data-theme="light" aria-label="Folie 11">
+    <header>
+      <div class="titelgruppe">
+        <h1>Management Team begleitet den Loop</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="medien">
+
+        <figure>
+          <div class="rahmen"><img src="bilder/slack.jpg" alt="Slack-Kanal mit Bot-Reaktion auf Nachrichten"></div>
+          <figcaption><b>In Slack markieren</b> – der Bot reagiert auf die Nachricht</figcaption>
+        </figure>
+
+        <figure>
+          <div class="rahmen"><img src="bilder/tracker.jpg" alt="Agenda Tracker in Notion mit automatisch angelegten Einträgen"></div>
+          <figcaption><b>Im Agenda Tracker</b> – angelegt und aus dem Kontext angereichert</figcaption>
+        </figure>
+
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 12 — Die Organisationsentwicklung verändert den Loop -->
+  <section class="slide slide--inhalt slide--loop" data-theme="light" aria-label="Folie 12">
+    <header>
+      <div class="titelgruppe">
+        <h1>Die Organisationsentwicklung verändert den Loop</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="loop">
+
+        <div class="loop-reihe">
+          <span class="loop-label">vorher</span>
+          <div class="kette">
+            <span class="chip alt">Ticket</span><span class="pfeil">&rarr;</span>
+            <span class="chip alt">Code</span><span class="pfeil">&rarr;</span>
+            <span class="chip alt">Review</span>
+          </div>
+        </div>
+
+        <div class="loop-reihe">
+          <span class="loop-label">heute</span>
+          <div class="kette">
+            <span class="chip neu">Spezifikation</span><span class="pfeil stark">&#8646;</span>
+            <span class="chip neu">Orchestrierung</span><span class="pfeil stark">&#8646;</span>
+            <span class="chip neu">Evidenz-Prüfung</span>
+          </div>
+        </div>
+
+        <div class="substrat">Versioniertes Kontext-Substrat – wächst mit jedem Durchlauf</div>
+
+      </div>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 13 — Development arbeitet an der Software Factory -->
+  <section class="slide slide--inhalt slide--langtitel slide--thesen" data-theme="light" aria-label="Folie 13">
+    <header>
+      <div class="titelgruppe">
+        <h1>Development arbeitet an der Software Factory</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="thesen">
+        <div class="these">
+          <span class="nr">Organisation</span>
+          <h3>Umbau auf Agentic Engineering</h3>
+          <div class="box c1">Rollen und Arbeitsweise richten sich an Agenten aus</div>
+        </div>
+        <div class="these">
+          <span class="nr">Technik</span>
+          <h3>Technischer Harness</h3>
+          <div class="box c2">Der Rahmen, in dem Agenten arbeiten: Werkzeuge, Tests, Leitplanken</div>
+        </div>
+        <div class="these">
+          <span class="nr">Plattform</span>
+          <h3>Governance wird erzwungen</h3>
+          <div class="box c3">Entwickler launchen selbst – Regeln für Datenbankzugriff und Ownership sind eingebaut</div>
+        </div>
+      </div>
+      <p class="merksatz">Heute für die Webentwicklung, als Nächstes analog für die internen Abläufe: Die IT stellt die Plattform, KI-Manager in den Fachbereichen automatisieren ihre Prozesse. Governance wird nicht dokumentiert, sondern technisch erzwungen.</p>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+
+  <!-- 14 — Tempo des Organisationsumbaus -->
+  <section class="slide slide--inhalt slide--langtitel slide--thesen" data-theme="light" aria-label="Folie 14">
+    <header>
+      <div class="titelgruppe">
+        <h1>Geschwindigkeit und Konsequenz des Umbaus bestimmen das Tempo</h1>
+      </div>
+      <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
+    </header>
+
+    <div class="inhalt">
+      <div class="thesen zwei">
+        <div class="these">
+          <span class="nr">nach außen</span>
+          <h3>Kundenanforderungen</h3>
+          <div class="box c1">Experience – wie schnell wird aus einer Idee ein Kundenerlebnis?</div>
+        </div>
+        <div class="these">
+          <span class="nr">nach innen</span>
+          <h3>Mitarbeiteranforderungen</h3>
+          <div class="box c2">Prozesse – wie schnell wird aus einem Ärgernis ein besserer Ablauf?</div>
+        </div>
+      </div>
+      <p class="merksatz">Beide Geschwindigkeiten hängen an derselben Größe: daran, wie schnell und wie konsequent die Organisation umgebaut wird.</p>
+    </div>
+
+    <p class="credit">Dr. Christian Maaß</p>
+  </section>
+
+  <!-- 15 — Danke & Rückfragen -->
+  <section class="slide slide--titel" data-theme="dark" aria-label="Folie 15">
+    <img class="bg" src="bilder/titel.jpg" alt="">
+    <div class="scrim"></div>
+    <div class="logo"><img src="bilder/logo-weiss.png" alt="Thomann — Music is our passion"></div>
+    <div class="text">
+      <h1>Danke &amp; Rückfragen</h1>
+      <div class="rule"></div>
+      <p class="byline">Dr. Christian Maaß<span>Geschäftsführer / Managing Director</span></p>
+    </div>
+  </section>
+
+  <div class="nav">
+    <button id="prev" aria-label="Vorherige Folie">&larr;</button>
+    <span class="counter" id="counter">1 / 15</span>
+    <button id="next" aria-label="Nächste Folie">&rarr;</button>
+  </div>
+</div>
+
+<script>
+(function(){
+  var deck=document.querySelector('.deck');
+  var slides=Array.prototype.slice.call(deck.querySelectorAll('.slide'));
+  var prev=document.getElementById('prev');
+  var next=document.getElementById('next');
+  var counter=document.getElementById('counter');
+  var i=0;
+
+  function show(n){
+    i=Math.max(0,Math.min(slides.length-1,n));
+    slides.forEach(function(s,k){s.classList.toggle('is-active',k===i)});
+    deck.dataset.theme=slides[i].dataset.theme||'light';
+    counter.textContent=(i+1)+' / '+slides.length;
+    prev.disabled=(i===0);
+    next.disabled=(i===slides.length-1);
+    try{if(location.hash!=='#'+(i+1))history.replaceState(null,'','#'+(i+1))}catch(err){}
+  }
+
+  prev.addEventListener('click',function(){show(i-1)});
+  next.addEventListener('click',function(){show(i+1)});
+
+  document.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='PageDown'||e.key===' '){show(i+1);e.preventDefault()}
+    if(e.key==='ArrowLeft'||e.key==='PageUp'){show(i-1);e.preventDefault()}
+    if(e.key==='Home'){show(0)}
+    if(e.key==='End'){show(slides.length-1)}
+  });
+
+  // Wischgesten auf Touch-Geräten
+  var x0=null;
+  deck.addEventListener('touchstart',function(e){x0=e.touches[0].clientX},{passive:true});
+  deck.addEventListener('touchend',function(e){
+    if(x0===null)return;
+    var dx=e.changedTouches[0].clientX-x0;
+    if(Math.abs(dx)>50) show(dx<0?i+1:i-1);
+    x0=null;
+  },{passive:true});
+
+  window.addEventListener('hashchange',function(){
+    var n=parseInt(location.hash.replace('#',''),10);
+    if(!isNaN(n)) show(n-1);
+  });
+
+
+  // Video erst auf Klick laden
+  document.querySelectorAll('.video').forEach(function(box){
+    box.addEventListener('click',function(){
+      var f=document.createElement('iframe');
+      f.src=box.dataset.src+(box.dataset.src.indexOf('?')>-1?'&':'?')+'autoplay=1';
+      f.setAttribute('allow','autoplay; clipboard-write; encrypted-media; picture-in-picture');
+      f.setAttribute('allowfullscreen','');
+      f.setAttribute('scrolling','no');
+      f.setAttribute('frameborder','0');
+      box.innerHTML='';
+      box.appendChild(f);
+      box.style.cursor='default';
+    },{once:true});
+  });
+
+  var start=parseInt(location.hash.replace('#',''),10);
+  show(isNaN(start)?0:start-1);
+})();
+</script>
+</body>
+</html>
