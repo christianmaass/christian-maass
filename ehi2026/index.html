@@ -145,6 +145,11 @@
   .substrat{margin-left:10.6cqw;background:linear-gradient(90deg,#e6eef1,#bcd6dd);
     border-radius:1.2cqw;padding:1.6cqw 2.2cqw;font-size:1.7cqw;color:#16414d}
 
+  .kernsatz{margin:1.6cqw 0 0 10.6cqw;background:linear-gradient(90deg,#e6eef1,#bcd6dd);
+    border-left:.5cqw solid var(--teal);border-radius:1.2cqw;padding:1.6cqw 2.4cqw;
+    font-size:1.75cqw;line-height:1.45;color:#16414d}
+  .kernsatz b{color:var(--petrol)}
+
   /* ---------- Thesenfolie ---------- */
   .thesen{display:grid;grid-template-columns:repeat(3,1fr);gap:3cqw;flex:1}
   .thesen.zwei{grid-template-columns:repeat(2,1fr);gap:5cqw}
@@ -161,6 +166,7 @@
   .these .box.c3{background:var(--petrol-light);color:#16414d}
   .slide--thesen h1{font-size:3.6cqw}
   .slide--thesen .inhalt{top:18.5cqw;bottom:8cqw}
+  .slide--thesen.titel-xl h1{font-size:3.1cqw}
   .merksatz{font-size:1.45cqw;line-height:1.4;color:var(--muted);margin-top:2cqw}
   .fazit .quelle{margin-top:.9cqw;font-size:1.3cqw;color:#7b888d}
 
@@ -555,6 +561,8 @@
           </div>
         </div>
 
+        <div class="kernsatz">Früher war die Frage: <b>Wie schnell können wir Code schreiben?</b><br>Heute ist die Frage: <b>Wie genau wissen wir, was wir wollen, und wie schnell können wir beweisen, dass es funktioniert?</b></div>
+
       </div>
     </div>
 
@@ -562,10 +570,10 @@
   </section>
 
   <!-- 13 — Development arbeitet an der Software Factory -->
-  <section class="slide slide--inhalt slide--langtitel slide--thesen" data-theme="light" aria-label="Folie 13">
+  <section class="slide slide--inhalt slide--langtitel slide--thesen titel-xl" data-theme="light" aria-label="Folie 13">
     <header>
       <div class="titelgruppe">
-        <h1>Development arbeitet an der Software Factory</h1>
+        <h1>Die Technik stellt den Rahmen zur Verfügung, um den gesamten Workflow zu enablen</h1>
       </div>
       <div class="logo"><img src="bilder/logo.png" alt="Thomann — Music is our passion"></div>
     </header>
