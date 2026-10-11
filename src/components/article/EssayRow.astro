@@ -101,9 +101,10 @@ const isLogo = image.src.startsWith('/logos/');
     transform: scale(1.02);
   }
 
-  /* Logo-Variante: Medienlogo zentriert auf fester weißer Kachel (auch im Dark Mode lesbar) */
+  /* Logo-Variante: Medienlogo auf kleiner weißer Plakette in einer ruhigen Karte.
+     Hell verschmilzt die Plakette mit der Karte, dunkel bleibt nur sie hell (Logos lesbar). */
   .article-thumb.is-logo {
-    background: var(--color-media-bg);
+    background: var(--color-bg-elevated);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-md);
     display: flex;
@@ -114,9 +115,13 @@ const isLogo = image.src.startsWith('/logos/');
   .article-thumb.is-logo img {
     width: auto;
     height: auto;
-    max-width: 72%;
-    max-height: 56%;
+    max-width: 60%;
+    max-height: 44%;
     object-fit: contain;
+    box-sizing: content-box;
+    padding: var(--space-1) var(--space-2);
+    background: var(--color-media-bg);
+    border-radius: var(--radius-sm);
   }
   .article-thumb.is-logo:hover img {
     transform: none;
