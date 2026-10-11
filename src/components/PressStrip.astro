@@ -60,11 +60,11 @@ const { groups } = t.pages.index.pressStrip;
   }
   .press-strip-eyebrow {
     margin: 0;
-    font-family: var(--font-family-base);
-    font-size: 0.72rem;
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: var(--letter-spacing-eyebrow);
     color: var(--color-accent);
   }
   .press-strip-list {
@@ -84,8 +84,7 @@ const { groups } = t.pages.index.pressStrip;
   }
   .press-strip-link {
     font-family: var(--font-family-display);
-    font-style: italic;
-    font-weight: 500;
+    font-weight: var(--weight-semibold);
     font-size: 1.15rem;
     letter-spacing: 0.005em;
     color: var(--color-text);

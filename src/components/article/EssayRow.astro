@@ -48,7 +48,7 @@ const isLogo = image.src.startsWith('/logos/');
   .article-title {
     font-family: var(--font-family-display);
     font-size: clamp(1.35rem, 2.2vw, 1.75rem);
-    font-weight: var(--weight-medium);
+    font-weight: var(--weight-semibold);
     line-height: 1.2;
     letter-spacing: -0.01em;
     margin: 0;
@@ -72,11 +72,11 @@ const isLogo = image.src.startsWith('/logos/');
   }
   .article-meta {
     margin: var(--space-3) 0 0 0;
-    font-family: var(--font-family-base);
-    font-size: 0.72rem;
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
-    letter-spacing: 0.16em;
+    letter-spacing: var(--letter-spacing-eyebrow);
     color: var(--color-text-muted);
   }
   .article-meta-type {
@@ -101,10 +101,11 @@ const isLogo = image.src.startsWith('/logos/');
     transform: scale(1.02);
   }
 
-  /* Logo-Variante: Medienlogo zentriert, vollständig sichtbar, ohne Kachel */
+  /* Logo-Variante: Medienlogo zentriert auf fester weißer Kachel (auch im Dark Mode lesbar) */
   .article-thumb.is-logo {
-    background: transparent;
-    border-radius: 0;
+    background: var(--color-media-bg);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;

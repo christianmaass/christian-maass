@@ -9,13 +9,7 @@ interface Props {
   ctaLabel?: string;
 }
 
-const {
-  name,
-  bio,
-  image,
-  ctaHref = '/christian-maass',
-  ctaLabel,
-} = Astro.props;
+const { name, bio, image, ctaHref = '/christian-maass', ctaLabel } = Astro.props;
 
 const t = getTranslations().components.authorBox;
 const displayName = name ?? t.name;
@@ -29,12 +23,14 @@ const displayCta = ctaLabel ?? t.cta;
     <p class="author-box-eyebrow">{t.eyebrow}</p>
     <h3 id="author-box-name" class="author-box-name">{displayName}</h3>
     <p class="author-box-bio">{displayBio}</p>
-    {ctaHref && (
-      <a href={ctaHref} class="author-box-cta">
-        {displayCta}
-        <span aria-hidden="true"> →</span>
-      </a>
-    )}
+    {
+      ctaHref && (
+        <a href={ctaHref} class="author-box-cta">
+          {displayCta}
+          <span aria-hidden="true"> →</span>
+        </a>
+      )
+    }
   </div>
   <div class="author-box-portrait-wrap">
     <img
@@ -62,18 +58,18 @@ const displayCta = ctaLabel ?? t.cta;
   }
   .author-box-eyebrow {
     margin: 0;
-    font-family: var(--font-family-base);
-    font-size: 0.78rem;
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: var(--letter-spacing-eyebrow);
     color: var(--color-accent);
   }
   .author-box-name {
     margin: var(--space-2) 0 0 0;
     font-family: var(--font-family-display);
     font-size: 1.5rem;
-    font-weight: var(--weight-medium);
+    font-weight: var(--weight-semibold);
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: var(--color-text-strong);
@@ -90,11 +86,11 @@ const displayCta = ctaLabel ?? t.cta;
     display: inline-flex;
     align-items: center;
     margin-top: var(--space-3);
-    font-family: var(--font-family-base);
+    font-family: var(--font-family-mono);
     font-size: 0.85rem;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: var(--letter-spacing-eyebrow);
     color: var(--color-text-muted);
     text-decoration: none;
     transition: color 0.2s ease;

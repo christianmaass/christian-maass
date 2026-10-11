@@ -26,10 +26,15 @@ const contactPageSchema = webPage({
 ---
 
 <Fragment slot="head">
-<script is:inline type="application/ld+json" set:html={JSON.stringify(contactPageSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(contactPageSchema)} />
 </Fragment>
 
-<BaseLayout title={t.pages.kontakt.title} description={t.pages.kontakt.description} canonical={currentUrl} ogImage={ogImage}>
+<BaseLayout
+  title={t.pages.kontakt.title}
+  description={t.pages.kontakt.description}
+  canonical={currentUrl}
+  ogImage={ogImage}
+>
   <section class="content-wrapper">
     <article class="contact-page">
       <header class="contact-header">
@@ -40,14 +45,24 @@ const contactPageSchema = webPage({
       <aside class="contact-details">
         <h2>{t.pages.kontakt.details.title}</h2>
         <ul>
-          <li><strong>E-Mail:</strong> <a href={`mailto:${t.pages.kontakt.details.email}`}>{t.pages.kontakt.details.email}</a></li>
-          <li><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/christianmaass/" target="_blank" rel="noopener noreferrer">{t.pages.kontakt.details.linkedin}</a></li>
+          <li>
+            <strong>E-Mail:</strong>{' '}
+            <a href={`mailto:${t.pages.kontakt.details.email}`}>{t.pages.kontakt.details.email}</a>
+          </li>
+          <li>
+            <strong>LinkedIn:</strong>{' '}
+            <a
+              href="https://www.linkedin.com/in/christianmaass/"
+              target="_blank"
+              rel="noopener noreferrer">{t.pages.kontakt.details.linkedin}</a
+            >
+          </li>
         </ul>
         <h3>{t.pages.kontakt.details.addressTitle}</h3>
         <address>
-          Dr. Christian Maaß<br>
-          Hans-Thomann-Str. 1<br>
-          96138 Burgebrach<br>
+          Dr. Christian Maaß<br />
+          Hans-Thomann-Str. 1<br />
+          96138 Burgebrach<br />
           Deutschland
         </address>
       </aside>
@@ -65,8 +80,8 @@ const contactPageSchema = webPage({
     margin-bottom: 3rem;
   }
   .contact-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--weight-display);
     color: var(--color-text-strong);
     margin: 0 0 1rem 0;
     line-height: 1.15;
@@ -74,7 +89,7 @@ const contactPageSchema = webPage({
   .contact-header .lead {
     font-size: 1.15rem;
     line-height: 1.6;
-    color: var(--color-text);
+    color: var(--color-text-muted);
     margin: 0;
   }
   .contact-details {
@@ -113,11 +128,5 @@ const contactPageSchema = webPage({
     font-style: normal;
     line-height: 1.6;
     color: var(--color-text);
-  }
-
-  @media (max-width: 768px) {
-    .contact-header h1 {
-      font-size: 1.8rem;
-    }
   }
 </style>
