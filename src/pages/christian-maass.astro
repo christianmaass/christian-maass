@@ -111,14 +111,16 @@ const ogImage = `${siteUrl}/dr-christian-maass.png`;
         ],
         "memberOf": [
           {
-            "@type": "Organization",
-            "additionalType": "TradeAssociation",
-            "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.",
-            "description": "Wirtschaftsverband für E-Commerce und Versandhandel",
-            "url": "https://www.bevh.org/",
-            "member": { "@id": "https://christianmaass.com/#person" },
+            "@type": "OrganizationRole",
             "roleName": "Vorstand",
-            "startDate": "2023-11-01"
+            "startDate": "2023-11-01",
+            "memberOf": {
+              "@type": "Organization",
+              "additionalType": "TradeAssociation",
+              "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.",
+              "description": "Wirtschaftsverband für E-Commerce und Versandhandel",
+              "url": "https://www.bevh.org/"
+            }
           }
         ],
         "alumniOf": [
