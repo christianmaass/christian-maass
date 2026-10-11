@@ -11,7 +11,7 @@ const { title, summary, date, type, externalUrl, image } = entry.data;
 const isLogo = image.src.startsWith('/logos/');
 ---
 
-<article class="article-row">
+<article class:list={['article-row', { 'has-logo': isLogo }]}>
   <div class="article-text">
     <h3 class="article-title">
       <a href={externalUrl} target="_blank" rel="noopener noreferrer">{title}</a>
@@ -101,22 +101,26 @@ const isLogo = image.src.startsWith('/logos/');
     transform: scale(1.02);
   }
 
-  /* Logo-Variante: Medienlogo auf kleiner weißer Plakette in einer ruhigen Karte.
+  /* Logo-Variante: kompakte Kachel in schmaler Spalte, Logo auf kleiner weißer Plakette.
      Hell verschmilzt die Plakette mit der Karte, dunkel bleibt nur sie hell (Logos lesbar). */
+  .article-row.has-logo {
+    grid-template-columns: 1fr 220px;
+  }
   .article-thumb.is-logo {
+    aspect-ratio: 2 / 1;
     background: var(--color-bg-elevated);
     border: 1px solid var(--color-border-subtle);
     border-radius: var(--radius-md);
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: var(--space-4);
+    padding: var(--space-2);
   }
   .article-thumb.is-logo img {
     width: auto;
     height: auto;
-    max-width: 60%;
-    max-height: 44%;
+    max-width: 75%;
+    max-height: 50%;
     object-fit: contain;
     box-sizing: content-box;
     padding: var(--space-1) var(--space-2);
@@ -132,8 +136,14 @@ const isLogo = image.src.startsWith('/logos/');
       grid-template-columns: 1fr;
       gap: var(--space-3);
     }
+    .article-row.has-logo {
+      grid-template-columns: 1fr;
+    }
     .article-thumb {
       order: -1;
+    }
+    .article-thumb.is-logo {
+      width: 160px;
     }
   }
 </style>
