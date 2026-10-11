@@ -4,7 +4,7 @@ Persönliche Website von Christian Maaß — Managing Director & CDO bei Thomann
 
 ## Tech-Stack
 
-- **Astro 5** (statisches Rendering, Content Collections)
+- **Astro 6** (statisches Rendering, Content Collections)
 - **TypeScript** (strict), CSS Custom Properties
 - **astro:assets** (Sharp, WebP-Optimierung)
 - **GitHub Actions** CI/CD → `gh-pages` Branch → GitHub Pages
