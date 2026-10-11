@@ -237,7 +237,6 @@ body h1 {
   letter-spacing: -0.02em;
   text-wrap: balance;
   overflow-wrap: break-word;
-  hyphens: auto;
   color: var(--color-text-strong);
   margin: 0 0 var(--space-3) 0;
 }
@@ -258,6 +257,13 @@ body h3 {
   line-height: var(--line-height-tight);
   color: var(--color-text-strong);
   margin: 0 0 var(--space-2) 0;
+}
+
+/* Lange deutsche Komposita („Buchveröffentlichungen“) nur auf schmalen Screens trennen */
+@media (max-width: 520px) {
+  body h1 {
+    hyphens: auto;
+  }
 }
 
 /* Globale Eyebrow-Klasse für konsistente Sektions-Marker */
