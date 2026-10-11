@@ -19,10 +19,15 @@ const lehrePageSchema = webPage({
 ---
 
 <Fragment slot="head">
-<script is:inline type="application/ld+json" set:html={JSON.stringify(lehrePageSchema)} />
+  <script is:inline type="application/ld+json" set:html={JSON.stringify(lehrePageSchema)} />
 </Fragment>
 
-<BaseLayout title={t.pages.lehre.title} description={t.pages.lehre.description} canonical={currentUrl} ogImage={ogImage}>
+<BaseLayout
+  title={t.pages.lehre.title}
+  description={t.pages.lehre.description}
+  canonical={currentUrl}
+  ogImage={ogImage}
+>
   <section class="content-wrapper">
     <header class="page-header">
       <h1>{t.pages.lehre.h1}</h1>
@@ -34,17 +39,23 @@ const lehrePageSchema = webPage({
       <h2>{t.pages.lehre.talks.title}</h2>
       <p class="section-intro">{t.pages.lehre.talks.intro}</p>
       <div class="content-box-row">
-        {pillarOrder.map((key) => (
-          <div class="content-box">
-            <h3>{t.pages.lehre.talks[key].title}</h3>
-            <p>{t.pages.lehre.talks[key].description}</p>
-          </div>
-        ))}
+        {
+          pillarOrder.map((key) => (
+            <div class="content-box">
+              <h3>{t.pages.lehre.talks[key].title}</h3>
+              <p>{t.pages.lehre.talks[key].description}</p>
+            </div>
+          ))
+        }
       </div>
     </section>
 
     <figure class="talks-figure">
-      <img src="/lehre-christian-maass.png" alt='Christian Maaß bei Thomann-Vortrag: "Die vergessenen Grundlagen im E-Commerce"' loading="lazy" />
+      <img
+        src="/lehre-christian-maass.png"
+        alt='Christian Maaß bei Thomann-Vortrag: "Die vergessenen Grundlagen im E-Commerce"'
+        loading="lazy"
+      />
       <figcaption>Vortrag „Die vergessenen Grundlagen im E-Commerce" – Säule 2 live.</figcaption>
     </figure>
 
@@ -58,7 +69,7 @@ const lehrePageSchema = webPage({
     <aside class="page-cta">
       <h2>{t.pages.lehre.ctaSection.headline}</h2>
       <p>{t.pages.lehre.ctaSection.text}</p>
-      <a href={"/kontakt"} class="cta-btn">{t.pages.lehre.ctaSection.button}</a>
+      <a href={'/kontakt'} class="cta-btn">{t.pages.lehre.ctaSection.button}</a>
     </aside>
   </section>
 </BaseLayout>
@@ -69,18 +80,18 @@ const lehrePageSchema = webPage({
     padding-top: 2rem;
   }
   .page-header h1 {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: var(--font-size-3xl);
+    font-weight: var(--weight-display);
     color: var(--color-text-strong);
     margin: 0 0 1rem 0;
     line-height: 1.15;
   }
   .page-header .lead {
     font-size: 1.15rem;
-    line-height: 1.65;
-    color: var(--color-text);
+    line-height: 1.6;
+    color: var(--color-text-muted);
     margin: 0;
-    max-width: 80ch;
+    max-width: 62ch;
   }
   .talks-section,
   .university-section {
@@ -105,17 +116,18 @@ const lehrePageSchema = webPage({
     font-style: italic;
   }
   .section-eyebrow {
-    font-size: 0.85rem;
-    font-weight: 700;
-    letter-spacing: 0.06em;
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
+    font-weight: var(--weight-medium);
+    letter-spacing: var(--letter-spacing-eyebrow);
     text-transform: uppercase;
     color: var(--color-accent);
     margin: 0 0 0.5rem 0;
   }
   .talks-section h2,
   .university-section h2 {
-    font-size: 1.75rem;
-    font-weight: 700;
+    font-size: var(--font-size-2xl);
+    font-weight: var(--weight-display);
     color: var(--color-text-strong);
     margin: 0 0 1rem 0;
     line-height: 1.25;
@@ -134,15 +146,15 @@ const lehrePageSchema = webPage({
   }
   .current-seminar {
     padding: 1rem 1.25rem;
-    background: var(--color-bg-elevated);
+    background: var(--color-accent-soft);
     border-radius: var(--radius-sm);
-    border-left: 3px solid var(--color-accent);
   }
   .page-cta {
     margin-top: var(--space-5);
     padding: var(--space-4);
     background: var(--color-bg-elevated);
-    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-accent);
+    border-radius: var(--radius-md);
   }
   .page-cta h2 {
     margin: 0 0 0.75rem 0;
@@ -155,15 +167,5 @@ const lehrePageSchema = webPage({
     margin: 0 0 1.25rem 0;
     line-height: 1.6;
     color: var(--color-text);
-  }
-
-  @media (max-width: 900px) {
-    .page-header h1 {
-      font-size: 1.8rem;
-    }
-    .talks-section h2,
-    .university-section h2 {
-      font-size: 1.4rem;
-    }
   }
 </style>

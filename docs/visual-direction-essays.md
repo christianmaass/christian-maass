@@ -1,6 +1,6 @@
 # Visual Direction — Essay-Cover
 
-**Stand:** 2026-06-15
+**Stand:** 2026-10-11 (Palette an Redesign angepasst)
 **Geltungsbereich:** Alle Beitragsbilder unter `public/essays/*.jpg`, referenziert aus `src/content/essays/*.md` (Frontmatter `image.src`).
 **Single-Source-of-Truth.** Jedes neue Essay-Cover wird mit den hier definierten Regeln und dem Master-Prompt produziert.
 
@@ -31,17 +31,20 @@ Die Cover sind ein verlängerter Arm der Editorial-Marke. Sie sollen wirken wie 
 
 ## 2. Palette
 
-Direkt aus dem Design-System abgeleitet (`public/styles.css`, Brand-Refresh 02f6d62).
+Direkt aus dem Design-System abgeleitet (`public/styles.css`, Redesign Oktober 2026; Token in Klammern).
 
-| Rolle        | Hex       | Verwendung im Bild                         |
-| ------------ | --------- | ------------------------------------------ |
-| Cream Paper  | `#f6f1e8` | Dominanter Hintergrund, ~60–70% der Fläche |
-| Deep Petrol  | `#315a78` | Hauptakzent für Form/Subjekt               |
-| Muted Ochre  | `#c19a5b` | Sekundär-Akzent, Wärme                     |
-| Burnt Sienna | `#a04a2a` | Selten gesetzter Punkt (Drama, max. 5%)    |
-| Charcoal     | `#1a1a1a` | Tinten-Linien, Schatten, Konturen          |
+| Rolle        | Hex       | Verwendung im Bild                                         |
+| ------------ | --------- | ---------------------------------------------------------- |
+| Mist Paper   | `#f2f4f3` | Dominanter Hintergrund, ~60–70% der Fläche (`--color-bg`)  |
+| Deep Teal    | `#11695f` | Hauptakzent für Form/Subjekt (`--color-accent`)            |
+| Pale Teal    | `#dcedea` | Flächen, Hintergrundformen (`--color-accent-soft`)         |
+| Sage Grey    | `#7a8784` | Sekundärton, Ruhe, Schatten-Flächen                        |
+| Burnt Orange | `#c2410c` | Selten gesetzter Punkt (Drama, max. 5%) (`--color-signal`) |
+| Ink          | `#16201e` | Tinten-Linien, Schatten, Konturen (`--color-text`)         |
 
-**Regel:** Kein reines Weiß, kein reines Schwarz, keine gesättigten Primärfarben. Alles in Richtung Naturpigmente / Druckfarben verschoben.
+**Regel:** Kein reines Weiß, kein reines Schwarz, keine gesättigten Primärfarben. Alles in Richtung Druckfarben verschoben, kühl-grüner Grundton.
+
+**Bestand:** Die vorhandenen Cover unter `public/essays/` wurden noch mit der alten Palette (Cream/Petrol/Ochre) erstellt und bleiben vorerst so. Neue Cover entstehen mit dieser Palette und Master-Prompt v3.
 
 ---
 
@@ -56,11 +59,16 @@ Direkt aus dem Design-System abgeleitet (`public/styles.css`, Brand-Refresh 02f6
 
 ---
 
-## 4. Master-Prompt (v2 — nach Pilot-Review)
+## 4. Master-Prompt (v3 — Redesign-Palette)
 
 Wiederverwendbarer Block. Nur `{ESSAY_CONCEPT}` wird pro Bild ausgetauscht (siehe Tabelle in §6).
 
-**Änderungen gegenüber v1** (15.06.2026):
+**Änderungen gegenüber v2** (11.10.2026):
+
+- Palette auf das neue Design-System umgestellt: Mist-Hintergrund statt Cream, Deep Teal statt Petrol, Sage Grey statt Ochre, Burnt Orange als seltener Signalpunkt
+- Teal-Sättigung präzisiert: „never mint, never turquoise" (analog zur Petrol-Regel aus v2)
+
+**Änderungen v1 → v2** (15.06.2026):
 
 - Petrol-Sättigung präzisiert: „slightly desaturated, never bright cobalt, never sky blue, never navy" (verhindert die hellblaue Drift, die im Agentic-Engineering-Pilot leicht auftrat)
 - Bauhaus-Sekundärelemente explizit verankert (halbgeometrische Hintergrundformen, die in beiden Pilots zufällig erschienen und Familienähnlichkeit über die Serie hinweg stiften)
@@ -71,12 +79,13 @@ Editorial illustration in the style of The New Yorker and The Atlantic
 cover essays, abstract-figurative composition, conceptual metaphor for:
 {ESSAY_CONCEPT}.
 
-Color palette: warm cream paper background (#f6f1e8) dominating roughly
-60–70% of the frame. Primary accent: deep petrol blue (#315a78) —
-slightly desaturated, never bright cobalt, never sky blue, never navy.
-Supporting tones: muted ochre (#c19a5b), burnt sienna (#a04a2a),
-charcoal black ink details (#1a1a1a). No pure white, no pure black, no
-saturated primaries.
+Color palette: cool off-white paper background with a faint green-grey
+tint (#f2f4f3) dominating roughly 60–70% of the frame. Primary accent:
+deep teal (#11695f) — slightly desaturated, never mint, never
+turquoise, never bright green. Supporting tones: pale teal (#dcedea),
+sage grey (#7a8784), a single small point of burnt orange (#c2410c,
+max. 5% of the frame), deep green-black ink details (#16201e). No pure
+white, no pure black, no saturated primaries.
 
 Texture: subtle riso-print grain, slight off-register registration,
 visible paper grain, hand-painted gouache or screenprinted feeling.
@@ -85,7 +94,7 @@ Flat lighting, no harsh shadows, no glow effects.
 Composition centered around the main metaphor, generous negative space,
 horizontal 16:9 frame. May include subtle Bauhaus-style secondary
 geometric elements — half-circles, color blocks, dotted connection
-lines, simple bars — rendered in cream, ochre or petrol, sitting in the
+lines, simple bars — rendered in pale teal, sage grey or deep teal, sitting in the
 mid- and background. They support, never overpower the main metaphor.
 
 Mood: thoughtful, gentle irony, restrained gravitas — a senior business
@@ -146,7 +155,7 @@ Spalte „ESSAY_CONCEPT" wird wörtlich in den Master-Prompt eingesetzt. Spalte 
 | 12  | 2024-02-18 | `forbes-europe-ecommerce-innovators.jpg`  | A small leather running shoe crossing a finish line that fades into a winding road — the last mile as the longest one                         |
 | 13  | 2024-02-22 | `berlin-expo-forgotten-foundations.jpg`   | A stone foundation being uncovered beneath a fashionable glass storefront — the architecture we forgot to build on                            |
 | 14  | 2024-04-24 | `ops-attention-battle.jpg`                | A single lit lantern carried through a crowded marketplace at dusk — attention as a fragile flame                                             |
-| 15  | 2024-06-24 | `sunlab-beyond-performance-konferenz.jpg` | A wooden conference table covered in scattered note cards, one card glowing gently in petrol blue — the conversation that mattered            |
+| 15  | 2024-06-24 | `sunlab-beyond-performance-konferenz.jpg` | A wooden conference table covered in scattered note cards, one card glowing gently in deep teal — the conversation that mattered              |
 | 16  | 2024-09-06 | `ecbbq-vergessene-grundlagen.jpg`         | A small wooden ladder leaning against an enormous library wall, only the lower shelves are reachable — the foundations we keep skipping       |
 | 17  | 2025-07-10 | `fake-shops.jpg`                          | A theatrical mask leaning against a half-built storefront facade with hollow windows — deception as architecture                              |
 | 18  | 2026-03-18 | `agentic-engineering.jpg`                 | A human hand placing a single chess piece onto a circuit board diagram — autonomy meets infrastructure                                        |
@@ -194,7 +203,7 @@ DevTools-Network-Tab darf null Image-404 auf `/essays/*.jpg` zeigen.
 Side-by-side-Vergleich auf `/fachartikel/`:
 
 - Wirken die 19 Cover wie ein zusammengehöriger Editorial-Set?
-- Liest sich die Palette als verlängerter Arm der Brand (Cream/Petrol erkennbar)?
+- Liest sich die Palette als verlängerter Arm der Brand (Mist/Teal erkennbar)?
 - Passt die Tonalität zur Hero-Headline „Manager, nicht Berater"?
 
 Benchmark-Vergleich gegen Stripe Press Bookshop, The Atlantic Essay-Listing, Brand Eins Magazinarchiv.

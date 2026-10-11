@@ -55,14 +55,17 @@ const assetPath = '';
         rel="noopener noreferrer"
         aria-label="Thomann"
       >
-        <img
-          src={`${assetPath}/logo-thomann-black.png`}
-          alt="Logo Thomann"
-          class="footer-sponsor-logo"
-          width="600"
-          height="170"
-          loading="lazy"
-        />
+        <picture>
+          <source srcset={`${assetPath}/logo-thomann.png`} media="(prefers-color-scheme: dark)" />
+          <img
+            src={`${assetPath}/logo-thomann-black.png`}
+            alt="Logo Thomann"
+            class="footer-sponsor-logo"
+            width="600"
+            height="170"
+            loading="lazy"
+          />
+        </picture>
       </a>
     </div>
   </div>

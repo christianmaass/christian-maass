@@ -9,29 +9,33 @@ interface Props {
 const { currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
 ---
 
-{lastPage > 1 && (
-  <nav class="pagination" aria-label="Seitennavigation">
-    {prevUrl ? (
-      <a href={prevUrl} rel="prev" class="pagination-link">
-        <span aria-hidden="true">←</span> Vorherige
-      </a>
-    ) : (
-      <span class="pagination-link is-disabled" aria-disabled="true">
-        <span aria-hidden="true">←</span> Vorherige
+{
+  lastPage > 1 && (
+    <nav class="pagination" aria-label="Seitennavigation">
+      {prevUrl ? (
+        <a href={prevUrl} rel="prev" class="pagination-link">
+          <span aria-hidden="true">←</span> Vorherige
+        </a>
+      ) : (
+        <span class="pagination-link is-disabled" aria-disabled="true">
+          <span aria-hidden="true">←</span> Vorherige
+        </span>
+      )}
+      <span class="pagination-info">
+        Seite {currentPage} von {lastPage}
       </span>
-    )}
-    <span class="pagination-info">Seite {currentPage} von {lastPage}</span>
-    {nextUrl ? (
-      <a href={nextUrl} rel="next" class="pagination-link">
-        Nächste <span aria-hidden="true">→</span>
-      </a>
-    ) : (
-      <span class="pagination-link is-disabled" aria-disabled="true">
-        Nächste <span aria-hidden="true">→</span>
-      </span>
-    )}
-  </nav>
-)}
+      {nextUrl ? (
+        <a href={nextUrl} rel="next" class="pagination-link">
+          Nächste <span aria-hidden="true">→</span>
+        </a>
+      ) : (
+        <span class="pagination-link is-disabled" aria-disabled="true">
+          Nächste <span aria-hidden="true">→</span>
+        </span>
+      )}
+    </nav>
+  )
+}
 
 <style>
   .pagination {
@@ -42,10 +46,10 @@ const { currentPage, lastPage, prevUrl, nextUrl } = Astro.props;
     margin-top: var(--space-7);
     padding-top: var(--space-5);
     border-top: 1px solid var(--color-border-subtle);
-    font-family: var(--font-family-base);
+    font-family: var(--font-family-mono);
     font-size: 0.85rem;
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: var(--letter-spacing-eyebrow);
   }
   .pagination-link {
     color: var(--color-text-muted);

@@ -12,24 +12,28 @@ const t = getTranslations();
 const articles = (await getPublishedArticles()).slice(0, limit);
 ---
 
-{articles.length > 0 && (
-  <section class="latest-articles" aria-labelledby="latest-articles-heading">
-    <div class="latest-articles-inner">
-      <h2 id="latest-articles-heading" class="latest-articles-heading">
-        {t.pages.index.latestArticles.heading}
-      </h2>
+{
+  articles.length > 0 && (
+    <section class="latest-articles" aria-labelledby="latest-articles-heading">
+      <div class="latest-articles-inner">
+        <h2 id="latest-articles-heading" class="latest-articles-heading">
+          {t.pages.index.latestArticles.heading}
+        </h2>
 
-      <div class="latest-articles-list">
-        {articles.map((entry) => <ArticleRow entry={entry} />)}
+        <div class="latest-articles-list">
+          {articles.map((entry) => (
+            <ArticleRow entry={entry} />
+          ))}
+        </div>
+
+        <a href="/blog/" class="latest-articles-cta">
+          {t.pages.index.latestArticles.readAll}
+          <span aria-hidden="true"> →</span>
+        </a>
       </div>
-
-      <a href="/blog/" class="latest-articles-cta">
-        {t.pages.index.latestArticles.readAll}
-        <span aria-hidden="true"> →</span>
-      </a>
-    </div>
-  </section>
-)}
+    </section>
+  )
+}
 
 <style>
   .latest-articles {
@@ -45,7 +49,7 @@ const articles = (await getPublishedArticles()).slice(0, limit);
   .latest-articles-heading {
     font-family: var(--font-family-display);
     font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: var(--weight-medium);
+    font-weight: var(--weight-display);
     line-height: 1.2;
     letter-spacing: -0.01em;
     color: var(--color-text-strong);
@@ -60,11 +64,11 @@ const articles = (await getPublishedArticles()).slice(0, limit);
     display: inline-flex;
     align-items: center;
     margin-top: var(--space-6);
-    font-family: var(--font-family-base);
+    font-family: var(--font-family-mono);
     font-size: 0.85rem;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
-    letter-spacing: 0.12em;
+    letter-spacing: var(--letter-spacing-eyebrow);
     color: var(--color-text-muted);
     text-decoration: none;
     transition: color 0.2s ease;

@@ -23,13 +23,7 @@ const readingTime = readingTimeMinutes(entry.body ?? '');
   </p>
   <p class="article-lead">{summary}</p>
   <figure class="article-figure">
-    <img
-      src={image.src}
-      alt={image.alt}
-      loading="eager"
-      fetchpriority="high"
-      decoding="async"
-    />
+    <img src={image.src} alt={image.alt} loading="eager" fetchpriority="high" decoding="async" />
   </figure>
 </header>
 
@@ -39,17 +33,17 @@ const readingTime = readingTimeMinutes(entry.body ?? '');
   }
   .article-eyebrow {
     margin: 0 0 var(--space-3) 0;
-    font-family: var(--font-family-base);
-    font-size: 0.78rem;
+    font-family: var(--font-family-mono);
+    font-size: 0.75rem;
     font-weight: var(--weight-medium);
     text-transform: uppercase;
-    letter-spacing: 0.18em;
+    letter-spacing: var(--letter-spacing-eyebrow);
     color: var(--color-accent);
   }
   .article-title {
     font-family: var(--font-family-display);
     font-size: clamp(2rem, 4.5vw, 3.5rem);
-    font-weight: var(--weight-medium);
+    font-weight: var(--weight-display);
     line-height: 1.1;
     letter-spacing: -0.015em;
     color: var(--color-text-strong);
