@@ -3,6 +3,9 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://christianmaass.com',
+  // GitHub Pages leitet /pfad per 301 auf /pfad/ um; Canonicals, Sitemap und
+  // Pagination-Links müssen deshalb immer mit Slash enden.
+  trailingSlash: 'always',
   prefetch: {
     defaultStrategy: 'hover',
   },

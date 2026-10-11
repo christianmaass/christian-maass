@@ -5,7 +5,7 @@ import { SITE_URL as siteUrl } from '../utils/config';
 import { PERSON_ID, webPage } from '../utils/jsonLd';
 
 const t = getTranslations();
-const currentUrl = `${siteUrl}/kontakt`;
+const currentUrl = `${siteUrl}/kontakt/`;
 const ogImage = `${siteUrl}/og/default.jpg`;
 
 const contactPageSchema = webPage({
@@ -25,16 +25,15 @@ const contactPageSchema = webPage({
 });
 ---
 
-<Fragment slot="head">
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(contactPageSchema)} />
-</Fragment>
-
 <BaseLayout
   title={t.pages.kontakt.title}
   description={t.pages.kontakt.description}
   canonical={currentUrl}
   ogImage={ogImage}
 >
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(contactPageSchema)} />
+  </Fragment>
   <section class="content-wrapper">
     <article class="contact-page">
       <header class="contact-header">

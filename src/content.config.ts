@@ -5,6 +5,9 @@ const articles = defineCollection({
   loader: glob({ pattern: '**/*.md', base: './src/content/articles' }),
   schema: z.object({
     title: z.string().min(1),
+    // Optional: kürzerer <title> bzw. Meta-Description, wenn title/summary für Suchergebnisse zu lang sind
+    seoTitle: z.string().max(60).optional(),
+    description: z.string().max(160).optional(),
     summary: z.string().min(1).max(320),
     date: z.coerce.date(),
     lastModified: z.coerce.date().optional(),

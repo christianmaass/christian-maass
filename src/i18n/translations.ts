@@ -265,7 +265,7 @@ export const translations: Translations = {
   },
   pages: {
     index: {
-      title: 'Dr. Christian Maaß · Unternehmer & Autor',
+      title: 'Dr. Christian Maaß · Digitalstrategie, KI & E-Commerce',
       description:
         'Digitale Geschäfte gewinnen dort, wo Strategie, Organisation und Technik/KI synchron laufen. Daran arbeite ich – Geschäftsführer Thomann.io, Vorstand BEVH.',
       heroTitle: 'Dr. Christian Maaß',
@@ -321,9 +321,9 @@ export const translations: Translations = {
                 name: 'digital kompakt',
                 url: 'https://www.digitalkompakt.de/podcast/wohlstand/digitale-transformation/thomann-digitalisierung-digitale-transformation-christian-maass',
               },
-              { name: 'Haufe Verlag', url: '/buecher' },
-              { name: 'Carl Hanser Verlag', url: '/buecher' },
-              { name: 'UTB Verlag', url: '/buecher' },
+              { name: 'Haufe Verlag', url: '/buecher/' },
+              { name: 'Carl Hanser Verlag', url: '/buecher/' },
+              { name: 'UTB Verlag', url: '/buecher/' },
             ],
           },
         ],
@@ -406,7 +406,7 @@ export const translations: Translations = {
     christianMaass: {
       title: 'Dr. Christian Maaß · Unternehmer, Beirat & Autor',
       description:
-        'Christian Maaß übernimmt digitale Geschäfte dort, wo Strategie, Technologie und Organisation nicht synchron laufen. 20 Jahre als Operator: Thomann, OTTO, Vistaprint, Flyeralarm, Bertelsmann, AutoScout24.',
+        '20 Jahre Operator digitaler Geschäfte bei Thomann, OTTO, Vistaprint und Flyeralarm – dort, wo Strategie, Technik und Organisation auseinanderlaufen.',
       h1: 'Strategie. Technologie. Organisation.',
       intro: [
         'Die meisten KI- und Digitalinitiativen sind technisch erfolgreich – und generieren dennoch keinen Wert. Nicht weil die Technologie versagt; sie funktioniert. Sie scheitern, weil Strategie, Technologie und Organisation in drei unterschiedlichen Geschwindigkeiten laufen. Diese Lücke zu schließen, ist die Arbeit, die mir am wichtigsten ist und über die ich hier schreibe.',
@@ -479,7 +479,7 @@ export const translations: Translations = {
     fachartikel: {
       title: 'Essays, Interviews & Podcasts · Christian Maaß',
       description:
-        'Journalistische Veröffentlichungen in der Fachpresse — Essays, Interviews und Podcasts zu Handel, KI im Operating und digitaler Verantwortung. Erschienen u. a. bei eTailment, Textilwirtschaft, t3n, W&V, Kassenzone und digital kompakt.',
+        'Essays, Interviews und Podcasts von Christian Maaß zu Handel, KI im Operating und digitaler Verantwortung – u. a. in eTailment, t3n, W&V und Kassenzone.',
       h1: 'Beiträge in Fachmedien',
       intro:
         'Journalistische Veröffentlichungen in der Fachpresse — Essays, Interviews und Podcasts zu Handel, KI im Operating und digitaler Verantwortung. Erschienen u. a. bei eTailment, Textilwirtschaft, t3n, W&V, Kassenzone und digital kompakt. Persönliche Beobachtungen aus der operativen Praxis, nicht aus der Beraterperspektive.',
@@ -539,7 +539,7 @@ export const translations: Translations = {
     beirat: {
       title: 'Beirat & Verbandsarbeit · Christian Maaß',
       description:
-        'Vier Beirats-Mandate, eine Vorstandsrolle im BEVH. Ich werde gerufen, wenn es um die Reihenfolge geht – was wird zuerst entschieden, wer entscheidet, wann wird umgesetzt.',
+        'Vorstand im BEVH, vier Beiratsmandate. Ich werde gerufen, wenn es um die Reihenfolge geht: was zuerst entschieden wird, von wem und wann.',
       eyebrow: 'Mandate',
       h1: 'Beirat & Verbandsarbeit.',
       bevh: {

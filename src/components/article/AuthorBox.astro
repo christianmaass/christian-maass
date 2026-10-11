@@ -9,7 +9,7 @@ interface Props {
   ctaLabel?: string;
 }
 
-const { name, bio, image, ctaHref = '/christian-maass', ctaLabel } = Astro.props;
+const { name, bio, image, ctaHref = '/christian-maass/', ctaLabel } = Astro.props;
 
 const t = getTranslations().components.authorBox;
 const displayName = name ?? t.name;

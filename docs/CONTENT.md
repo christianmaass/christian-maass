@@ -23,6 +23,8 @@ Beispiele:
 ```yaml
 ---
 title: 'Die vergessenen Grundlagen im Digitalgeschäft'
+seoTitle: 'Die vergessenen Grundlagen im Digitalgeschäft' # optional, max. 60 Zeichen, ersetzt den <title> komplett
+description: 'Wo Substanz Glanz schlägt: warum der größte Wert in operativen Grundlagen liegt.' # optional, max. 160 Zeichen
 summary: 'Während alle über Transformation reden, bleibt der größte Wert in operativen Grundlagen liegen. Wo Substanz Glanz schlägt.'
 date: 2026-06-15
 lastModified: 2026-06-20 # optional, nur falls inhaltlich nachträglich überarbeitet
@@ -38,7 +40,7 @@ draft: false # true blendet im Produktions-Build aus
 # Eigener Markdown-Body folgt hier. H1 vermeiden — das `title`-Feld wird als H1 gerendert.
 ```
 
-**Pflichtfelder**: `title`, `summary` (1–320 Zeichen — wird zur Meta-Description), `date`, `category`, `image.src`, `image.alt`.
+**Pflichtfelder**: `title`, `summary` (1–320 Zeichen — wird zur Meta-Description, sofern `description` fehlt), `date`, `category`, `image.src`, `image.alt`.
 
 **Verhalten**:
 

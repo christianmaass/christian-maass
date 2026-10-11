@@ -58,8 +58,8 @@ const blogPostingJsonLd = {
 ---
 
 <BaseLayout
-  title={`${entry.data.title} · Christian Maaß`}
-  description={entry.data.summary}
+  title={entry.data.seoTitle ?? `${entry.data.title} · Christian Maaß`}
+  description={entry.data.description ?? entry.data.summary}
   canonical={canonical}
   ogImage={ogImage}
   ogType="article"

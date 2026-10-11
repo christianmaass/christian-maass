@@ -16,15 +16,15 @@ const isActivePrefix = (path: string) =>
 
     <nav id="main-nav" class="nav" aria-label="Hauptnavigation">
       {/* Blog vorübergehend deaktiviert — zum Reaktivieren Kommentar entfernen */}
-      {/* <a href="/blog" class={isActivePrefix('/blog')}>{t.nav.blog}</a> */}
-      <a href="/fachartikel" class={isActive('/fachartikel')}>{t.nav.perspectives}</a>
-      <a href="/buecher" class={isActive('/buecher')}>{t.nav.books}</a>
-      <a href="/beirat" class={isActive('/beirat')}>{t.nav.boardAdvisory}</a>
-      <a href="/christian-maass" class={isActive('/christian-maass')}>{t.nav.about}</a>
+      {/* <a href="/blog/" class={isActivePrefix('/blog')}>{t.nav.blog}</a> */}
+      <a href="/fachartikel/" class={isActive('/fachartikel')}>{t.nav.perspectives}</a>
+      <a href="/buecher/" class={isActive('/buecher')}>{t.nav.books}</a>
+      <a href="/beirat/" class={isActive('/beirat')}>{t.nav.boardAdvisory}</a>
+      <a href="/christian-maass/" class={isActive('/christian-maass')}>{t.nav.about}</a>
     </nav>
 
     <div class="header-right">
-      <a href="/kontakt" class={`contact-pill ${isActive('/kontakt')}`}>{t.nav.contact}</a>
+      <a href="/kontakt/" class={`contact-pill ${isActive('/kontakt')}`}>{t.nav.contact}</a>
       <button
         class="burger"
         id="burger"

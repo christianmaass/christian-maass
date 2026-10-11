@@ -1,5 +1,7 @@
 ---
 title: 'Was Aufsichtsräte über Digital fragen sollten — und meist nicht tun'
+seoTitle: 'Aufsichtsrat & Digital: Sechs Fragen für Boards'
+description: 'Aufsichtsräte stellen bei Digital und KI oft die falschen Fragen. Sechs Fragen, die Boards stellen sollten – aus der Sicht eines Operators.'
 summary: >-
   Aufsichtsräte stellen bei Digital und KI oft die falschen Fragen — oder gar
   keine. Eine Übersetzung zwischen Operator-Realität und Board-Verantwortung,
@@ -13,8 +15,7 @@ image:
 
 > Platzhalter-Artikel — wird vor Release durch echten Inhalt ersetzt.
 
-Die meisten Aufsichtsräte sind hervorragend trainiert für Fragen, die im
-20. Jahrhundert wichtig waren: Bilanz, Compliance, Strategie auf Folie 7.
+Die meisten Aufsichtsräte sind hervorragend trainiert für Fragen, die im 20. Jahrhundert wichtig waren: Bilanz, Compliance, Strategie auf Folie 7.
 Digital und KI sind heute kein Sondertraktat mehr — sie sind das Operating
 Model selbst.
 

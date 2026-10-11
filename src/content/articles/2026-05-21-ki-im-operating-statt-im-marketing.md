@@ -1,5 +1,6 @@
 ---
 title: 'KI im Operating, nicht im Marketing'
+description: 'Der echte Hebel von KI liegt in Prozessen und Softwareentwicklung, nicht in Demos und Decks. Eine Standortbestimmung zwischen Buzzword und Betrieb.'
 summary: >-
   Die meisten Unternehmen reden über KI, statt mit KI zu arbeiten.
   Der echte Hebel liegt in Prozessen und Softwareentwicklung — nicht in

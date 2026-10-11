@@ -8,88 +8,83 @@ import { SITE_URL as siteUrl } from '../utils/config';
 import heroPortrait from '../assets/christian-maass.png';
 
 const t = getTranslations();
-const currentUrl = siteUrl;
+const currentUrl = `${siteUrl}/`;
 const ogImage = `${siteUrl}/christian-maass.png`;
 ---
 
-<Fragment slot="head">
-  <script is:inline type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "@id": "https://christianmaass.com/#person",
-          "name": "Christian Maaß",
-          "alternateName": "Dr. Christian Maaß",
-          "honorificPrefix": "Dr.",
-          "inLanguage": "de",
-          "url": "https://christianmaass.com/",
-          "image": "https://christianmaass.com/christian-maass.png",
-          "sameAs": [
-            "https://www.linkedin.com/in/christianmaass/",
-            "https://www.amazon.de/stores/author/B0045949JA",
-            "https://www.instagram.com/christianmaass/",
-            "https://x.com/ChristianMaass"
-          ],
-          "jobTitle": "Managing Director & Chief Digital Officer",
-          "worksFor": {
-            "@type": "Organization",
-            "name": "Thomann",
-            "url": "https://www.thomann.de/",
-            "description": "World's largest digital music retailer with approx. EUR 1.6bn revenue"
-          },
-          "memberOf": [
-            {
+<BaseLayout
+  title={t.pages.index.title}
+  description={t.pages.index.description}
+  canonical={currentUrl}
+  ogImage={ogImage}
+>
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "Person",
+            "@id": "https://christianmaass.com/#person",
+            "name": "Christian Maaß",
+            "alternateName": "Dr. Christian Maaß",
+            "honorificPrefix": "Dr.",
+            "inLanguage": "de",
+            "url": "https://christianmaass.com/",
+            "image": "https://christianmaass.com/christian-maass.png",
+            "sameAs": [
+              "https://www.linkedin.com/in/christianmaass/",
+              "https://www.amazon.de/stores/author/B0045949JA",
+              "https://www.instagram.com/christianmaass/",
+              "https://x.com/ChristianMaass"
+            ],
+            "jobTitle": "Managing Director & Chief Digital Officer",
+            "worksFor": {
               "@type": "Organization",
-              "additionalType": "TradeAssociation",
-              "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.",
-              "description": "Wirtschaftsverband für E-Commerce und Versandhandel",
-              "url": "https://www.bevh.org/",
-              "member": { "@id": "https://christianmaass.com/#person" },
-              "roleName": "Vice President E-Commerce",
-              "startDate": "2023-11-01"
-            }
-          ],
-          "knowsAbout": [
-            "Synchronisation digitaler Geschäfte",
-            "Digital Operating Models",
-            "E-Commerce-Skalierung",
-            "KI im Operating",
-            "Board-Perspektive auf Digital",
-            "Plattform-Transformation",
-            "Cross-border Commerce",
-            "Executive Leadership",
-            "Digital Governance"
-          ],
-          "description": "Unternehmer und Autor. Geschäftsführer Thomann.io, Vorstand BEVH. Digitale Geschäfte gewinnen dort, wo Strategie, Organisation und Technik/KI synchron laufen."
-        },
-        {
-          "@type": "Organization",
-          "@id": "https://christianmaass.com/#organization",
-          "name": "Christian Maaß",
-          "url": "https://christianmaass.com/",
-          "logo": "https://christianmaass.com/logo-maass.png",
-          "sameAs": ["https://www.linkedin.com/company/christian-maass/"],
-          "contactPoint": {
-            "@type": "ContactPoint",
-            "telephone": "+49-1735143253",
-            "contactType": "CustomerService",
-            "email": "christian@christianmaass.com",
-            "areaServed": "DE",
-            "availableLanguage": ["de", "en"]
+              "name": "Thomann",
+              "url": "https://www.thomann.de/",
+              "description": "World's largest digital music retailer with approx. EUR 1.6bn revenue"
+            },
+            "memberOf": [
+              {
+                "@type": "Organization",
+                "additionalType": "TradeAssociation",
+                "name": "BEVH – Bundesverband E-Commerce und Versandhandel Deutschland e.V.",
+                "description": "Wirtschaftsverband für E-Commerce und Versandhandel",
+                "url": "https://www.bevh.org/",
+                "member": { "@id": "https://christianmaass.com/#person" },
+                "roleName": "Vice President E-Commerce",
+                "startDate": "2023-11-01"
+              }
+            ],
+            "knowsAbout": [
+              "Synchronisation digitaler Geschäfte",
+              "Digital Operating Models",
+              "E-Commerce-Skalierung",
+              "KI im Operating",
+              "Board-Perspektive auf Digital",
+              "Plattform-Transformation",
+              "Cross-border Commerce",
+              "Executive Leadership",
+              "Digital Governance"
+            ],
+            "description": "Unternehmer und Autor. Geschäftsführer Thomann.io, Vorstand BEVH. Digitale Geschäfte gewinnen dort, wo Strategie, Organisation und Technik/KI synchron laufen."
           },
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "Hans-Thomann-Str. 1",
-            "addressLocality": "Burgebrach",
-            "postalCode": "96138",
-            "addressRegion": "Bayern",
-            "addressCountry": "DE"
-          },
-          "location": {
-            "@type": "Place",
-            "name": "Burgebrach, Bayern, Deutschland",
+          {
+            "@type": "Organization",
+            "@id": "https://christianmaass.com/#organization",
+            "name": "Christian Maaß",
+            "url": "https://christianmaass.com/",
+            "logo": "https://christianmaass.com/logo-maass.png",
+            "sameAs": ["https://www.linkedin.com/company/christian-maass/"],
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+49-1735143253",
+              "contactType": "CustomerService",
+              "email": "christian@christianmaass.com",
+              "areaServed": "DE",
+              "availableLanguage": ["de", "en"]
+            },
             "address": {
               "@type": "PostalAddress",
               "streetAddress": "Hans-Thomann-Str. 1",
@@ -98,61 +93,65 @@ const ogImage = `${siteUrl}/christian-maass.png`;
               "addressRegion": "Bayern",
               "addressCountry": "DE"
             },
-            "geo": {
-              "@type": "GeoCoordinates",
-              "latitude": 49.8281,
-              "longitude": 10.7431
+            "location": {
+              "@type": "Place",
+              "name": "Burgebrach, Bayern, Deutschland",
+              "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Hans-Thomann-Str. 1",
+                "addressLocality": "Burgebrach",
+                "postalCode": "96138",
+                "addressRegion": "Bayern",
+                "addressCountry": "DE"
+              },
+              "geo": {
+                "@type": "GeoCoordinates",
+                "latitude": 49.8281,
+                "longitude": 10.7431
+              }
+            },
+            "potentialAction": {
+              "@type": "CommunicateAction",
+              "target": "mailto:christian@christianmaass.com",
+              "actionPlatform": [
+                "http://schema.org/DesktopWebPlatform",
+                "http://schema.org/IOSPlatform",
+                "http://schema.org/AndroidPlatform"
+              ]
             }
           },
-          "potentialAction": {
-            "@type": "CommunicateAction",
-            "target": "mailto:christian@christianmaass.com",
-            "actionPlatform": [
-              "http://schema.org/DesktopWebPlatform",
-              "http://schema.org/IOSPlatform",
-              "http://schema.org/AndroidPlatform"
-            ]
+          {
+            "@type": "WebPage",
+            "@id": "https://christianmaass.com/#webpage",
+            "url": "https://christianmaass.com/",
+            "name": "Dr. Christian Maaß · Unternehmer & Autor",
+            "description": "Digitale Geschäfte gewinnen dort, wo Strategie, Organisation und Technik/KI synchron laufen. Daran arbeite ich – Geschäftsführer Thomann.io, Vorstand BEVH.",
+            "inLanguage": "de",
+            "isPartOf": {
+              "@id": "https://christianmaass.com/#website"
+            },
+            "about": {
+              "@id": "https://christianmaass.com/#person"
+            },
+            "breadcrumb": {
+              "@id": "https://christianmaass.com/#breadcrumb"
+            }
+          },
+          {
+            "@type": "WebSite",
+            "@id": "https://christianmaass.com/#website",
+            "url": "https://christianmaass.com/",
+            "name": "Christian Maaß",
+            "description": "Unternehmer und Autor. Digitale Geschäfte gewinnen, wenn Strategie, Organisation und Technik synchron laufen.",
+            "publisher": {
+              "@id": "https://christianmaass.com/#organization"
+            },
+            "inLanguage": ["de", "en"]
           }
-        },
-        {
-          "@type": "WebPage",
-          "@id": "https://christianmaass.com/#webpage",
-          "url": "https://christianmaass.com/",
-          "name": "Dr. Christian Maaß · Unternehmer & Autor",
-          "description": "Digitale Geschäfte gewinnen dort, wo Strategie, Organisation und Technik/KI synchron laufen. Daran arbeite ich – Geschäftsführer Thomann.io, Vorstand BEVH.",
-          "inLanguage": "de",
-          "isPartOf": {
-            "@id": "https://christianmaass.com/#website"
-          },
-          "about": {
-            "@id": "https://christianmaass.com/#person"
-          },
-          "breadcrumb": {
-            "@id": "https://christianmaass.com/#breadcrumb"
-          }
-        },
-        {
-          "@type": "WebSite",
-          "@id": "https://christianmaass.com/#website",
-          "url": "https://christianmaass.com/",
-          "name": "Christian Maaß",
-          "description": "Unternehmer und Autor. Digitale Geschäfte gewinnen, wenn Strategie, Organisation und Technik synchron laufen.",
-          "publisher": {
-            "@id": "https://christianmaass.com/#organization"
-          },
-          "inLanguage": ["de", "en"]
-        }
-      ]
-    }
-  </script>
-</Fragment>
-
-<BaseLayout
-  title={t.pages.index.title}
-  description={t.pages.index.description}
-  canonical={currentUrl}
-  ogImage={ogImage}
->
+        ]
+      }
+    </script>
+  </Fragment>
   <section class="hero">
     <div class="hero-grid">
       <div class="hero-content">

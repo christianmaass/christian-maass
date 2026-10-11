@@ -22,7 +22,10 @@ const title =
   page.currentPage === 1
     ? t.pages.fachartikel.title
     : `${t.pages.fachartikel.h1.replace(/\.$/, '')} — Seite ${page.currentPage} · Christian Maaß`;
-const description = t.pages.fachartikel.description;
+const description =
+  page.currentPage === 1
+    ? t.pages.fachartikel.description
+    : `Seite ${page.currentPage}: ${t.pages.fachartikel.description}`;
 
 const allEssays = await getPublishedEssays();
 const articleSchemas = allEssays.map((entry, index) => ({

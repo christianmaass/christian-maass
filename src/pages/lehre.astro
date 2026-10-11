@@ -5,7 +5,7 @@ import { SITE_URL as siteUrl } from '../utils/config';
 import { webPage } from '../utils/jsonLd';
 
 const t = getTranslations();
-const currentUrl = `${siteUrl}/lehre`;
+const currentUrl = `${siteUrl}/lehre/`;
 const ogImage = `${siteUrl}/lehre-dr-christian-maass.png`;
 
 type PillarKey = 'kiOperating' | 'grundlagen' | 'boardPerspective';
@@ -18,16 +18,15 @@ const lehrePageSchema = webPage({
 });
 ---
 
-<Fragment slot="head">
-  <script is:inline type="application/ld+json" set:html={JSON.stringify(lehrePageSchema)} />
-</Fragment>
-
 <BaseLayout
   title={t.pages.lehre.title}
   description={t.pages.lehre.description}
   canonical={currentUrl}
   ogImage={ogImage}
 >
+  <Fragment slot="head">
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(lehrePageSchema)} />
+  </Fragment>
   <section class="content-wrapper">
     <header class="page-header">
       <h1>{t.pages.lehre.h1}</h1>
@@ -69,7 +68,7 @@ const lehrePageSchema = webPage({
     <aside class="page-cta">
       <h2>{t.pages.lehre.ctaSection.headline}</h2>
       <p>{t.pages.lehre.ctaSection.text}</p>
-      <a href={'/kontakt'} class="cta-btn">{t.pages.lehre.ctaSection.button}</a>
+      <a href={'/kontakt/'} class="cta-btn">{t.pages.lehre.ctaSection.button}</a>
     </aside>
   </section>
 </BaseLayout>

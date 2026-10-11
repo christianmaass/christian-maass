@@ -5,7 +5,11 @@ interface Props {
   title?: string;
 }
 
-const { pathname: pathnameProp, siteUrl = 'https://christianmaass.com', title } = Astro.props as Props;
+const {
+  pathname: pathnameProp,
+  siteUrl = 'https://christianmaass.com',
+  title,
+} = Astro.props as Props;
 const pathname = pathnameProp || Astro.url.pathname;
 
 const breadcrumbMap: Record<string, string> = {
@@ -22,26 +26,25 @@ const breadcrumbMap: Record<string, string> = {
   '/barrierefreiheit': 'Barrierefreiheit',
 };
 
-const normalizedPath = pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
+const normalizedPath =
+  pathname.endsWith('/') && pathname !== '/' ? pathname.slice(0, -1) : pathname;
 
 // Pagination-Pfade wie /blog/2 oder /fachartikel/3 auf den Basis-Pfad reduzieren
 const paginationStripped = normalizedPath.replace(/^(\/blog|\/fachartikel)\/\d+$/, '$1');
 
 const currentPath = paginationStripped || '/';
 
-const items: Array<{ name: string; url: string }> = [
-  { name: 'Startseite', url: `${siteUrl}/` },
-];
+const items: Array<{ name: string; url: string }> = [{ name: 'Startseite', url: `${siteUrl}/` }];
 
 if (currentPath !== '/') {
   const directMatch = breadcrumbMap[currentPath];
   if (directMatch) {
-    items.push({ name: directMatch, url: `${siteUrl}${currentPath}` });
+    items.push({ name: directMatch, url: `${siteUrl}${currentPath}/` });
   } else if (currentPath.startsWith('/blog/')) {
     // Einzel-Artikel: Home > Blog > Titel
-    items.push({ name: 'Blog', url: `${siteUrl}/blog` });
+    items.push({ name: 'Blog', url: `${siteUrl}/blog/` });
     if (title) {
-      items.push({ name: title, url: `${siteUrl}${currentPath}` });
+      items.push({ name: title, url: `${siteUrl}${currentPath}/` });
     }
   }
 }

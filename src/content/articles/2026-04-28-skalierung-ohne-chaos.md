@@ -1,5 +1,7 @@
 ---
 title: 'Die vergessenen Grundlagen: warum Skalierung an Ordnung scheitert'
+seoTitle: 'Skalierung ohne Chaos: Die vergessenen Grundlagen'
+description: 'Der größte ungehobene Wert liegt in operativen Grundlagen, nicht in der nächsten Transformation. Eine Notiz über die Mechanik von Skalierung.'
 summary: >-
   Während alle über Transformation reden, liegt der größte ungehobene Wert in
   operativen Grundlagen, die übersehen werden. Substanz schlägt Glanz — eine
@@ -32,7 +34,7 @@ trivial klingender Grundlagen abhängt.
 
 - Klare Ownership pro Domäne (nicht pro Rolle)
 - Wenige, gut definierte Schnittstellen statt vieler informeller
-- Datenmodelle, in denen die Realität *vor* der Veränderung steht, nicht
+- Datenmodelle, in denen die Realität _vor_ der Veränderung steht, nicht
   hinterher
 - Ein Operating-Cadence, der unabhängig von einzelnen Personen funktioniert
 
