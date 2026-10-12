@@ -10,6 +10,6 @@ type: 'Essay'
 externalUrl: 'https://t3n.de/news/softwareentwicklung-ceo-fragen-it-1502858/'
 publisher: 't3n'
 image:
-  src: '/logos/t3n.png'
+  src: '/logos/t3n.webp'
   alt: 't3n'
 ---

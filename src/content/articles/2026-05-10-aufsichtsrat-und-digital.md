@@ -9,7 +9,7 @@ summary: >-
 date: 2026-05-10
 category: 'Notiz'
 image:
-  src: '/advisor-beirat-christian-maass.png'
+  src: '/og/beirat.jpg'
   alt: 'Christian Maaß in einer Beiratssitzung, Diskussion zu Digital-Governance'
 ---
 

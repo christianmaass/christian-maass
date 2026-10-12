@@ -7,7 +7,7 @@ import { webPage } from '../utils/jsonLd';
 const t = getTranslations();
 const assetPath = '';
 const currentUrl = `${siteUrl}/beirat/`;
-const ogImage = `${siteUrl}/advisor-beirat-christian-maass.png`;
+const ogImage = `${siteUrl}/og/beirat.jpg`;
 
 const beiratPageSchema = webPage({
   path: '/beirat/',
@@ -60,7 +60,13 @@ const beiratPageSchema = webPage({
     <div class="mandate-list">
       <article class="mandate-card card-soft">
         <div class="mandate-logo">
-          <img src={`${assetPath}/logo-bevh.png`} alt="Logo BEVH" loading="lazy" />
+          <img
+            src={`${assetPath}/logo-bevh.webp`}
+            alt="Logo BEVH"
+            width="144"
+            height="64"
+            loading="lazy"
+          />
         </div>
         <div class="mandate-content">
           <h2>{t.pages.beirat.bevh.title}</h2>
@@ -73,7 +79,13 @@ const beiratPageSchema = webPage({
 
       <article class="mandate-card card-soft">
         <div class="mandate-logo">
-          <img src={`${assetPath}/logo-optilyz.png`} alt="Logo Optilyz" loading="lazy" />
+          <img
+            src={`${assetPath}/logo-optilyz.webp`}
+            alt="Logo Optilyz"
+            width="144"
+            height="47"
+            loading="lazy"
+          />
         </div>
         <div class="mandate-content">
           <h2>{t.pages.beirat.optilyz.title}</h2>
@@ -88,7 +100,13 @@ const beiratPageSchema = webPage({
 
       <article class="mandate-card card-soft">
         <div class="mandate-logo">
-          <img src={`${assetPath}/logo-wmd.png`} alt="Logo WIRmachenDRUCK" loading="lazy" />
+          <img
+            src={`${assetPath}/logo-wmd.webp`}
+            alt="Logo WIRmachenDRUCK"
+            width="144"
+            height="61"
+            loading="lazy"
+          />
         </div>
         <div class="mandate-content">
           <h2>{t.pages.beirat.wmd.title}</h2>
@@ -103,7 +121,13 @@ const beiratPageSchema = webPage({
 
       <article class="mandate-card card-soft">
         <div class="mandate-logo">
-          <img src={`${assetPath}/logo-mdm.png`} alt="Logo MdM" loading="lazy" />
+          <img
+            src={`${assetPath}/logo-mdm.webp`}
+            alt="Logo MdM"
+            width="103"
+            height="84"
+            loading="lazy"
+          />
         </div>
         <div class="mandate-content">
           <h2>{t.pages.beirat.mdm.title}</h2>

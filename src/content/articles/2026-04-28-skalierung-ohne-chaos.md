@@ -9,7 +9,7 @@ summary: >-
 date: 2026-04-28
 category: 'Essay'
 image:
-  src: '/lehre-dr-christian-maass.png'
+  src: '/og/lehre.jpg'
   alt: 'Christian Maaß im Seminar zur Skalierung digitaler Geschäftsmodelle'
 ---
 

@@ -37,11 +37,11 @@ const assetPath = '';
         rel="noopener noreferrer"
       >
         <img
-          src={`${assetPath}/executive-presence-maass.jpg`}
+          src={`${assetPath}/executive-presence-maass.webp`}
           alt="Buchcover Executive Presence"
           class="footer-book-cover"
           width="150"
-          height="225"
+          height="203"
           loading="lazy"
         />
       </a>
@@ -56,13 +56,18 @@ const assetPath = '';
         aria-label="Thomann"
       >
         <picture>
-          <source srcset={`${assetPath}/logo-thomann.png`} media="(prefers-color-scheme: dark)" />
+          <source
+            srcset={`${assetPath}/logo-thomann.webp`}
+            media="(prefers-color-scheme: dark)"
+            width="220"
+            height="63"
+          />
           <img
-            src={`${assetPath}/logo-thomann-black.png`}
+            src={`${assetPath}/logo-thomann-black.webp`}
             alt="Logo Thomann"
             class="footer-sponsor-logo"
-            width="600"
-            height="170"
+            width="220"
+            height="40"
             loading="lazy"
           />
         </picture>

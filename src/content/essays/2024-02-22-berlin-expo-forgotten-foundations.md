@@ -10,6 +10,6 @@ type: 'Essay'
 externalUrl: 'https://ecommercegermany.com/blog/e-commerce-berlin-expo-your-guide-to-the-star-packed-schedule/'
 publisher: 'E-Commerce Germany News'
 image:
-  src: '/logos/ecommerce-berlin-expo.png'
+  src: '/logos/ecommerce-berlin-expo.webp'
   alt: 'E-Commerce Berlin Expo'
 ---

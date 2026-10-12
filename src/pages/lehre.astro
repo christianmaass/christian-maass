@@ -6,7 +6,7 @@ import { webPage } from '../utils/jsonLd';
 
 const t = getTranslations();
 const currentUrl = `${siteUrl}/lehre/`;
-const ogImage = `${siteUrl}/lehre-dr-christian-maass.png`;
+const ogImage = `${siteUrl}/og/lehre.jpg`;
 
 type PillarKey = 'kiOperating' | 'grundlagen' | 'boardPerspective';
 const pillarOrder: PillarKey[] = ['kiOperating', 'grundlagen', 'boardPerspective'];
@@ -51,8 +51,10 @@ const lehrePageSchema = webPage({
 
     <figure class="talks-figure">
       <img
-        src="/lehre-christian-maass.png"
+        src="/lehre-christian-maass.webp"
         alt='Christian Maaß bei Thomann-Vortrag: "Die vergessenen Grundlagen im E-Commerce"'
+        width="960"
+        height="997"
         loading="lazy"
       />
       <figcaption>Vortrag „Die vergessenen Grundlagen im E-Commerce" – Säule 2 live.</figcaption>

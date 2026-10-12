@@ -1,5 +1,7 @@
 ---
+import { Image } from 'astro:assets';
 import { getTranslations } from '../../i18n/utils';
+import defaultPortrait from '../../assets/christian-maass.png';
 
 interface Props {
   name?: string;
@@ -14,7 +16,6 @@ const { name, bio, image, ctaHref = '/christian-maass/', ctaLabel } = Astro.prop
 const t = getTranslations().components.authorBox;
 const displayName = name ?? t.name;
 const displayBio = bio ?? t.bio;
-const displayImage = image ?? { src: '/christian-maass.png', alt: t.portraitAlt };
 const displayCta = ctaLabel ?? t.cta;
 ---
 
@@ -33,13 +34,27 @@ const displayCta = ctaLabel ?? t.cta;
     }
   </div>
   <div class="author-box-portrait-wrap">
-    <img
-      src={displayImage.src}
-      alt={displayImage.alt}
-      class="author-box-portrait"
-      loading="lazy"
-      decoding="async"
-    />
+    {
+      image ? (
+        <img
+          src={image.src}
+          alt={image.alt}
+          class="author-box-portrait"
+          loading="lazy"
+          decoding="async"
+        />
+      ) : (
+        <Image
+          src={defaultPortrait}
+          alt={t.portraitAlt}
+          widths={[220, 440]}
+          sizes="220px"
+          class="author-box-portrait"
+          loading="lazy"
+          decoding="async"
+        />
+      )
+    }
   </div>
 </aside>
 

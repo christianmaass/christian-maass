@@ -8,7 +8,7 @@ summary: >-
 date: 2026-05-21
 category: 'Essay'
 image:
-  src: '/hero-maass.png'
+  src: '/og/ki-im-operating.jpg'
   alt: 'Christian Maaß auf der Bühne, Vortrag zu KI im E-Commerce-Operating'
 ---
 
