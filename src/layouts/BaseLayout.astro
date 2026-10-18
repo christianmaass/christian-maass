@@ -30,7 +30,7 @@ const siteName = 'Christian Maaß';
 const defaultOgImage = `${siteUrl}/og/default.jpg`;
 const finalOgImage = ogImage || defaultOgImage;
 // Commit des Builds für die Live-Prüfung (stack → „Version live prüfen“); in GitHub Actions gesetzt, lokal „lokal“
-const version = process.env.GITHUB_SHA ?? 'lokal';
+const version = process.env.GITHUB_SHA || 'lokal';
 ---
 
 <!doctype html>
