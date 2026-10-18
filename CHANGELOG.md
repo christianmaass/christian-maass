@@ -4,6 +4,11 @@ Neueste oben. Für Leser der Website, nicht für Entwickler.
 
 ## Unveröffentlicht
 
+## v0.1.2 — 2026-10-18
+
+**Intern**
+- Prüfungen: reine Inhaltsänderungen gehen schneller live; für Leser ändert sich nichts.
+
 ## v0.1.1 — 2026-10-18
 
 **Geändert**

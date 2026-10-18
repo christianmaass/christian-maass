@@ -41,7 +41,8 @@ Datenbank, keine Konten, keine Server-Logik. Details zur Architektur: `CLAUDE.md
 
 ## Konfiguration/Drift
 
-Keine prod-Konfiguration außerhalb des Repos. `public/CNAME` (Domain) und `astro.config.mjs` (`site`, `trailingSlash`) liegen im Repo.
+Einzige Einstellung außerhalb des Repos: Branch-Protection auf `main` (Pflicht-Check `check`, auch für Admins) und Auto-Merge an — lesend prüfen mit `gh api repos/christianmaass/christian-maass/branches/main/protection`.
+Lighthouse läuft bei PRs nicht, wenn nur Mini-Pfade oder Pfade „ohne Deploy“ geändert sind; auf `main` immer. `public/CNAME` (Domain) und `astro.config.mjs` (`site`, `trailingSlash`) liegen im Repo.
 Security-Header aus `public/_headers` wirken auf GitHub Pages nicht (nur die `<meta>`-CSP) — `docs/INFRA-CLOUDFLARE.md`.
 
 ## Architekturregeln
