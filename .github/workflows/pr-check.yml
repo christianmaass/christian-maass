@@ -29,3 +29,6 @@ jobs:
 
       - name: Build
         run: npm run build
+
+      - name: Versionskennung im HTML
+        run: grep -q "name=\"version\" content=\"$GITHUB_SHA\"" dist/index.html
