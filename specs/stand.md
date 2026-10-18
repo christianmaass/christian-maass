@@ -62,5 +62,6 @@ Noch keiner · Features seitdem: 0
 
 ## Verlauf
 
-| Datum | Was | Spec / Commit | Version |
-| ----- | --- | ------------- | ------- |
+| Datum      | Was                                    | Spec / Commit | Version |
+| ---------- | -------------------------------------- | ------------- | ------- |
+| 2026-10-18 | Versionskennung im HTML (Live-Prüfung) | PR #3         | v0.1.0  |
