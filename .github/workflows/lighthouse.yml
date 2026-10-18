@@ -5,6 +5,17 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+    # Reine Inhalts- und Doku-PRs ohne Lighthouse (spart ~2 min); nach dem Merge läuft es auf main trotzdem.
+    # Pfade = Mini-Pfade und „ohne Deploy“ aus .claude/skills/stack/SKILL.md
+    paths-ignore:
+      - 'src/content/**'
+      - 'docs/**'
+      - 'public/og/**'
+      - 'public/essays/**'
+      - 'specs/**'
+      - 'CHANGELOG.md'
+      - 'README.md'
+      - 'CLAUDE.md'
   workflow_dispatch:
 
 permissions:

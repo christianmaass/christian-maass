@@ -44,6 +44,7 @@ Je Aufgabe genau **ein** Baustein. Zwei Einträge für dieselbe Aufgabe = Befund
 | ------ | -------------------- | ------------------------------------------- | -------------------- |
 | Domain | `christianmaass.com` | `public/CNAME`, `astro.config.mjs` (`site`) | Rauchtest prod       |
 | Node   | 22                   | `.nvmrc`, Workflows                         | Workflow-Datei lesen |
+| Branch-Protection `main` | Pflicht-Check `check`, strict, auch für Admins, kein Force-Push | GitHub-Einstellungen (nicht im Repo) | `gh api repos/christianmaass/christian-maass/branches/main/protection` |
 
 ## Bekannte Lücken und Schuld
 
@@ -54,7 +55,6 @@ Je Aufgabe genau **ein** Baustein. Zwei Einträge für dieselbe Aufgabe = Befund
 | `npm audit` meldet `astro`/`devalue`                                                                        | gering — statischer Build, kein Server                        | setup-fast                                 | `specs/produkt.md` → Als Nächstes 3 |
 | Security-Header aus `public/_headers` wirken auf GitHub Pages nicht                                         | nur die `<meta>`-CSP schützt                                  | setup-fast, aus `docs/INFRA-CLOUDFLARE.md` | `docs/INFRA-CLOUDFLARE.md`          |
 | Kein Check prüft die Versionskennung außerhalb von `dist/index.html`; Foliensätze in `public/` tragen keine | keine — Live-Prüfung nutzt `/`                                | dev-fast, Review zu Versionskennung        | hier                                |
-| Branch-Protection auf `main` fehlt                                                                          | jeder Merge braucht ein go (kein Auto-Merge)                  | setup-fast                                 | hier                                |
 
 ## Letzter Architektur-Check
 
@@ -64,5 +64,6 @@ Noch keiner · Features seitdem: 0
 
 | Datum      | Was                                    | Spec / Commit | Version |
 | ---------- | -------------------------------------- | ------------- | ------- |
+| 2026-10-18 | Lighthouse nicht bei Inhalts-PRs; Branch-Protection | PR #5 | v0.1.2 |
 | 2026-10-18 | Fachartikel: Datum einheitlich         | PR #4         | v0.1.1  |
 | 2026-10-18 | Versionskennung im HTML (Live-Prüfung) | PR #3         | v0.1.0  |
