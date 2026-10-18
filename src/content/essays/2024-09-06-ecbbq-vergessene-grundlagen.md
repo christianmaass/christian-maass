@@ -1,7 +1,7 @@
 ---
 title: 'Die vergessenen Grundlagen im E-Commerce — und warum Thomann in einer Amazon-Welt überleben kann'
 summary: >-
-  Vortrag beim E-Commerce-BBQ 2024 in Bielefeld (06. September 2024): über die
+  Vortrag beim E-Commerce-BBQ 2024 in Bielefeld (6. September 2024): über die
   Grundlagen, die im Schatten der Plattform-Debatte verschwinden — und über die
   Substanz, die einen Spezialhändler in einer Amazon-Welt tragen kann. Vorschau
   im Branchenmagazin technologiebox.
