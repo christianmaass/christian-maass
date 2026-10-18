@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "deny": ["Read(.env*)", "Read(**/.env*)", "Read(**/*.pem)"]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Write|Edit|MultiEdit",
+        "hooks": [{ "type": "command", "command": "node \"$HOME/.claude/skills/setup-fast/scripts/grenzen.mjs\"" }]
+      }
+    ]
+  }
+}

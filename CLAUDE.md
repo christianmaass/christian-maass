@@ -43,3 +43,9 @@ Jeder Push auf `main` startet `.github/workflows/deploy.yml` (check → build �
 - Design-Muster (aus der Vorlage „Die fast-Skills“): Eyebrows/Meta in Mono uppercase, Karten mit 1px-Border + `--radius-md` ohne Schatten, Chips/Buttons mit `--radius-pill`, `--color-signal` nur für einzelne Hervorhebungen. Details im README unter „Konventionen“; die Bildpalette für Essay-Cover steht in `docs/visual-direction-essays.md`.
 - Commits nach Conventional Commits: `feat:`, `fix:`, `refactor:`, `chore:`, `docs:`, `perf:` sowie `content:` für Inhaltsänderungen.
 - Im Markdown-Body von Beiträgen keine H1 verwenden; `title` wird als H1 gerendert.
+
+## Arbeiten mit den fast-Skills
+
+- Produkt und „Als Nächstes“: `specs/produkt.md` · Regeln: `specs/constitution.md` · Stand: `specs/stand.md` · Technik, Befehle, Release-Weg: Skill `stack` (`.claude/skills/stack/SKILL.md`)
+- Ablauf: `/spec-fast <Wunsch>` → `/pm-fast` (oder einzeln `/dev-fast`, `/qa-fast`, `/release-fast`); alle 3–5 Features `/arch-fast`
+- Betrieb `public-web`: Merge auf `main` ist der Deploy (G5); Erfolg erst mit bestätigter Live-Version (`release-fast`)
