@@ -12,7 +12,10 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "deploy": "gh-pages -d dist",
-    "prepare": "husky"
+    "prepare": "husky",
+    "check:all": "npm run check && npm run lint && npm run build",
+    "audit": "npm audit --omit=dev",
+    "secret-scan": "sh scripts/secret-scan.sh"
   },
   "lint-staged": {
     "*.{ts,astro,js,mjs}": "eslint --fix",
