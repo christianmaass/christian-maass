@@ -29,12 +29,15 @@ const assetPath = '';
 const siteName = 'Christian Maaß';
 const defaultOgImage = `${siteUrl}/og/default.jpg`;
 const finalOgImage = ogImage || defaultOgImage;
+// Commit des Builds für die Live-Prüfung (stack → „Version live prüfen“); in GitHub Actions gesetzt, lokal „lokal“
+const version = process.env.GITHUB_SHA ?? 'lokal';
 ---
 
 <!doctype html>
 <html lang="de">
   <head>
     <meta charset="UTF-8" />
+    <meta name="version" content={version} />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="light dark" />
     <meta name="theme-color" content="#f2f4f3" media="(prefers-color-scheme: light)" />
