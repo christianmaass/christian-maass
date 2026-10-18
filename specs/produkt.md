@@ -28,7 +28,7 @@ Regeln und Nicht-Ziele: `specs/constitution.md` · Stand: `specs/stand.md` · Te
 Details der umgesetzten Epics: `specs/roadmap.md` (Blog, E10–E17) und `specs/roadmap-essays.md` (E18–E20).
 Hier nur Reihenfolge und Horizont — oben zuerst.
 
-1. Versionskennung im HTML — Live-Prüfung kann den ausgelieferten Stand belegen · Horizont: jetzt · in Arbeit
+1. Versionskennung im HTML — Live-Prüfung kann den ausgelieferten Stand belegen · Horizont: jetzt · erledigt v0.1.0
 2. Formatierung: 6 Dateien, die Prettier nicht verarbeiten kann, dann `format:check` in die CI · Horizont: als nächstes
 3. Abhängigkeiten: `npm audit` meldet `astro`/`devalue` · Horizont: als nächstes
 4. E19 — Bilder für die Fachartikel (ausstehend laut `specs/roadmap-essays.md`) · Horizont: später
