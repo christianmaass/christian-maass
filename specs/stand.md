@@ -64,4 +64,5 @@ Noch keiner · Features seitdem: 0
 
 | Datum      | Was                                    | Spec / Commit | Version |
 | ---------- | -------------------------------------- | ------------- | ------- |
+| 2026-10-18 | Fachartikel: Datum einheitlich         | PR #4         | v0.1.1  |
 | 2026-10-18 | Versionskennung im HTML (Live-Prüfung) | PR #3         | v0.1.0  |
