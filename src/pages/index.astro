@@ -5,7 +5,7 @@ import LatestEssays from '../components/article/LatestEssays.astro';
 import PressStrip from '../components/PressStrip.astro';
 import { getTranslations } from '../i18n/utils';
 import { SITE_URL as siteUrl } from '../utils/config';
-import heroPortrait from '../assets/christian-maass.png';
+import heroPortrait from '../assets/christian-maass-2027.png';
 
 const t = getTranslations();
 const currentUrl = `${siteUrl}/`;
@@ -148,7 +148,7 @@ const ogImage = `${siteUrl}/og/default.jpg`;
 
 <style>
   .hero {
-    padding: var(--space-5) 0 var(--space-4) 0;
+    padding: var(--space-5) 0 0 0;
   }
   .hero-grid {
     max-width: var(--container-max-width);
@@ -162,6 +162,9 @@ const ogImage = `${siteUrl}/og/default.jpg`;
   }
   .hero-content {
     max-width: 720px;
+    padding-bottom: var(--space-4);
+    /* hebt die globale Mobil-Regel `.hero-content { order: 1 }` aus styles.css auf */
+    order: 0;
   }
   .hero-headline {
     font-family: var(--font-family-display);
@@ -196,38 +199,29 @@ const ogImage = `${siteUrl}/og/default.jpg`;
   }
   .hero-portrait-wrap {
     width: 100%;
+    align-self: end;
     display: flex;
-    align-items: center;
+    align-items: flex-end;
     justify-content: center;
   }
+  /* Freigestelltes Porträt: unten bündig, damit es auf der Linie der PressStrip sitzt */
   .hero-portrait {
+    display: block;
     width: 100%;
     max-width: 540px;
     height: auto;
-    max-height: 720px;
-    object-fit: cover;
-    object-position: center top;
-    filter: grayscale(1) contrast(1.05) brightness(0.95);
-    -webkit-mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
-    mask-image: radial-gradient(ellipse at center, black 55%, transparent 95%);
   }
 
   @media (max-width: 900px) {
     .hero {
-      padding: var(--space-5) 0;
+      padding: var(--space-5) 0 0 0;
     }
     .hero-grid {
       grid-template-columns: 1fr;
-      gap: var(--space-4);
+      gap: 0;
     }
     .hero-headline {
       max-width: 16ch;
-    }
-  }
-
-  @media (max-width: 640px) {
-    .hero-portrait-wrap {
-      display: none;
     }
   }
 </style>
